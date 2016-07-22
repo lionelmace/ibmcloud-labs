@@ -33,7 +33,7 @@
   docker run -d -p 80:80 --name webserver nginx
   ```
 
-1. Show the running server:  http://localhost:80
+1. Show the running server: (http://localhost:80)
 
 1. Retrieve your namespace
   ```
