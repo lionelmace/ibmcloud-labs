@@ -50,10 +50,10 @@ Note: To check the version of API Connect, run the command
   Let's add some Customer properties now.
 
   Enter an empty property name when done.
-  ? Property name: name
+  ? Property name: **name**
      invoke   loopback:property
-  ? Property type: string
-  ? Required? Yes
+  ? Property type: **string**
+  ? Required? **Yes**
   ? Default value[leave blank for none]: 
 
   Let's add another Customer property.
