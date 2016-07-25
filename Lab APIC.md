@@ -168,6 +168,22 @@ Note: To check the version of API Connect, run the command: ```npm view apiconne
 
 1. Check the box **Publish Application** and **Stage or Publish products > Stage only**. Click Publish.
 
+1. The publishing operation generates messages in the terminal window where you started APIC. We will need this information to update the APIs in API Designer.
+
+1. In the API Designer, select the tab APIs. Switch from the Design view to Assemble. Select the Invoke  node in the flow diagram. A panel will open on the right.
+  Replace the url:
+  ```$(runtime-url)$(request.path)$(request.search)```
+  by the **API target urls** in the terminal:
+  ```apiconnect-e75b4707-af8b-4bc5-97ec-c9a6697fef09.org-ibm-dev.apic.eu-gb.mybluemix.net```
+
+  Copy the **API invoke tls-profile** from the terminal into th panel: ```client:Loopback-client```
+
+1. Save the change.
+
+1. Click on Publish in the top right corner. Select the target.
+
+1.  Do NOT check the box **Publish Application**. Only check **Stage or Publish products > Stage only**. Click Publish.
+
 1. Go to the Bluemix [Dashboard] [bmx_dashboard]. You should see a new Cloud Foundry app called apic-app which is the Loopback app we just published.
 
 1. Open the service instance api-connect. Launch API Manager.
@@ -183,10 +199,9 @@ Note: To check the version of API Connect, run the command: ```npm view apiconne
   The following popup message will appear:
   ```Creating the developer portal for catalog 'Sandbox' may take a few minutes. You will receive an email when the portal is available.```
 
+1. Go to **Explore APIs**. You should see the version 1.O.O of our demo API.
 
-
-1. Go back to the Get Started
-
+1. If I click on the visible API, No products have been found. WHAT are the next steps to finalize this API and be able to test it from Bluemix??
 
 
 [bmx_dashboard]:      https://console.eu-gb.bluemix.net/
