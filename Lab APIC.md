@@ -184,7 +184,7 @@ Note: To check the version of API Connect, run the command: ```npm view apiconne
 
 1.  Do NOT check the box **Publish Application**. Only check **Stage or Publish products > Stage only**. Click Publish.
 
-1. Go to the Bluemix [Dashboard] [bmx_dashboard]. You should see a new Cloud Foundry app called apic-app which is the Loopback app we just published.
+1. Go to the Bluemix [Dashboard] [bmx_dashboard_url]. You should see a new Cloud Foundry app called apic-app which is the Loopback app we just published.
 
 1. Open the service instance api-connect. Launch API Manager.
 
@@ -204,5 +204,5 @@ Note: To check the version of API Connect, run the command: ```npm view apiconne
 1. If I click on the visible API, No products have been found. WHAT are the next steps to finalize this API and be able to test it from Bluemix??
 
 
-[bmx_dashboard]:      https://console.eu-gb.bluemix.net/
+[bmx_dashboard_url]:      https://console.eu-gb.bluemix.net/
 [bmx_catalog_uk_url]: https://console.eu-gb.bluemix.net/catalog/
