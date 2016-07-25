@@ -190,7 +190,9 @@ Note: To check the version of API Connect, run the command: ```npm view apiconne
 
 1. In the main page, click the Sandbox catalog.
 
-1. On the Product demo, click the **...** next to the state. In Visible to, select Custom then type **Bluemix** in the text field. Do the same for Subscribable by. Then click Publish.
+1. On the Product demo, click the **...** next to the state. In Visible to, select Custom then type **org-apic-demo** in the text field. Do the same for Subscribable by. Then click Publish. 
+
+1. TODO: On the Product demo, click the **...** next to the state. In Visible to, select Custom then type **Bluemix** in the text field. Do the same for Subscribable by. Then click Publish.
 
 1. You should get a successfull message **Published**.
 
@@ -201,7 +203,37 @@ Note: To check the version of API Connect, run the command: ```npm view apiconne
 
 1. Go to **Explore APIs**. You should see the version 1.O.O of our demo API.
 
-1. If I click on the visible API, No products have been found. WHAT are the next steps to finalize this API and be able to test it from Bluemix??
+
+### Active Organization Portal
+
+1. Go to Sandbox. Select the **Developers** tab. Click the button **Add Organization**.
+
+1. Name you organization such as **org-apic-demo**. Add a new user such as your personal email address.
+
+1. You will receive an activation link in a e-mail. A new web page will open to set your user id credentials (password and names). Do so and Activate.
+
+1. The API Designer portal will open. Login with the credentials previously created.
+
+1. Select the tab **Apps**.
+
+1. Click **Register New Application**
+
+1. Enter application name such as MyApp.
+
+1. You will get a client secret. Copy it temporarily. 
+
+1. In the Subscriptions section, click on Available APIs.
+
+1. Select the demo API. Click on Subscribe. Click on Select an application to sign up to this plan.
+
+1. You should get a message "Successfully subscribed to this plan."
+
+1. Save the changes.
+
+1. Click on demo in the tree panel on the left. It should open the explore to test your api.
+
+1. ISSUE: I get a internal server error when calling Post Customers.
+
 
 
 [bmx_dashboard_url]:      https://console.eu-gb.bluemix.net/
