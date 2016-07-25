@@ -5,23 +5,16 @@
 * Install [Node.js](https://nodejs.org) Version compatible with APIC Designer
 * Install [API Connect Loopback application]() version 2.1.19
 
-Note: To check the version of API Connect, run the command ```npm view apiconnect version```
+Note: To check the version of API Connect, run the command: ```npm view apiconnect version```
 
 ### In Bluemix Console
 
-1. From the Bluemix [Catalog] [bmx_catalog_uk_url], create an instance of the service API Connect. Give it a name such as **api-connect**.
-
-1. Launch API Manager. In the main page, click the Sandbox catalog. Go to Settings, then Portal. In the Portal Configuration, select IBM Developper portal instead of None. Save.
-
-  Note: The following popup message will appear:
-  ```Creating the developer portal for catalog 'Sandbox' may take a few minutes. You will receive an email when the portal is available.```
-
-1. Go back to the Get Started
+1. From the Bluemix [Catalog] [bmx_catalog_uk_url], create an instance of the service API Connect. Give it a name such as **api-connect**. Keep the default options.
 
 
 ### In Terminal Window
 
-1. Create an API Connect LoopBack application
+1. Create an API Connect LoopBack application. Make sure to select the project **notes** which contains a basic working example including a memory DB.
 
   ```$ apic loopback```
 
@@ -67,25 +60,44 @@ Note: To check the version of API Connect, run the command ```npm view apiconnec
 1. Launch API Connect Designer
   ```apic edit```
   
-  Note: If the designer started correctly, you should see a message as follow and a webpage will automatically opens with the url in the confirmation message.
+  Note: If the designer started correctly, a webpage will automatically opens and you will see a message as follow in the terminal:
   ```Express server listening on http://127.0.0.1:9000```
 
 
-### In API Designer (Browser)
+### In API Designer (Web Browser)
 
-1. Sign in with Bluemix. If you're already sign in with Bluemix, you won't be asked your credentials.
+1. Click **Sign in with Bluemix**. If you're already sign in with Bluemix, you won't be asked your credentials.
 
 1. You should see the API generated earlier in the terminal. We'll get back to that later.
 
-1. Select the tab Models and delete the Note model that was generated on our behalf, but make sure to keep the Customer model we created.
+1. Select the tab **Models** and delete only the **Note** model that was generated on our behalf, but make sure to keep the Customer model we created.
 
-1. Go to the tab Data Sources. Click on db. In the connector, replace *In-memory db* by *IBM Cloudant DB*.
+1. Go to the tab **Data Sources**. Click on db. In the connector, replace *In-memory db* by *IBM Cloudant DB*.
 
-1. We need a database to persist the data. To do so, we will create an instance of the service Cloudant DB. Go to the Bluemix [Catalog] [bmx_catalog_uk_url], create an instance of the service Cloudant DB. Give it a name such as cloudant-db.
+1. The following message will appear:
 
-1. Return to the main [Bluemix dashboard] [bmx_dashboard].
+  This connector is not currently available, please install it in your project by running
+  ```npm install --save loopback-connector-cloudant```
 
-1. Go to the Cloudant DB you created earlier and search for the Service Credentials.
+
+### In Terminal Window
+
+1. Stop the API Designer and run the following command:
+
+  ```npm install --save loopback-connector-cloudant```
+
+1. Re-Launch the API Designer
+
+  ```apic edit```
+
+
+### In Bluemix Console
+
+1. From the Data Models tab, you should now be able to select the **IBM Cloudant DB** in the list of Connector.
+
+1. We still need a database to persist the data. To do so, we will create an instance of the service Cloudant DB. Go to the Bluemix [Catalog] [bmx_catalog_uk_url], create an instance of the service **Cloudant NoSQL DB**. Give it a name such as **cloudant-db**.
+
+1. Click the tab **Service Credentials**.
 
   ```
   {
@@ -98,6 +110,25 @@ Note: To check the version of API Connect, run the command ```npm view apiconnec
     }
   }
   ```
-  
+
+1. Copy the url, username and password in those credentials in the Data Sources connector of the API Designer.
+
+1. Save the configuration. Saving should display the confirmation message:
+
+  ```
+  Success Data source connection test succeeded
+  ```
+
+1. Test the API
+
+1. Launch API Manager. In the main page, click the Sandbox catalog. Go to Settings, then Portal. In the Portal Configuration, select IBM Developper portal instead of None. Save.
+
+  The following popup message will appear:
+  ```Creating the developer portal for catalog 'Sandbox' may take a few minutes. You will receive an email when the portal is available.```
+
+1. Go back to the Get Started
+
+
+
 [bmx_dashboard]:      https://console.eu-gb.bluemix.net/
 [bmx_catalog_uk_url]: https://console.eu-gb.bluemix.net/catalog/
