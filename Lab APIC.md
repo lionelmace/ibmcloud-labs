@@ -5,15 +5,11 @@
 * Install [Node.js](https://nodejs.org) Version compatible with APIC Designer
 * Install [API Connect Loopback application]() version 2.1.19
 
-Note: To check the version of API Connect, run the command
-
-  ```npm view apiconnect version```
+Note: To check the version of API Connect, run the command ```npm view apiconnect version```
 
 ### In Bluemix Console
 
-1. From the Bluemix [catalog] (http://www.bluemix.net/catalog), create an instance of the service Cloudant DB. Give it a name such as cloudant-db. Note: This database will be used later for the persistence of the data model.
-
-1. From the Bluemix [catalog] (http://www.bluemix.net/catalog), create an instance of the service API Connect. Give it a name such as api-connect.
+1. From the Bluemix [Catalog] [bmx_catalog_uk_url], create an instance of the service API Connect. Give it a name such as **api-connect**.
 
 1. Launch API Manager. In the main page, click the Sandbox catalog. Go to Settings, then Portal. In the Portal Configuration, select IBM Developper portal instead of None. Save.
 
@@ -85,7 +81,9 @@ Note: To check the version of API Connect, run the command
 
 1. Go to the tab Data Sources. Click on db. In the connector, replace *In-memory db* by *IBM Cloudant DB*.
 
-1. Return to the main [Bluemix dashboard](https://new-console.ng.bluemix.net/#overview).
+1. We need a database to persist the data. To do so, we will create an instance of the service Cloudant DB. Go to the Bluemix [Catalog] [bmx_catalog_uk_url], create an instance of the service Cloudant DB. Give it a name such as cloudant-db.
+
+1. Return to the main [Bluemix dashboard] [bmx_dashboard].
 
 1. Go to the Cloudant DB you created earlier and search for the Service Credentials.
 
@@ -100,3 +98,6 @@ Note: To check the version of API Connect, run the command
     }
   }
   ```
+  
+[bmx_dashboard]:      https://console.eu-gb.bluemix.net/
+[bmx_catalog_uk_url]: https://console.eu-gb.bluemix.net/catalog/
