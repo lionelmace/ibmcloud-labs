@@ -97,6 +97,8 @@ Note: To check the version of API Connect, run the command: ```npm view apiconne
 
 1. We still need a database to persist the data. To do so, we will create an instance of the service Cloudant DB. Go to the Bluemix [Catalog] [bmx_catalog_uk_url], create an instance of the service **Cloudant NoSQL DB**. Give it a name such as **cloudant-db**.
 
+1. Launch the Cloudand Dashboard. A new tab should open automatically with the list of databases. Create a new database with the button on top right corner. Call this dabase **test**. Make sure to use this name as this is expected by the persistence layer of API Connect.
+
 1. Click the tab **Service Credentials**.
 
   ```
@@ -111,7 +113,7 @@ Note: To check the version of API Connect, run the command: ```npm view apiconne
   }
   ```
 
-1. Copy the url, username and password in those credentials in the Data Sources connector of the API Designer.
+1. Copy the url, username and password from the credentials into the Data Sources connector of the API Designer.
 
 1. Save the configuration. Saving should display the confirmation message:
 
@@ -119,12 +121,69 @@ Note: To check the version of API Connect, run the command: ```npm view apiconne
   Success Data source connection test succeeded
   ```
 
-1. Test the API
+1. Let's test the API in the Designer.
 
-1. Launch API Manager. In the main page, click the Sandbox catalog. Go to Settings, then Portal. In the Portal Configuration, select IBM Developper portal instead of None. Save.
+1. First, start the server by clicking the play button in bottom left corner.
+
+1. Click on Explore in the top right corner.
+
+1. Select the operation POST /Customers. Click on Generate hyperlink before the button **Call operation**.
+
+  ```
+  {
+  "name": "YOUR NAME",
+  "id": -30239449.275000483
+  }
+  ```
+
+1. The first time you will get a CORS error as follows:
+
+  ```
+  No response received. Causes include a lack of CORS support on the target server, the server being unavailable, or an untrusted certificate being encountered.
+  Clicking the link below will open the server in a new tab. If the browser displays a certificate issue, you may choose to accept it and return here to test again.
+  https://$(catalog.host)/api/Customers
+  ```
+
+1. Open the url below in a new tab of your browser:
+
+  https://localhost:4002/api/Customers
+  
+1. Click on Advanced. Accept the exception.
+
+1. Go back to the Explore view in API Designer and click **Call operation** again. You should get a successful response code 200 OK.
+
+1. If you have kept the Cloudant DB dahsboard open, you can select the database **test** and view the newly created record.
+
+### Publish API to Bluemix
+
+1. In the API Designer, select the tab APIs. Switch from the Design view to Assemble. In the tree view on the left switch from **Micro Gateway** to **DataPower Gateway Policies**. Save the change.
+
+1. Click on **Publish** in the top right corner. Select **Add and Manage Targets**.
+
+1. Add IBM Bluemix Target. Select the Region such as United Kingdom, then the Space where you created the API connect instance. Finally, select the default catalog **Sandbox**.
+
+1. In the page Select a Bluemix application, type a new application name such as **apic-app**. Click + to add your app in the list. Then Save.
+
+1. Click again on Publish in the top right corner. Select the newly created target.
+
+1. Check the box **Publish Application** and **Stage or Publish products > Stage only**. Click Publish.
+
+1. Go to the Bluemix [Dashboard] [bmx_dashboard]. You should see a new Cloud Foundry app called apic-app which is the Loopback app we just published.
+
+1. Open the service instance api-connect. Launch API Manager.
+
+1. In the main page, click the Sandbox catalog.
+
+1. On the Product demo, click the **...** next to the state. In Visible to, select Custom then type **Bluemix** in the text field. Do the same for Subscribable by. Then click Publish.
+
+1. You should get a successfull message **Published**.
+
+1. Click on the tab **Settings**, then select the sub menu Portal. In the Portal Configuration, select IBM Developper portal instead of None. Save.
 
   The following popup message will appear:
   ```Creating the developer portal for catalog 'Sandbox' may take a few minutes. You will receive an email when the portal is available.```
+
+
 
 1. Go back to the Get Started
 
