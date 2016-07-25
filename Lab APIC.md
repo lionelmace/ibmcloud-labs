@@ -22,6 +22,9 @@ Note: To check the version of API Connect, run the command
 
 1. Go back to the Get Started
 
+
+### In Terminal Window
+
 1. Create an API Connect LoopBack application
 
   ```$ apic loopback```
@@ -50,10 +53,10 @@ Note: To check the version of API Connect, run the command
   Let's add some Customer properties now.
 
   Enter an empty property name when done.
-  ? Property name: **name**
+  ? Property name: name
      invoke   loopback:property
-  ? Property type: **string**
-  ? Required? **Yes**
+  ? Property type: string
+  ? Required? Yes
   ? Default value[leave blank for none]: 
 
   Let's add another Customer property.
@@ -63,4 +66,37 @@ Note: To check the version of API Connect, run the command
   ? Property type: number
   ? Required? No
   ? Default value[leave blank for none]: 
+  ```
+
+1. Launch API Connect Designer
+  ```apic edit```
+  
+  Note: If the designer started correctly, you should see a message as follow and a webpage will automatically opens with the url in the confirmation message.
+  ```Express server listening on http://127.0.0.1:9000```
+
+
+### In API Designer (Browser)
+
+1. Sign in with Bluemix. If you're already sign in with Bluemix, you won't be asked your credentials.
+
+1. You should see the API generated earlier in the terminal. We'll get back to that later.
+
+1. Select the tab Models and delete the Note model that was generated on our behalf, but make sure to keep the Customer model we created.
+
+1. Go to the tab Data Sources. Click on db. In the connector, replace *In-memory db* by *IBM Cloudant DB*.
+
+1. Return to the main [Bluemix dashboard](https://new-console.ng.bluemix.net/#overview).
+
+1. Go to the Cloudant DB you created earlier and search for the Service Credentials.
+
+  ```
+  {
+    "credentials": {
+        "username": "XXXXXX",
+        "password": "XXXXXX",
+        "host": "f9246334-58d1-4a97-8bde-34c30121f063-bluemix.cloudant.com",
+        "port": 443,
+        "url": "https://USERNAME:PASSWORD@f9246334-58d1-4a97-8bde-34c30121f063-bluemix.cloudant.com"
+    }
+  }
   ```
