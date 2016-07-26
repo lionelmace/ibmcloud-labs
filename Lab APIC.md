@@ -3,16 +3,17 @@
 ### Pre-Requisites
 
 * Install [Node.js](https://nodejs.org) Version compatible with APIC Designer
-* Install [API Connect Loopback application]() version 2.1.19
+* Install API Connect Loopback application by running the command:
+  ```npm install -g apiconnect``` 
 
 Note: To check the version of API Connect, run the command: ```npm view apiconnect version```
 
 ### In Bluemix Console
 
-1. From the Bluemix [Catalog] [bmx_catalog_uk_url], create an instance of the service API Connect. Give it a name such as **api-connect**. Keep the default options.
+1. From the Bluemix [Catalog] [bmx_catalog_uk_url], create an instance of the service **API Connect**. Give it a name such as *api-connect*. Keep the default options.
 
 
-### In Terminal Window
+### Create a Loopback application and its data model through the command line
 
 1. Create an API Connect LoopBack application. Make sure to select the project **notes** which contains a basic working example including a memory DB.
 
@@ -25,13 +26,14 @@ Note: To check the version of API Connect, run the command: ```npm view apiconne
   ? What kind of application do you have in mind? notes (A project containing a basic working example, including a memory database)
   ```
 
-1. 
+1. Change directory to your app
+
   ```cd demo```
 
-1. 
-  ```apic create --type model```
+1. Create a data model in your app
 
-1. 
+  ```apic create --type model```
+ 
   ```
   ? Enter the model name: Customer
   ? Select the data-source to attach Customer to: db (memory)
@@ -57,49 +59,46 @@ Note: To check the version of API Connect, run the command: ```npm view apiconne
   ? Default value[leave blank for none]: 
   ```
 
+
+### Manage your API and its data model within the Designer of API Connect
+
 1. Launch API Connect Designer
   ```apic edit```
   
-  Note: If the designer started correctly, a webpage will automatically opens and you will see a message as follow in the terminal:
+  If the designer started correctly, a webpage will automatically opens and the terminal will show a message similar to this one:
   ```Express server listening on http://127.0.0.1:9000```
+  
+1. Click **Sign in with Bluemix**. If you're already sign in with Bluemix, you'll be automatically signed into the designer.
 
-
-### In API Designer (Web Browser)
-
-1. Click **Sign in with Bluemix**. If you're already sign in with Bluemix, you won't be asked your credentials.
-
-1. You should see the API generated earlier in the terminal. We'll get back to that later.
+1. The designer opens into the APIs section showing the API we created from the command line.
 
 1. Select the tab **Models** and delete only the **Note** model that was generated on our behalf, but make sure to keep the Customer model we created.
 
-1. Go to the tab **Data Sources**. Click on db. In the connector, replace *In-memory db* by *IBM Cloudant DB*.
+1. Open the Customer mode. You should see the attributes age and name and their types. Note that name is marked as required as specified at the creation.
+
+
+### Create a database service in Bluemix and manage the persistence in the API Designer
+
+1. In the API Designer, go to the tab **Data Sources**. Click on db. In the Connector section, select *IBM Cloudant DB* instead of *In-memory db*.
 
 1. The following message will appear:
 
   This connector is not currently available, please install it in your project by running
   ```npm install --save loopback-connector-cloudant```
 
-
-### In Terminal Window
-
-1. Stop the API Designer and run the following command:
-
-  ```npm install --save loopback-connector-cloudant```
+1. Stop the API Designer and run the npm command above.
 
 1. Re-Launch the API Designer
 
   ```apic edit```
 
-
-### In Bluemix Console
-
-1. From the Data Models tab, you should now be able to select the **IBM Cloudant DB** in the list of Connector.
+1. Go back to the Data Models tab, you should now be able to select the **IBM Cloudant DB** in the list of Connector.
 
 1. We still need a database to persist the data. To do so, we will create an instance of the service Cloudant DB. Go to the Bluemix [Catalog] [bmx_catalog_uk_url], create an instance of the service **Cloudant NoSQL DB**. Give it a name such as **cloudant-db**.
 
 1. Launch the Cloudand Dashboard. A new tab should open automatically with the list of databases. Create a new database with the button on top right corner. Call this dabase **test**. Make sure to use this name as this is expected by the persistence layer of API Connect.
 
-1. Click the tab **Service Credentials**.
+1. Go back to Bluemix console and click the tab **Service Credentials**.
 
   ```
   {
@@ -113,7 +112,7 @@ Note: To check the version of API Connect, run the command: ```npm view apiconne
   }
   ```
 
-1. Copy the url, username and password from the credentials into the Data Sources connector of the API Designer.
+1. Copy the url, username and password from the credentials into the Data Sources connector of the API Designer. Specify the database name **test*. If none is specified, API Designer will use test by default.
 
 1. Save the configuration. Saving should display the confirmation message:
 
@@ -121,13 +120,13 @@ Note: To check the version of API Connect, run the command: ```npm view apiconne
   Success Data source connection test succeeded
   ```
 
-1. Let's test the API in the Designer.
+### Test your API locally in the API Designer.
 
-1. First, start the server by clicking the play button in bottom left corner.
+1. Let's test the API in the Designer. First, start the server by clicking the play button in bottom left corner. Once the server is started, you should see the endpoint of the Local Micro Gateway.
 
 1. Click on Explore in the top right corner.
 
-1. Select the operation POST /Customers. Click on Generate hyperlink before the button **Call operation**.
+1. Select the operation POST /Customers. Click on *Generate* hyperlink before the button **Call operation** in the right panel.
 
   ```
   {
@@ -136,7 +135,7 @@ Note: To check the version of API Connect, run the command: ```npm view apiconne
   }
   ```
 
-1. The first time you will get a CORS error as follows:
+1. The first time you will most likely get a CORS error as follows:
 
   ```
   No response received. Causes include a lack of CORS support on the target server, the server being unavailable, or an untrusted certificate being encountered.
@@ -154,13 +153,16 @@ Note: To check the version of API Connect, run the command: ```npm view apiconne
 
 1. If you have kept the Cloudant DB dahsboard open, you can select the database **test** and view the newly created record.
 
-### Publish API to Bluemix
+1. Congratulations you successfullly tested your API.
 
-1. In the API Designer, select the tab APIs. Switch from the Design view to Assemble. In the tree view on the left switch from **Micro Gateway** to **DataPower Gateway Policies**. Save the change.
+
+### Publish your API to Bluemix
+
+1. In the API Designer, select the tab APIs. Switch from the Design view to Assemble. In the left hand side panel, switch from **Micro Gateway policies** to **DataPower Gateway policies**. Save the change.
 
 1. Click on **Publish** in the top right corner. Select **Add and Manage Targets**.
 
-1. Add IBM Bluemix Target. Select the Region such as United Kingdom, then the Space where you created the API connect instance. Finally, select the default catalog **Sandbox**.
+1. Add IBM Bluemix Target. Select the Region such as United Kingdom where you created the API connect instance, then the Organization (Space). Finally, select the default catalog **Sandbox**.
 
 1. In the page Select a Bluemix application, type a new application name such as **apic-app**. Click + to add your app in the list. Then Save.
 
