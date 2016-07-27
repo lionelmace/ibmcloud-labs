@@ -7,7 +7,7 @@ This lab demonstrates how to leverage API Connect to create a brand new API, tes
 
 # Pre-Requisites
 
-* Get a Bluemix IBM id
+* Get a [Bluemix IBM id](https://bluemix.net)
 * Install [Node.js](https://nodejs.org)
 * Install [API Connect Developer Toolkit](https://www.npmjs.com/package/apiconnect)
 
@@ -23,11 +23,14 @@ To check the local version of API Connect: ```apic -v```
 1. [Provision API Connect in Bluemix](#step-1---provision-api-connect-in-bluemix)
 2. [Create a LoopBack application](#step-2---create-a-loopback-application)
 3. [Manage your API in API Designer](#step-3---manage-your-api-in-api-designer)
+4. [Manage the data persistence](#step-4---manage-the-data-persistence)
+5. [Test your API](#step-5---test-your-api)
+6. [Publish your API to Bluemix](#step-6---publish-your-api-to-bluemix)
 
 
 # Step 1 - Provision  API Connect in Bluemix
 
-From the Bluemix [Catalog] [bmx_catalog_uk_url], provision an instance of the service **API Connect**. Give it a name such as *api-connect*.
+From the Bluemix [Catalog] [bmx_catalog_uk_url], provision an instance of the service **API Connect**.
 
 
 # Step 2 - Create a LoopBack application
@@ -84,7 +87,7 @@ API Connect comes with a developer toolkit. This toolkit provides a offline grap
   ```
 
 
-# Step 3 - Manage your API and its data model within the Designer
+# Step 3 - Manage your API in API Designer
 
 1. Launch API Connect Designer
   ```apic edit```
@@ -101,7 +104,7 @@ API Connect comes with a developer toolkit. This toolkit provides a offline grap
 1. Open the Customer model. You should see the attributes age and name and their types. Note that name is marked as required as specified at the creation.
 
 
-### Create a database service in Bluemix and manage the persistence in the API Designer
+# Step 4 - Manage the data persistence
 
 1. In the API Designer, go to the tab **Data Sources**. Click on db. In the Connector section, select *IBM Cloudant DB* instead of *In-memory db*.
 
@@ -144,7 +147,7 @@ API Connect comes with a developer toolkit. This toolkit provides a offline grap
   Success Data source connection test succeeded
   ```
 
-### Test your API locally in the API Designer.
+# Step 5 - Test your API
 
 1. Let's test the API in the Designer. First, start the server by clicking the play button in bottom left corner. Once the server is started, you should see the endpoint of the Local Micro Gateway.
 
@@ -180,7 +183,7 @@ API Connect comes with a developer toolkit. This toolkit provides a offline grap
 1. Congratulations you successfullly tested your API.
 
 
-### Publish your API to Bluemix
+# Step 6 - Publish your API to Bluemix
 
 1. In the API Designer, select the tab APIs. Switch from the Design view to Assemble. In the left hand side panel, switch from **Micro Gateway policies** to **DataPower Gateway policies**. Save the change.
 
