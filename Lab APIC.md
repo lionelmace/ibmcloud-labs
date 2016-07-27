@@ -12,13 +12,17 @@ This lab demonstrates how to leverage API Connect to create a brand new API, tes
 * Install [API Connect Developer Toolkit](https://www.npmjs.com/package/apiconnect)
 
 Note:
+
 To check all available versions of API Connect: ```npm view apiconnect version```
+
 To check the local version of API Connect: ```apic -v```
 
 
 # Steps
 
 1. [Provision API Connect in Bluemix](#step-1---provision-api-connect-in-bluemix)
+2. [Create a LoopBack application](#step-2---create-a-loopback-application)
+3. [Manage your API in API Designer](#step-3---manage-your-api-in-api-designer)
 
 
 # Step 1 - Provision  API Connect in Bluemix
@@ -26,7 +30,7 @@ To check the local version of API Connect: ```apic -v```
 From the Bluemix [Catalog] [bmx_catalog_uk_url], provision an instance of the service **API Connect**. Give it a name such as *api-connect*.
 
 
-### Create a LoopBack application and its data model through the command line
+# Step 2 - Create a LoopBack application
 
 API Connect comes with a developer toolkit. This toolkit provides a offline graphical user interace named API Designer for creating APIs, the LoopBack framework for developing REST applications, a local unit test environment that includes a Micro Gateway for testing APIs, and a set of command line tools for augmenting the development toolset and assisting devops engineers with continuous integration and delivery.
 
@@ -46,7 +50,7 @@ API Connect comes with a developer toolkit. This toolkit provides a offline grap
   ? What kind of application do you have in mind? notes (A project containing a basic working example, including a memory database)
   ```
 
-1. Change directory to your app
+1. Change into the LoopBack application directory
 
   ```cd demo```
 
@@ -80,7 +84,7 @@ API Connect comes with a developer toolkit. This toolkit provides a offline grap
   ```
 
 
-### Manage your API and its data model within the Designer of API Connect
+# Step 3 - Manage your API and its data model within the Designer
 
 1. Launch API Connect Designer
   ```apic edit```
@@ -257,9 +261,21 @@ API Connect comes with a developer toolkit. This toolkit provides a offline grap
 1. ISSUE: I get a internal server error when calling Post Customers.
 
 
-### Analytics
+# Analytics
 
 1. TODO: add analytics
+
+
+# Additional Resources
+
+For additional resources pay close attention to the following:
+
+- [API Connect v5 Getting Started: Toolkit Command Line Interface](https://github.com/ibm-apiconnect/cli)
+- [API Connect v5 Getting Started: API Products](https://github.com/ibm-apiconnect/product)
+- [API Connect Developer Center](https://developer.ibm.com/apiconnect)
+- [API Connect v5 Knowledge Center](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/mapfiles/ic_home.html)
+- [Follow us @ibmapiconnect](https://twitter.com/ibmapiconnect)
+
 
 [bmx_dashboard_url]:  https://console.eu-gb.bluemix.net/
 [bmx_catalog_uk_url]: https://console.eu-gb.bluemix.net/catalog/
