@@ -1,19 +1,39 @@
-## Leverage APIC
+# Leverage APIC
 
-### Pre-Requisites
+# Introduction
 
-* Install [Node.js](https://nodejs.org) Version compatible with APIC Designer
-* Install API Connect Loopback application by running the command:
-  ```npm install -g apiconnect``` 
-
-Note: To check the version of API Connect, run the command: ```npm view apiconnect version```
-
-### In Bluemix Console
-
-1. From the Bluemix [Catalog] [bmx_catalog_uk_url], create an instance of the service **API Connect**. Give it a name such as *api-connect*. Keep the default options.
+This lab demonstrates how to leverage API Connect to create a brand new API, test it and publish it to Bluemix.
 
 
-### Create a Loopback application and its data model through the command line
+# Pre-Requisites
+
+* Get a Bluemix IBM id
+* Install [Node.js](https://nodejs.org)
+* Install [API Connect Developer Toolkit](https://www.npmjs.com/package/apiconnect)
+
+Note:
+To check all available versions of API Connect: ```npm view apiconnect version```
+To check the local version of API Connect: ```apic -v```
+
+
+# Steps
+
+1. [Provision API Connect in Bluemix](#step-1---provision-api-connect-in-bluemix)
+
+
+# Step 1 - Provision  API Connect in Bluemix
+
+From the Bluemix [Catalog] [bmx_catalog_uk_url], provision an instance of the service **API Connect**. Give it a name such as *api-connect*.
+
+
+### Create a LoopBack application and its data model through the command line
+
+API Connect comes with a developer toolkit. This toolkit provides a offline graphical user interace named API Designer for creating APIs, the LoopBack framework for developing REST applications, a local unit test environment that includes a Micro Gateway for testing APIs, and a set of command line tools for augmenting the development toolset and assisting devops engineers with continuous integration and delivery.
+
+1. Get help on the **apic** command set:
+  ```
+  apic -h 
+  ```
 
 1. Create an API Connect LoopBack application. Make sure to select the project **notes** which contains a basic working example including a memory DB.
 
@@ -70,11 +90,11 @@ Note: To check the version of API Connect, run the command: ```npm view apiconne
   
 1. Click **Sign in with Bluemix**. If you're already sign in with Bluemix, you'll be automatically signed into the designer.
 
-1. The designer opens into the APIs section showing the API we created from the command line.
+1. The designer opens into the APIs section showing the API definition we created from the command line.
 
 1. Select the tab **Models** and delete only the **Note** model that was generated on our behalf, but make sure to keep the Customer model we created.
 
-1. Open the Customer mode. You should see the attributes age and name and their types. Note that name is marked as required as specified at the creation.
+1. Open the Customer model. You should see the attributes age and name and their types. Note that name is marked as required as specified at the creation.
 
 
 ### Create a database service in Bluemix and manage the persistence in the API Designer
@@ -176,7 +196,7 @@ Note: To check the version of API Connect, run the command: ```npm view apiconne
   Replace the url:
   ```$(runtime-url)$(request.path)$(request.search)```
   by the **API target urls** in the terminal:
-  ```apiconnect-e75b4707-af8b-4bc5-97ec-c9a6697fef09.org-ibm-dev.apic.eu-gb.mybluemix.net```
+  ```apiconnect-e75b4707-af8b-4bc5-97ec-c9a6697fef09.org-ibm-dev.apic.eu-gb.mybluemix.net$(request.path)$(request.search)```
 
   Copy the **API invoke tls-profile** from the terminal into th panel: ```client:Loopback-client```
 
@@ -237,6 +257,9 @@ Note: To check the version of API Connect, run the command: ```npm view apiconne
 1. ISSUE: I get a internal server error when calling Post Customers.
 
 
+### Analytics
 
-[bmx_dashboard_url]:      https://console.eu-gb.bluemix.net/
+1. TODO: add analytics
+
+[bmx_dashboard_url]:  https://console.eu-gb.bluemix.net/
 [bmx_catalog_uk_url]: https://console.eu-gb.bluemix.net/catalog/
