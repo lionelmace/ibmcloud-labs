@@ -37,37 +37,49 @@
 
 1. Retrieve your namespace
   ```
-  cf ic namespace
+  bx ic namespace-get
   ```
   
 1. Tag image for Bluemix registry
   ```
-  docker tag nginx:bluemix registry.eu-gb.bluemix.net/mace/nginx:bluemix
+  docker tag nginx:latest registry.eu-gb.bluemix.net/<YOUR_NAMESPACE>/nginx:latest
   ```
  
 1. Push ​*nginx*​ image to Bluemix Public
   ```
-  docker push registry.eu-gb.bluemix.net/mace/nginx:bluemix
+  docker push registry.eu-gb.bluemix.net/<YOUR_NAMESPACE>/nginx:bluemix
   ```
 
-1. Validate the presence of ​*nginx*​ image in Bluemix
+1. Validate the presence of ​*nginx*​ image on Bluemix
   ```
-  cf ic images
-  ```
-
-1. Create a volume (Optional)
-  ```
-  cf ic volume create NAME
+  bx ic images
   ```
 
-1. Retrieve IP address
+1. Start the nginx image on Bluemix
   ```
-  bx ic ip list
+  bx ic run -d -p 80:80 --name webserver registry.eu-gb.bluemix.net/<YOUR_NAMESPACE>/nginx:latest
+  ```
+
+1. List running containers on Bluemix.
+  ```
+  bx ic ps
+  ```
+  
+1. List all IP addresses. Not the ID of the running NGINX container.
+  ```
+  bx ic ips
   ```
 
 1. Bind this IP address with your container
   ```
-  bx ic ip bind IP_ADDRESS Demo1
+  bx ic ip bind IP_ADDRESS <YOUR_NGINX_CONTAINER_ID>
+  ```
+
+1. Show the running container on Bluemix: http://<YOUR_IP_ADDRESS>:80
+
+1. Create a volume (Optional)
+  ```
+  bx ic volume-create NAME
   ```
 
 1. Containers API is available in [Swagger Container API] [containers_api_url] 
