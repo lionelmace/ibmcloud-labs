@@ -60,19 +60,19 @@
   bx ic run -d -p 80:80 --name webserver registry.eu-gb.bluemix.net/<YOUR_NAMESPACE>/nginx:latest
   ```
 
-1. List running containers on Bluemix.
+1. List running containers on Bluemix. Not the ID of the running NGINX container.
   ```
   bx ic ps
   ```
   
-1. List all IP addresses. Not the ID of the running NGINX container.
+1. Reqest a routable IP addresse.
   ```
-  bx ic ips
+  bx ic ip-request
   ```
 
 1. Bind this IP address with your container
   ```
-  bx ic ip bind IP_ADDRESS <YOUR_NGINX_CONTAINER_ID>
+  bx ic ip bind <IP_ADDRESS> <YOUR_NGINX_CONTAINER_ID>
   ```
 
 1. Show the running container on Bluemix: http://<YOUR_IP_ADDRESS>:80
