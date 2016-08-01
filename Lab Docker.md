@@ -1,21 +1,24 @@
-## Start a docker container on Bluemix
+# Pre-Requisites
 
-1. Download and install [docker for Mac or Windows] [docker_beta_url]
+* Get a [Bluemix IBM id](https://bluemix.net)
 
-1. Download and install the [Containers Plug-in CF IC] [cf_ic_plugin_url]
+* Install docker for [Mac](https://docs.docker.com/engine/installation/mac/) or [Windows](https://docs.docker.com/engine/installation/windows/)
+
+* Install the [Bluemix Command-Line](http://ibm.biz/bluemixcli)
+
+
+# Start a docker container on Bluemix
 
 1. Open Terminal
 
 1. Login to the Private Registry
-
   ```
-  cf ic login
+  bx ic login
   ```
 
 1. Check that you’re connected
-
   ```
-  cf ic images
+  bx ic info
   ```
 
 1. Search the image nginx in docker hub
@@ -92,5 +95,3 @@ Sample to retrieve a namespace:
 curl -X GET -H "X-Auth-Project-Id: xxxx" -H "Accept: application/json" -H "X-Auth-Token: bearer xxxxx" "https://containers-api.eu-gb.bluemix.net/v3/registry/namespaces"
   
 [containers_api_url]: http://ccsapi-doc.mybluemix.net
-[docker_beta_url]: https://beta.docker.com/
-[cf_ic_plugin_url]: https://new-console.ng.bluemix.net/docs/containers/container_cli_cfic.html
