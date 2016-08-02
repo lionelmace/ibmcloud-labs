@@ -12,9 +12,7 @@ This lab demonstrates how to leverage API Connect to create a brand new API, tes
 * Install [API Connect Developer Toolkit](https://www.npmjs.com/package/apiconnect)
 
 Note:
-
 To check all available versions of API Connect: ```npm view apiconnect version```
-
 To check the local version of API Connect: ```apic -v```
 
 
@@ -231,6 +229,46 @@ API Connect comes with a developer toolkit. This toolkit provides a offline grap
   ```Creating the developer portal for catalog 'Sandbox' may take a few minutes. You will receive an email when the portal is available.```
 
 1. Go to **Explore APIs**. You should see the version 1.O.O of our demo API.
+
+# Step 6 - Configure the developper portal (TO be updated)
+
+The published product can be viewed by signing into the [Bluemix API Connect service](https://new-console.ng.bluemix.net/apis/apiconnect), opening the **Sandbox** catalog, and select the **Products** tab.
+
+In order for developers to subscribe to the climbing weather product a one time configuration of your Sandbox developer portal is required.
+To configure the developer portal, open the Sandbox catalog in the [Bluemix API Connect
+service](https://new-console.ng.bluemix.net/apis/apiconnect) and:
+
+- Select Settings -> Portal -> IBM Developer Portal -> Save
+
+You will receive an email when the portal is configured.  In the meantime, **bookmark** the portal URL for the Sandbox catalog.
+
+# Step 7 - Subscribe to the API
+
+Let's now subscribe to the API:
+
+1. **Developer Portal**: Browse to the Sandbox developer portal you bookmarked in the prior step (it will look something like https://sb-BLUEMIXID-BLUEMIXSPACE.developer.us.apiconnect.ibmcloud.com):
+1. **Create developer account**: Create a developer portal account, confirm via email, and login to the portal.
+1. **Create developer App**: Create an application to store your client id credentials using the **Apps** tab (and **save your client id** for use later).
+1. **Subscribe**: Select **API Products**, find the climbing weather product, and subscribe to the default plan.
+
+# Step 8 - Invoke the API
+
+Now that you have subscribed you can invoke the API using your client
+id.  To determine the invocation URL to use:
+
+1. Sign in to the Sandbox developer portal bookmarked above
+1. Select **API Products** tab
+1. Select the **Climbing Weather Product**
+1. Scroll down to the **GET /yosemite** operation
+1. Click on the grey operation area to expand the details for the **GET /yosemite** operation
+1. On the right hand side you'll see the curl expression
+1. Copy it into your terminal window replacing **REPLACE_THIS_KEY** with your client id saved from the prior step
+
+You can also use the following as long as you replace BLUEMIXID, BLUEMIXSPACE, and CLIENT_ID:
+
+```
+curl -k https://api.us.apiconnect.ibmcloud.com/BLUEMIXID-BLUEMIXSPACE/sb/yosemite -H 'X-IBM-Client-Id: CLIENT_ID'
+```
 
 
 ### Active Organization Portal

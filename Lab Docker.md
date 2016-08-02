@@ -4,10 +4,11 @@
 
 * Install docker for [Mac](https://docs.docker.com/engine/installation/mac/) or [Windows](https://docs.docker.com/engine/installation/windows/)
 
-* Install the [Bluemix Command-Line](http://ibm.biz/bluemixcli)
+* Install the [Bluemix Command-Line](http://clis.ng.bluemix.net/)
 
+# Start an existing docker image on Bluemix
 
-# Start a docker container on Bluemix
+# Pull and Push a NGINX container to Bluemix
 
 1. Open Terminal
 
@@ -78,7 +79,7 @@
   bx ic ip bind <IP_ADDRESS> <YOUR_NGINX_CONTAINER_ID>
   ```
 
-1. Show the running container on Bluemix: http://<YOUR_IP_ADDRESS>:80
+1. Show the running container on Bluemix: http://YOUR_IP_ADDRESS:80
 
 1. Create a volume (Optional)
   ```
