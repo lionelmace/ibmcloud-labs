@@ -11,7 +11,8 @@
 
 1. [Start an existing docker image on Bluemix](#step-1---start-an-existing-docker-image-on-bluemix)
 2. [Pull and run a container locally](#step-2---pull-and-run-a-container-locally)
-4. [Attach an IP to your container](#step-4---attach-an-IP-to-your-container)
+3. [Prepare your IBM Containers service](#step-3---prepare-your-ibm-containers-service)
+4. [Attach an IP to your container](#step-4---attach-an-ip-to-your-container)
 5. [Use the Container API](#step-5---use-the-container-api)
 
 
@@ -105,15 +106,15 @@
 
 1. Containers API is available in [Swagger Container API] [containers_api_url] 
 
-1. This API requires two HTTP headers:
+1. This API requires two HTTP headers. To retrieve their values, run the BX commands next to each header:
 
   X-Auth-Token     = ```bx cf oauth-token```
   
-  X-Auth-Project-Id= ```bx cf space <space-name> --guid```
+  X-Auth-Project-Id= ```bx cf space <SPACE_NAME> --guid```
 
-1. To retrieve a namespace, run the following command:
+1. To retrieve a namespace, run the following command with the correct HTTP headers
   ```
-  curl -X GET -H "X-Auth-Project-Id: xxxx" -H "Accept: application/json" -H "X-Auth-Token: bearer xxxxx" "https://containers-api.eu-gb.bluemix.net/v3/registry/namespaces"
+  curl -X GET -H "X-Auth-Project-Id: XXXXX" -H "Accept: application/json" -H "X-Auth-Token: bearer XXXXX" "https://containers-api.eu-gb.bluemix.net/v3/registry/namespaces"
   ````
 
 [containers_api_url]: http://ccsapi-doc.mybluemix.net
