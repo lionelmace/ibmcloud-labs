@@ -4,17 +4,26 @@
 
 * Install docker for [Mac](https://docs.docker.com/engine/installation/mac/) or [Windows](https://docs.docker.com/engine/installation/windows/)
 
-* Install the [Bluemix Command-Line](http://clis.ng.bluemix.net/)
+* Install the [Bluemix Command-Line CLI](http://clis.ng.bluemix.net/)
 
-# Start an existing docker image on Bluemix
 
-# Pull and Push a NGINX container to Bluemix
+# Steps
+
+1. [Start an existing docker image on Bluemix](#step-1---start-an-existing-docker-image-on-bluemix)
+2. [Pull and run a container locally](#step-2---pull-and-run-a-container-locally)
+4. [Attach an IP to your container](#step-4---attach-an-IP-to-your-container)
+5. [Use the Container API](#step-5---use-the-container-api)
+
+
+# Step 1 - Start an existing docker image on Bluemix
+
+# Step 2 - Pull and run a container locally
 
 1. Open Terminal
 
 1. Login to the Private Registry
   ```
-  bx ic login
+  bx login
   ```
 
 1. Check that you’re connected
@@ -39,9 +48,17 @@
 
 1. Show the running server: [http://localhost:80](http://localhost:80)
 
+
+# Step 3 - Prepare your IBM Containers service
+
 1. Retrieve your namespace
   ```
   bx ic namespace-get
+  ```
+  
+  Note: if you haven't created a namespace yet, run:
+  ```
+  bx ic namespace-set <NEW_NAMESPACE>
   ```
   
 1. Tag image for Bluemix registry
@@ -64,6 +81,8 @@
   bx ic run -d -p 80:80 --name webserver registry.eu-gb.bluemix.net/<YOUR_NAMESPACE>/nginx:latest
   ```
 
+# Step 4 - Attach an IP to your container
+
 1. List running containers on Bluemix. Not the ID of the running NGINX container.
   ```
   bx ic ps
@@ -81,18 +100,20 @@
 
 1. Show the running container on Bluemix: http://YOUR_IP_ADDRESS:80
 
-1. Create a volume (Optional)
-  ```
-  bx ic volume-create NAME
-  ```
+
+# Step 5 - Use the Container API
 
 1. Containers API is available in [Swagger Container API] [containers_api_url] 
-  
-  X-Auth-Token     = ```cf oauth-token```
-  
-  X-Auth-Project-Id= ```cf space <space-name> --guid```
 
-Sample to retrieve a namespace:
-curl -X GET -H "X-Auth-Project-Id: xxxx" -H "Accept: application/json" -H "X-Auth-Token: bearer xxxxx" "https://containers-api.eu-gb.bluemix.net/v3/registry/namespaces"
+1. This API requires two HTTP headers:
+
+  X-Auth-Token     = ```bx cf oauth-token```
   
+  X-Auth-Project-Id= ```bx cf space <space-name> --guid```
+
+1. To retrieve a namespace, run the following command:
+  ```
+  curl -X GET -H "X-Auth-Project-Id: xxxx" -H "Accept: application/json" -H "X-Auth-Token: bearer xxxxx" "https://containers-api.eu-gb.bluemix.net/v3/registry/namespaces"
+  ````
+
 [containers_api_url]: http://ccsapi-doc.mybluemix.net
