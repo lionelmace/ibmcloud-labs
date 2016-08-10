@@ -69,7 +69,7 @@
  
 1. Push ​*nginx*​ image to Bluemix Public
   ```
-  docker push registry.eu-gb.bluemix.net/<YOUR_NAMESPACE>/nginx:bluemix
+  docker push registry.eu-gb.bluemix.net/<YOUR_NAMESPACE>/nginx:latest
   ```
 
 1. Validate the presence of ​*nginx*​ image on Bluemix
