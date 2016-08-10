@@ -84,7 +84,7 @@
 
 # Step 4 - Attach an IP to your container
 
-1. List running containers on Bluemix. Not the ID of the running NGINX container.
+1. List running containers on Bluemix. Write down the ID of the running NGINX container.
   ```
   bx ic ps
   ```
