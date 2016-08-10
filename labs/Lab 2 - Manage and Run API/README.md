@@ -15,9 +15,9 @@ In the following lab, you will learn:
 
 # Pre-Requisites
 
-* Get a [Bluemix IBM id](https://bluemix.net)
-* Install [Node.js](https://nodejs.org)
-* Install [API Connect Developer Toolkit](https://www.npmjs.com/package/apiconnect)
++ Get a [Bluemix IBM id](https://bluemix.net)
++ Install [Node.js](https://nodejs.org)
++ Install [API Connect Developer Toolkit](https://www.npmjs.com/package/apiconnect)
 
 Note:
 To check all available versions of API Connect: ```npm view apiconnect version```
