@@ -1,3 +1,18 @@
+# Introduction
+
+In this lab, you’ll gain a high level understanding of the architecture, features, and development concepts related to the IBM Containers (IC) service. Throughout the lab, you’ll get a chance to use the Command Line Interface (CLI) for publishing new docker images to Bluemix, manage your running container, and use the API.
+
+
+# Objective
+
+In the following lab, you will learn:
+
++ How to pull a docker image from docker hub and push it to Bluemix
++ How to bind a routable IP address to a running container
++ How to run a container in Bluemix
++ How to use the IBM Containers API
+
+
 # Pre-Requisites
 
 * Get a [Bluemix IBM id](https://bluemix.net)

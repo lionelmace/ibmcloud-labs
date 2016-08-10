@@ -1,8 +1,16 @@
-# Leverage APIC
-
 # Introduction
 
-This lab demonstrates how to leverage API Connect to create a brand new API, test it and publish it to Bluemix.
+In this lab, you’ll gain a high level understanding of the architecture, features, and development concepts related to the IBM API Connect (APIC) solution. Throughout the lab, you’ll get a chance to use the APIC command line interface for creating LoopBack applications, the intuitive Web-based user interface, and explore the various aspects associated with solution’s configuration of RESTful based services as well as their operation.
+
+
+# Objective
+
+In the following lab, you will learn:
+
++ How to create a simple LoopBack application
++ How to create a Representational State Transfer (REST) API definition
++ How to test a REST API
++ How to publish an API to Bluemix
 
 
 # Pre-Requisites
