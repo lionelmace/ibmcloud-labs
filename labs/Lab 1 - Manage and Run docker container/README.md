@@ -31,6 +31,10 @@ In the following lab, you will learn:
 
 # Step 1 - Start an existing docker image on Bluemix
 
+TODO: Leverage the standard Getting Started:
+https://new-console.ng.bluemix.net/docs/containers/container_index.html?pos=2
+
+
 # Step 2 - Pull and run a container locally
 
 1. Open Terminal
@@ -45,32 +49,39 @@ In the following lab, you will learn:
   bx ic info
   ```
 
-1. Search the image nginx in docker hub
+1. Search the NGINX official image from Docker Hub
   ```
   docker search nginx
   ```
 
-1. Retrieve the image nginx locally on your laptop
+1. Retrieve the image NGINX locally on your laptop
   ```
   docker pull nginx
   ```
 
-1. Run the nginx image
+1. Launch an instance of NGINX running in a container
   ```
   docker run -d -p 80:80 --name webserver nginx
   ```
 
-1. Show the running server: [http://localhost:80](http://localhost:80)
+  This command creates a container named webserver based on the NGINX image and runs it in detached mode, meaning the container is started and stays running until stopped but does not listen to the command line.
+  The NGINX image exposes ports 80 and 443 in the container and the -p option tells Docker to map the container port 80 to port 80 on the Docker host. 
+
+1. Run ```docker ps``` to verify that the container was created and is running
+
+1. Show the running server: [http://localhost:80](http://localhost:80); the default NGINX welcome page appears.
 
 
 # Step 3 - Prepare your IBM Containers service
+
+To run native Docker CLI commands to manage your containers, we will use the ```bx ic```command line.
 
 1. Retrieve your namespace
   ```
   bx ic namespace-get
   ```
   
-  Note: if you haven't created a namespace yet, run:
+  Note: A namespace is a unique name to identify your private repository on the Bluemix registry. The namespace is assigned one time for an organization and cannot be changed after it is created. To create a namespace, run the command:
   ```
   bx ic namespace-set <NEW_NAMESPACE>
   ```
@@ -80,17 +91,17 @@ In the following lab, you will learn:
   docker tag nginx:latest registry.eu-gb.bluemix.net/<YOUR_NAMESPACE>/nginx:latest
   ```
  
-1. Push ​*nginx*​ image to Bluemix Public
+1. Push ​*NGINX*​ image to Bluemix Public
   ```
   docker push registry.eu-gb.bluemix.net/<YOUR_NAMESPACE>/nginx:latest
   ```
 
-1. Validate the presence of ​*nginx*​ image on Bluemix
+1. Validate the presence of ​*NGINX*​ image on Bluemix
   ```
   bx ic images
   ```
 
-1. Start the nginx image on Bluemix
+1. Start the NGINX image on Bluemix
   ```
   bx ic run -d -p 80:80 --name webserver registry.eu-gb.bluemix.net/<YOUR_NAMESPACE>/nginx:latest
   ```
