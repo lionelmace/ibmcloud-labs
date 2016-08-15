@@ -7,7 +7,7 @@ In this lab, you’ll gain a high level understanding of the architecture, featu
 
 In the following lab, you will learn:
 
-+ How to pull a docker image from docker hub and push it to Bluemix
++ How to deploy the open-source NGINX docker image to Bluemix
 + How to bind a routable IP address to a running container
 + How to run a container in Bluemix
 + How to use the IBM Containers API
@@ -23,7 +23,7 @@ In the following lab, you will learn:
 # Steps
 
 1. [Start an existing docker image on Bluemix](#step-1---start-an-existing-docker-image-on-bluemix)
-2. [Pull and run a container locally](#step-2---pull-and-run-a-container-locally)
+2. [Deploy the open-source NGINX docker image to Bluemix](#step-2---deploy-the-open-source-nginx-docker-image-to-bluemix)
 3. [Prepare your IBM Containers service](#step-3---prepare-your-ibm-containers-service)
 4. [Attach an IP to your container](#step-4---attach-an-ip-to-your-container)
 5. [Use the Container API](#step-5---use-the-container-api)
@@ -35,7 +35,7 @@ TODO: Leverage the standard Getting Started:
 https://new-console.ng.bluemix.net/docs/containers/container_index.html?pos=2
 
 
-# Step 2 - Pull and run a container locally
+# Step 2 - Deploy the open-source NGINX docker image to Bluemix
 
 1. Open Terminal
 
