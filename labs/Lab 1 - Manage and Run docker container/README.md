@@ -128,7 +128,7 @@ To run native Docker CLI commands to manage your containers, we will use the ```
 
 # Step 5 - Use the Container API
 
-1. Containers API is available in [Swagger Container API] [containers_api_url] 
+1. Containers API is available in [Swagger Container API](http://ccsapi-doc.mybluemix.net) 
 
 1. This API requires two HTTP headers. To retrieve those values, run the commands next to each header:
 
@@ -136,7 +136,7 @@ To run native Docker CLI commands to manage your containers, we will use the ```
   
   X-Auth-Project-Id= ```bx cf space <SPACE_NAME> --guid```
 
-1. To retrieve a namespace, run the following command with the correct HTTP headers
+1. To retrieve a namespace, run the following command with the correct HTTP headers instead of XXXXX
   ```
   curl -X GET -H "X-Auth-Project-Id: XXXXX" -H "Accept: application/json" -H "X-Auth-Token: bearer XXXXX" "https://containers-api.eu-gb.bluemix.net/v3/registry/namespaces"
   ```
@@ -148,6 +148,3 @@ For additional resources pay close attention to the following:
 
 - [Getting started with IBM Containers](https://new-console.ng.bluemix.net/docs/containers/container_index.html)
 - [See Auto-scaling in Action for IBM Containers - Movie](https://www.youtube.com/watch?v=MFs-pSr2gsw)
-
-
-[containers_api_url]: http://ccsapi-doc.mybluemix.net
