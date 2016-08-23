@@ -59,13 +59,16 @@ https://new-console.ng.bluemix.net/docs/containers/container_index.html?pos=2
   docker pull nginx
   ```
 
-1. Launch an instance of NGINX running in a container
+1. Let's start our NGINX Docker container with this command:
   ```
   docker run -d -p 80:80 --name webserver nginx
   ```
-
-  This command creates a container named webserver based on the NGINX image and runs it in detached mode, meaning the container is started and stays running until stopped but does not listen to the command line.
-  The NGINX image exposes ports 80 and 443 in the container and the -p option tells Docker to map the container port 80 to port 80 on the Docker host. 
+  
+  + run is the command to create a new container
+  + The -d flag to run this container in the background. The container will run in detached mode, meaning the container is started and stays running until stopped but does not listen to the command line.
+  + -p specifies the port we are exposing in the format of -p local-machine-port:internal-container-port. The NGINX image exposes ports 80 and 443 in the container. In this case, we are mapping the container port 80 to port 80 on the Docker host.
+  + --name flag is how we specify the name of the container (if left blank one is assigned for us)
+  + ```nginx``` is the name of the image on dockerhub (we downloaded this before with the pull command, but Docker will do this automatically if the image is missing)
 
 1. Run ```docker ps``` to verify that the container was created and is running
 
