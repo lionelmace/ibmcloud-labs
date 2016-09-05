@@ -4,7 +4,7 @@ With the Watson Conversation service you can create virtual agents and bots that
 
 The following image illustrates many uses for the Conversation service.
 
-  ![](./images/useofconversation.png)
+  ![](./images/usesofconversation.png)
 
 In this lab, you go through a step-by-step process to create your first dialog flow thanks to the easy-to-use graphical environment.
 
