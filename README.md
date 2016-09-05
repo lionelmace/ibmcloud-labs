@@ -1,5 +1,7 @@
 # Discovering the Cloud Innovation Platform Bluemix
 
+![](./images/bluemix-logo.png)
+
 # Table of Contents
 
 + [Lab 1 - Run native docker Container on the Cloud](./labs/Lab%201%20-%20Run%20native%20docker%20Container%20on%20the%20Cloud)
