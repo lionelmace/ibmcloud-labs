@@ -1,6 +1,6 @@
+![](./images/container_icon64x64.png)
 # Introduction
 
-![](./images/container_icon64x64.png)
 In this lab, you’ll gain a high level understanding of the architecture, features, and development concepts related to the IBM Containers (IC) service. Throughout the lab, you’ll get a chance to use the Command Line Interface (CLI) for deploying new docker images to Bluemix, manage your running container, and use the API. This lab'll use the open-source [NGINX](https://www.nginx.com/) docker image.
 
 
