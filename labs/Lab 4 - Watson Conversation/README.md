@@ -136,18 +136,30 @@ First we need to create a starting node for the dialog:
 
 1. Specify the condition and response for the starting node of the conversation:
 
-  1. In the Enter a condition field, type conversation_start. As you type, a drop-down list appears; select conversation_start (create new condition). This indicates that this node is triggered automatically at the beginning of the conversation.
-In the Watson says field, type Welcome to the car demo! This is the response that Watson will issue when the specified condition (in this case, the conversation start) is true.
-Click the "Anything else" node that was created automatically when you defined the conversation_start node.
-In the Watson says field of the "Anything else" node, type I'm sorry, I don't understand. Please try again. This is the response that Watson will issue when the user input does not match any other node.
-Test the conversation:
-Click the Try it out icon. In the chat pane, you should see the response (Welcome to the car demo) displayed automatically.
-Type any input and press Enter. Because you have not yet defined any other nodes, you should see the response I'm sorry, I don't understand. Please try again.
-Close the chat pane.
-Now we can create dialog branches that handle the defined intents.
-Create a dialog branch to respond to the #greeting intent. This intent requires only a simple response, so the branch can consist of only a single node.
-Click the conversation_start node.
-Click the + icon on the bottom of the node to create a new root-level node. Because this new node is a peer of the conversation_start node (rather than a subnode), it represents an alternative conversation.
+  1. In the **Enter a condition** field, type ```conversation_start```. As you type, a drop-down list appears; select **conversation_start (create new condition)**. This indicates that this node is triggered automatically at the beginning of the conversation.
+
+  1. In the **Watson says** field, type ```Welcome to the car demo!``` This is the response that Watson will issue when the specified condition (in this case, the conversation start) is true.
+  
+  1. Click the "Anything else" node that was created automatically when you defined the conversation_start node.
+
+  1. In the **Watson says** field of the "Anything else" node, type ```I'm sorry, I don't understand. Please try again.``` This is the response that Watson will issue when the user input does not match any other node.
+  
+1. Test the conversation:
+
+  1. Click the Try it out ![](./images/dialog_try.png) icon. In the chat pane, you should see the response (```Welcome to the car demo```) displayed automatically.
+  
+  1. Type any input and press Enter. Because you have not yet defined any other nodes, you should see the response I'm sorry, I don't understand. Please try again.
+
+  1. Close the chat pane.
+
+  Now we can create dialog branches that handle the defined intents.
+
+1. Create a dialog branch to respond to the #greeting intent. This intent requires only a simple response, so the branch can consist of only a single node.
+
+  1. Click the conversation_start node.
+
+  1. Click the + icon on the bottom of the node to create a new root-level node. Because this new node is a peer of the conversation_start node (rather than a subnode), it represents an alternative conversation.
+
 In the Enter a condition field, type #greeting. When the drop-down list appears, press Enter to select #greeting. This specifies that this node will be triggered by any input that matches the #greeting intent.
 In the Watson says field, specify Hi! What can I do for you?.
 
