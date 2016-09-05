@@ -1,13 +1,22 @@
 # Introduction
 
-In this lab, you go through a step-by-step process to create an instance of the Conversation service and use the tools
+With the Watson Conversation service you can create virtual agents and bots that combine machine learning, natural language understanding, and integrated dialog tools to provide automated customer engagements.
+
+The following image illustrates many uses for the Conversation service.
+
+  ![](./images/useofconversation.png)
+
+In this lab, you go through a step-by-step process to create your first dialog flow thanks to the easy-to-use graphical environment.
 
 
 # Objective
 
 In the following lab, you will learn:
 
-+ How to create a conversation dialog
++ How to train Watson to understand your users' input with example utterances: Intents and Examples
++ How to identify the terms that may vary in your users' input: Entities
++ How to create the responses to your user's questions: Dialog Builder
++ How to test and improve your dialog
 
 
 # Pre-Requisites
