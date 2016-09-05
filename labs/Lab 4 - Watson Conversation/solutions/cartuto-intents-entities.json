@@ -1,0 +1,131 @@
+{
+  "name": "Car tutorial",
+  "created": "2016-09-05T09:45:30.327Z",
+  "intents": [
+    {
+      "intent": "greeting",
+      "created": "2016-09-05T09:48:12.939Z",
+      "examples": [
+        {
+          "text": "Good afternoon",
+          "created": "2016-09-05T09:48:12.939Z"
+        },
+        {
+          "text": "Good evening",
+          "created": "2016-09-05T09:48:12.939Z"
+        },
+        {
+          "text": "Good morning",
+          "created": "2016-09-05T09:48:12.939Z"
+        },
+        {
+          "text": "Hello",
+          "created": "2016-09-05T09:48:12.939Z"
+        },
+        {
+          "text": "Hi",
+          "created": "2016-09-05T09:48:12.939Z"
+        }
+      ],
+      "description": null
+    },
+    {
+      "intent": "turn_on",
+      "created": "2016-09-05T09:47:32.171Z",
+      "examples": [
+        {
+          "text": "Air on please",
+          "created": "2016-09-05T09:47:32.171Z"
+        },
+        {
+          "text": "I need lights",
+          "created": "2016-09-05T09:47:32.171Z"
+        },
+        {
+          "text": "Listen to some music",
+          "created": "2016-09-05T09:47:32.171Z"
+        },
+        {
+          "text": "Play some tunes",
+          "created": "2016-09-05T09:47:32.171Z"
+        },
+        {
+          "text": "Turn on the headlights",
+          "created": "2016-09-05T09:47:32.171Z"
+        }
+      ],
+      "description": null
+    }
+  ],
+  "entities": [
+    {
+      "entity": "appliance",
+      "values": [
+        {
+          "value": "air conditioning",
+          "created": "2016-09-05T09:49:40.371Z",
+          "metadata": null,
+          "synonyms": [
+            "air"
+          ]
+        },
+        {
+          "value": "headlights",
+          "created": "2016-09-05T09:49:40.371Z",
+          "metadata": null,
+          "synonyms": [
+            "lights"
+          ]
+        },
+        {
+          "value": "music",
+          "created": "2016-09-05T09:49:40.371Z",
+          "metadata": null,
+          "synonyms": [
+            "radio"
+          ]
+        }
+      ],
+      "created": "2016-09-05T09:49:40.371Z",
+      "open_list": false,
+      "description": null
+    },
+    {
+      "entity": "genre",
+      "values": [
+        {
+          "value": "classical",
+          "created": "2016-09-05T09:50:31.534Z",
+          "metadata": null,
+          "synonyms": [
+            "symphonic"
+          ]
+        },
+        {
+          "value": "rhythm and blues",
+          "created": "2016-09-05T09:50:31.534Z",
+          "metadata": null,
+          "synonyms": [
+            "r&b"
+          ]
+        },
+        {
+          "value": "rock",
+          "created": "2016-09-05T09:50:31.534Z",
+          "metadata": null,
+          "synonyms": [
+            "pop"
+          ]
+        }
+      ],
+      "created": "2016-09-05T09:50:31.534Z",
+      "open_list": false,
+      "description": null
+    }
+  ],
+  "language": "en",
+  "metadata": null,
+  "modified": "2016-09-05T11:16:24.386Z",
+  "description": null,
+  "workspace_id": "48c67758-faaa-456a-a0cb-cf314704be97"
+}
