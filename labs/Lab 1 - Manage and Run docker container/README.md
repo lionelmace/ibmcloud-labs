@@ -64,10 +64,10 @@ https://new-console.ng.bluemix.net/docs/containers/container_index.html?pos=2
   docker run -d -p 80:80 --name webserver nginx
   ```
   
-  + run is the command to create a new container
-  + The -d flag to run this container in the background. The container will run in detached mode, meaning the container is started and stays running until stopped but does not listen to the command line.
-  + -p specifies the port we are exposing in the format of -p local-machine-port:internal-container-port. The NGINX image exposes ports 80 and 443 in the container. In this case, we are mapping the container port 80 to port 80 on the Docker host.
-  + --name flag is how we specify the name of the container (if left blank one is assigned for us)
+  + ```run``` is the command to create a new container
+  + The ```-d``` flag to run this container in the background. The container will run in detached mode, meaning the container is started and stays running until stopped but does not listen to the command line.
+  + ```-p``` specifies the port we are exposing in the format of -p local-machine-port:internal-container-port. The NGINX image exposes ports 80 and 443 in the container. In this case, we are mapping the container port 80 to port 80 on the Docker host.
+  + ```--name``` flag is how we specify the name of the container (if left blank one is assigned for us)
   + ```nginx``` is the name of the image on dockerhub (we downloaded this before with the pull command, but Docker will do this automatically if the image is missing)
 
 1. Run ```docker ps``` to verify that the container was created and is running
@@ -150,4 +150,4 @@ To run native Docker CLI commands to manage your containers, we will use the ```
 For additional resources pay close attention to the following:
 
 - [Getting started with IBM Containers](https://new-console.ng.bluemix.net/docs/containers/container_index.html)
-- [See Auto-scaling in Action for IBM Containers - Movie](https://www.youtube.com/watch?v=MFs-pSr2gsw)
+- [See Auto-scaling in Action for IBM Containers - YouTube](https://www.youtube.com/watch?v=MFs-pSr2gsw)
