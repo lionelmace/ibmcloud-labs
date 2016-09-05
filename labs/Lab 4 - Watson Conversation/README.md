@@ -1,19 +1,18 @@
 # Introduction
 
-In this lab...
+In this lab, you go through a step-by-step process to create an instance of the Conversation service and use the tools
 
 
 # Objective
 
 In the following lab, you will learn:
 
-+ How ...
++ How to create a conversation dialog
 
 
 # Pre-Requisites
 
 + Get a [Bluemix IBM id](https://bluemix.net)
-+ ...
 
 
 # Steps
