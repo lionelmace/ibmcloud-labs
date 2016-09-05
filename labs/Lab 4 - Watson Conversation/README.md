@@ -132,7 +132,7 @@ First we need to create a starting node for the dialog:
 
 1. Click **Create**. The dialog is created with a single root node:
 
-  ![](./images/dialog-node.JPG)
+  ![](./images/dialog_node.JPG)
 
 1. Specify the condition and response for the starting node of the conversation:
 
