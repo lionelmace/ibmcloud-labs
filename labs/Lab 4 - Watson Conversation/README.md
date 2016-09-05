@@ -27,9 +27,9 @@ In the following lab, you will learn:
 # Steps
 
 1. [Create a Watson Conversation service](#step-1---create-a-watson-conversation-service)
-2. [Create your workspace](#step-2---create-your-worspace)
+2. [Create your workspace](#step-2---create-your-workspace)
 3. [Work with intents and examples](#step-3---work-with-intents-and-examples)
-4. [Work with entities](#step-5---work-with-entities)
+4. [Work with entities](#step-4---work-with-entities)
 5. [Create a dialog](#step-5---create-a-dialog)
 
 
