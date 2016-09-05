@@ -38,9 +38,9 @@ A workspace is a container for all the artifacts that define the behavior of you
 
 1. On the "Create workspace" page, click Create.
 
-1. In the *Name* field, type ```Car tutorial```.
+1. In the **Name** field, type ```Car tutorial```.
 
-1. Select *Create*. The new workspace is created and appears as a tile on your dashboard.
+1. Select **Create**. The new workspace is created and appears as a tile on your dashboard.
 
 
 # Step 3 - Work with intents and examples
@@ -49,15 +49,15 @@ Use the Intents tab to define intents. These will later be used in your dialog f
 
 Try adding new intents:
 
-1. On the Workspaces page, click the *Car tutorial* workspace tile. The workspace page opens to the Intents tab.
+1. On the Workspaces page, click the **Car tutorial** workspace tile. The workspace page opens to the Intents tab.
 
-1. On the Intents tab, click *Create*.
+1. On the Intents tab, click **Create**.
 
-1. In the *Intent name* field, type ```turn_on```. This intent will be used to indicate that the user wants to turn on an appliance such as the radio, windshield wipers, or headlights.
+1. In the **Intent name** field, type ```turn_on```. This intent will be used to indicate that the user wants to turn on an appliance such as the radio, windshield wipers, or headlights.
 
 1. Add example utterances that will help Watson recognize the #turn_on intent:
 
-  1. In the *User example* field, type ```I need lights``` and press Enter. The example utterance ```I need lights``` is added to the intent.
+  1. In the **User example** field, type ```I need lights``` and press Enter. The example utterance ```I need lights``` is added to the intent.
 
   1. Repeat the same process to add the following examples:
 
@@ -66,7 +66,7 @@ Try adding new intents:
       + Air on please
       + Turn on the headlights
       
-1. Now that you have added at least 5 examples, click *Done*. The intent is created and appears on the Intents page.
+1. Now that you have added at least 5 examples, click **Done**. The intent is created and appears on the Intents page.
 
 1. Repeat the same process to create a #greeting intent. Specify the following example utterances:
 
@@ -76,7 +76,7 @@ Try adding new intents:
   + Good afternoon
   + Good evening
 
-*Results*
+**Results**
 You have now defined two intents (#turn_on and #greeting), along with example utterances that will train Watson to recognize these intents in user input.
 
 # Step 4 - Work with entities
@@ -85,17 +85,17 @@ Each entity definition includes a set of specific entity values that can be used
 
 Create entities to represent what the user wants to turn on:
 
-1. On the *Car tutorial* workspace page, click the Entities tab.
+1. On the **Car tutorial** workspace page, click the Entities tab.
 
-1. On the Entities tab, click *Create*.
+1. On the Entities tab, click **Create**.
 
-1. In the *Entity* field, type ```appliance```. The @appliance entity represents an appliance in the car that a user might want to turn on.
+1. In the **Entity** field, type ```appliance```. The @appliance entity represents an appliance in the car that a user might want to turn on.
 
 1. Define a value for the @appliance entity:
 
-  1. In the *Value* field, type ```music```. This value represents a specific appliance that users might want to turn on.
+  1. In the **Value** field, type ```music```. This value represents a specific appliance that users might want to turn on.
 
-  1. In the *Synonyms* field, type ```radio```. This indicates that ```radio``` is another way of specifying the same value for the @appliance entity.
+  1. In the **Synonyms** field, type ```radio```. This indicates that ```radio``` is another way of specifying the same value for the @appliance entity.
   
   1. Click the plus sign (+) to define additional values for @appliance:
 
@@ -104,22 +104,22 @@ Create entities to represent what the user wants to turn on:
     
   1. Click Done. The @appliance entity is created now appears on the Entities tab.
 
-1. On the Entities tab, click *Create* to create another entity.
+1. On the Entities tab, click **Create** to create another entity.
 
 1. Define a value for the @genre entity:
 
-  1. In the *Entity* field, type ```classical```.
+  1. In the **Entity** field, type ```classical```.
 
-  1. In the *Synonyms* field, type ```symphonic```.
+  1. In the **Synonyms** field, type ```symphonic```.
   
 1. Click the plus sign (+) to define additional values for @genre:
 
   + ```rhythm and blues```, with the synonym ```r&b```
   + ```rock```, with the synonym ```pop```
 
-1. Click *Done*. The @genre entity is created and now appears on the Entities tab.
+1. Click **Done**. The @genre entity is created and now appears on the Entities tab.
 
-*Results*
+**Results**
 You have defined two entities: @appliance (representing an appliance the can turn on) and @genre (representing a genre of music the user can choose). You can now define a dialog that uses intents and entities to choose the correct response.
 
 # Step 5 - Create a dialog
@@ -128,9 +128,9 @@ A dialog is a set of conversational nodes that are contained in a workspace. Tog
 
 First we need to create a starting node for the dialog:
 
-1. On the *Car tutorial* workspace page, click the Dialog tab.
+1. On the **Car tutorial** workspace page, click the Dialog tab.
 
-1. Click *Create*. The dialog is created with a single root node:
+1. Click **Create**. The dialog is created with a single root node:
 
   ![](./images/dialog-node.JPG)
 
