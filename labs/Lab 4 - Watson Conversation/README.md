@@ -80,6 +80,7 @@ Try adding new intents:
   + *Good evening*
 
 **Results**
+
 You have now defined two intents (#turn_on and #greeting), along with example utterances that will train Watson to recognize these intents in user input.
 
 # Step 4 - Work with entities
@@ -123,6 +124,7 @@ Create entities to represent what the user wants to turn on:
 1. Click **Done**. The @genre entity is created and now appears on the Entities tab.
 
 **Results**
+
 You have defined two entities: @appliance (representing an appliance the can turn on) and @genre (representing a genre of music the user can choose). You can now define a dialog that uses intents and entities to choose the correct response.
 
 # Step 5 - Create a dialog
