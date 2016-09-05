@@ -1,3 +1,5 @@
+![](./images/iotp_icon_64.png)
+
 # Introduction
 
 This tutorial demonstrates how to connect a simulated device to the Watson IoT platform, vizualise its live data, store its data into a database and leverage [Node-RED](http://www.nodered.org) tool for wiring together hardware devices, APIs and online services.

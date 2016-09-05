@@ -1,3 +1,5 @@
+![](./images/conversation_icon_64x64.png)
+
 # Introduction
 
 With the Watson Conversation service you can create virtual agents and bots that combine machine learning, natural language understanding, and integrated dialog tools to provide automated customer engagements.
