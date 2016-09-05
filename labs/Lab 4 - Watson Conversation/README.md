@@ -64,20 +64,20 @@ Try adding new intents:
 
   1. Repeat the same process to add the following examples:
 
-      + Listen to some music
-      + Play some tunes
-      + Air on please
-      + Turn on the headlights
+      + *Listen to some music*
+      + *Play some tunes*
+      + *Air on please*
+      + *Turn on the headlights*
       
 1. Now that you have added at least 5 examples, click **Done**. The intent is created and appears on the Intents page.
 
 1. Repeat the same process to create a #greeting intent. Specify the following example utterances:
 
-  + Hello
-  + Hi
-  + Good morning
-  + Good afternoon
-  + Good evening
+  + *Hello*
+  + *Hi*
+  + *Good morning*
+  + *Good afternoon*
+  + *Good evening*
 
 **Results**
 You have now defined two intents (#turn_on and #greeting), along with example utterances that will train Watson to recognize these intents in user input.
