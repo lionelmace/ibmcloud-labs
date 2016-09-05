@@ -2,7 +2,7 @@
 
 # Table of Contents
 
-+ [Lab 1 - Run native docker Container on the Cloud](./labs/Lab%201%20-%20Run%20native%20docker%20container%20on%20the%20cloud)
++ [Lab 1 - Run native docker Container on the Cloud](./labs/Lab%201%20-%20Run%20native%20docker%20Container%20on%20the%20Cloud)
 
 + [Lab 2 - Manage your APIs with API Connect](./labs/Lab%202%20-%20Manage%20your%20APIs%20with%20API%20Connect)
 
