@@ -88,14 +88,10 @@ Creating new intents is easy.
       
 1. Now that you have added at least 5 examples, click **Done**. The intent is created and appears on the Intents page.
 
-1. Repeat the same process to create a #greeting intent. Specify the following example utterances:
+1. Repeat the same process to create a #greeting intent. 
 
-  + *Hello*
-  + *Hi*
-  + *Good morning*
-  + *Good afternoon*
-  + *Good evening*
-
+ ![](./images/intent-greeting.png)
+ 
 **Results**
 
 You have now defined two intents (#turn_on and #greeting), along with example utterances that will train Watson to recognize these intents in user input.
