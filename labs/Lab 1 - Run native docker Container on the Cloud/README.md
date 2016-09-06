@@ -107,8 +107,10 @@ To run native Docker CLI commands to manage your containers, we will use the ```
 
 1. Start the NGINX image on Bluemix
   ```
-  bx ic run -d -p 80:80 --name webserver registry.eu-gb.bluemix.net/<YOUR_NAMESPACE>/nginx:latest
+  bx ic run -d -p 80 --name webserver registry.eu-gb.bluemix.net/<YOUR_NAMESPACE>/nginx:latest
   ```
+
+  Note: As each container has its own IP, there is no risk of port conflict. Thus, port mapping is not required.
 
 # Step 4 - Attach an IP to your container
 
