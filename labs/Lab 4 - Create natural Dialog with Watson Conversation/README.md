@@ -43,25 +43,31 @@ In the following lab, you will learn:
 
 1. Click Create. The service instance is created, and the service dashboard page opens automatically.
 
-1. On the dashboard page, click Launch Tool. The "Create workspace" page opens.
+1. On the dashboard page, click on the **Launch Tool** to get started. The "Create workspace" page opens.
+
+![](./images/conversation-launchtool.png)
 
 
 # Step 2 - Create your workspace
 
-A workspace is a container for all the artifacts that define the behavior of your service.
+One workspace corresponds to one bot — it contains all the configuration information that gives your bot its unique personality. A workspace is a container for all the artifacts that define the behavior of your service.
 
 1. On the "Create workspace" page, click Create.
 
 1. In the **Name** field, type ```Car tutorial```.
+
+1. Choose **English (U.S.)** from one of five languages currently supported.
 
 1. Select **Create**. The new workspace is created and appears as a tile on your dashboard.
 
 
 # Step 3 - Work with intents and examples
 
-Use the Intents tab to define intents. These will later be used in your dialog flow.
+The first thing you’ll see when you open your new workspace is the intents tab. Intents are things that the chat users are looking to do: change passwords, get status updates, make complaints, etc.
 
-Try adding new intents:
+What’s really neat about managing intents is that you are actually training the system to understand what is needed without depending on the exact words. You give multiple training examples that correspond to specific actions or requests.
+
+Creating new intents is easy.
 
 1. On the Workspaces page, click the **Car tutorial** workspace tile. The workspace page opens to the Intents tab.
 
@@ -96,7 +102,7 @@ You have now defined two intents (#turn_on and #greeting), along with example ut
 
 # Step 4 - Work with entities
 
-Each entity definition includes a set of specific entity values that can be used to trigger different responses. Each value can have multiple synonyms, which define different ways that the same value might be specified in user input. When the user's input is received, both intents and entities are identified, and you can use them in the corresponding dialog flow to choose the right response.
+Entities are the specific pieces of information we want to extract from the user response. You’ll want to group entities that might trigger a similar response in your dialog. Each value can have multiple synonyms, which define different ways that the same value might be specified in user input. When the user's input is received, both intents and entities are identified, and you can use them in the corresponding dialog flow to choose the right response.
 
 Create entities to represent what the user wants to turn on:
 
