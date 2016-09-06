@@ -15,8 +15,8 @@ In this lab, you go through a step-by-step process to create your first dialog f
 
 In the following lab, you will learn:
 
-+ How to train Watson to understand your users' input with example utterances: Intents and Examples
-+ How to identify the terms that may vary in your users' input: Entities
++ How to train Watson to understand your users' input with intents and examples
++ How to identify the terms that may vary in your users' input
 + How to create the responses to your user's questions: Dialog Builder
 + How to test and improve your dialog
 
@@ -94,7 +94,7 @@ Creating new intents is easy.
  
 **Results**
 
-You have now defined two intents (#turn_on and #greeting), along with example utterances that will train Watson to recognize these intents in user input.
+You have now defined two intents (#turn_on and #greeting), along with examples that will train Watson to recognize these intents in user input.
 
 # Step 4 - Work with entities
 
@@ -276,7 +276,7 @@ Now we need to add subnodes to determine the appropriate response when the user 
 
   1. Type ```turn on the air.``` The bot recognizes the #turn_on intent and the @appliance:(air conditioning) entity, and it responds with ```OK, turning on the air conditioning.```
 
-  1. Try variations on all of the supported commands based on the example utterances and entity synonyms you defined. If the bot fails to recognize the correct intent, you can retrain it directly from the chat window by clicking the incorrect intent and typing the correct intent in the field. (Do not include the # character when you type the intent name.)
+  1. Try variations on all of the supported commands based on the examples and entity synonyms you defined. If the bot fails to recognize the correct intent, you can retrain it directly from the chat window by clicking the incorrect intent and typing the correct intent in the field. (Do not include the # character when you type the intent name.)
 
   ![](./images/tutorial_dialogtest2.png)
 
