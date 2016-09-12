@@ -1,4 +1,4 @@
-![](/lionelmace/bluemix-pot/raw/master/labs/Lab%203%20-%20Connect%20your%20Devices%20with%20IOT%20Platform/images/iotp_icon_64.png)
+![](./images/iotp_icon_64.png)
 
 # Introduction
 
