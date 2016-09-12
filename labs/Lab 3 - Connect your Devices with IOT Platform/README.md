@@ -27,7 +27,7 @@ This way, we don't require an actual hardware device to test our application.
 1. In a new browser window or on a smartphone, browse to [IOT Sensor](http://quickstart.internetofthings.ibmcloud.com/iotsensor).
 <br />Alternatively, enter this short URL: http://ibm.biz/iotsensor
 
-    ![Sensor simulator](./images/smarphone-iotsensor.png)
+    ![Sensor simulator](/lionelmace/bluemix-pot/raw/master/labs/Lab%203%20-%20Connect%20your%20Devices%20with%20IOT%20Platform/images/smarphone-iotsensor.png)
 
 1. Note the Device Id (displayed in the top right corner).
 
@@ -37,7 +37,7 @@ This way, we don't require an actual hardware device to test our application.
 1. In a new browser window, browse to [Watson IOT Platform quickstart](https://quickstart.internetofthings.ibmcloud.com).
 <br />Alternatively, enter this short URL: http://ibm.biz/iotquickstart
 
-    ![IOT Quickstart](./images/iot-quickstart.png)
+    ![IOT Quickstart](/lionelmace/bluemix-pot/raw/master/labs/Lab%203%20-%20Connect%20your%20Devices%20with%20IOT%20Platform/images/iot-quickstart.png)
     
 1. Enter the device id. 
 
@@ -50,7 +50,7 @@ You've seen my data, what next? Now you will use your device in an application c
 
 1. Create an app using **Internet of Things Foundation Starter** from the Boilerplates category in the Catalog.
 
-    ![](./images/boilerplate-iotstarter.png)
+    ![](/lionelmace/bluemix-pot/raw/master/labs/Lab%203%20-%20Connect%20your%20Devices%20with%20IOT%20Platform/images/boilerplate-iotstarter.png)
 
 1. Provide the application name, modify the host name, if required, and click **Create**.
 <br /> *Note: Wait for a few minutes for your app to start running.*
@@ -63,20 +63,20 @@ You've seen my data, what next? Now you will use your device in an application c
 
 1. You see a ready-made flow that can process temperature readings from a simulated device.
 
-    ![](./images/nodered-defaultflow.png)
+    ![](/lionelmace/bluemix-pot/raw/master/labs/Lab%203%20-%20Connect%20your%20Devices%20with%20IOT%20Platform/images/nodered-defaultflow.png)
 
 # Use Node-RED to read the sensor data
 
 1. In the Node-RED workspace, double-click the **IBM IoT App In** node to open the configuration dialog.
 
-    ![IOT App IN node](./images/iot-appnode.png)
+    ![IOT App IN node](/lionelmace/bluemix-pot/raw/master/labs/Lab%203%20-%20Connect%20your%20Devices%20with%20IOT%20Platform/images/iot-appnode.png)
 
 1. In the Authentication type field, select **Quickstart** from the pull-down list. Enter the Device ID field and click OK.
 <br />*Make sure that the device id is entered in lowercase, and that there are no leading or trailing space characters.*
 
 1. Look for the **Deploy** button in the upper right hand corner of your Node-RED workspace. The deploy button is now red; click it to deploy your flow.
 
-    ![Node-RED Deploy](./images/nodered-deploy.png)
+    ![Node-RED Deploy](/lionelmace/bluemix-pot/raw/master/labs/Lab%203%20-%20Connect%20your%20Devices%20with%20IOT%20Platform/images/nodered-deploy.png)
  
 1. Open the debug pane on the right. You will see that the flow is generating Temperature Status messages.
 
@@ -87,16 +87,16 @@ You've seen my data, what next? Now you will use your device in an application c
 
 1. In Node-RED flow editor, add a **Cloudant out** node 
 
-    ![Cloudant out node](./images/nodered-cloudant.png)
+    ![Cloudant out node](/lionelmace/bluemix-pot/raw/master/labs/Lab%203%20-%20Connect%20your%20Devices%20with%20IOT%20Platform/images/nodered-cloudant.png)
 
 1. In the Service type field, select the name of Cloudant service bound to Node.js runtime from the pull-down list.
 <br />Enter a dabatase name in lowercase. Keep the default operation insert and finally give a name to the node.
 
-  ![Cloudant configuration](./images/nodered-cloudantconfig.png)
+  ![Cloudant configuration](/lionelmace/bluemix-pot/raw/master/labs/Lab%203%20-%20Connect%20your%20Devices%20with%20IOT%20Platform/images/nodered-cloudantconfig.png)
 
 1. Deploy the flow. Return to the Bluemix console, go to the Cloudant console and navigate into the records.
 
-  ![Cloudant console](./images/cloudant-console.png)
+  ![Cloudant console](/lionelmace/bluemix-pot/raw/master/labs/Lab%203%20-%20Connect%20your%20Devices%20with%20IOT%20Platform/images/cloudant-console.png)
 
 # Translate messages with Watson.
 
@@ -108,7 +108,7 @@ The warning messages generated in Node-RED uses English by default. You may want
 
 1. Modify the flow accordingly to translate those messages.
 
-    ![Watson Language Translation](./images/nodered-translationflow.png)
+    ![Watson Language Translation](/lionelmace/bluemix-pot/raw/master/labs/Lab%203%20-%20Connect%20your%20Devices%20with%20IOT%20Platform/images/nodered-translationflow.png)
 
 1. Deploy the updated flow. 
 
