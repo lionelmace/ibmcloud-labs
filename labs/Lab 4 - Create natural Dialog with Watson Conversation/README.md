@@ -1,4 +1,4 @@
-![](./images/conversation_icon_64x64.png)
+![](/lionelmace/bluemix-pot/raw/master/labs/Lab%204%20-%20Create%20natural%20Dialog%20with%20Watson%20Conversation/images/conversation_icon_64x64.png)
 
 # Introduction
 
@@ -6,7 +6,7 @@ With the Watson Conversation service you can create virtual agents and bots that
 
 The following image illustrates many uses for the Conversation service.
 
-  ![](./images/usesofconversation.png)
+  ![](/lionelmace/bluemix-pot/raw/master/labs/Lab%204%20-%20Create%20natural%20Dialog%20with%20Watson%20Conversation/images/usesofconversation.png)
 
 In this lab, you go through a step-by-step process to create your first dialog flow thanks to the easy-to-use graphical environment.
 
@@ -45,7 +45,7 @@ In the following lab, you will learn:
 
 1. On the dashboard page, click on the **Launch Tool** to get started. The "Create workspace" page opens.
 
-![](./images/conversation-launchtool.png)
+![](/lionelmace/bluemix-pot/raw/master/labs/Lab%204%20-%20Create%20natural%20Dialog%20with%20Watson%20Conversation/images/conversation-launchtool.png)
 
 
 # Step 2 - Create your workspace
@@ -150,7 +150,7 @@ First we need to create a starting node for the dialog:
 
 1. Click **Create**. The dialog is created with a single root node:
 
-  ![](./images/dialog_node.JPG)
+  ![](/lionelmace/bluemix-pot/raw/master/labs/Lab%204%20-%20Create%20natural%20Dialog%20with%20Watson%20Conversation/images/dialog_node.JPG)
 
 1. Specify the condition and response for the starting node of the conversation:
 
@@ -164,7 +164,7 @@ First we need to create a starting node for the dialog:
   
 1. Test the conversation:
 
-  1. Click the Try it out ![](./images/dialog_try.png) icon. In the chat pane, you should see the response (```Welcome to the car demo```) displayed automatically.
+  1. Click the Try it out ![](/lionelmace/bluemix-pot/raw/master/labs/Lab%204%20-%20Create%20natural%20Dialog%20with%20Watson%20Conversation/images/dialog_try.png) icon. In the chat pane, you should see the response (```Welcome to the car demo```) displayed automatically.
   
   1. Type any input and press Enter. Because you have not yet defined any other nodes, you should see the response I'm sorry, I don't understand. Please try again.
 
@@ -182,15 +182,15 @@ Now we can create dialog branches that handle the defined intents.
 
   1. In the **Watson says** field, specify ```Hi! What can I do for you?```.
 
-  ![](./images/dialog_greeting.png) 
+  ![](/lionelmace/bluemix-pot/raw/master/labs/Lab%204%20-%20Create%20natural%20Dialog%20with%20Watson%20Conversation/images/dialog_greeting.png) 
   
 1. Test the dialog:
 
-  1. Click the ![](./images/dialog_try.png) icon to open the chat pane.
+  1. Click the ![](/lionelmace/bluemix-pot/raw/master/labs/Lab%204%20-%20Create%20natural%20Dialog%20with%20Watson%20Conversation/images/dialog_try.png) icon to open the chat pane.
   
   1. Type ```Hello``` and press Enter. The output shows that the #greeting intent is recognized, and the appropriate response appears.
   
-  ![](./images/dialog-greeting-test.png)
+  ![](/lionelmace/bluemix-pot/raw/master/labs/Lab%204%20-%20Create%20natural%20Dialog%20with%20Watson%20Conversation/images/dialog-greeting-test.png)
   
 1. Create another dialog branch to respond to the #turn_on intent. Because there are multiple possibilities for what the user might want to turn on, this branch requires multiple nodes to represent a more complex conversation. Start by creating the root-level node:
 
@@ -210,7 +210,7 @@ The #turn_on intent requires additional processing, because the dialog needs to 
   
   1. Click the @appliance node and then click **Go to condition**. The **Continue from** link indicates that if the #turn_on node evaluates as true, the dialog flow should pass to the @appliance node without waiting for additional user input. This is necessary because we want the @appliance node to continue evaluating the user's original input rather than waiting for new input.
 
-  ![](./images/tutorial_dialog3.png)
+  ![](/lionelmace/bluemix-pot/raw/master/labs/Lab%204%20-%20Create%20natural%20Dialog%20with%20Watson%20Conversation/images/tutorial_dialog3.png)
 
 1. Now add a peer subnode that will be triggered if the user input did not specify a valid appliance:
 
@@ -234,7 +234,7 @@ Now we need to add subnodes to determine the appropriate response when the user 
   
   1. Click the @appliance:music node and then click **Go to condition**. The **Continue from** link indicates that if the @appliance node evaluates as true, the dialog flow should pass to the @appliance:music node without waiting for additional user input.
 
-  ![](./images/tutorial_dialog4.png)
+  ![](/lionelmace/bluemix-pot/raw/master/labs/Lab%204%20-%20Create%20natural%20Dialog%20with%20Watson%20Conversation/images/tutorial_dialog4.png)
 
   1. Click the **+** icon on the right side of the @appliance:music node to create a new subnode. This subnode will be evaluated only if @appliance is true, and only after the user has responded to the question about genre.
 
@@ -248,11 +248,11 @@ Now we need to add subnodes to determine the appropriate response when the user 
   
   1. In the **Watson says** field, type ```I'm sorry, I don't understand. I can play classical, rhythm and blues, or rock music.```
   
-  ![](./images/tutorial_dialog5.png)
+  ![](/lionelmace/bluemix-pot/raw/master/labs/Lab%204%20-%20Create%20natural%20Dialog%20with%20Watson%20Conversation/images/tutorial_dialog5.png)
 
 1. Test the dialog:
 
-  1. Click the ![](./images/dialog_try.png) icon to open the chat pane.
+  1. Click the ![](/lionelmace/bluemix-pot/raw/master/labs/Lab%204%20-%20Create%20natural%20Dialog%20with%20Watson%20Conversation/images/dialog_try.png) icon to open the chat pane.
   
   1. Type ```Play music```. The bot recognizes the #turn_on intent and the @appliance:music entity, and it responds by asking you for a musical genre.
   
@@ -270,7 +270,7 @@ Now we need to add subnodes to determine the appropriate response when the user 
 
 1. Test the dialog:
 
-  1. Click the ![](./images/dialog_try.png)  icon to open the chat pane.
+  1. Click the ![](/lionelmace/bluemix-pot/raw/master/labs/Lab%204%20-%20Create%20natural%20Dialog%20with%20Watson%20Conversation/images/dialog_try.png)  icon to open the chat pane.
 
   1. Type ```lights on```. The bot recognizes the #turn_on intent and the @appliance:headlights entity, and it responds with ```OK, turning on the headlights.```
 
@@ -278,7 +278,7 @@ Now we need to add subnodes to determine the appropriate response when the user 
 
   1. Try variations on all of the supported commands based on the examples and entity synonyms you defined. If the bot fails to recognize the correct intent, you can retrain it directly from the chat window by clicking the incorrect intent and typing the correct intent in the field. (Do not include the # character when you type the intent name.)
 
-  ![](./images/tutorial_dialogtest2.png)
+  ![](/lionelmace/bluemix-pot/raw/master/labs/Lab%204%20-%20Create%20natural%20Dialog%20with%20Watson%20Conversation/images/tutorial_dialogtest2.png)
 
 
 # Resources
