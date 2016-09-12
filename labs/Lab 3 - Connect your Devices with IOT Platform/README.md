@@ -4,7 +4,7 @@
 
 This tutorial demonstrates how to connect a simulated device to the Watson IoT platform, vizualise its live data, store its data into a database and leverage [Node-RED](http://www.nodered.org) tool for wiring together hardware devices, APIs and online services.
 
-  ![Sample Architecture](/lionelmace/bluemix-pot/raw/master/labs/Lab%203%20-%20Connect%20your%20Devices%20with%20IOT%20Platform/images/iot-architecture.png)
+  ![Sample Architecture](./images/iot-architecture.png)
 
 
 # Objectives
