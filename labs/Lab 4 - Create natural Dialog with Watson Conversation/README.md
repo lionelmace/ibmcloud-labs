@@ -90,7 +90,7 @@ Creating new intents is easy.
 
 1. Repeat the same process to create a #greeting intent. 
 
- ![](./lionelmace/bluemix-pot/raw/master/labs/Lab%204%20-%20Create%20natural%20Dialog%20with%20Watson%20Conversation/images/intent-greeting.png)
+ ![](/lionelmace/bluemix-pot/raw/master/labs/Lab%204%20-%20Create%20natural%20Dialog%20with%20Watson%20Conversation/images/intent-greeting.png)
  
 **Results**
 
