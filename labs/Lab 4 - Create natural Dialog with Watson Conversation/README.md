@@ -33,6 +33,7 @@ In the following lab, you will learn:
 3. [Work with intents and examples](#step-3---work-with-intents-and-examples)
 4. [Work with entities](#step-4---work-with-entities)
 5. [Create a dialog](#step-5---create-a-dialog)
+6. [Deploy an app to Bluemix](#step-6---deploy-an-app-to-bluemix)
 
 
 # Step 1 - Create a Watson Conversation service
@@ -279,6 +280,31 @@ Now we need to add subnodes to determine the appropriate response when the user 
   1. Try variations on all of the supported commands based on the examples and entity synonyms you defined. If the bot fails to recognize the correct intent, you can retrain it directly from the chat window by clicking the incorrect intent and typing the correct intent in the field. (Do not include the # character when you type the intent name.)
 
   ![](./images/tutorial_dialogtest2.png)
+  
+
+# Step 6 - Deploy an app to Bluemix
+
+To create this application we will deploy an already existing demo to Bluemix and then add our conversation workspace to that application.
+The github repo for this app can be found at:
+[Watson simple conversation](https://github.com/watson-developer-cloud/conversation-simple)
+
+1. In the readme file of this repo, navigate to the ```Deploy the App``` section, click on the deploy to bluemix link and follow the instructions to step 4.
+
+1. You have now deployed an simple conversation app that can be oppened in your browser. By clicking the View your app button you open the webpage with you conversation. However, this app is not yet linked to your own conversation workspace.
+
+1. By deploying the app, bluemix automatically created an app and the conversation service that is linked to it. This new conversation service does not contain your workspace. For that we must import it.
+
+1. Return to the conversation service, and click the ```Launch Tool``` button. You are now on the workspace creation page. By clicking on the ```Instances```button in the top right of the page you should see both instances of your conversation service. Select the first one you created (the one with your own workspace). 
+
+1. Click on the options button of your car tutorial workspace and select ```Download as JSON```. Save your workspace as a JSON.
+
+1. Go back to your new instance of the conversation service (button in the top right of the page) and import the JSON file (button next to create). You have copied your car tutorial workspace to the new conversation service.
+
+1. Click on the options button of this new imported workspace and select ```View details```. Copy the value of the WORKSPACE ID, we will now link your workspace to the application.
+
+1. Return to your dashboad, select the app you created and select the ```Environment Variables``` tab on the left. Select ```User Defined``` and add the name WORKSPACE_ID and copy the value of your workspace ID into the value section. Save the new environment variable.
+
+1. Select the ```overview``` tab on the left and click the URL of you app. This should take you to a web page where you can chat with your application.
 
 
 # Resources
