@@ -284,11 +284,9 @@ Now we need to add subnodes to determine the appropriate response when the user 
 
 # Step 6 - Integrate the dialog into a web app
 
-To create this application we will deploy an already existing demo to Bluemix and then add our conversation workspace to that application.
-The github repo for this app can be found at:
-[Watson simple conversation](https://github.com/watson-developer-cloud/conversation-simple)
+You may want to embed this dialog into a web app. This step shows you how to do so using an existing application available in the GitHub repo [Watson simple conversation](https://github.com/watson-developer-cloud/conversation-simple)
 
-1. In the readme file of this repo, navigate to the ```Deploy the App``` section, click on the deploy to bluemix link and follow the instructions to step 4.
+1. In the readme file of this repo, navigate to the ```Deploy the App``` section, click on the button ![](./images/deploy2bluemix.png) and follow the instructions to step 4.
 
 1. You have now deployed an simple conversation app that can be oppened in your browser. By clicking the View your app button you open the webpage with you conversation. However, this app is not yet linked to your own conversation workspace.
 
@@ -314,7 +312,7 @@ The github repo for this app can be found at:
 
   <img src="./images/env-userdefined-627x208.png" width="627" height="208"/>
 
-1. Select the ```Overview``` tab on the left and click View app. This should take you to a web page where you can chat with your application.
+1. Click ```View app```. This should take you to a web page where you can chat with your application.
 
 
 # Resources
