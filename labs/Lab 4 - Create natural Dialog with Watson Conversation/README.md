@@ -33,7 +33,7 @@ In the following lab, you will learn:
 3. [Work with intents and examples](#step-3---work-with-intents-and-examples)
 4. [Work with entities](#step-4---work-with-entities)
 5. [Create a dialog](#step-5---create-a-dialog)
-6. [Integrate the dialog into a web app (Optional)](#step-6---integrate-the-dialog-into-a-web-app-(Optional))
+6. [Integrate the dialog into a web app](#step-6---integrate-the-dialog-into-a-web-app)
 
 
 # Step 1 - Create a Watson Conversation service
@@ -282,7 +282,7 @@ Now we need to add subnodes to determine the appropriate response when the user 
   ![](./images/tutorial_dialogtest2.png)
   
 
-# Step 6 - Integrate the dialog into a web app (Optional)
+# Step 6 - Integrate the dialog into a web app
 
 You may want to embed this dialog into a web app. This step shows you how to do so using an existing application available in the GitHub repo [Watson simple conversation](https://github.com/watson-developer-cloud/conversation-simple)
 
