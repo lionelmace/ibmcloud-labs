@@ -33,7 +33,7 @@ In the following lab, you will learn:
 3. [Work with intents and examples](#step-3---work-with-intents-and-examples)
 4. [Work with entities](#step-4---work-with-entities)
 5. [Create a dialog](#step-5---create-a-dialog)
-6. [Deploy an app to Bluemix](#step-6---deploy-an-app-to-bluemix)
+6. [Integrate the dialog into a web app](#step-6---integrate-the-dialog-into-a-web-app)
 
 
 # Step 1 - Create a Watson Conversation service
@@ -151,7 +151,7 @@ First we need to create a starting node for the dialog:
 
 1. Click **Create**. The dialog is created with a single root node:
 
-  ![](./images/dialog_node.JPG)
+  ![](./images/dialog-node.JPG)
 
 1. Specify the condition and response for the starting node of the conversation:
 
@@ -165,7 +165,7 @@ First we need to create a starting node for the dialog:
   
 1. Test the conversation:
 
-  1. Click the Try it out ![](./images/dialog_try.png) icon. In the chat pane, you should see the response (```Welcome to the car demo```) displayed automatically.
+  1. Click the Try it out ![](./images/dialog-try.png) icon. In the chat pane, you should see the response (```Welcome to the car demo```) displayed automatically.
   
   1. Type any input and press Enter. Because you have not yet defined any other nodes, you should see the response I'm sorry, I don't understand. Please try again.
 
@@ -183,11 +183,11 @@ Now we can create dialog branches that handle the defined intents.
 
   1. In the **Watson says** field, specify ```Hi! What can I do for you?```.
 
-  ![](./images/dialog_greeting.png) 
+  ![](./images/dialog-greeting.png) 
   
 1. Test the dialog:
 
-  1. Click the ![](./images/dialog_try.png) icon to open the chat pane.
+  1. Click the ![](./images/dialog-try.png) icon to open the chat pane.
   
   1. Type ```Hello``` and press Enter. The output shows that the #greeting intent is recognized, and the appropriate response appears.
   
@@ -253,7 +253,7 @@ Now we need to add subnodes to determine the appropriate response when the user 
 
 1. Test the dialog:
 
-  1. Click the ![](./images/dialog_try.png) icon to open the chat pane.
+  1. Click the ![](./images/dialog-try.png) icon to open the chat pane.
   
   1. Type ```Play music```. The bot recognizes the #turn_on intent and the @appliance:music entity, and it responds by asking you for a musical genre.
   
@@ -271,7 +271,7 @@ Now we need to add subnodes to determine the appropriate response when the user 
 
 1. Test the dialog:
 
-  1. Click the ![](./images/dialog_try.png)  icon to open the chat pane.
+  1. Click the ![](./images/dialog-try.png)  icon to open the chat pane.
 
   1. Type ```lights on```. The bot recognizes the #turn_on intent and the @appliance:headlights entity, and it responds with ```OK, turning on the headlights.```
 
@@ -282,7 +282,7 @@ Now we need to add subnodes to determine the appropriate response when the user 
   ![](./images/tutorial_dialogtest2.png)
   
 
-# Step 6 - Deploy an app to Bluemix
+# Step 6 - Integrate the dialog into a web app
 
 To create this application we will deploy an already existing demo to Bluemix and then add our conversation workspace to that application.
 The github repo for this app can be found at:
