@@ -286,25 +286,25 @@ Now we need to add subnodes to determine the appropriate response when the user 
 
 You may want to embed this dialog into a web app. This step shows you how to do so using an existing application available in the GitHub repo [Watson simple conversation](https://github.com/watson-developer-cloud/conversation-simple)
 
-1. In the readme file of this repo, navigate to the ```Deploy the App``` section, click on the button ![](./images/deploy2bluemix.png) and follow the instructions to step 4.
+1. In the readme file of this repo, navigate to the ```Deploy the App``` section, click on the button ![](../../images/deploy2bluemix.png) and follow the instructions to step 4.
 
-1. You have now deployed an simple conversation app that can be oppened in your browser. By clicking the View your app button you open the webpage with you conversation. However, this app is not yet linked to your own conversation workspace.
+1. A simple conversation app have been deployed to your space. By clicking the button <img src="../../images/viewapp.png" width="90" height="30"/> you open the webpage with you conversation. However, this app is not yet linked to your own conversation workspace.
 
-1. By deploying the app, bluemix automatically created an app and the conversation service that is linked to it. This new conversation service does not contain your workspace. For that we must import it.
+1. The Deploy to Bluemix also created a new instance of Conversation service called ```conversation-service```. We could export the dialog in JSON format from the previous service and import it in this new service. Let's make it simple, and just use the service created in Step #1 which already contains the dialog.. To do so, go to the Connections tab, unbind the existing service ```conversation-service``` and click ```Connect Existing```to attach the service provisioned in Step #1.
 
-1. Return to the conversation service, and click the ```Launch Tool``` button. You are now on the workspace creation page. By clicking on the ```Instances```button in the top right of the page you should see both instances of your conversation service. Select the first one you created (the one with your own workspace). 
+1. Accept to Restage the application, so the service is correctly bound to the application.
 
-1. Click on the three dots button in the top right corner of your car tutorial workspace. Select ```Download as JSON```. Save your workspace as a JSON.
+1. Return to the conversation service you provisionned in Step 1, and click the ```Launch Tool``` button. You are now on the workspace creation page.
+
+1. Click on the three dots button in the top right corner of your car tutorial workspace and select ```View details```.
 
       <img src="./images/dialog-workspace.png" width="385" height="205"/>
 
-1. Go back to your new instance of the conversation service (button in the top right of the page) and import the JSON file (button next to create). You have copied your car tutorial workspace to the new conversation service.
-
-1. Click on the options button of this new imported workspace and select ```View details```. Copy the value of the WORKSPACE ID, we will now link your workspace to the application.
+1. Copy the value of the WORKSPACE ID. You will need this value to link your workspace to the application.
 
   <img src="./images/dialog-details-352x198.png" width="352" height="198"/>
 
-1. Return to your dashboad, select the app you created. Click the tab ```Runtime``` and select ```Environment Variables```.
+1. Return to your Dashboad, select the app you created. Click the tab ```Runtime``` and select ```Environment Variables```.
 
   <img src="./images/app-envvars-537x163.png" width="537" height="163"/>
 
@@ -313,6 +313,8 @@ You may want to embed this dialog into a web app. This step shows you how to do 
   <img src="./images/env-userdefined-627x208.png" width="627" height="208"/>
 
 1. Click ```View app```. This should take you to a web page where you can chat with your application.
+
+Note: If you still get the message "The app has not been configured with a WORKSPACE_ID environment variable.", restart your application so the new environment variable is taken into account.
 
 
 # Resources
