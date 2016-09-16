@@ -298,15 +298,23 @@ The github repo for this app can be found at:
 
 1. Click on the three dots button in the top right corner of your car tutorial workspace. Select ```Download as JSON```. Save your workspace as a JSON.
 
-<img src="./images/dialog-workspace.png" width="385" height="205"/>
+      <img src="./images/dialog-workspace.png" width="385" height="205"/>
 
 1. Go back to your new instance of the conversation service (button in the top right of the page) and import the JSON file (button next to create). You have copied your car tutorial workspace to the new conversation service.
 
 1. Click on the options button of this new imported workspace and select ```View details```. Copy the value of the WORKSPACE ID, we will now link your workspace to the application.
 
-1. Return to your dashboad, select the app you created and select the ```Environment Variables``` tab on the left. Select ```User Defined``` and add the name WORKSPACE_ID and copy the value of your workspace ID into the value section. Save the new environment variable.
+  <img src="./images/dialog-details-352x198.png" width="352" height="198"/>
 
-1. Select the ```overview``` tab on the left and click the URL of you app. This should take you to a web page where you can chat with your application.
+1. Return to your dashboad, select the app you created. Click the tab ```Runtime``` and select ```Environment Variables```.
+
+  <img src="./images/app-envvars-537x163.png" width="537" height="163"/>
+
+1. Scroll down to the section ```User Defined``` and add the following variable WORKSPACE_ID and copy the value of your workspace ID into the value section.
+
+  <img src="./images/env-userdefined-627x208.png" width="627" height="208"/>
+
+1. Select the ```Overview``` tab on the left and click View app. This should take you to a web page where you can chat with your application.
 
 
 # Resources
