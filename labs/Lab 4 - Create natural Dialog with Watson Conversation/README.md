@@ -33,7 +33,7 @@ In the following lab, you will learn:
 3. [Work with intents and examples](#step-3---work-with-intents-and-examples)
 4. [Work with entities](#step-4---work-with-entities)
 5. [Create a dialog](#step-5---create-a-dialog)
-6. [Integrate the dialog into a web app (Optional)](#step-6---integrate-the-dialog-into-a-web-app-(Optional)
+6. [Integrate the dialog into a web app (Optional)](#step-6---integrate-the-dialog-into-a-web-app-(Optional))
 
 
 # Step 1 - Create a Watson Conversation service
