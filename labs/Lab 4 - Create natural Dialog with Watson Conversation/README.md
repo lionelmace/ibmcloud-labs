@@ -296,7 +296,9 @@ The github repo for this app can be found at:
 
 1. Return to the conversation service, and click the ```Launch Tool``` button. You are now on the workspace creation page. By clicking on the ```Instances```button in the top right of the page you should see both instances of your conversation service. Select the first one you created (the one with your own workspace). 
 
-1. Click on the options button of your car tutorial workspace and select ```Download as JSON```. Save your workspace as a JSON.
+1. Click on the three dots button in the top right corner of your car tutorial workspace. Select ```Download as JSON```. Save your workspace as a JSON.
+
+![](./images/dialog-workspace.png)
 
 1. Go back to your new instance of the conversation service (button in the top right of the page) and import the JSON file (button next to create). You have copied your car tutorial workspace to the new conversation service.
 
