@@ -41,7 +41,7 @@ https://new-console.ng.bluemix.net/docs/containers/container_index.html?pos=2
 
 This is a sample application built with a CLEAN stack (CLoudant NoSQL database, Express, Angular and Node.js).
 
-![Todo](screenshot.png)
+![Todo](./images/screenshot.png)
 
 This Git tutorial is split in two branches:
   * *[master](https://github.com/lionelmace/node-todo/tree/master)* holds the final application
@@ -415,14 +415,7 @@ in the [master branch](https://github.com/lionelmace/node-todo) of this reposito
 
 See [License.txt](License.txt) for license information.
 
-## Credits
 
-Based on [scotch-io/node-todo](https://github.com/scotch-io/node-todo)
-
----
-
-This is a sample application created for the purpose of demonstration and learning
-The program is provided as-is with no warranties of any kind, express or implied.
 
 [bluemix_signup_url]: https://console.ng.bluemix.net/?cm_mmc=GitHubReadMe-_-BluemixSampleApp-_-Node-_-Workflow
 [cloud_foundry_url]: https://github.com/cloudfoundry/cli/releases
@@ -436,3 +429,8 @@ The program is provided as-is with no warranties of any kind, express or implied
 For additional resources pay close attention to the following:
 
 - [GitHub Guides](https://guides.github.com/)
+
+
+## Credits
+
+Based on [scotch-io/node-todo](https://github.com/scotch-io/node-todo)
