@@ -1,0 +1,15 @@
+{
+  "name": "node-todo",
+  "description": "Bluemix Node.JS todo application.",
+  "main": "server.js",
+  "authors": [
+    "Lionel"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/lionelmace/node-todo",
+  "moduleType": [],
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "angular": "~1.5.0"
+  }
+}

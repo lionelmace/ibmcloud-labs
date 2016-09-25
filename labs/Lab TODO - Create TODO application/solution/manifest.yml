@@ -1,0 +1,10 @@
+declared-services:
+  todo-cloudant:
+    label: cloudantNoSQLDB
+    plan: Shared
+applications:
+- name: todo
+  services:
+  - todo-cloudant
+  memory: 256M
+  random-route: true

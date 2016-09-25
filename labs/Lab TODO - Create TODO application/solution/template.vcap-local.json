@@ -1,0 +1,14 @@
+{
+  "services": {
+    "cloudantNoSQLDB": [
+      {
+        "name": "todo-cloudant",
+        "label": "cloudantNoSQLDB",
+        "plan": "Shared",
+        "credentials": {
+          "url": "https://USER:PASSWORD@HOST"
+        }
+      }
+    ]
+  }
+}
