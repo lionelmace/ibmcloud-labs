@@ -10,6 +10,6 @@
 
 + [Lab IOT - Connect your Devices with IOT Platform](./labs/Lab%20IOT%20-%20Connect%20your%20Devices%20with%20IOT%20Platform)
 
-+ [Lab TODO - Create TODO application](./labs/Lab%20TODO%20-%20Create%20TODO%20Application)
++ [Lab TODO - Create TODO application](./labs/Lab%20TODO%20-%20Create%20TODO%20application)
 
 + [Lab Watson - Create natural Dialog with Watson Conversation](./labs/Lab%20Watson%20-%20Create%20natural%20Dialog%20with%20Watson%20Conversation)
