@@ -28,28 +28,29 @@ In the following lab, you will learn:
 
 # Steps
 
-1. [Start an existing docker image on Bluemix](#step-1---start-an-existing-docker-image-on-bluemix)
+1. [Create a new web application](#step-1---create-a-new-web-application)
+2. [Add Git support](#step-2---add-git-support)
 
 
 
 # Step 1 - Create a new web application
 
-1. Log in to Bluemix console.
+1. Log in to [Bluemix console](https://bluemix.net).
 
-1. Select the region where you want to create your application.
+1. Select the Region (e.g. United Kingdom) where you want to create your application.
 
-1. Go to the Bluemix catalog.
+1. Go to the Bluemix **Catalog**.
 
-1. Create a new Cloud Foundry (CF) application with the SDK for Node.js under the Compute category.
+1. Create a new **Cloud Foundry (CF) Runtimes** with the ***SDK for Node.js*** under the Compute category.
 
-1. Give your app a unique name and unique host (eg. todo-[your-initials])
+1. Give your app a unique name and unique host (e.g. todo-[your-initials])
 
 1. View your application.
 
 The SDK for Node.js created a simple "Hi there!" web app that will become our starting point.
 
 
-## Add Git support
+# Step 2 - Add Git support
 
 Now let's add a source code repository and
 an automatic build pipeline to our project.
