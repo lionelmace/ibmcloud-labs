@@ -237,7 +237,7 @@ Your first task is to integrate this code in the app you created, replacing the 
 
 1. Delete all files and folders from your app **except the manifest.yml and .git folder**.
 
-1. Download the Todo App in-memory application from [this archive](https://github.com/lionelmace/bluemix-pot/tree/master/labs/Lab%20TODO%20-%20Create%20TODO%20application/solution/node-todo-project.zip) into a temp directory.
+1. Download the Todo App in-memory application from [this archive](./solution/node-todo-project.zip) into a temp directory.
 
 1. Unzip the files in a temp directory. It creates a *node-todo-project* folder.
 
