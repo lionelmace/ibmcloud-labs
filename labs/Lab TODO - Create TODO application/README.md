@@ -11,9 +11,9 @@ In this lab, you’ll gain a high level understanding of the architecture, featu
 
 In the following lab, you will learn:
 
-+ How to create a new Cloud Foundry app based on Node.js runtime
++ How to deploy a new Cloud Foundry app based on Node.js runtime
 + How to create a new service Cloudant DB to store NoSQL data 
-+ How to bind a service to an app
++ How to set up a source code repository to collaborate
 + How to manage Continuous Integration and Deployment
 + How to use the Cloud Foundry Command Line
 
@@ -35,6 +35,11 @@ In the following lab, you will learn:
 5. [Change a file locally](#step-5---change-a-file-locally)
 6. [Push your local change to the cloud](#step-6---push-your-local-change-to-the-cloud)
 7. [Commit your changes and see them deployed automatically](#step-7---commit-your-changes-and-see-them-deployed-automatically)
+8. [Get the Todo App code](#step-8---get-the-todo-app-code)
+9. [Create and bind a Cloudant service](#step-9---create-and-bind-a-cloudant-service)
+10.[Connect the Cloudant DB to the application code](#step-10---Connect-the-cloudant-db-to-the-application-code)
+11. [Run the Todo App locally](#step-10---run-the-todo-app-locally)
+12. []()
 
 
 # Step 1 - Create a new web application
@@ -174,6 +179,7 @@ It has **1024MB** of disk space available.
 Changing files locally and pushing them worked but we can do better.
 In a previous step we set up a Git repository and a build pipeline was automatically configured.
 
+
 # Step 7 - Commit your changes and see them deployed automatically
 
 1. Open **public/index.html**.
@@ -207,7 +213,23 @@ In a previous step we set up a Git repository and a build pipeline was automatic
 1. When the command completes, access the application running in the cloud to confirm your change was deployed
 
 
-# Step 8 - Create and bind a Cloudant service
+# Step 8 - Get the Todo App code
+
+In previous steps, we've seen the basic of modifying code and deploying the application.
+Now let's focus on our task to build a Todo App. The application has already been developed and is available in this Git repository.
+
+Your first task is to integrate this code in the app you created, replacing the existing app code.
+
+1. Delete all files and folders from your app **except the manifest.yml and .git folder**.
+
+1. Download the Todo App in-memory application from [this archive](./solution/node-todo-master.zip) into a temp directory.
+
+1. Unzip the files in a temp directory. It creates a *node-todo-master* folder.
+
+1. Move all files and directories from the extract to your app folder **except the manifest.yml**.
+
+
+# Step 9 - Create and bind a Cloudant service
 
 In order to store the todo, we will need a persistent storage. To do so, we will use a Cloudant NoSQL database, a JSON document oriented store, compatible with CouchDB.
 
@@ -228,22 +250,48 @@ In order to store the todo, we will need a persistent storage. To do so, we will
   Your application will restart and the service connection information will be made available to your application.
 
 
-# Step 9 - Get the Todo App code
+# Step 10 - Connect the Cloudant DB to the application code
 
-In previous steps, we've seen the basic of modifying code and deploying the application.
-Now let's focus on our task to build a Todo App. The application has already been developed and is available in this Git repository.
+When your application runs in Cloud Foundry, all service information bound to the application are available in the **VCAP_SERVICES** variable.
 
-Your first task is to integrate this code in the app you created, replacing the existing app code.
+Given a Cloud Foundry app relies on the VCAP_SERVICES environment variable, a straightforward approach is to set this variable in your environment by creating a local env file (JSON or key=value format),
+to test for this file in your app and to load the values if found.
 
-1. Delete all files and folders from your app **except the manifest.yml and .git folder**.
+1. In the Bluemix console, go to your application **Overview**.
 
-1. Download the Todo App in-memory application from [this archive](./solution/node-todo-project.zip) into a temp directory.
+1. Under **Runtime / Environment Variables**, look for the value of the VCAP_SERVICES.
 
-1. Unzip the files in a temp directory. It creates a *node-todo-project* folder.
+1. Copy the content value of ```credentials{}``` into the vcap-local.json of your project. You should have something similar to this.
 
-1. Move all files and directories from the extract to your app folder **except the manifest.yml**.
+  ```
+  {
+    "services": {
+      "cloudantNoSQLDB": [
+        {
+          "name": "todo-cloudant",
+          "label": "cloudantNoSQLDB",
+          "plan": "Lite",
+          "credentials": {
+              "username": "XXXX",
+              "password": "XXXX",
+              "host": "XXXXXX-bluemix.cloudant.com",
+              "port": 443,
+              "url": "https://....-bluemix.cloudant.com"
+          }
+        }
+      ]
+    }
+  }
+  ```
 
-## Run the Todo App locally
+The node.js module **cfenv** simplifies working with the variable. It is already included in the application. The following code would retrieve the credentials for the service
+we created before and initialize a Cloudant connection:
+
+  ```
+  var cloudant = require('nano')(appEnv.getServiceCreds("todo-cloudant").url).db;
+  ```  
+
+# Step 11 - Run the Todo App locally
 
 1. Get the dependencies for the Todo App. In your app directory, run:
 
@@ -259,9 +307,8 @@ Your first task is to integrate this code in the app you created, replacing the 
 
 1. Access the local application
 
-1. Add and remove Todos
 
-## Commit the changes
+# Step 12 - Commit the changes
 
 1. Add all new files to Git:
 
@@ -286,7 +333,7 @@ Your first task is to integrate this code in the app you created, replacing the 
 
 ## Review the source code
 
-Before starting to modify the app, let's get familiar with its content:
+  Let's get familiar with the application code content.
 
 ### Back-end
 
@@ -308,85 +355,6 @@ Before starting to modify the app, let's get familiar with its content:
 |[**todo.js**](public/js/todo.js)|Declares the Angular app|
 |[**todo.service.js**](public/js/services/todo.service.js)|Implements the connection between the front-end and the back-end. It has methods to create/retrieve/delete Todos|
 |[**todo.controller.js**](public/js/controllers/todo.controller.js)|Controls the main view, loading the current todos and adding/removing todos by delegating to the Todo service|
-
-
-## Now it's up to you!
-
-In the previous steps:
-* you deployed an app in the cloud in few steps;
-* you set up a source code repository to collaborate;
-* you got a build pipeline to deploy your changes in the cloud
-* you updated your app with an in-memory Todo App implementation
-* you created a persistent storage, the Cloudant service, that is waiting to be used.
-
-This is where we stop providing you with detailed steps and where you take the lead.
-
-But we give you some tips :)
-
-### How to use Cloudant with Node.js
-
-[Nano](https://github.com/dscape/nano) is a good library to work with Cloudant (or CouchDB).
-
-Install it with:
-
-  ```
-  $ npm install --save nano
-  ```
-
-### How to retrieve Cloudant credentials when running in the Cloud?
-
-When your application runs in Cloud Foundry, all service information bound
-to the application are available in the VCAP_SERVICES variable.
-
-The node.js module **cfenv** simplifies working with the variable.
-It is already included in the in-memory application.
-
-The following code would retrieve the credentials for the service
-we created before and initialize a Cloudant connection:
-
-  ```
-  var cloudant = require('nano')(appEnv.getServiceCreds("todo-cloudant").url).db;
-  ```  
-
-### How to Retrieve the Cloudant credentials to develop locally?
-
-Given a Cloud Foundry app relies on the VCAP_SERVICES environment variable,
-a straightforward approach is to set this variable in your environment.
-
-1. In the Bluemix console, go in your application dashboard.
-
-1. Under Environment Variables (or Runtime / Environment Variables), look for the value of the VCAP_SERVICES.
-
-1. Copy the value into a text editor
-
-1. Remove all carriage return so that it fits on one line
-
-1. Define an environment variable in your shell or command prompt
-
-  ```
-  set VCAP_SERVICES={"cloudantNoSQLDB": [{"name": "todo-cloudant","label": "cloudantNoSQLDB","plan": "Shared","credentials": {"username": "this-is-an-example-bluemix","password": "this-password-is-incorrect","host": "host-bluemix.cloudant.com", "port": 443, "url": "https://this-is-an-example-bluemix:this-password-is-incorrect@host-bluemix.cloudant.com"}}]}
-  ```
-  
-Other options include creating a local env file (JSON or key=value format),
-to test for this file in your app and to load the values if found.
-
-### Where is the solution?
-
-If you're stuck and need some help to connect the Cloudant database,
-a full working version using Cloudant as persistence can be found
-in the [master branch](https://github.com/lionelmace/node-todo) of this repository.
-
-## License
-
-See [License.txt](License.txt) for license information.
-
-
-
-[bluemix_signup_url]: https://console.ng.bluemix.net/?cm_mmc=GitHubReadMe-_-BluemixSampleApp-_-Node-_-Workflow
-[cloud_foundry_url]: https://github.com/cloudfoundry/cli/releases
-
-# _________________________
-
 
 
 # Resources
