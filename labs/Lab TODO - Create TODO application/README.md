@@ -194,9 +194,7 @@ In a previous step we set up a Git repository and a build pipeline was automatic
   git config --global user.name "Your Name"
   ```
   
-1. From your application **Overview** in the Bluemix console, click on the **Configure** button to open the Delivery Pipeline.
-
-1. Click the **Build and Deploy** button to access the build pipeline that was created automatically in a previous step.
+1. From your application **Overview** in the Bluemix console, click on the **Configure** button to access the **Build pipeline** that was created automatically in a previous step.
 
 1. Push your changes
 
@@ -206,22 +204,44 @@ In a previous step we set up a Git repository and a build pipeline was automatic
 
 1. Watch how the build pipeline notice your commit and redeploy the application
 
-1. When the command completes, access the application running
-in the cloud to confirm your change was deployed
+1. When the command completes, access the application running in the cloud to confirm your change was deployed
 
-## Get the Todo App starter code
+
+# Step 8 - Create and bind a Cloudant service
+
+In order to store the todo, we will need a persistent storage. To do so, we will use a Cloudant NoSQL database, a JSON document oriented store, compatible with CouchDB.
+
+1. Back in the Bluemix console, go to your application **Overview**.
+
+1. Click **Connect New** or Existing to add a service to your application
+
+1. Search for **Cloudant** in the catalog
+
+1. Select the free **Lite** plan
+
+1. Set the Service name to **todo-cloudant**
+
+1. Click **Create**
+
+  Bluemix will provision a Cloudant service and connect it to your application.
+
+1. Select **Restage** when prompted to do so.
+
+  Your application will restart and the service connection information will be made available to your application.
+
+
+# Step 9 - Get the Todo App code
 
 In previous steps, we've seen the basic of modifying code and deploying the application.
-Now let's focus on our task to build a Todo App.
+Now let's focus on our task to build a Todo App. The application has already been developed and is available in this Git repository.
 
-A first version of the application has already been developed and is available in this Git repository.
 Your first task is to integrate this code in the app you created, replacing the existing app code.
 
 1. Delete all files and folders from your app **except the manifest.yml and .git folder**.
 
-1. Download the Todo App in-memory application from [this archive](https://github.com/lionelmace/node-todo/archive/tutorial.zip) into a temp directory.
+1. Download the Todo App in-memory application from [this archive](./solution/node-todo-project.zip) into a temp directory.
 
-1. Unzip the files in a temp directory. It creates a *node-todo-tutorial* folder.
+1. Unzip the files in a temp directory. It creates a *node-todo-project* folder.
 
 1. Move all files and directories from the extract to your app folder **except the manifest.yml**.
 
@@ -265,16 +285,6 @@ Your first task is to integrate this code in the app you created, replacing the 
   
 1. Watch the build pipeline processing your commit and deploying a new version of your app.
 
-## "I lost my Todo list!!!"
-
-Our Todo App is nice but it has a major issue. If we restart the Node.js app,
-if we push a new version or if we have multiple instances, we either lose Todos
-or we see inconsistencies.
-The *in-memory* implementation is a weak implementation we need to fix.
-
-Fortunately Bluemix offers multiple persistent storage options based on our needs.
-For this tutorial we will look at how to integrate the IBM Cloudant NoSQL database,
-a JSON document oriented store, compatible with CouchDB.
 
 ## Review the source code
 
@@ -301,25 +311,6 @@ Before starting to modify the app, let's get familiar with its content:
 |[**todo.service.js**](public/js/services/todo.service.js)|Implements the connection between the front-end and the back-end. It has methods to create/retrieve/delete Todos|
 |[**todo.controller.js**](public/js/controllers/todo.controller.js)|Controls the main view, loading the current todos and adding/removing todos by delegating to the Todo service|
 
-## Create and bind a Cloudant service
-
-1. Back in the Bluemix console, go to your application overview.
-
-1. Add (or connect) a new service to your application
-
-1. Search for *Cloudant* in the catalog
-
-1. Select the **Shared** plan
-
-1. Set the Service name to **todo-cloudant**
-
-1. Click **Create**
-
-  Bluemix will provision a Cloudant service and connect it to your application.
-
-1. Select **Restage** when prompted to do so.
-
-  Your application will restart and the service connection information will be made available to your application.
 
 ## Now it's up to you!
 
