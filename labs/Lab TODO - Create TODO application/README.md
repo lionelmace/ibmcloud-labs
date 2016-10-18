@@ -30,7 +30,9 @@ In the following lab, you will learn:
 
 1. [Create a new web application](#step-1---create-a-new-web-application)
 2. [Add Git support](#step-2---add-git-support)
-
+3. [Checkout the code locally](#step-3---checkout-the-code-locally)
+4. [Run the app locally](#step-4---run-the-app-locally)
+5. []()
 
 
 # Step 1 - Create a new web application
@@ -56,21 +58,18 @@ The SDK for Node.js created a simple "Hello World!" web app that will become our
 
 Now let's add a source code repository and an automatic build pipeline to our project.
 
-1. In your application **Overview** page, click the "Add Git Repo and Pipeline" button.
+1. In your application **Overview** page, click the **Add Git Repo and Pipeline** button.
 
 1. Leave the default options selected and continue.
 
-Bluemix DevOps creates a Git repository for your application,
-puts in it the starter code for the "Hi there!" application,
-and defines a build pipeline so that your app gets automatically
-redeployed after every commit.
+  Bluemix DevOps creates a Git repository for your application, puts in it the starter code for the "Hello World!" application, and defines a build pipeline so that your app gets automatically redeployed after every commit.
 
-1. Make note of the Git URL
+1. Make note of the Git URL.
 
 
-## Checkout the code locally
+# Step 3 - Checkout the code locally
 
-1. From the overview page, get the Git repository URL for your app.
+1. From the **Overview** page, get the Git repository URL for your app.
 
 1. Clone the repository
 
@@ -78,7 +77,7 @@ redeployed after every commit.
   $ git clone https://hub.jazz.net/git/YOUR_DEVOPS_USERNAME/YOUR_APP_PROJECT
   ```
 
-## Run the app locally
+# Step 4 - Run the app locally
 
 1. Change to the directory of the checkout
 
