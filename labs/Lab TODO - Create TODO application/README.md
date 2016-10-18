@@ -41,21 +41,22 @@ In the following lab, you will learn:
 
 1. Go to the Bluemix **Catalog**.
 
-1. Create a new **Cloud Foundry (CF) Runtimes** with the ***SDK for Node.js*** under the Compute category.
+1. In the Compute category, select **Cloud Foundry Runtimes**
+
+1. Create a new app with the ***SDK for Node.js***.
 
 1. Give your app a unique name and unique host (e.g. todo-[your-initials])
 
 1. View your application.
 
-The SDK for Node.js created a simple "Hi there!" web app that will become our starting point.
+The SDK for Node.js created a simple "Hello World!" web app that will become our starting point.
 
 
 # Step 2 - Add Git support
 
-Now let's add a source code repository and
-an automatic build pipeline to our project.
+Now let's add a source code repository and an automatic build pipeline to our project.
 
-1. In your application overview page, click the "Add Git" button.
+1. In your application **Overview** page, click the "Add Git Repo and Pipeline" button.
 
 1. Leave the default options selected and continue.
 
@@ -65,6 +66,7 @@ and defines a build pipeline so that your app gets automatically
 redeployed after every commit.
 
 1. Make note of the Git URL
+
 
 ## Checkout the code locally
 
