@@ -1,68 +1,38 @@
-![](./images/container_icon64x64.png)
+![](./images/cloudfoundry.png)
+
 # Introduction
 
-In this lab, you’ll gain a high level understanding of the architecture, features, and development concepts related to the IBM Containers (IC) service. Throughout the lab, you’ll get a chance to use the Command Line Interface (CLI) for deploying new docker images to Bluemix, manage your running container, and use the API. This lab'll use the open-source [NGINX](https://www.nginx.com/) docker image.
+In this lab, you’ll gain a high level understanding of the architecture, features, and development concepts related to the Cloud Foundry runtimes and Bluemix service. Throughout the lab, you’ll create a sample application built with a CLEAN stack (CLoudant NoSQL database, Express, Angular and Node.js).
+
+![Todo](./images/screenshot.png)
 
 
 # Objective
 
 In the following lab, you will learn:
 
-+ How to pull a docker image from docker hub and push it to Bluemix
-+ How to bind a routable IP address to a running container
-+ How to run a container in Bluemix
-+ How to use the IBM Containers API
++ How to create a new Cloud Foundry app based on Node.js runtime
++ How to create a new service Cloudant DB to store NoSQL data 
++ How to bind a service to an app
++ How to manage Continuous Integration and Deployment
++ How to use the Cloud Foundry Command Line
 
 
 # Pre-Requisites
 
-+ Get a [Bluemix IBM id](https://bluemix.net)
-+ Install docker for [Mac](https://docs.docker.com/engine/installation/mac/) or [Windows](https://docs.docker.com/engine/installation/windows/)
++ Get a [Bluemix IBM id](https://bluemix.net), or use an existing account.
 + Install the [Bluemix Command-Line CLI](http://clis.ng.bluemix.net/)
++ Install a [Git client](https://git-scm.com/downloads)
++ Install [Node.js](https://nodejs.org)
 
 
 # Steps
 
 1. [Start an existing docker image on Bluemix](#step-1---start-an-existing-docker-image-on-bluemix)
-2. [Pull and run a container locally](#step-2---pull-and-run-a-container-locally)
-3. [Prepare your IBM Containers service](#step-3---prepare-your-ibm-containers-service)
-4. [Attach an IP to your container](#step-4---attach-an-ip-to-your-container)
-5. [Use the Container API](#step-5---use-the-container-api)
 
 
-# Step 1 - Start an existing docker image on Bluemix
 
-TODO: Leverage the standard Getting Started:
-https://new-console.ng.bluemix.net/docs/containers/container_index.html?pos=2
-
-# -------------------------
-
-# Todo App Tutorial
-
-This is a sample application built with a CLEAN stack (CLoudant NoSQL database, Express, Angular and Node.js).
-
-![Todo](./images/screenshot.png)
-
-This Git tutorial is split in two branches:
-  * *[master](https://github.com/lionelmace/node-todo/tree/master)* holds the final application
-  * *[tutorial](https://github.com/lionelmace/node-todo/tree/tutorial)* starts with an in-memory
-implementation of the Todo App and guide you through the steps of adding a persistent datastore.
-
-For this tutorial, you will need:
-  * a IBM Bluemix account,
-  * the Cloud Foundry command line tool,
-  * a Git client,
-  * Node.js.
-
-## Getting ready
-
-1. Create a Bluemix Account
-
-    [Sign up][bluemix_signup_url] for Bluemix, or use an existing account.
-    
-1. Download and install the [Cloud-foundry CLI][cloud_foundry_url] tool
-
-## Create a new web application
+# Step 1 - Create a new web application
 
 1. Log in to Bluemix console.
 
@@ -77,6 +47,7 @@ For this tutorial, you will need:
 1. View your application.
 
 The SDK for Node.js created a simple "Hi there!" web app that will become our starting point.
+
 
 ## Add Git support
 
