@@ -38,8 +38,8 @@ In the following lab, you will learn:
 8. [Get the Todo App code](#step-8---get-the-todo-app-code)
 9. [Create and bind a Cloudant service](#step-9---create-and-bind-a-cloudant-service)
 10.[Connect the Cloudant DB to the application code](#step-10---Connect-the-cloudant-db-to-the-application-code)
-11. [Run the Todo App locally](#step-10---run-the-todo-app-locally)
-12. []()
+11. [Run the Todo App locally](#step-11---run-the-todo-app-locally)
+12. [Commit the changes](#step-12--commit-the-changes)
 
 
 # Step 1 - Create a new web application
