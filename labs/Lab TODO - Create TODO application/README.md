@@ -319,7 +319,7 @@ we created before and initialize a Cloudant connection:
 1. Commit:
 
   ```
-  $ git commit -a -m "in-memory implementation"
+  $ git commit -a -m "full solution"
   ```
 
 1. Push to remote Git
@@ -331,7 +331,7 @@ we created before and initialize a Cloudant connection:
 1. Watch the build pipeline processing your commit and deploying a new version of your app.
 
 
-## Review the source code
+## Source code
 
   Let's get familiar with the application code content.
 
