@@ -194,9 +194,9 @@ In a previous step we set up a Git repository and a build pipeline was automatic
   git config --global user.name "Your Name"
   ```
   
-1. From your application overview in the Bluemix console, open your project page in the Bluemix DevOps console.
+1. From your application **Overview** in the Bluemix console, click on the **Configure** button to open the Delivery Pipeline.
 
-1. Click the *Build and Deploy* button to access the build pipeline that was created automatically in a previous step.
+1. Click the **Build and Deploy** button to access the build pipeline that was created automatically in a previous step.
 
 1. Push your changes
 
