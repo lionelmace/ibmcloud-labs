@@ -32,7 +32,9 @@ In the following lab, you will learn:
 2. [Add Git support](#step-2---add-git-support)
 3. [Checkout the code locally](#step-3---checkout-the-code-locally)
 4. [Run the app locally](#step-4---run-the-app-locally)
-5. []()
+5. [Change a file locally](#step-5---change-a-file-locally)
+6. [Push your local change to the cloud](#step-6---push-your-local-change-to-the-cloud)
+7. [Commit your changes and see them deployed automatically](#step-7---commit-your-changes-and-see-them-deployed-automatically)
 
 
 # Step 1 - Create a new web application
@@ -104,13 +106,13 @@ Now let's add a source code repository and an automatic build pipeline to our pr
 
 1. Access the app with your web browser
 
-## Change a file locally
+# Step 5 - Change a file locally
 
-1. Open **public/index.html**, modify the welcoming message at line 18
+1. Open **public/index.html**, modify the welcome message at line 18
 
 1. Reload the page in your web browser to confirm the change locally
 
-## Push your local change to the cloud
+# Step 6 - Push your local change to the cloud
 
 Cloud Foundry relies on the *manifest.yml* file to know what to do when you run the *cf push* command.
 A default manifest.yml file was generated for our app. It looks like:
@@ -128,32 +130,33 @@ A default manifest.yml file was generated for our app. It looks like:
 
 It basically defines one application taking its content from the current directory,
 being deployed with **256MB**, with **one** instance, under the **eu-gb.mybluemix.net** domain.
-The app is named **node-todo-tutorial** and it is using **node-todo-tutorial** as host name.
+The app is named **todo-[your-initials]** and it is using **todo-[your-initials]** as host name.
 It has **1024MB** of disk space available.
 
-1. Log in to Bluemix:
+1. Connect to Bluemix
 
   ```
-  $ cf login
+  $ bx api <Bluemix_endpoint>
   ```
 
-  Note: your API endpoint will be one of:
+  Select your API endpoint based on where you decided to create your app.
   * https://api.ng.bluemix.net
   * https://api.eu-gb.bluemix.net
-  * or https://api.au-syd.bluemix.net
+  * https://api.au-syd.bluemix.net
   
-  based on where you decided to create your application.
+1. Login to Bluemix
 
-  Note: you might need to use *cf login --skip-ssl-validation* if your certificate registry is too old.
-  
-1. Push the app to Bluemix:
+  ```
+  $ bx login
+  ```
+
+1. Push the app to Bluemix
 
   ```
   $ cf push
   ```
 
-1. When the command completes, access the application running
-in the cloud to confirm your change was deployed
+1. When the command completes, access the application running in the cloud to confirm your change was deployed
 
   ```
   requested state: started
@@ -171,7 +174,7 @@ in the cloud to confirm your change was deployed
 Changing files locally and pushing them worked but we can do better.
 In a previous step we set up a Git repository and a build pipeline was automatically configured.
 
-## Commit your changes and see them deployed automatically
+# Step 7 - Commit your changes and see them deployed automatically
 
 1. Open **public/index.html**.
 
