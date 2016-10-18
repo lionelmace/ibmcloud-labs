@@ -339,22 +339,22 @@ we created before and initialize a Cloudant connection:
 
 | File | Description |
 | ---- | ----------- |
-|[**package.json**](package.json)|Lists the node.js dependencies|
-|[**.cfignore**](.cfignore)|List of files and directories ignored when calling **cf push**. Typically we ignore everything that can be retrieved with bower or npm. This speeds up the push process.|
-|[**manifest.yml**](manifest.yml)|Used by Cloud Foundry when pushing the application to define the application environment, connected services, number of instances, etc.|
-|[**app.js**](app.js)|Web app backend entry point. It initializes the environment and imports the Todo API endpoints|
-|[**todos.js**](app/todos.js)|Todo API implementation. It declares endpoints for PUT/GET/DELETE (create/retrieve/delete) and handles the *in-memory* storage.
+|**package.json**|Lists the node.js dependencies|
+|**.cfignore**|List of files and directories ignored when calling **cf push**. Typically we ignore everything that can be retrieved with bower or npm. This speeds up the push process.|
+|**manifest.yml**|Used by Cloud Foundry when pushing the application to define the application environment, connected services, number of instances, etc.|
+|**app.js**|Web app backend entry point. It initializes the environment and imports the Todo API endpoints|
+|**todos.js**|Todo API implementation. It declares endpoints for PUT/GET/DELETE (create/retrieve/delete) and handles the *in-memory* storage.
 
 ### Front-end
 
 | File | Description |
 | ---- | ----------- |
-|[**.bowerrc**](.bowerrc)|Configuration file for the [bower](http://bower.io/) web package manager to put our web dependencies under public/vendor|
-|[**bower.json**](bower.json)|Web dependencies (bootstrap, angular)|
-|[**index.html**](public/index.html)|Web front-end implementation. It displays the todo list and has a form to submit new todos.|
-|[**todo.js**](public/js/todo.js)|Declares the Angular app|
-|[**todo.service.js**](public/js/services/todo.service.js)|Implements the connection between the front-end and the back-end. It has methods to create/retrieve/delete Todos|
-|[**todo.controller.js**](public/js/controllers/todo.controller.js)|Controls the main view, loading the current todos and adding/removing todos by delegating to the Todo service|
+|**.bowerrc**|Configuration file for the [bower](http://bower.io/) web package manager to put our web dependencies under public/vendor|
+|**bower.json**|Web dependencies (bootstrap, angular)|
+|**index.html**|Web front-end implementation. It displays the todo list and has a form to submit new todos.|
+|**todo.js**|Declares the Angular app|
+|**todo.service.js**|Implements the connection between the front-end and the back-end. It has methods to create/retrieve/delete Todos|
+|**todo.controller.js**|Controls the main view, loading the current todos and adding/removing todos by delegating to the Todo service|
 
 
 # Resources
