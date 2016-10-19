@@ -233,16 +233,18 @@ Your first task is to integrate this code in the app you created, replacing the 
 
 1. Unzip the files in a temp directory. It creates a *node-todo-master* folder.
 
-1. Move all files and directories from the extract to your app folder.
+1. Copy all files and directories from the extract to your app folder.
+
+Note: Make sure the hidden files (.gitignore, .cfignore and .bowerrc) were also copied.
 
 
 # Step 9 - Create and bind a Cloudant service
 
 In order to store the todo, we will need a persistent storage. To do so, we will use a Cloudant NoSQL database, a JSON document oriented store, compatible with CouchDB.
 
-1. Back in the Bluemix console, go to your application **Overview**.
+1. Back to the Bluemix console, go to your application **Overview**.
 
-1. Click **Connect New** or Existing to add a service to your application
+1. Click **Connect New** to add a service to your application
 
 1. Search for **Cloudant** in the catalog
 
@@ -269,25 +271,26 @@ When your application runs in Cloud Foundry, all service information bound to th
 Given a Cloud Foundry app relies on the VCAP_SERVICES environment variable, a straightforward approach is to set this variable in your environment by creating a local env file (JSON or key=value format),
 to test for this file in your app and to load the values if found.
 
-1. In the Bluemix console, go to your application **Overview**. Under **Runtime / Environment Variables**, look for the value of the VCAP_SERVICES.
+1. In the Bluemix console, go to your application **Overview**.
 
-1. Copy the content value of ```credentials{}``` into the vcap-local.json of your project. You should have something similar to this.
+1. Under **Runtime / Environment Variables**, copy the full content of the **VCAP_SERVICES** into the file vcap-local.json of your project. Make sure to copy the content on line 3 below the services element. It should look as follows:
 
   ```
   {
     "services": {
       "cloudantNoSQLDB": [
         {
-          "name": "todo-cloudant",
-          "label": "cloudantNoSQLDB",
-          "plan": "Lite",
           "credentials": {
               "username": "XXXX",
               "password": "XXXX",
               "host": "XXXXXX-bluemix.cloudant.com",
               "port": 443,
               "url": "https://....-bluemix.cloudant.com"
-          }
+          },
+          "name": "todo-cloudant",
+          "label": "cloudantNoSQLDB",
+          "plan": "Lite",
+          ...
         }
       ]
     }
