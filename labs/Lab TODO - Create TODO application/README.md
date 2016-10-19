@@ -250,7 +250,7 @@ In order to store the todo, we will need a persistent storage. To do so, we will
 
 1. Select the free **Lite** plan
 
-1. Set the Service name to **todo-cloudant**
+1. Give the service a name such as **todo-cloudant**
 
 1. Click **Create**. Bluemix will provision a Cloudant service and connect it to your application.
 
@@ -297,11 +297,10 @@ to test for this file in your app and to load the values if found.
   }
   ```
 
-The node.js module **cfenv** simplifies working with the variable. It is already included in the application. The following code would retrieve the credentials for the service
-we created before and initialize a Cloudant connection:
+The node.js module [**cfenv**](https://www.npmjs.com/package/cfenv) is used to ease access to your Cloud Foundry application and services environement. It is already included in the application. The following code would retrieve the credentials for the service we created before and initialize a Cloudant connection:
 
   ```
-  var cloudant = require('nano')(appEnv.getServiceCreds("todo-cloudant").url).db;
+  var cloudant = require('nano')(appEnv.getServiceCreds(/cloudant/i)).url).db;
   ```  
 
 # Step 11 - Run the Todo App locally
