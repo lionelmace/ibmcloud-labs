@@ -229,7 +229,7 @@ Your first task is to integrate this code in the app you created, replacing the 
 
 1. Delete all files and folders from your app **except the manifest.yml and .git folder**.
 
-1. Download the Todo App application from [this archive](./solution/node-todo-master.zip) into a temp directory.
+1. Download the complete Todo application from [this archive](./solution/node-todo-master.zip) into a temp directory.
 
 1. Unzip the files in a temp directory. It creates a *node-todo-master* folder.
 
@@ -255,6 +255,11 @@ In order to store the todo, we will need a persistent storage. To do so, we will
 1. Select **Restage** when prompted to do so.
 
   Your application will restart and the service connection information will be made available to your application.
+  
+  Note: the Cloudant service could have been provionned by running the command line
+  ```
+  $ cf create-service cloudantNoSQLDB Lite todo-cloudant
+  ```
 
 
 # Step 10 - Connect the Cloudant DB to the application code
