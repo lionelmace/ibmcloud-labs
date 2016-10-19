@@ -83,10 +83,16 @@ Now let's add a source code repository and an automatic build pipeline to our pr
   ```
   $ git clone https://hub.jazz.net/git/YOUR_DEVOPS_USERNAME/YOUR_APP_PROJECT
   ```
+  
+  Note: If you're being asked for credentials, use your Bluemix Login and Password.
 
 # Step 4 - Run the app locally
 
 1. Change to the directory of the checkout
+
+  ```
+  $ cd todo-[your-initials]
+  ```
 
 1. Get the node.js dependencies for this project
 
@@ -106,10 +112,11 @@ Now let's add a source code repository and an automatic build pipeline to our pr
   > NodejsStarterApp@0.0.1 start /Users/john/dev/todo-[your-initials]
   > node app.js
   
-  server starting on http://localhost:6021
+  server starting on http://localhost:[port-number]
   ```
 
 1. Access the app with your web browser
+
 
 # Step 5 - Change a file locally
 
@@ -144,7 +151,7 @@ It has **1024MB** of disk space available.
   $ cf api <Bluemix_endpoint>
   ```
 
-  Select your API endpoint based on where you decided to create your app.
+  Select your API endpoint based on the region where you created your app.
   * US: https://api.ng.bluemix.net
   * EU: https://api.eu-gb.bluemix.net
   * AU: https://api.au-syd.bluemix.net
@@ -200,7 +207,7 @@ In a previous step we set up a Git repository and a build pipeline was automatic
   git config --global user.name "Your Name"
   ```
   
-1. From your application **Overview** in the Bluemix console, click on the **Configure** button to access the **Build pipeline** that was created automatically in a previous step.
+1. Back to the Bluemix console, go to your application **Overview**. Click on the **Configure** button to access the **Build pipeline** that was created automatically in a previous step.
 
 1. Push your changes
 
@@ -330,10 +337,9 @@ we created before and initialize a Cloudant connection:
   
 1. Watch the build pipeline processing your commit and deploying a new version of your app.
 
+Congratulations! You completed this lab. You can get familiar with the application code content.
 
 ## Source code
-
-  Let's get familiar with the application code content.
 
 ### Back-end
 
