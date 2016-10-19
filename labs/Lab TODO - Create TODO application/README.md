@@ -233,7 +233,7 @@ Your first task is to integrate this code in the app you created, replacing the 
 
 1. Unzip the files in a temp directory. It creates a *node-todo-master* folder.
 
-1. Move all files and directories from the extract to your app folder **except the manifest.yml**.
+1. Move all files and directories from the extract to your app folder.
 
 
 # Step 9 - Create and bind a Cloudant service
@@ -264,9 +264,7 @@ When your application runs in Cloud Foundry, all service information bound to th
 Given a Cloud Foundry app relies on the VCAP_SERVICES environment variable, a straightforward approach is to set this variable in your environment by creating a local env file (JSON or key=value format),
 to test for this file in your app and to load the values if found.
 
-1. In the Bluemix console, go to your application **Overview**.
-
-1. Under **Runtime / Environment Variables**, look for the value of the VCAP_SERVICES.
+1. In the Bluemix console, go to your application **Overview**. Under **Runtime / Environment Variables**, look for the value of the VCAP_SERVICES.
 
 1. Copy the content value of ```credentials{}``` into the vcap-local.json of your project. You should have something similar to this.
 

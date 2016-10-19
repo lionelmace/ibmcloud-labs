@@ -32,7 +32,7 @@ In the following lab, you will learn:
 
 # Step 1 - Start an existing docker image on Bluemix
 
-In this first step, you will learn how to use the Bluemix Console to manage container following the documentation [Getting started with IBM Containers](https://new-console.ng.bluemix.net/docs/containers/container_index.html).
+In this first step, you will learn how to use the Bluemix Console to manage container following the documentation [Getting started with IBM Containers](https://console.ng.bluemix.net/docs/containers/container_index.html).
 
 You could skip this step and directly start Step 2 if you only wanted to interact with the command line.
 
@@ -153,5 +153,5 @@ To run native Docker CLI commands to manage your containers, we will use the ```
 
 For additional resources pay close attention to the following:
 
-- [Getting started with IBM Containers](https://new-console.ng.bluemix.net/docs/containers/container_index.html)
+- [Getting started with IBM Containers](https://console.ng.bluemix.net/docs/containers/container_index.html)
 - [See Auto-scaling in Action for IBM Containers - YouTube](https://www.youtube.com/watch?v=MFs-pSr2gsw)

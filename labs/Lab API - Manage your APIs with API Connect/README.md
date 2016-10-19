@@ -241,11 +241,11 @@ API Connect comes with a developer toolkit. This toolkit provides a offline grap
 
 # Step 6 - Configure the developper portal (TO be updated)
 
-The published product can be viewed by signing into the [Bluemix API Connect service](https://new-console.ng.bluemix.net/apis/apiconnect), opening the **Sandbox** catalog, and select the **Products** tab.
+The published product can be viewed by signing into the [Bluemix API Connect service](https://console.ng.bluemix.net/apis/apiconnect), opening the **Sandbox** catalog, and select the **Products** tab.
 
 In order for developers to subscribe to the climbing weather product a one time configuration of your Sandbox developer portal is required.
 To configure the developer portal, open the Sandbox catalog in the [Bluemix API Connect
-service](https://new-console.ng.bluemix.net/apis/apiconnect) and:
+service](https://console.ng.bluemix.net/apis/apiconnect) and:
 
 - Select Settings -> Portal -> IBM Developer Portal -> Save
 
