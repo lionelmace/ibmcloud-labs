@@ -21,7 +21,7 @@ In the following lab, you will learn:
 # Pre-Requisites
 
 + Get a [Bluemix IBM id](https://bluemix.net), or use an existing account.
-+ Install the [Bluemix Command-Line CLI](http://clis.ng.bluemix.net/)
++ Install the [Cloud Foundry Command-Line CLI](https://github.com/cloudfoundry/cli/releases)
 + Install a [Git client](https://git-scm.com/downloads)
 + Install [Node.js](https://nodejs.org)
 
@@ -141,7 +141,7 @@ It has **1024MB** of disk space available.
 1. Connect to Bluemix
 
   ```
-  $ bx api <Bluemix_endpoint>
+  $ cf api <Bluemix_endpoint>
   ```
 
   Select your API endpoint based on where you decided to create your app.
@@ -152,7 +152,7 @@ It has **1024MB** of disk space available.
 1. Login to Bluemix
 
   ```
-  $ bx login
+  $ cf login
   ```
 
 1. Push the app to Bluemix
@@ -222,7 +222,7 @@ Your first task is to integrate this code in the app you created, replacing the 
 
 1. Delete all files and folders from your app **except the manifest.yml and .git folder**.
 
-1. Download the Todo App in-memory application from [this archive](./solution/node-todo-master.zip) into a temp directory.
+1. Download the Todo App application from [this archive](./solution/node-todo-master.zip) into a temp directory.
 
 1. Unzip the files in a temp directory. It creates a *node-todo-master* folder.
 
