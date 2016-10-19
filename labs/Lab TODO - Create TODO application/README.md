@@ -145,9 +145,9 @@ It has **1024MB** of disk space available.
   ```
 
   Select your API endpoint based on where you decided to create your app.
-  * https://api.ng.bluemix.net
-  * https://api.eu-gb.bluemix.net
-  * https://api.au-syd.bluemix.net
+  * US: https://api.ng.bluemix.net
+  * EU: https://api.eu-gb.bluemix.net
+  * AU: https://api.au-syd.bluemix.net
   
 1. Login to Bluemix
 
