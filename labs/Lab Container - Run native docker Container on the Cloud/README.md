@@ -77,11 +77,11 @@ You could skip this step and directly start Step 2 if you only wanted to interac
 
 1. Show the running server: [http://localhost:80](http://localhost:80); the default NGINX welcome page appears.
 
-Note: If you have installed Docker Toolbox, you need to retrieve the IP address of the Virtual Box VM by running the following command:
+  Note: If you have installed Docker Toolbox, you need to retrieve the IP address of the Virtual Box VM by running the following command:
 
-```docker-machine ip default```
+  ```docker-machine ip default```
 
-Then show the running server with [http://IP_ADDRESS_OF_DOCKER_MACHINE:80](http://IP_ADDRESS_OF_DOCKER_MACHINE:80)
+  Then show the running server with [http://IP_ADDRESS_OF_DOCKER_MACHINE:80](http://IP_ADDRESS_OF_DOCKER_MACHINE:80)
 
 
 # Step 3 - Prepare your IBM Containers service
