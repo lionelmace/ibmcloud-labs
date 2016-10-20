@@ -1,4 +1,4 @@
-# Pre-Requisites.
+# Pre-Requisites
 
 ## User Accounts
 
@@ -19,7 +19,7 @@
 + Select the latest version corresponding to your operating system.
 
 
-## BluemixCommand Line Interface (BluemixCLI)
+## Bluemix Command Line Interface (BluemixCLI)
 
 + This will help you connect to your Bluemix account through the command line.
 
@@ -71,7 +71,7 @@ There are several modern, open source text editor that understands web design. S
 + Eclipse Neon
   [http://www.eclipse.org/downloads/packages/release/Neon/1A](http://www.eclipse.org/downloads/packages/release/Neon/1A)
 
-+ IBM Eclipse Tools for Bluemix
++ Eclipse Tools for Bluemix
   [https://marketplace.eclipse.org/content/ibm-eclipse-tools-bluemix](https://marketplace.eclipse.org/content/ibm-eclipse-tools-bluemix)
 
 
