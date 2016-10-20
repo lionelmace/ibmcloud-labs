@@ -4,7 +4,7 @@
 
 # Table of Contents
 
-+ [Lab TODO - Create TODO application](./labs/Lab%20TODO%20-%20Create%20TODO%20application)
++ [Lab CF - Create TODO web application](./labs/Lab%20CF%20-%20Create%20TODO%20web%20application)
 
 + [Lab Container - Run native docker Container on the Cloud](./labs/Lab%20Container%20-%20Run%20native%20docker%20Container%20on%20the%20Cloud)
 
