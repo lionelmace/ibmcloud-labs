@@ -19,6 +19,7 @@ In the following lab, you will learn:
 + Get a [Bluemix IBM id](https://bluemix.net)
 + Install docker for [Mac](https://docs.docker.com/engine/installation/mac/) or [Windows](https://docs.docker.com/engine/installation/windows/)
 + Install the [Bluemix Command-Line CLI](http://clis.ng.bluemix.net/)
++ Install the [IBM Containers plug-in](https://new-console.ng.bluemix.net/docs/containers/container_cli_cfic.html)
 
 
 # Steps
