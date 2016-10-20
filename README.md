@@ -1,4 +1,4 @@
-# Discovering the Cloud Innovation Platform Bluemix
+# Discover Bluemix, the IBM Cloud Platform
 
 ![](./images/bluemix-logo.png)
 
