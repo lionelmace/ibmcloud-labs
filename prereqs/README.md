@@ -1,14 +1,15 @@
-Here is the list of pre-requisites.
+# Pre-Requisites.
 
-# User Accounts
+## User Accounts
 
-You must create an account on IBM Bluemix.
++ You must create an account on IBM Bluemix.
 
-If you do not have an account yet, follow this link to register, using your IBM id: [https://bluemix.net/registration](https://bluemix.net/registration)
-You’ll be registered for a 30 days trial account.
++ If you do not have an account yet, follow this link to register, using your IBM id: [https://bluemix.net/registration](https://bluemix.net/registration)
+
++ You’ll be registered for a 30 days trial account.
 
 
-# Cloud Foundry Command Line Interface (CF CLI)
+## Cloud Foundry Command Line Interface (CF CLI)
 
 + You will use the CloundFoundry cli to create, update and deploy your apps.
 
@@ -18,7 +19,7 @@ You’ll be registered for a 30 days trial account.
 + Select the latest version corresponding to your operating system.
 
 
-# BluemixCommand Line Interface (BluemixCLI)
+## BluemixCommand Line Interface (BluemixCLI)
 
 + This will help you connect to your Bluemix account through the command line.
 
@@ -28,14 +29,14 @@ You’ll be registered for a 30 days trial account.
 + Select the version corresponding to your operating system.
 
 
-# Container docker
+## Container docker
 
 + Install docker for [Mac](https://docs.docker.com/engine/installation/mac/) or [Windows](https://docs.docker.com/engine/installation/windows/)
 
 + Install the [Cloud Foundry Containers plug-in](https://new-console.ng.bluemix.net/docs/containers/container_cli_cfic.html)
 
 
-# Node and Web Development
+## Node and Web Development
 
 + Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.
   npm, the package manager for JavaScript is installed with Node.js
@@ -48,15 +49,17 @@ You’ll be registered for a 30 days trial account.
 
 + Bower, A package manager for the web. Bower is a command line utily.
   Install it with npm:
+  
   ```npm install -g bower```
 
 
-# Git
+## Git
 
 + Git is a distributed version control system where every developers' working copy of the code is also a repo that can contain the full history of all changes.
   [https://git-scm.com/downloads](https://git-scm.com/downloads)
 
-# IDE
+
+## IDE
 
 There are several modern, open source text editor that understands web design. Select your favorite development environment. Here are some suggestions:
 
@@ -72,12 +75,13 @@ There are several modern, open source text editor that understands web design. S
   [https://marketplace.eclipse.org/content/ibm-eclipse-tools-bluemix](https://marketplace.eclipse.org/content/ibm-eclipse-tools-bluemix)
 
 
-# Java JDK
+## Java JDK
 
 + JDK v1.8
   [http://www.oracle.com/technetwork/java/javase/downloads/index.html](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
-# Optional toos
+
+## Optional tools
 
 + curl, command line tool and library for transferring data with URLs
   [https://curl.haxx.se/](https://curl.haxx.se/)
