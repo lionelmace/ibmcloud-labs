@@ -1,6 +1,6 @@
 # Discover Bluemix, the IBM Cloud Platform
 
-![](./images/bluemix-logo.png)
+<img src="./images/bluemix-logo.png" width="50%"/>
 
 # Table of Contents
 
