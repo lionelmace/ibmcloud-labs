@@ -297,11 +297,6 @@ to test for this file in your app and to load the values if found.
   }
   ```
 
-The node.js module [**cfenv**](https://www.npmjs.com/package/cfenv) is used to ease access to your Cloud Foundry application and services environement. It is already included in the application. The following code would retrieve the credentials for the service we created before and initialize a Cloudant connection:
-
-  ```
-  var cloudant = require('nano')(appEnv.getServiceCreds(/cloudant/i)).url).db;
-  ```  
 
 # Step 11 - Run the Todo App locally
 
