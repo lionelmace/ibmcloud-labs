@@ -207,13 +207,13 @@ In a previous step we set up a Git repository and a build pipeline was automatic
   git config --global user.name "Your Name"
   ```
   
-1. Back to the Bluemix console, go to your application **Overview**. Click on the **Configure** button to access the **Build pipeline** that was created automatically in a previous step.
-
 1. Push your changes
 
   ```
   $ git push
   ```
+
+1. Back to the Bluemix console, go to your application **Overview**. Click on the **Configure** button to access the **Build pipeline** that was created automatically in a previous step.
 
 1. Watch how the build pipeline notice your commit and redeploy the application
 
