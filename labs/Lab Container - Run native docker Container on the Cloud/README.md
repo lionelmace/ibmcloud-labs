@@ -44,12 +44,12 @@ You could skip this step and directly start Step 2 if you only wanted to interac
 
 1. Login to the Private Registry
   ```
-  bx login
+  cf login
   ```
 
 1. Check that you’re connected
   ```
-  bx ic info
+  cf ic info
   ```
 
 1. Search the NGINX official image from Docker Hub
@@ -80,16 +80,16 @@ You could skip this step and directly start Step 2 if you only wanted to interac
 
 # Step 3 - Prepare your IBM Containers service
 
-To run native Docker CLI commands to manage your containers, we will use the ```bx ic```command line.
+To run native Docker CLI commands to manage your containers, we will use the ```cf ic```command line.
 
 1. Retrieve your namespace
   ```
-  bx ic namespace-get
+  cf ic namespace-get
   ```
   
   Note: A namespace is a unique name to identify your private repository on the Bluemix registry. The namespace is assigned one time for an organization and cannot be changed after it is created. To create a namespace, run the command:
   ```
-  bx ic namespace-set <NEW_NAMESPACE>
+  cf ic namespace-set <NEW_NAMESPACE>
   ```
   
 1. Tag image for Bluemix registry
@@ -104,12 +104,12 @@ To run native Docker CLI commands to manage your containers, we will use the ```
 
 1. Validate the presence of ​*NGINX*​ image on Bluemix
   ```
-  bx ic images
+  cf ic images
   ```
 
 1. Start the NGINX image on Bluemix
   ```
-  bx ic run -d -p 80 --name webserver registry.eu-gb.bluemix.net/<YOUR_NAMESPACE>/nginx:latest
+  cf ic run -d -p 80 --name webserver registry.eu-gb.bluemix.net/<YOUR_NAMESPACE>/nginx:latest
   ```
 
   Note: As each container has its own IP, there is no risk of port conflict. Thus, port mapping is not required.
@@ -118,17 +118,17 @@ To run native Docker CLI commands to manage your containers, we will use the ```
 
 1. List running containers on Bluemix. Write down the ID of the running NGINX container.
   ```
-  bx ic ps
+  cf ic ps
   ```
   
 1. Reqest a routable IP addresse.
   ```
-  bx ic ip request
+  cf ic ip request
   ```
 
 1. Bind this IP address with your container
   ```
-  bx ic ip bind <IP_ADDRESS> <YOUR_NGINX_CONTAINER_ID>
+  cf ic ip bind <IP_ADDRESS> <YOUR_NGINX_CONTAINER_ID>
   ```
 
 1. Show the running container on Bluemix: http://YOUR_IP_ADDRESS:80
@@ -140,9 +140,9 @@ To run native Docker CLI commands to manage your containers, we will use the ```
 
 1. This API requires two HTTP headers. To retrieve those values, run the commands next to each header:
 
-  X-Auth-Token     = ```bx cf oauth-token```
+  X-Auth-Token     = ```cf oauth-token```
   
-  X-Auth-Project-Id= ```bx cf space <SPACE_NAME> --guid```
+  X-Auth-Project-Id= ```cf space <SPACE_NAME> --guid```
 
 1. To retrieve a namespace, run the following command with the correct HTTP headers instead of XXXXX
   ```
