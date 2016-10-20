@@ -123,7 +123,7 @@ To run native Docker CLI commands to manage your containers, we will use the ```
   
 1. Reqest a routable IP addresse.
   ```
-  bx ic ip-request
+  bx ic ip request
   ```
 
 1. Bind this IP address with your container
