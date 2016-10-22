@@ -1,4 +1,4 @@
-# Discover Bluemix, the IBM Cloud Platform
+# Discover Bluemix, IBM Cloud Platform, through a set of hans-on labs.
 
 <img src="./images/bluemix-logo.png" width="40%"/>
 
