@@ -1,6 +1,6 @@
 <img src="./images/bluemix-logo.png" width="40%"/>
 
-Discover Bluemix, IBM Cloud Platform, through a set of hans-on labs.
+Discover Bluemix, IBM Cloud Platform, through a set of hands-on labs.
 
 # Table of Contents
 
