@@ -85,3 +85,23 @@ There are several modern, open source text editor that understands web design. S
 
 + curl, command line tool and library for transferring data with URLs
   [https://curl.haxx.se/](https://curl.haxx.se/)
+  
+## Proxy
+
+### Cloud Foundy Proxy
+
+  If you have an HTTP proxy server on your network between a host running the cf CLI and your Cloud Foundry API endpoint, you must set https_proxy with the hostname or IP address of the proxy server.
+  
+  ```set https_proxy=<your.company.proxy>:8080```
+
+  For more infor, go to [https://docs.cloudfoundry.org/cf-cli/http-proxy.html](https://docs.cloudfoundry.org/cf-cli/http-proxy.html)
+
+### Git Proxy
+  
+  ```set http.proxy=http://<your.company.proxy>:8080```
+  
+  To set permanently the proxy:
+  ```git config --global http.proxy http://<your.company.proxy>:8080```
+  
+  To remove it
+  ```git config --global --unset http.proxy```
