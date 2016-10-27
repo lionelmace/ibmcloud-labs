@@ -88,13 +88,19 @@ There are several modern, open source text editor that understands web design. S
   
 ## Proxy
 
+  If you have an HTTP proxy server on your network between a host running a command lne CLI (e.g. CF) and your Cloud Foundry API endpoint, you must set a proxy variable with the hostname or IP address of the proxy server.
+
 ### Cloud Foundy Proxy
 
-  If you have an HTTP proxy server on your network between a host running the cf CLI and your Cloud Foundry API endpoint, you must set https_proxy with the hostname or IP address of the proxy server.
+  For Cloud Foundry API endpoint, you must set https_proxy with the hostname or IP address of the proxy server.
   
-  ```set https_proxy=<your.company.proxy>:8080```
+  ```set https_proxy=http://<your.company.proxy>:8080```
 
-  For more infor, go to [https://docs.cloudfoundry.org/cf-cli/http-proxy.html](https://docs.cloudfoundry.org/cf-cli/http-proxy.html)
+  For more information, go to [https://docs.cloudfoundry.org/cf-cli/http-proxy.html](https://docs.cloudfoundry.org/cf-cli/http-proxy.html)
+  
+  To test if your proxy works, run the following command:
+  
+  ```cf api https://api.ng.bluemix.net```
 
 ### Git Proxy
   
@@ -103,5 +109,5 @@ There are several modern, open source text editor that understands web design. S
   To set permanently the proxy:
   ```git config --global http.proxy http://<your.company.proxy>:8080```
   
-  To remove it
+  To remove it:
   ```git config --global --unset http.proxy```
