@@ -111,3 +111,7 @@ There are several modern, open source text editor that understands web design. S
   
   To remove it:
   ```git config --global --unset http.proxy```
+  
+  To test if your proxy works, run the following command:
+  
+  ```git clone https://hub.jazz.net/project/lionelmace/<myapp>```
