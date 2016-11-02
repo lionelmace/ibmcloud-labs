@@ -50,7 +50,7 @@ In the following lab, you will learn:
 
 1. Go to the Bluemix **Catalog**.
 
-1. In the Compute category, select **Cloud Foundry Runtimes**
+1. In the Compute category, select **Cloud Foundry Apps**
 
 1. Create a new app with the ***SDK for Node.js***.
 
@@ -151,7 +151,7 @@ It has **1024MB** of disk space available.
   $ cf api <Bluemix_endpoint>
   ```
 
-  Select your API endpoint based on the region where you created your app.
+  Select one of the Bluemix endpoint below based on the region where you created your app.
   * US: https://api.ng.bluemix.net
   * EU: https://api.eu-gb.bluemix.net
   * AU: https://api.au-syd.bluemix.net
