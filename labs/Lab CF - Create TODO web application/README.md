@@ -78,7 +78,7 @@ Now let's add a source code repository and an automatic build pipeline to our pr
 
 1. From the **Overview** page, get the Git repository URL for your app.
 
-1. Clone the repository
+1. Open a terminal or a command prompt to clone the repository
 
   ```
   $ git clone https://hub.jazz.net/git/YOUR_DEVOPS_USERNAME/YOUR_APP_PROJECT
