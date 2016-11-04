@@ -114,3 +114,10 @@ The warning messages generated in Node-RED uses English by default. You may want
 
 1. Observe the translated output based on the selected language.
 
+
+# Resources
+
+For additional resources pay close attention to the following:
+
+- [Real Time Data Analysis Using IoT Platform Analytics](https://developer.ibm.com/recipes/tutorials/real-time-data-analysis-using-ibm-watson-iot-platform-analytics)
+
