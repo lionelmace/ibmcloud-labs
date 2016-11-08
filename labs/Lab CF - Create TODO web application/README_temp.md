@@ -25,10 +25,8 @@ In the following lab, you will learn:
 # Steps
 
 1. [Create a new web application](#step-1---create-a-new-web-application)
-2. [Add Git support](#step-2---add-git-support)
-3. [Edit the code](#step-3---edit-the-code)
-4. [Push your changes](#step-4---push-your-changes)
-5. [See your changes](#step-5---see-your-changes)
+2. [Edit your application](#step-2---edit-your-application)
+3. [See your changes](#step-3---see-your-changes)
 
 
 # Step 1 - Create a new web application
