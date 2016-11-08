@@ -15,12 +15,13 @@ In the following lab, you will learn:
 + How to set up a source code repository to collaborate
 + How to edit the code of your application from a Web IDE
 + How to manage Continuous Integration and Deployment
++ How to use the Cloud Foundry Command Line
 
 
 # Pre-Requisites
 
 + Get a [Bluemix IBM id](https://bluemix.net), or use an existing account.
-
++ Install the [Cloud Foundry Command-Line CLI](https://github.com/cloudfoundry/cli/releases)
 
 # Steps
 
