@@ -26,16 +26,9 @@ In the following lab, you will learn:
 
 1. [Create a new web application](#step-1---create-a-new-web-application)
 2. [Add Git support](#step-2---add-git-support)
-3. [Checkout the code locally](#step-3---checkout-the-code-locally)
-4. [Run the app locally](#step-4---run-the-app-locally)
-5. [Change a file locally](#step-5---change-a-file-locally)
-6. [Push your local change to the cloud](#step-6---push-your-local-change-to-the-cloud)
-7. [Commit your changes and see them deployed automatically](#step-7---commit-your-changes-and-see-them-deployed-automatically)
-8. [Get the Todo App code](#step-8---get-the-todo-app-code)
-9. [Create and bind a Cloudant service](#step-9---create-and-bind-a-cloudant-service)
-10. [Connect the Cloudant DB to the application code](#step-10---Connect-the-cloudant-db-to-the-application-code)
-11. [Run the Todo App locally](#step-11---run-the-todo-app-locally)
-12. [Commit the changes](#step-12---commit-the-changes)
+3. [Edit the code](#step-3---edit-the-code)
+4. [Push your changes](#step-4---push-your-changes)
+5. [See your changes](#step-5---see-your-changes)
 
 
 # Step 1 - Create a new web application
