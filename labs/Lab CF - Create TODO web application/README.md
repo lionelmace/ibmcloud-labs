@@ -2,7 +2,7 @@
 
 # Introduction
 
-In this lab, you’ll gain a high level understanding of the architecture, features, and development concepts related to the Cloud Foundry runtimes and Bluemix service. Throughout the lab, you’ll create a sample application built with a CLEAN stack (CLoudant NoSQL database, Express, Angular and Node.js).
+In this lab, you’ll gain a high level understanding of the architecture, features, and development concepts related to the Cloud Foundry runtimes and Bluemix service. Throughout the lab, you’ll create a sample application and then edit it using a Web IDE based on Orion.
 
 ![Todo](./images/screenshot.png)
 
@@ -12,18 +12,14 @@ In this lab, you’ll gain a high level understanding of the architecture, featu
 In the following lab, you will learn:
 
 + How to deploy a new Cloud Foundry app based on Node.js runtime
-+ How to create a new service Cloudant DB to store NoSQL data 
 + How to set up a source code repository to collaborate
++ How to edit the code of your application from a Web IDE
 + How to manage Continuous Integration and Deployment
-+ How to use the Cloud Foundry Command Line
 
 
 # Pre-Requisites
 
 + Get a [Bluemix IBM id](https://bluemix.net), or use an existing account.
-+ Install the [Cloud Foundry Command-Line CLI](https://github.com/cloudfoundry/cli/releases)
-+ Install a [Git client](https://git-scm.com/downloads)
-+ Install [Node.js](https://nodejs.org)
 
 
 # Steps
@@ -69,273 +65,42 @@ Now let's add a source code repository and an automatic build pipeline to our pr
 
 1. Leave the default options selected and continue.
 
-  Bluemix DevOps creates a Git repository for your application, puts in it the starter code for the "Hello World!" application, and defines a build pipeline so that your app gets automatically redeployed after every commit.
+  Bluemix DevOps creates a Git repository for your application, puts in it the starter code for the "Hello World!" application, and defines a build pipeline so that your app gets automatically redeployed after every push.
 
-1. Make note of the Git URL.
 
+# Step 3 - Edit the code 
 
-# Step 3 - Checkout the code locally
+We'll now see how you can easily edit, using only a browser, the code of your application. 
 
-1. From the **Overview** page, get the Git repository URL for your app.
+1. From the **Overview** page, click on the **Edit Code** button to go to Jazz Hub
 
-1. Open a terminal or a command prompt to clone the repository
+1. Navigate to the public/index.html file
 
-  ```
-  $ git clone https://hub.jazz.net/git/YOUR_DEVOPS_USERNAME/YOUR_APP_PROJECT
-  ```
-  
-  Note: If you're being asked for credentials, use your Bluemix Login and Password.
+1. Change the "Hello World!" text by something of your choice (ex: "Hello CAF!")
 
-# Step 4 - Run the app locally
+1. Click **File** and **Save** to save your changes
 
-1. Change to the directory of the checkout
+# Step 4 - Push your changes
 
-  ```
-  $ cd todo-[your-initials]
-  ```
+Here, we'll see how you can use git commands inside Jazz Hub to deal with group projects.
+You should still be in the IBM Bluemix DevOps Services.
 
-1. Get the node.js dependencies for this project
+1. Click on the GIT icon on the left-hand side, under the edit code button, your repository is loading
+2. On the right, you can see the files that you've edited, add a commit message to describe your changes (i.e. "changed welcome message")
+3. Click **Commit** on the right-hand side
+4. Your changes now appear in the left-hand side and are waiting to be pushed. Click **Push**
 
-  ```
-  $ npm install
-  ```
+Pushing your changes triggered a new build and deployment of the app, you can navigate to the **BUILD & DEPLOY** tab on the top-right corner if you want to see the piepline. 
 
-1. Start the app
 
-  ```
-  $ npm start
-  ```
+# Step 5 - See your changes
 
-  The console output will look like:
-  
-  ```
-  > NodejsStarterApp@0.0.1 start /Users/john/dev/todo-[your-initials]
-  > node app.js
-  
-  server starting on http://localhost:[port-number]
-  ```
+1. Navigate to the **Overview** of your app on the Bluemix console. 
+2. Wait for the status of the app to be running
+3. Click on **View App**
+4. You should see your changes appear
 
-1. Access the app with your web browser
-
-
-# Step 5 - Change a file locally
-
-1. Open **public/index.html**, modify the welcome message at line 18
-
-1. Reload the page in your web browser to confirm the change locally
-
-# Step 6 - Push your local change to the cloud
-
-Cloud Foundry relies on the *manifest.yml* file to know what to do when you run the *cf push* command.
-A default manifest.yml file was generated for our app. It looks like:
-
-  ```
-  applications:
-  - path: .
-    memory: 256M
-    instances: 1
-    domain: eu-gb.mybluemix.net
-    name: todo-[your-initials]
-    host: todo-[your-initials]
-    disk_quota: 1024M
-  ```
-
-It basically defines one application taking its content from the current directory,
-being deployed with **256MB**, with **one** instance, under the **eu-gb.mybluemix.net** domain.
-The app is named **todo-[your-initials]** and it is using **todo-[your-initials]** as host name.
-It has **1024MB** of disk space available.
-
-1. Connect to Bluemix
-
-  ```
-  $ cf api <Bluemix_endpoint>
-  ```
-
-  Select one of the Bluemix endpoint below based on the region where you created your app.
-  * US: https://api.ng.bluemix.net
-  * EU: https://api.eu-gb.bluemix.net
-  * AU: https://api.au-syd.bluemix.net
-  
-1. Login to Bluemix
-
-  ```
-  $ cf login
-  ```
-
-1. Push the app to Bluemix
-
-  ```
-  $ cf push
-  ```
-
-1. When the command completes, access the application running in the cloud to confirm your change was deployed
-
-  ```
-  requested state: started
-  instances: 1/1
-  usage: 256M x 1 instances
-  urls: todo-[your-initials].eu-gb.mybluemix.net
-  last uploaded: Thu Mar 14 15:24:17 UTC 2016
-  stack: cflinuxfs2
-  buildpack: SDK for Node.js(TM) (ibm-node.js-4.3.0, buildpack-v3.1-20160222-1123)
-
-       state     since                    cpu    memory          disk          details   
-  #0   running   2016-03-14 04:25:24 PM   0.0%   75.9M of 256M   92.5M of 1G      
-  ```
-
-Changing files locally and pushing them worked but we can do better.
-In a previous step we set up a Git repository and a build pipeline was automatically configured.
-
-
-# Step 7 - Commit your changes and see them deployed automatically
-
-1. Open **public/index.html**.
-
-1. Change the page title at line 5.
-
-1. Confirm the change works locally.
-
-1. Commit your changes locally
-
-  ```
-  $ git commit -a -m "updated title"
-  ```
-
-  Note: you might be prompted to configure git for the first time:
-  ```
-  git config --global user.email "you@example.com"
-  git config --global user.name "Your Name"
-  ```
-  
-1. Push your changes
-
-  ```
-  $ git push
-  ```
-
-1. Back to the Bluemix console, go to your application **Overview**. Click on the **Configure** button to access the **Build pipeline** that was created automatically in a previous step.
-
-1. Watch how the build pipeline notice your commit and redeploy the application
-
-1. When the command completes, access the application running in the cloud to confirm your change was deployed
-
-
-# Step 8 - Get the Todo App code
-
-In previous steps, we've seen the basic of modifying code and deploying the application.
-Now let's focus on our task to build a Todo App. The application has already been developed and is available in this Git repository.
-
-Your first task is to integrate this code in the app you created, replacing the existing app code.
-
-1. Delete all files and folders from your app **except the manifest.yml and .git folder**.
-
-1. Download the complete Todo application from [this archive](./solution/node-todo-master.zip) into a temp directory.
-
-1. Unzip the files in a temp directory. It creates a *node-todo-master* folder.
-
-1. Copy all files and directories from the extract to your app folder.
-
-Note: Make sure the hidden files (.gitignore, .cfignore and .bowerrc) were also copied.
-
-
-# Step 9 - Create and bind a Cloudant service
-
-In order to store the todo, we will need a persistent storage. To do so, we will use a Cloudant NoSQL database, a JSON document oriented store, compatible with CouchDB.
-
-1. Back to the Bluemix console, go to your application **Overview**.
-
-1. Click **Connect New** to add a service to your application
-
-1. Search for **Cloudant** in the catalog
-
-1. Select the free **Lite** plan
-
-1. Give the service a name such as **todo-cloudant**
-
-1. Click **Create**. Bluemix will provision a Cloudant service and connect it to your application.
-
-1. Select **Restage** when prompted to do so.
-
-  Your application will restart and the service connection information will be made available to your application.
-  
-  Note: the Cloudant service could have been provionned by running the command line
-  ```
-  $ cf create-service cloudantNoSQLDB Lite todo-cloudant
-  ```
-
-
-# Step 10 - Connect the Cloudant DB to the application code
-
-When your application runs in Cloud Foundry, all service information bound to the application are available in the **VCAP_SERVICES** variable.
-
-Given a Cloud Foundry app relies on the VCAP_SERVICES environment variable, a straightforward approach is to set this variable in your environment by creating a local env file (JSON or key=value format),
-to test for this file in your app and to load the values if found.
-
-1. In the Bluemix console, go to your application **Overview**.
-
-1. Under **Runtime / Environment Variables**, copy the full content of the **VCAP_SERVICES** into the file vcap-local.json of your project. Make sure to copy the content on line 3 below the services element. It should look as follows:
-
-  ```
-  {
-    "services": {
-      "cloudantNoSQLDB": [
-        {
-          "credentials": {
-              "username": "XXXX",
-              "password": "XXXX",
-              "host": "XXXXXX-bluemix.cloudant.com",
-              "port": 443,
-              "url": "https://....-bluemix.cloudant.com"
-          },
-          "name": "todo-cloudant",
-          "label": "cloudantNoSQLDB",
-          "plan": "Lite",
-          ...
-        }
-      ]
-    }
-  }
-  ```
-
-
-# Step 11 - Run the Todo App locally
-
-1. Get the dependencies for the Todo App. In your app directory, run:
-
-  ```
-  $ npm install
-  ```
-  
-1. Run the application
-
-  ```
-  $ npm start
-  ```
-
-1. Access the local application
-
-
-# Step 12 - Commit the changes
-
-1. Add all new files to Git:
-
-  ```
-  $ git add .
-  ```
-  
-1. Commit:
-
-  ```
-  $ git commit -a -m "full solution"
-  ```
-
-1. Push to remote Git
-
-  ```
-  git push
-  ```
-  
-1. Watch the build pipeline processing your commit and deploying a new version of your app.
+Note: You can follow the build and deploy phase by clicking on "Logs" on the left column, this is useful if you have a need to debug your application. 
 
 Congratulations! You completed this lab. You can get familiar with the application code content.
 
