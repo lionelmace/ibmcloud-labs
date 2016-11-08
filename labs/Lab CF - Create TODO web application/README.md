@@ -98,7 +98,7 @@ Note: You can follow the build and deploy phase by clicking on "Logs" on the lef
 
 Congratulations! You completed this lab. You can get familiar with the application code content.
 
-# Step 6 - Edit the code using the CloudFoundry command line
+# (Optional) Step 6 - Edit the code using the CloudFoundry command line
 
 This step will erase your previous modifications, this is to show you how you can edit from your computer if you're more comfortable using your own developing tools. 
 
