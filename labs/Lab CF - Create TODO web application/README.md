@@ -29,7 +29,7 @@ In the following lab, you will learn:
 3. [Edit the code](#step-3---edit-the-code)
 4. [Push your changes](#step-4---push-your-changes)
 5. [See your changes](#step-5---see-your-changes)
-6. [(Optional) Edit the code using the CloudFoundry command line](#step-6--edit-code-cf)
+6. [(Optional) Edit the code using the CloudFoundry command line](#step-6--edit-the-code-using-the-CloudFoundry-command-line)
 
 
 # Step 1 - Create a new web application
