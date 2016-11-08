@@ -29,7 +29,7 @@ In the following lab, you will learn:
 3. [Edit the code](#step-3---edit-the-code)
 4. [Push your changes](#step-4---push-your-changes)
 5. [See your changes](#step-5---see-your-changes)
-6. [(Optional) Edit the code using the CloudFoundry command line](#step-6--edit-the-code-using-the-CloudFoundry-command-line)
+6. [(Optional) Edit the code using the CloudFoundry command line](#step-6---edit-the-code-using-the-CloudFoundry-command-line)
 
 
 # Step 1 - Create a new web application
@@ -98,7 +98,9 @@ Note: You can follow the build and deploy phase by clicking on "Logs" on the lef
 
 Congratulations! You completed this lab. You can get familiar with the application code content.
 
-# (Optional) Step 6 - Edit the code using the CloudFoundry command line
+# Step 6 - Edit the code using the CloudFoundry command line
+
+This step will erase your previous modifications, this is to show you how you can edit from your computer if you're more comfortable using your own developing tools. 
 
 1. Navigate to the **Getting Started** page of your application 
 2. Follow the steps, this will show how you can easily download the Hello World application to your computer, edit it locally and then push it back to Bluemix
