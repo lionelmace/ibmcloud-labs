@@ -35,7 +35,7 @@ In the following lab, you will learn:
 
 # Step 1 - Create a new web application
 
-1. Log in to [Bluemix console](https://bluemix.net).
+1. Log in to [Bluemix console](https://console.eu-gb.bluemix.net).
 
 1. Select the Region (e.g. United Kingdom) where you want to create your application.
 
