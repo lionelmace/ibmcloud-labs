@@ -19,7 +19,6 @@ In the following lab, you will learn:
 + Get a [Bluemix IBM id](https://bluemix.net)
 + Install docker for [Mac](https://docs.docker.com/engine/installation/mac/) or [Windows](https://docs.docker.com/engine/installation/windows/)
 + Install the [Cloud Foundry Command-Line CLI](https://github.com/cloudfoundry/cli/releases)
-+ Install the [IBM Containers plug-in](https://new-console.ng.bluemix.net/docs/containers/container_cli_cfic.html)
 
 
 # Steps
@@ -27,8 +26,9 @@ In the following lab, you will learn:
 1. [Start an existing docker image on Bluemix](#step-1---start-an-existing-docker-image-on-bluemix)
 2. [Pull and run a container locally](#step-2---pull-and-run-a-container-locally)
 3. [Prepare your IBM Containers service](#step-3---prepare-your-ibm-containers-service)
-4. [Attach an IP to your container](#step-4---attach-an-ip-to-your-container)
-5. [Use the Container API](#step-5---use-the-container-api)
+4. [Push and run your image on Bluemix](#step-4---push-and-run-your-image-on-bluemix)
+5. [Attach an IP to your container](#step-4---attach-an-ip-to-your-container)
+6. [Use the Container API](#step-4---use-the-container-api)
 
 
 # Step 1 - Start an existing docker image on Bluemix
@@ -39,18 +39,6 @@ You could skip this step and directly start Step 2 if you only wanted to interac
 
 
 # Step 2 - Pull and run a container locally
-
-1. Open Terminal
-
-1. Login to the Private Registry
-  ```
-  cf login
-  ```
-
-1. Check that you’re connected
-  ```
-  cf ic info
-  ```
 
 1. Search the NGINX official image from Docker Hub
   ```
@@ -86,17 +74,39 @@ You could skip this step and directly start Step 2 if you only wanted to interac
 
 # Step 3 - Prepare your IBM Containers service
 
-To run native Docker CLI commands to manage your containers, we will use the ```cf ic```command line.
+To run native Docker CLI commands to manage your containers, we will use the ```cf ic```command line, which is an extension to the Cloud Foundry CLI.
 
-1. Retrieve your namespace
+1. Open a command line utility.
+
+1. To install cf CLI plug-ins from the Bluemix registry, set the plug-in registry endpoint:
+  ```cf add-plugin-repo bluemix-cf https://plugins.ng.bluemix.net```
+
+1. Run the following command to install a plug-in:
+  ```cf install-plugin IBM-Containers -r bluemix-cf```
+
+1. Set the namespace for your organization if this is the first time a user has logged in to your organization. A namespace is a unique name to identify your private Docker images registry in Bluemix. When you create a container, you must specify an image's location by including the namespace with the image name.
+
+  ```
+  cf ic namespace set <NEW_NAMESPACE>
+  ```
+  
+  Note: A namespace is a unique name to identify your private repository on the Bluemix registry. The namespace is assigned one time for an organization and cannot be changed after it is created. If you do not know your organization's namespace, you can run cf ic namespace get after running cf ic login.
   ```
   cf ic namespace get
   ```
   
-  Note: A namespace is a unique name to identify your private repository on the Bluemix registry. The namespace is assigned one time for an organization and cannot be changed after it is created. To create a namespace, run the command:
+1. Login to the Container Private Registry
   ```
-  cf ic namespace set <NEW_NAMESPACE>
+  cf ic login
   ```
+
+1. Check that you’re connected
+  ```
+  cf ic info
+  ```
+
+
+# Step 4 - Push and run your image on Bluemix
   
 1. Tag image for Bluemix registry
   ```
@@ -120,7 +130,7 @@ To run native Docker CLI commands to manage your containers, we will use the ```
 
   Note: As each container has its own IP, there is no risk of port conflict. Thus, port mapping is not required.
 
-# Step 4 - Attach an IP to your container
+# Step 5 - Attach an IP to your container
 
 1. List running containers on Bluemix. Write down the ID of the running NGINX container.
   ```
@@ -140,7 +150,7 @@ To run native Docker CLI commands to manage your containers, we will use the ```
 1. Show the running container on Bluemix: http://YOUR_IP_ADDRESS:80
 
 
-# Step 5 - Use the Container API
+# Step 6 - Use the Container API
 
 1. Containers API is available in [Swagger Container API](http://ccsapi-doc.mybluemix.net) 
 
