@@ -80,11 +80,15 @@ To run native Docker CLI commands to manage your containers, we will use the ```
 
 1. To install cf CLI plug-ins from the Bluemix registry, set the plug-in registry endpoint:
   
-  ```cf add-plugin-repo bluemix-cf https://plugins.ng.bluemix.net```
+  ```
+  cf add-plugin-repo bluemix-cf https://plugins.ng.bluemix.net
+  ```
 
 1. Run the following command to install a plug-in:
   
-  ```cf install-plugin IBM-Containers -r bluemix-cf```
+  ```
+  cf install-plugin IBM-Containers -r bluemix-cf
+  ```
 
 1. Set the namespace for your organization if this is the first time you log in to your Container Private Registry. A namespace is a unique name to identify your private Docker images registry in Bluemix. When you create a container, you must specify an image's location by including the namespace with the image name.
 
@@ -92,7 +96,7 @@ To run native Docker CLI commands to manage your containers, we will use the ```
   cf ic namespace set <NEW_NAMESPACE>
   ```
   
-  Note: A namespace is a unique name to identify your private repository on the Bluemix registry. The namespace is assigned one time for an organization and cannot be changed after it is created. If you do not know your organization's namespace, you can run cf ic namespace get after running cf ic login.
+  Note: The namespace is assigned one time for an organization and cannot be changed after it is created. If you do not know your organization's namespace, you can run the command below after running cf ic login.
   ```
   cf ic namespace get
   ```
