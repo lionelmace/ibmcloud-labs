@@ -96,6 +96,12 @@ There are several modern, open source text editor that understands web design. S
   
   ```set https_proxy=http://<your.company.proxy>:8080```
 
+  If the proxy server requires a user name and password, include the credentials: 
+  
+  ```
+  https_proxy=http://username:password@proxy.example.com
+  ```
+  
   For more information, go to [https://docs.cloudfoundry.org/cf-cli/http-proxy.html](https://docs.cloudfoundry.org/cf-cli/http-proxy.html)
   
   To test if your proxy works, run the following command:
