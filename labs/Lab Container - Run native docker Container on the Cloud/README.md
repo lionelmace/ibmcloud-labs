@@ -194,13 +194,13 @@ To run native Docker CLI commands to manage your containers, we will use the ```
 1. You can create a highly available container group that is accessed via a public IP if you would like to control SSL termination yourself and you don't require IBM's edge service for public routing. Shown below reusing the same public IP address from your initial single container in Step 5 above.
 
   ```
-  cf ic group create --name nginx-mygroup-ip --desired 3 -ip <IP_ADDRESS> -p 80 --anti --auto registry.eu-gb.bluemix.net/mace/nginx:latest
+  cf ic group create --name nginx-mygroup-ip --desired 3 -ip <IP_ADDRESS> -p 80 --anti --auto registry.eu-gb.bluemix.net/mace/nginx
   ```
  
 1. Once the group is started, you can access it:
 
   ```
-  URL:  http://<IP_ADDRESS>:80
+  URL:  http://<IP_ADDRESS>
   ```
  
 1. You can list your groups using.
