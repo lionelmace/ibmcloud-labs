@@ -209,6 +209,7 @@ To run native Docker CLI commands to manage your containers, we will use the ```
   cf ic group list
   ```
 
+  Note: If your group ends up with a state equals to NETWORK_DEGRADED, this is most likely due to the port you supply to the `cf ic group create` command doesn’t respond with a http 200. Meaning the container is listening on one port, but the group was told a different port.
 
 # Step 7 - Use the Container API
 
