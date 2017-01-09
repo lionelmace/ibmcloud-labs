@@ -10,7 +10,7 @@ In the following lab, you will learn:
 
 + How to pull a docker image from docker hub and push it to Bluemix
 + How to bind a routable IP address to a running container
-+ How to run a container in Bluemix
++ How to run a single container and a group of containers on Bluemix
 + How to use the IBM Containers API
 
 
