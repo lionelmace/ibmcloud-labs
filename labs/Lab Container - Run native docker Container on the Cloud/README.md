@@ -28,7 +28,8 @@ In the following lab, you will learn:
 3. [Prepare your IBM Containers service](#step-3---prepare-your-ibm-containers-service)
 4. [Push and run your image on Bluemix](#step-4---push-and-run-your-image-on-bluemix)
 5. [Attach an IP to your container](#step-5---attach-an-ip-to-your-container)
-6. [Use the Container API](#step-6---use-the-container-api)
+6. [Create a highly available group](#step-6---create-a-highly-available-group)
+7. [Use the Container API](#step-7---use-the-container-api)
 
 
 # Step 1 - Start an existing docker image on Bluemix
