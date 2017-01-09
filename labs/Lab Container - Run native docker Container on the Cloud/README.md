@@ -231,4 +231,5 @@ To run native Docker CLI commands to manage your containers, we will use the ```
 For additional resources pay close attention to the following:
 
 - [Getting started with IBM Containers](https://console.ng.bluemix.net/docs/containers/container_index.html)
+- [Running highly available processes as container groups](https://console.eu-gb.bluemix.net/docs/containers/container_ha.html)
 - [See Auto-scaling in Action for IBM Containers - YouTube](https://www.youtube.com/watch?v=MFs-pSr2gsw)
