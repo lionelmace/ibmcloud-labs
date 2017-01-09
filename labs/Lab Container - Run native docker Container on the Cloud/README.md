@@ -107,12 +107,14 @@ To run native Docker CLI commands to manage your containers, we will use the ```
   $ cf login
   ```
   
-1. Initialize to the Container Private Registry
+1. Authenticate to the IBM Containers registry
+  
   ```
   cf ic init
   ```
 
 1. Check that you’re connected
+  
   ```
   cf ic info
   ```
@@ -123,10 +125,12 @@ To run native Docker CLI commands to manage your containers, we will use the ```
   cf ic namespace set <NEW_NAMESPACE>
   ```
   
-  Note: The namespace is assigned one time for an organization and cannot be changed after it is created. If you do not know your organization's namespace, you can run the command below after running cf ic login.
+  Note: The namespace is assigned one time for an organization and cannot be changed after it is created. If this organization namespace was already assigned, you can run the command below to retrieve it:
+  
   ```
   cf ic namespace get
   ```
+
 
 # Step 4 - Push and run your image on Bluemix
   
@@ -172,7 +176,40 @@ To run native Docker CLI commands to manage your containers, we will use the ```
 1. Show the running container on Bluemix: http://YOUR_IP_ADDRESS:80
 
 
-# Step 6 - Use the Container API
+# Step 6 - Create a highly available group
+
+1. Create a highly available group with 3 containers deployed with anti-affinity and auto-recovery and accessed via a public URL.
+
+  ```
+  cf ic group create --name nginx-mygroup --desired 3 -n nginx-mynode -d eu-gb.mybluemix.net -p 80 --anti --auto registry.eu-gb.bluemix.net/mace/nginx:latest
+  ```
+
+1. Once the group is started, you can access it:
+
+  ```
+  URL: http://my-nginx-node.eu-gb.mybluemix.net
+  ```
+ 
+1. You can create a highly available container group that is accessed via a public IP if you would like to control SSL termination yourself and you don't require IBM's edge service for public routing. Shown below reusing the same public IP address from your initial single container in Step 5 above.
+
+  ```
+  cf ic group create --name nginx-mygroup-ip --desired 3 -ip <IP_ADDRESS> -p 80 --anti --auto registry.eu-gb.bluemix.net/mace/nginx:latest
+  ```
+ 
+1. Once the group is started, you can access it:
+
+  ```
+  URL:  http://<IP_ADDRESS>:80
+  ```
+ 
+1. You can list your groups using.
+ 
+  ```
+  cf ic group list
+  ```
+
+
+# Step 7 - Use the Container API
 
 1. Containers API is available in [Swagger Container API](http://ccsapi-doc.mybluemix.net) 
 
