@@ -90,6 +90,33 @@ To run native Docker CLI commands to manage your containers, we will use the ```
   cf install-plugin IBM-Containers -r bluemix-cf
   ```
 
+1. Connect to Bluemix
+
+  ```
+  $ cf api <Bluemix_endpoint>
+  ```
+
+  Select one of the Bluemix endpoint below based on the region where you created your app.
+  * US: https://api.ng.bluemix.net
+  * EU: https://api.eu-gb.bluemix.net
+  * AU: https://api.au-syd.bluemix.net
+  
+1. Login to Bluemix
+
+  ```
+  $ cf login
+  ```
+  
+1. Initialize to the Container Private Registry
+  ```
+  cf ic init
+  ```
+
+1. Check that you’re connected
+  ```
+  cf ic info
+  ```
+
 1. Set the namespace for your organization if this is the first time you log in to your Container Private Registry. A namespace is a unique name to identify your private Docker images registry in Bluemix. When you create a container, you must specify an image's location by including the namespace with the image name.
 
   ```
@@ -100,17 +127,6 @@ To run native Docker CLI commands to manage your containers, we will use the ```
   ```
   cf ic namespace get
   ```
-  
-1. Login to the Container Private Registry
-  ```
-  cf ic login
-  ```
-
-1. Check that you’re connected
-  ```
-  cf ic info
-  ```
-
 
 # Step 4 - Push and run your image on Bluemix
   
