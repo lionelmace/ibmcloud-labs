@@ -156,6 +156,10 @@ To run native Docker CLI commands to manage your containers, we will use the ```
   ```
 
   Note: As each container has its own IP, there is no risk of port conflict. Thus, port mapping is not required.
+  
+  Note: In case you don't need to run the image locally, you could copy directly the docker image from Docker Hub to your Bluemix private registry by running the command below. The iamge will be automatically tag.
+  ```cf ic cpi nginx nginx```
+
 
 # Step 5 - Attach an IP to your container
 
