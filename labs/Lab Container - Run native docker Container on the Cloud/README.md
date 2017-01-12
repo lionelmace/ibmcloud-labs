@@ -169,7 +169,7 @@ To run native Docker CLI commands to manage your containers, we will use the ```
   cf ic ps
   ```
   
-1. Reqest a routable IP addresse.
+1. Reqest a routable IP address.
   ```
   cf ic ip request
   ```
