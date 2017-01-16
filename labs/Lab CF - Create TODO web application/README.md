@@ -47,9 +47,9 @@ In the following lab, you will learn:
 
 1. Log in to [Bluemix console](https://bluemix.net).
 
-1. Select the Region (e.g. United Kingdom) where you want to create your application. For the UK region, select this version of the lab [here](../../archives/Lab%20CF%20-%20Create%20TODO%20web%20application)
+1. Select the <span style="color:red;">Region United States</span> where you want to create your application.
 
-1. Select the <span style="color:orange;">Region United States</span> where you want to create your application.
+1. Select the Region (e.g. United Kingdom) where you want to create your application. For the UK region, select this version of the lab [here](../../archives/Lab%20CF%20-%20Create%20TODO%20web%20application)
 
 1. Go to the Bluemix **Catalog**.
 
