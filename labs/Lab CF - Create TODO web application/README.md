@@ -30,7 +30,7 @@ In the following lab, you will learn:
 # Steps
 
 1. [Create a new web application](#step-1---create-a-new-web-application)
-2. [Add Git support](#step-2---add-git-support)
+2. [Enable Continuous Delivery](#step-2---enable-continuous-delivery)
 3. [Checkout the code locally](#step-3---checkout-the-code-locally)
 4. [Run the app locally](#step-4---run-the-app-locally)
 5. [Change a file locally](#step-5---change-a-file-locally)
@@ -47,9 +47,9 @@ In the following lab, you will learn:
 
 1. Log in to [Bluemix Console](https://console.ng.bluemix.net).
 
-1. Select the Region **United States** to create your application in the toolbar at the right corner.
+1. Select the Region **United States** to create your application.
 
-  Note: This lab is intended to work only in the US Region where we have deployed the V2 of our DevOps Services. If you must use the Region UK, please use to [this version](../../archives/Lab%20CF%20-%20Create%20TODO%20web%20application)
+  Note: This lab is intended to work ONLY in the US Region where the version 2 of Bluemix DevOps Services have been deployed. If you must use the Region UK, please use to [this version](../../archives/Lab%20CF%20-%20Create%20TODO%20web%20application)
 
 1. Go to the Bluemix **Catalog**.
 
@@ -64,14 +64,16 @@ In the following lab, you will learn:
 The SDK for Node.js created a simple "Hello World!" web app that will become our starting point.
 
 
-# Step 2 - Add Git support
+# Step 2 - Enable Continuous Delivery
 
 Now let's add a source code repository and an automatic build pipeline to our project.
 
-1. In your application **Overview** page, click the **Add Git Repo and Pipeline** button.
+1. In your application **Overview** page, search **Continuous Delivery** and click the **Enable** button.
 
-1. Leave the default options selected and continue.
+1. A new window opens to configure the Toolchain.
 
+  ![Toolchain](./images/toolchain.png)
+  
   Bluemix DevOps creates a Git repository for your application, puts in it the starter code for the "Hello World!" application, and defines a build pipeline so that your app gets automatically redeployed after every commit.
 
 1. Make note of the Git URL.
