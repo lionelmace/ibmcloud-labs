@@ -21,7 +21,6 @@ In the following lab, you will learn:
 # Pre-Requisites
 
 + Get a [Bluemix IBM id](https://bluemix.net), or use an existing account.
-+ Get a [GitHub account](https://github.com/join), or use an existing one. Choose the plan **Unlimited number of public repositories for free**. GitHub is used for Bluemix DevOps services.
 + Install the [Cloud Foundry Command-Line CLI](https://github.com/cloudfoundry/cli/releases)
 + Install a [Git client](https://git-scm.com/downloads)
 + Install [Node.js](https://nodejs.org)
@@ -47,9 +46,7 @@ In the following lab, you will learn:
 
 1. Log in to [Bluemix console](https://bluemix.net).
 
-1. Select the Region (e.g. United Kingdom) where you want to create your application. For the UK region, select this version of the lab [here](../archives/Lab%20CF%20-%20Create%20TODO%20web%20application)
-
-1. Select the Region (e.g. United States) where you want to create your application.
+1. Select the Region (e.g. United Kingdom) where you want to create your application.
 
 1. Go to the Bluemix **Catalog**.
 
