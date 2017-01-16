@@ -45,11 +45,11 @@ In the following lab, you will learn:
 
 # Step 1 - Create a new web application
 
-1. Log in to [Bluemix console](https://bluemix.net).
+1. Log in to [Bluemix Console](https://console.ng.bluemix.net).
 
-Select the <span style="color:#FF0000;">Region United States</span> where you want to create your application.
+1. Select the Region **United States** to create your application in the toolbar at the right corner.
 
-1. Select the Region (e.g. United Kingdom) where you want to create your application. For the UK region, select this version of the lab [here](../../archives/Lab%20CF%20-%20Create%20TODO%20web%20application)
+  Note: This lab is intended to work only in the US Region where we have deployed the V2 of our DevOps Services. If you must use the Region UK, please use to [this version](../../archives/Lab%20CF%20-%20Create%20TODO%20web%20application)
 
 1. Go to the Bluemix **Catalog**.
 
