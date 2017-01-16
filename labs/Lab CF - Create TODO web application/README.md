@@ -74,9 +74,15 @@ Now let's add a source code repository and an automatic build pipeline to our pr
 
   ![Toolchain](./images/toolchain.png)
   
-  Bluemix DevOps creates a Git repository for your application, puts in it the starter code for the "Hello World!" application, and defines a build pipeline so that your app gets automatically redeployed after every commit.
+1. The toolchain gets a default name you can change. In **Configurable Integrations** at the bottom, select GitHub. To store your source code in GitHub, you must authorize Bluemix to connect to GitHub.
 
-1. Make note of the Git URL.
+1. By clicking Authorize, a new window will enable to Sign into GitHub to continue to IBM Bluemix Toolchains.
+
+1. Once Authorize, you will be brought back the GitHub Configuration on Bluemix. Keep the Default option to clone the starter code for the "Hello World!" application into your GitHub account.
+
+1. The toolchain has been configured successfully. A new GitRepository has been create, as well as a build pipeline so that your app gets automatically redeployed after every commit.
+
+1. Open the GitHub repo and make note of the Git URL.
 
 
 # Step 3 - Checkout the code locally
@@ -86,10 +92,11 @@ Now let's add a source code repository and an automatic build pipeline to our pr
 1. Open a terminal or a command prompt to clone the repository
 
   ```
-  $ git clone https://hub.jazz.net/git/YOUR_DEVOPS_USERNAME/YOUR_APP_PROJECT
+  $ git clone https://github.com/<YOUR-GITHUB-USERNAME>/<YOUR-PROJECT-NAME>
   ```
-  
-  Note: If you're being asked for credentials, use your Bluemix Login and Password.
+
+1. This command creates a directory of your project locally on your disk.
+
 
 # Step 4 - Run the app locally
 
@@ -129,6 +136,7 @@ Now let's add a source code repository and an automatic build pipeline to our pr
 
 1. Reload the page in your web browser to confirm the change locally
 
+
 # Step 6 - Push your local change to the cloud
 
 Cloud Foundry relies on the *manifest.yml* file to know what to do when you run the *cf push* command.
@@ -139,7 +147,7 @@ A default manifest.yml file was generated for our app. It looks like:
   - path: .
     memory: 256M
     instances: 1
-    domain: eu-gb.mybluemix.net
+    domain: mybluemix.net
     name: todo-[your-initials]
     host: todo-[your-initials]
     disk_quota: 1024M
@@ -150,16 +158,25 @@ being deployed with **256MB**, with **one** instance, under the **eu-gb.mybluemi
 The app is named **todo-[your-initials]** and it is using **todo-[your-initials]** as host name.
 It has **1024MB** of disk space available.
 
-1. Connect to Bluemix
+1. Specifying the buildpack to be used when pushing a Cloud Foundry app is always faster than relying on buildpack detection. Modify the generated Manifest to specify the buildpack by adding one line as follows:
 
   ```
-  $ cf api <Bluemix_endpoint>
+  applications:
+  - path: .
+    memory: 256M
+    instances: 1
+    domain: mybluemix.net
+    manifest: sdk-for-nodejs
+    name: todo-[your-initials]
+    host: todo-[your-initials]
+    disk_quota: 1024M
   ```
 
-  Select one of the Bluemix endpoint below based on the region where you created your app.
-  * US: https://api.ng.bluemix.net
-  * EU: https://api.eu-gb.bluemix.net
-  * AU: https://api.au-syd.bluemix.net
+1. Connect to Bluemix by passing the Bluemix endpoint of the UR region where you created your app.
+
+  ```
+  $ cf api https://api.ng.bluemix.net
+  ```
   
 1. Login to Bluemix
 
@@ -179,7 +196,7 @@ It has **1024MB** of disk space available.
   requested state: started
   instances: 1/1
   usage: 256M x 1 instances
-  urls: todo-[your-initials].eu-gb.mybluemix.net
+  urls: todo-[your-initials].ng.mybluemix.net
   last uploaded: Thu Mar 14 15:24:17 UTC 2016
   stack: cflinuxfs2
   buildpack: SDK for Node.js(TM) (ibm-node.js-4.3.0, buildpack-v3.1-20160222-1123)
