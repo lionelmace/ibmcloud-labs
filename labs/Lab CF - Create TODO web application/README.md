@@ -76,23 +76,21 @@ Now let's add a source code repository and an automatic build pipeline to our pr
   
 1. The toolchain gets a default name you can change. In **Configurable Integrations** at the bottom, select GitHub. To store your source code in GitHub, you must authorize Bluemix to connect to GitHub.
 
-1. By clicking Authorize, a new window will enable to Sign into GitHub to continue to IBM Bluemix Toolchains.
+1. Click **Authorize**. A new window will enable to Sign into GitHub to continue to IBM Bluemix Toolchains.
 
-1. Once Authorize, you will be brought back the GitHub Configuration on Bluemix. Keep the Default option to clone the starter code for the "Hello World!" application into your GitHub account.
+1. Once authorized, you will be brought back the GitHub Configuration on Bluemix. Keep the Default options to clone the starter code for the "Hello World!" application into your GitHub account.
 
-1. The toolchain has been configured successfully. A new GitRepository has been create, as well as a build pipeline so that your app gets automatically redeployed after every commit.
+1. The toolchain has been configured successfully. A new Git Repository has been created, as well as a Build Pipeline so that your app gets automatically redeployed after every commit.
 
 1. Open the GitHub repo and make note of the Git URL.
 
 
 # Step 3 - Checkout the code locally
 
-1. From the **Overview** page, get the Git repository URL for your app.
-
 1. Open a terminal or a command prompt to clone the repository
 
   ```
-  $ git clone https://github.com/<YOUR-GITHUB-USERNAME>/<YOUR-PROJECT-NAME>
+  $ git clone <URL-OF-YOUR-GITHUB-REPO>
   ```
 
 1. This command creates a directory of your project locally on your disk.
@@ -118,7 +116,7 @@ Now let's add a source code repository and an automatic build pipeline to our pr
   $ npm start
   ```
 
-  The console output will look like:
+  Once started, the console output will look as follows:
   
   ```
   > NodejsStarterApp@0.0.1 start /Users/john/dev/todo-[your-initials]
@@ -154,7 +152,7 @@ A default manifest.yml file was generated for our app. It looks like:
   ```
 
 It basically defines one application taking its content from the current directory,
-being deployed with **256MB**, with **one** instance, under the **eu-gb.mybluemix.net** domain.
+being deployed with **256MB**, with **one** instance, under the **mybluemix.net** domain.
 The app is named **todo-[your-initials]** and it is using **todo-[your-initials]** as host name.
 It has **1024MB** of disk space available.
 
@@ -196,13 +194,13 @@ It has **1024MB** of disk space available.
   requested state: started
   instances: 1/1
   usage: 256M x 1 instances
-  urls: todo-[your-initials].ng.mybluemix.net
-  last uploaded: Thu Mar 14 15:24:17 UTC 2016
+  urls: todo-[your-initials].mybluemix.net
+  last uploaded: Mon Jan 16 21:20:54 UTC 2017
   stack: cflinuxfs2
-  buildpack: SDK for Node.js(TM) (ibm-node.js-4.3.0, buildpack-v3.1-20160222-1123)
+  buildpack: SDK for Node.js(TM) (ibm-node.js-4.6.2, buildpack-v3.9-20161128-1327)
 
-       state     since                    cpu    memory          disk          details   
-  #0   running   2016-03-14 04:25:24 PM   0.0%   75.9M of 256M   92.5M of 1G      
+       state     since                    cpu    memory          disk          details
+  #0   running   2017-01-16 10:22:17 PM   4.6%   22.1M of 256M   65.8M of 1G    
   ```
 
 Changing files locally and pushing them worked but we can do better.
@@ -235,9 +233,9 @@ In a previous step we set up a Git repository and a build pipeline was automatic
   $ git push
   ```
 
-1. Back to the Bluemix console, go to your application **Overview**. Click on the **Configure** button to access the **Build pipeline** that was created automatically in a previous step.
+1. Back to the Bluemix console, go to your application **Overview**. Click on the **View Toolchain** button in the Continuous Delivery section. Click the **Delivery Pipeline** that was created automatically in a previous step.
 
-1. Watch how the build pipeline notice your commit and redeploy the application
+1. Watch how the Delivery pipeline notice your commit and redeploy the application
 
 1. When the command completes, access the application running in the cloud to confirm your change was deployed
 
@@ -272,26 +270,26 @@ In order to store the todo, we will need a persistent storage. To do so, we will
 
 1. Select the free **Lite** plan
 
-1. Give the service a name such as **todo-cloudant**
+1. Give the service a name such as **todo-cloudant-[**
 
 1. Click **Create**. Bluemix will provision a Cloudant service and connect it to your application.
 
 1. Select **Restage** when prompted to do so.
 
   Your application will restart and the service connection information will be made available to your application.
-  
-  Note: the Cloudant service could have been provionned by running the command line
-  ```
-  $ cf create-service cloudantNoSQLDB Lite todo-cloudant
-  ```
 
+  Note: All the steps above could have been scripted using the three commands below:
+  ```
+  $ cf create-service cloudantNoSQLDB Lite todo-cloudant-[your-initials]
+  $ cf bind-service todo-[your-initials] todo-cloudant-[your-initials]
+  $ cf restage todo-[your-initials]
+  ```
 
 # Step 10 - Connect the Cloudant DB to the application code
 
 When your application runs in Cloud Foundry, all service information bound to the application are available in the **VCAP_SERVICES** variable.
 
-Given a Cloud Foundry app relies on the VCAP_SERVICES environment variable, a straightforward approach is to set this variable in your environment by creating a local env file (JSON or key=value format),
-to test for this file in your app and to load the values if found.
+Given a Cloud Foundry app relies on the VCAP_SERVICES environment variable, a straightforward approach is to set this variable in your environment by creating a local env file (JSON or key=value format), to test for this file in your app and to load the values if found.
 
 1. In the Bluemix console, go to your application **Overview**.
 
@@ -357,7 +355,7 @@ to test for this file in your app and to load the values if found.
   git push
   ```
   
-1. Watch the build pipeline processing your commit and deploying a new version of your app.
+1. Watch the Delivery Pipeline processing your commit and deploying a new version of your app.
 
 Congratulations! You completed this lab. You can get familiar with the application code content.
 
@@ -390,8 +388,3 @@ Congratulations! You completed this lab. You can get familiar with the applicati
 For additional resources pay close attention to the following:
 
 - [GitHub Guides](https://guides.github.com/)
-
-
-## Credits
-
-Based on [scotch-io/node-todo](https://github.com/scotch-io/node-todo)
