@@ -270,7 +270,7 @@ In order to store the todo, we will need a persistent storage. To do so, we will
 
 1. Select the free **Lite** plan
 
-1. Give the service a name such as **todo-cloudant-[**
+1. Give the service a name such as **todo-cloudant-[your-initials]**
 
 1. Click **Create**. Bluemix will provision a Cloudant service and connect it to your application.
 
