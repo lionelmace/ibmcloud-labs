@@ -137,12 +137,17 @@ To run native Docker CLI commands to manage your containers, we will use the ```
   
 1. Tag image for Bluemix registry
   ```
-  docker tag nginx:latest registry.eu-gb.bluemix.net/<YOUR_NAMESPACE>/nginx:latest
+  docker tag nginx:latest registry.<REGION>.bluemix.net/<YOUR_NAMESPACE>/nginx:latest
   ```
+  
+  Note: In the command above, make sure to replace the placeholder <REGION> by one of the following tag depending the region you create your container:
+  * ng for US
+  * eu-gb for UK
+  * au-syd for AU
  
 1. Push ​*NGINX*​ image to Bluemix Public
   ```
-  docker push registry.eu-gb.bluemix.net/<YOUR_NAMESPACE>/nginx:latest
+  docker push registry.<REGION>.bluemix.net/<YOUR_NAMESPACE>/nginx:latest
   ```
 
 1. Validate the presence of ​*NGINX*​ image on Bluemix
@@ -152,7 +157,7 @@ To run native Docker CLI commands to manage your containers, we will use the ```
 
 1. Start the NGINX image on Bluemix
   ```
-  cf ic run -d -p 80 --name webserver registry.eu-gb.bluemix.net/<YOUR_NAMESPACE>/nginx:latest
+  cf ic run -d -p 80 --name webserver registry.<REGION>.bluemix.net/<YOUR_NAMESPACE>/nginx:latest
   ```
 
   Note: As each container has its own IP, there is no risk of port conflict. Thus, port mapping is not required.
@@ -187,19 +192,21 @@ To run native Docker CLI commands to manage your containers, we will use the ```
 1. Create a highly available group with 3 containers deployed with anti-affinity and auto-recovery and accessed via a public URL.
 
   ```
-  cf ic group create --name nginx-mygroup --desired 3 -n nginx-mynode -d eu-gb.mybluemix.net -p 80 --anti --auto registry.eu-gb.bluemix.net/mace/nginx:latest
+  UK: cf ic group create --name nginx-mygroup --desired 3 -n nginx-mynode -d eu-gb.mybluemix.net -p 80 --anti --auto registry.<REGION>.bluemix.net/mace/nginx:latest
+  US: cf ic group create --name nginx-mygroup --desired 3 -n nginx-mynode -d mybluemix.net -p 80 --anti --auto registry.<REGION>.bluemix.net/mace/nginx:latest
   ```
 
 1. Once the group is started, you can access it:
 
   ```
-  URL: http://my-nginx-node.eu-gb.mybluemix.net
+  URL for UK: http://my-nginx-node.eu-gb.mybluemix.net
+  URL for US: http://my-nginx-node.mybluemix.net
   ```
  
 1. You can create a highly available container group that is accessed via a public IP if you would like to control SSL termination yourself and you don't require IBM's edge service for public routing. Shown below reusing the same public IP address from your initial single container in Step 5 above.
 
   ```
-  cf ic group create --name nginx-mygroup-ip --desired 3 -ip <IP_ADDRESS> -p 80 --anti --auto registry.eu-gb.bluemix.net/mace/nginx
+  cf ic group create --name nginx-mygroup-ip --desired 3 -ip <IP_ADDRESS> -p 80 --anti --auto registry.<REGION>.bluemix.net/mace/nginx
   ```
  
 1. Once the group is started, you can access it:
@@ -228,7 +235,7 @@ To run native Docker CLI commands to manage your containers, we will use the ```
 
 1. To retrieve a namespace, run the following command with the correct HTTP headers instead of XXXXX
   ```
-  curl -X GET -H "X-Auth-Project-Id: XXXXX" -H "Accept: application/json" -H "X-Auth-Token: bearer XXXXX" "https://containers-api.eu-gb.bluemix.net/v3/registry/namespaces"
+  curl -X GET -H "X-Auth-Project-Id: XXXXX" -H "Accept: application/json" -H "X-Auth-Token: bearer XXXXX" "https://containers-api.<REGION>.bluemix.net/v3/registry/namespaces"
   ```
 
 
