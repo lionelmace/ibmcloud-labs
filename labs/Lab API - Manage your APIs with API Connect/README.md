@@ -19,30 +19,78 @@ In the following lab, you will learn:
 # Pre-Requisites
 
 + Get a [Bluemix IBM id](https://bluemix.net)
-+ Install [Node.js](https://nodejs.org)
-+ Install [API Connect Developer Toolkit](https://www.npmjs.com/package/apiconnect)
++ Install Node.js 4.4.7 [Node.js](https://nodejs.org/download/release/v4.4.7/)
++ Install (or Update) API Connect CLI [API Connect Developer Toolkit](https://www.npmjs.com/package/apiconnect)
 
-Note:
+   ```
+   npm install apiconnect -g 
+   ```
+You must have version 5.0.6 or above. check the version with the following command :
+
+  ```
+   $apic -v
+   API Connect: v5.0.6.0 (apiconnect: v2.5.8) 
+   ```
+
+
+>**Note**:
 To check all available versions of API Connect: ```npm view apiconnect version```
 To check the local version of API Connect: ```apic -v```
+
+
 
 
 # Steps
 
 1. [Provision API Connect in Bluemix](#step-1---provision-api-connect-in-bluemix)
-2. [Create a LoopBack application](#step-2---create-a-loopback-application)
-3. [Manage your API in API Designer](#step-3---manage-your-api-in-api-designer)
-4. [Manage the data persistence](#step-4---manage-the-data-persistence)
-5. [Test your API](#step-5---test-your-api)
-6. [Publish your API to Bluemix](#step-6---publish-your-api-to-bluemix)
+2. [Create a Cloudant service](#step-2---create-a-Cloudant-service)
+2. [Create a LoopBack application](#step-3---create-a-loopback-application)
+3. [Manage your API in API Designer](#step-4---manage-your-api-in-api-designer)
+4. [Manage the data persistence](#step-5---manage-the-data-persistence)
+5. [Test your API](#step-6---test-your-api)
+6. [Publish your API to Bluemix](#step-7---publish-your-api-to-bluemix)
 
 
 # Step 1 - Provision  API Connect in Bluemix
 
 From the Bluemix [Catalog] [bmx_catalog_uk_url], provision an instance of the service **API Connect**.
 
+# Step 2 - Create a Cloudant service
 
-# Step 2 - Create a LoopBack application
+In order to store our data used by our API, we will need a persistent storage. To do so, we will use a Cloudant NoSQL database, a JSON document oriented store, compatible with CouchDB.
+
+You can use a existing Cloudant service or create an instance of the service Cloudant DB. 
+
+1. Go to the Bluemix Catalog, create an instance of the service Cloudant NoSQL DB.
+
+2. Search for **Cloudant** in the catalog
+
+1. Select the free **Lite** plan
+
+2. Give it a name such as **cloudant-db**.
+
+3. Launch the Cloudand Dashboard. A new tab should open automatically with the list of databases.
+
+4. Create a new database with the button on top right corner. Call this dabase : **test**. Make sure to use this name as this is expected by the persistence layer of API Connect.
+
+5. Go back to Bluemix console and click the tab Service Credentials.
+
+ ```
+{
+"credentials": {
+    "username": "XXXXXX",
+    "password": "XXXXXX",
+    "host": "f9246334-58d1-4a97-8bde-34c30121f063-bluemix.cloudant.com",
+    "port": 443,
+    "url": "https://USERNAME:PASSWORD@f9246334-58d1-4a97-8bde-34c30121f063-bluemix.cloudant.com"
+}
+}
+```
+1. Copy the url, username and password from the credentials into the your prefered editor. we will use these values later.
+
+
+
+# Step 3 - Create a LoopBack application
 
 API Connect comes with a developer toolkit. This toolkit provides a offline graphical user interace named API Designer for creating APIs, the LoopBack framework for developing REST applications, a local unit test environment that includes a Micro Gateway for testing APIs, and a set of command line tools for augmenting the development toolset and assisting devops engineers with continuous integration and delivery.
 
@@ -53,17 +101,37 @@ API Connect comes with a developer toolkit. This toolkit provides a offline grap
   
 
 
-The developer toolkit provides an integrated development environment for developing APIs and applications that use the LoopBack framework. To create a new LoopBack project, use the command apic loopback; then use the apic edit command to edit the project in the API Designer.
+The developer toolkit provides an integrated development environment for developing APIs and applications that use the LoopBack framework.
+
+To create a new LoopBack project, use the command apic loopback; then use the apic edit command to edit the project in the API Designer.
 
 1. Create an API Connect LoopBack application. Make sure to select the project **notes** which contains a basic working example including a memory DB.
 
-  ```$ apic loopback```
+  ```
+  $ apic loopback
+  ```
+
+ Next you will be asked to supply the name of the directory where the application will be created. Enter **demo**
+  
+  ```
+  What's the name of your application? demo
+  ```
+  
+1. LoopBack will default the project directory name to the name of the application.
+
+1. Press the ***Enter*** or ***Return*** key to accept the default value of inventory.
+
+1. Next you will be asked to select the type of application. Use the arrow keys to select the **empty-server** option and press the *Enter* or *Return* key.
+
+```❯ empty-server (An empty LoopBack API, without any configured models or datasources) ```
+
+1. At this point, the project builder will install the core dependencies for our Node.js application.
 
   ```
   ? Please review the license for API Connect available in /usr/local/lib/node_modules/apiconnect/LICENSE.txt and select yes to accept. yese arrow keys)
   ? What's the name of your application? demo
   ? Enter name of the directory to contain the project: demo
-  ? What kind of application do you have in mind? notes (A project containing a basic working example, including a memory database)
+  ? What kind of application do you have in mind? empty-server (An empty LoopBack API, without any configured models or datasources)
   ```
 
 1. Change directory to your application directory
@@ -72,44 +140,67 @@ The developer toolkit provides an integrated development environment for develop
   cd demo
   ```
 
-1. Create a data model in your app
+### Create a Data Source Connector to Cloudant
+
+The datasource is what allows the API to communicate with the backend data repository. In this case we will be using Cloudant to store the data item information.
+
+There are two parts to this. First is the definition of how to connect to the backend system. The second is downloading the actual loopback connector for Cloudant. 
+
+In your terminal ensure that you are in the **demo** directory.
+
+  ```
+  cd demo
+  ```
+
+In your terminal, type:
 
  ```
-  apic create --type model
+ apic create --type datasource
  ```
  
- ```
-? Enter the model name: Customer
-? Select the data-source to attach Customer to: db (memory)
-? Select model's base class PersistedModel
-? Expose Customer via the REST API? Yes
-? Custom plural form (used to build REST URL): Customers
-? Common model or server only? common
- ```
- ```
-Let's add some Customer properties now.
-Enter an empty property name when done.
-? Property name: name
-   invoke   loopback:property
-? Property type: string
-? Required? Yes
-? Default value[leave blank for none]:
- ```
- ```
-Let's add another Customer property.
-Enter an empty property name when done.
-? Property name: age
-   invoke   loopback:property
-? Property type: number
-? Required? No
-? Default value[leave blank for none]:
- ```
- ```
-Let's add another Customer property.
-Enter an empty property name when done.
-? Property name:
-Done running LoopBack generator
- ```
+ The terminal will bring up the configuration wizard for our new datasource for the item database. The configuration wizard will prompt you with a series of questions. Some questions require text input, others offer a selectable menu of pre-defined choices.
+
+Answer the questions with the following data:
+
+> **Note**: 
+> <mark>For **Connection String url** paste the previous value you copied about Cloudant credential in Step 1</mark>
+
+Option name         | Rsponse          | 
+--------------------|------------------|
+? Enter the data-source name :      | **db**         | 
+? Select the connector for db :     | **IBM Cloudant DB**         | 
+? Connection String url to override other settings       | **https://username:password@host**         | 
+? database :      | **test** | 
+? username :      |          | 
+? password :      |          | 
+? modelIndex :    |          | 
+? Install loopback-connector-cloudant@^1.0.4 |        | 
+
+Example :
+
+```
+? Enter the data-source name: db
+? Select the connector for db: IBM Cloudant DB (supported by StrongLoop)
+Connector-specific configuration:
+? Connection String url to override other settings (eg: https://username:password@host): https:
+//a836946d-92b5-41cc-b730-442b4235aae8-bluemix:7911bb5592e65f126903c59f6fa3d7f3b5bd4a1141951e31
+938b6c6cb2efa852@a836946d-92b5-41cc-b730-442b4235aae8-bluemix.cloudant.com
+? database: test
+? username:
+? password:
+? modelIndex:
+? Install loopback-connector-cloudant@^1.0.4 Yes
+```
+
+>**Note**:
+By typing Y (Yes) to the question Install loopback-connector-cloudant, the Cloudant Connector will be downloaded and saved to your project automatically.
+
+>This will create a connection profile in the ~/demo/server/datasources.json file. It is effectively the same as running the following to install the connector:
+
+>npm install loopback-connector-cloudant --save
+
+>For more information on the LoopBack Connector for Cloudant, see: https://www.npmjs.com/package/loopback-connector-cloudant
+
  
 >Note : You can create an api directly from a existing web service from the wsdl. Create a SOAP API definition from a WSDL definition file, or a .zip file that contains the WSDL definition files for a service with the following command: ```apic create --type api --wsdl filename```
 
@@ -119,9 +210,11 @@ Done running LoopBack generator
 # Step 3 - Manage your API in API Designer
 
 1. Launch API Connect Designer
+
   ```apic edit```
   
   If the designer started correctly, a webpage will automatically opens and the terminal will show a message similar to this one:
+  
   ```Express server listening on http://127.0.0.1:9000```
   
 1. Click **Sign in with Bluemix**. If you're already sign in with Bluemix, you'll be automatically signed into the designer.
@@ -130,61 +223,39 @@ Done running LoopBack generator
 
 ![MacDown Screenshot](./images/apic-firstscreen.png)
 
-1. Select the tab **Models** and delete only the **Note** model that was generated on our behalf, but make sure to keep the Customer model we created.
+###Create a Model for the **demo** Items
 
-1. Open the Customer model. You should see the attributes age and name and their types. Note that name is marked as required as specified at the creation.
+In this section, you will define the item data model for our *demo* API and attach it to the Cloudant data source. LoopBack is a data model driven framework. The properties of the data model will become the JSON elements of the API request and response payloads.
 
-![MacDown Screenshot](./images/apic-modelscreen.png)
+1. Click the Models tab.
+
+1. Click the ```+ Add``` button.
+
+1. In the New LoopBack Model dialog, enter **Customer** as the model name, then click the New button.
+
+2. When the Model edit page for the item model displays, select the **db** Data Source:
+
+####Create Properties for the Customer Model
+
+The ```Customer``` table in the database has 6 columns that will need to mapped as well. To start creating properties for the item model:
+
+1. Click the ```+ button``` in the Properties section.
+
+1. The ```Customer``` data model consists of six properties. Use the data below to add each of the properties:
+
+| Required |  Property Name  | Is Array | Type  | ID | Index |Description |
+|:---------|:---------------:| --------:|------:|---:|------:|-----------:|
+| yes      | name            | no       | String| no |   no  | Name       |
+| yes      | age             | no       | number| no |   no  | age        |
 
 
-# Step 4 - Manage the data persistence
+1. Scroll to the top of the page and click the **Save button** to save the data model.
 
-1. In the API Designer, go back to the ***All Models*** view and go to the tab **Data Sources**. Click on ***db***. In the Connector section, select *IBM Cloudant DB* instead of *In-memory db*.
+![All Models](./images/allmodel.png)
 
-1. The following message will appear:
 
-  *This selected connector has not been installed.
- Install connector.*
-  
-  Install it in your project by running the following command
-  
-  ```npm install --save loopback-connector-cloudant```
+2. Click the All Models link to return to the main API Designer page.
 
-1. Stop the API Designer and run the npm command above.
-
-1. Re-Launch the API Designer
-
-  ```apic edit```
-
-1. Go back to the Data Models tab, you should now be able to select the **IBM Cloudant DB** in the list of Connector.
-
-1. We still need a database to persist the data. To do so, we will create an instance of the service Cloudant DB. Go to the Bluemix [Catalog] [bmx_catalog_uk_url], create an instance of the service **Cloudant NoSQL DB**. Give it a name such as **cloudant-db**.
-
-1. Launch the Cloudand Dashboard. A new tab should open automatically with the list of databases. Create a new database with the button on top right corner. Call this dabase **test**. Make sure to use this name as this is expected by the persistence layer of API Connect.
-
-1. Go back to Bluemix console and click the tab **Service Credentials**.
-
-  ```
-  {
-    "credentials": {
-        "username": "XXXXXX",
-        "password": "XXXXXX",
-        "host": "f9246334-58d1-4a97-8bde-34c30121f063-bluemix.cloudant.com",
-        "port": 443,
-        "url": "https://USERNAME:PASSWORD@f9246334-58d1-4a97-8bde-34c30121f063-bluemix.cloudant.com"
-    }
-  }
-  ```
-
-1. Copy the *url*, *username* and *password* from the credentials into the Data Sources connector of the API Designer. Specify the database name **test**. If none is specified, API Designer will use test by default.
-
-1. Save the configuration. Saving should display the confirmation message:
-
-![MacDown Screenshot](./images/apic-ds.png)
-
-  ```
-  Success Data source connection test succeeded
-  ```
 
 # Step 5 - Test your API
 
@@ -192,7 +263,7 @@ Done running LoopBack generator
 
 ![MacDown Screenshot](./images/apic-server.gif)
 
-1. Click on **Explore** in the top right corner.
+1. On the server is started, Click on **Explore** in the top right corner.
 
 1. Select the operation POST /Customers. Click on *Generate* hyperlink before the button **Call operation** in the right panel.
 
