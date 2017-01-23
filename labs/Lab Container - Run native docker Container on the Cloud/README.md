@@ -192,8 +192,8 @@ To run native Docker CLI commands to manage your containers, we will use the ```
 1. Create a highly available group with 3 containers deployed with anti-affinity and auto-recovery and accessed via a public URL.
 
   ```
-  UK: cf ic group create --name nginx-mygroup --desired 3 -n nginx-mynode -d eu-gb.mybluemix.net -p 80 --anti --auto registry.<REGION>.bluemix.net/mace/nginx:latest
-  US: cf ic group create --name nginx-mygroup --desired 3 -n nginx-mynode -d mybluemix.net -p 80 --anti --auto registry.<REGION>.bluemix.net/mace/nginx:latest
+  UK: cf ic group create --name nginx-mygroup --desired 3 -n nginx-mynode -d eu-gb.mybluemix.net -p 80 --anti --auto registry.<REGION>.bluemix.net/<YOUR_NAMESPACE>/nginx:latest
+  US: cf ic group create --name nginx-mygroup --desired 3 -n nginx-mynode -d mybluemix.net -p 80 --anti --auto registry.<REGION>.bluemix.net/<YOUR_NAMESPACE>/nginx:latest
   ```
 
 1. Once the group is started, you can access it:
@@ -206,7 +206,7 @@ To run native Docker CLI commands to manage your containers, we will use the ```
 1. You can create a highly available container group that is accessed via a public IP if you would like to control SSL termination yourself and you don't require IBM's edge service for public routing. Shown below reusing the same public IP address from your initial single container in Step 5 above.
 
   ```
-  cf ic group create --name nginx-mygroup-ip --desired 3 -ip <IP_ADDRESS> -p 80 --anti --auto registry.<REGION>.bluemix.net/mace/nginx
+  cf ic group create --name nginx-mygroup-ip --desired 3 -ip <IP_ADDRESS> -p 80 --anti --auto registry.<REGION>.bluemix.net/<YOUR_NAMESPACE>/nginx
   ```
  
 1. Once the group is started, you can access it:
