@@ -14,6 +14,7 @@ In the following lab, you will learn:
 + How to test an API
 + How to publish an API to Bluemix
 + How to sucribe to an API previously published
++ How to invoke an API from Mobile Application
 
 
 # Pre-Requisites
@@ -46,9 +47,12 @@ To check the local version of API Connect: ```apic -v```
 2. [Create a Cloudant service](#step-2---create-a-Cloudant-service)
 2. [Create a LoopBack application](#step-3---create-a-loopback-application)
 3. [Manage your API in API Designer](#step-4---manage-your-api-in-api-designer)
-4. [Manage the data persistence](#step-5---manage-the-data-persistence)
-5. [Test your API](#step-6---test-your-api)
-6. [Publish your API to Bluemix](#step-7---publish-your-api-to-bluemix)
+5. [Test your API](#step-5---Test-your-API)
+6. [Publish your API to Bluemix](#step-6---publish-your-api-to-bluemix)
+7. [Consumer Experience](#step-7---consumer-experience)
+8. [Invoke the API](#step-8---invoke-the-api)
+9. [Analytics](#step-9---Analytics)
+10. [Invoke your API from Mobile](#step-10---invoke-your-api-from-mobile)
 
 
 # Step 1 - Provision  API Connect in Bluemix
@@ -207,7 +211,7 @@ By typing Y (Yes) to the question Install loopback-connector-cloudant, the Cloud
 >Note: You can create an API or Product from an OpenAPI (Swagger 2.0) template file by using the '--template template-name' option.
 
 
-# Step 3 - Manage your API in API Designer
+# Step 4 - Manage your API in API Designer
 
 1. Launch API Connect Designer
 
@@ -221,7 +225,7 @@ By typing Y (Yes) to the question Install loopback-connector-cloudant, the Cloud
 
 1. The designer opens into the APIs section showing the API definition we created from the command line.
 
-![MacDown Screenshot](./images/apic-firstscreen.png)
+![APIC Screenshot](./images/apic-firstscreen.png)
 
 ###Create a Model for the **demo** Items
 
@@ -261,7 +265,7 @@ The ```Customer``` table in the database has 6 columns that will need to mapped 
 
 1. Let's test the API in the Designer. First, start the server by clicking the play button in bottom left corner. Once the server is started, you should see the endpoint of the Local Micro Gateway.
 
-![MacDown Screenshot](./images/apic-server.gif)
+![APIC Screenshot](./images/apic-server.gif)
 
 1. On the server is started, Click on **Explore** in the top right corner.
 
@@ -499,9 +503,152 @@ If all is OK, you should see a list of ***cutomers*** in JSON format with items 
 6. Feel free to play around with the other visualizations by adding them to the Dashboard. You can also save the dashboard by clicking on the Save Dashboard button:
  ![Anaytic screen](./images/analytics-save-dashboard.png)
 
+# Step 10 - Invoke your API from Mobile
 
+In this lab, you will learn how to consume an API from a Mobile Application. 
 
+In this case, we will use a very simple sample of a Mobile Hybrid Application with the framework Ionic 1.7.
 
+##Prepare your environment and the Mobile Application
+
+ 1. Retrieve the sample from this url
+
+ [Mobile App Sample](https://github.com/fdut/bluemix-labs/raw/master/Lab%20API%20-%20Manage%20your%20APIs%20with%20API%20Connect/mobileapp.zip)
+https://github.com/fdut/bluemix-labs/raw/master/Lab%20API%20-%20Manage%20your%20APIs%20with%20API%20Connect/mobileapp.zip
+
+ 1. Unzip file and enter in the **mobileapp** folder
+ 2. Install cordova and ionic 1.7 framework
+
+   ``` 
+   npm install -g cordova@6.2 ionic@1.7.6 
+   ```
+
+ 1. Test installation
+
+  ```
+  cordova -v
+  6.2
+ 
+  ionic -v
+  1.7.6
+  ```
+ 
+ 1. Update your application with the url and the credential of your API (Remember the subscription step). 
+
+ Update (with your preferred editor) the file **mobileapp/www/js/controllers.js** with your value for **urlBase** and **headersBase**
+
+ ```
+  var urlBase = 'https://api.eu.apiconnect.ibmcloud.com/fredericdutheilfribmcom-fdulondonspace/sb/api/Customers'; //MUST REPLACE WITH API URL
+
+  var headersBase =
+
+  {
+    'X-IBM-Client-Id': '262fc263-3776-422b-bdcb-f2c1649a8d3d', //MUST REPLACE WITH CLIENT ID
+    'X-IBM-Client-Secret': 'vJ0aE1wI4kI6aT5fO8pD8uI2sS7sN4pD0cW6kJ6nQ8mY4qS5rH', //MUST REPLACE WITH CLIENT SECRET
+    'content-type': 'application/json',
+    'accept': 'application/json'
+  }
+```
+ 
+ 1. Save and go back to the root directory of you app : **mobileapp**
+ 
+ 
+ 
+##Simulate the Mobile App in a browser. 
+ 
+ 2. Enter the following command :
+
+  ```
+   ionic serve
+  ```
+  >Note : if asked, use localhost for address to use.
+  
+  This command simulate your app in a browser.
+  
+  If all values are correct, you should see something as the screenshot below. A list with all the entries you are "POSTed" in Cloudant
+  
+   ![Simulate dev tools](./images/simulateapp.png)
+  
+ >Note : You can activate developer tools in the browser to show the result of your API request. 
+  
+   ![Simulate dev tools](./images/simulatewithtools.png)
+  
+  
+##Emulate the Mobile App with in a Android device emulator
+ 
+ Now if you want, you can emulate you app in a emulator. In this sample we are going to use Android Emulator.
+ 
+### Install Android SDK
+ 
+  If Android SDK is not installed, use the following steps to install it (Example for linux)
+ 
+  ```
+   wget http://dl.google.com/android/android-sdk_r24.4.1-linux.tgz
+   tar -xzvf android-sdk_r24.4.1-linux.tgz
+
+   cd android-sdk-linux
+   cd tools
+
+   echo y | ./android update sdk -u -a -t "tools","platform-tools","build-tools-23.0.3","android-23","sys-img-x86_64-android-23","sys-img-x86_64-google_apis-23"
+  
+  ```
+  Add **android-sdk-linux/tools/android** in the **PATH** of your operating system
+  
+ For linux only :
+ 
+  ```
+   sudo apt-get install -y lib32gcc1 libc6-i386 lib32z1 lib32stdc++6
+   sudo apt-get install -y lib32ncurses5 lib32gomp1 lib32z1-dev
+  ```
+ 
+
+ 
+ 
+### Configure Android virtual device
+ 
+ 
+ 1. Configure virtual device with the following command :
+ 
+ ```
+ android avd
+ ```
+ Click **Create** Use the following value :
+ 
+ ```
+ avd name = avd1
+ Device = nexus 5
+ Target = Android 6.0
+ cpu = intel atom x86_64
+ skin = noskin
+ Front camera = none
+ Back Camera = none 
+ RAM 512 vm 64
+ ```
+ 1. And click **OK**
+ 
+###Launch the Mobile App with in the Android Virtual Device Emulator
+ 
+ 1. In the **mobileapp** folder, enter the following command :
+ 
+ ```
+ cordova platform add android
+ ``` 
+ and
+ 
+ ```
+ ionic emulate android
+ ```
+Please wait a few time.
+ 
+ 
+ ![Simulate dev tools](./images/emulate.png)
+ 
+>Note : If the launch is too long. Don't close the emulator, Stop the command with Ctrl+C and launch the command again.
+ 
+ 
+Congratulations. You have completed this Lab! 
+ 
+ 
 # Additional Resources
 
 For additional resources pay close attention to the following:
