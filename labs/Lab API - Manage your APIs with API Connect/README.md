@@ -20,7 +20,7 @@ In the following lab, you will learn:
 # Pre-Requisites
 
 + Get a [Bluemix IBM id](https://bluemix.net)
-+ Install Node.js 4.4.7 [Node.js](https://nodejs.org/download/release/v4.4.7/)
++ Install Node.js 4.4.x [Node.js](https://nodejs.org/download/release/v4.4.7/)
 + Install (or Update) API Connect CLI [API Connect Developer Toolkit](https://www.npmjs.com/package/apiconnect)
 
    ```
@@ -109,7 +109,7 @@ The developer toolkit provides an integrated development environment for develop
 
 To create a new LoopBack project, use the command apic loopback; then use the apic edit command to edit the project in the API Designer.
 
-1. Create an API Connect LoopBack application. Make sure to select the project **notes** which contains a basic working example including a memory DB.
+1. Create an API Connect LoopBack application. 
 
   ```
   $ apic loopback
@@ -125,7 +125,7 @@ To create a new LoopBack project, use the command apic loopback; then use the ap
 
 1. Press the ***Enter*** or ***Return*** key to accept the default value of inventory.
 
-1. Next you will be asked to select the type of application. Use the arrow keys to select the **empty-server** option and press the *Enter* or *Return* key.
+1. Next you will be asked to select the type of application. Use the arrow keys to select the **empty-server** option and press the ***Enter*** or ***Return*** key.
 
 ```❯ empty-server (An empty LoopBack API, without any configured models or datasources) ```
 
@@ -144,7 +144,7 @@ To create a new LoopBack project, use the command apic loopback; then use the ap
   cd demo
   ```
 
-### Create a Data Source Connector to Cloudant
+### Create a Datasource Connector to Cloudant
 
 The datasource is what allows the API to communicate with the backend data repository. In this case we will be using Cloudant to store the data item information.
 
@@ -169,16 +169,16 @@ Answer the questions with the following data:
 > **Note**: 
 > <mark>For **Connection String url** paste the previous value you copied about Cloudant credential in Step 1</mark>
 
-Option name         | Rsponse          | 
+Option name         | Values          | 
 --------------------|------------------|
 ? Enter the data-source name :      | **db**         | 
 ? Select the connector for db :     | **IBM Cloudant DB**         | 
-? Connection String url to override other settings       | **https://username:password@host**         | 
+? Connection String url to override other settings       | **YOUR Connection URL https://username:password@host**         | 
 ? database :      | **test** | 
 ? username :      |          | 
 ? password :      |          | 
 ? modelIndex :    |          | 
-? Install loopback-connector-cloudant@^1.0.4 |        | 
+? Install loopback-connector-cloudant@^1.0.4 |  **Y**      | 
 
 Example :
 
@@ -227,11 +227,11 @@ By typing Y (Yes) to the question Install loopback-connector-cloudant, the Cloud
 
 ![APIC Screenshot](./images/apic-firstscreen.png)
 
-###Create a Model for the **demo** Items
+###Create a Model for the **demo** items
 
-In this section, you will define the item data model for our *demo* API and attach it to the Cloudant data source. LoopBack is a data model driven framework. The properties of the data model will become the JSON elements of the API request and response payloads.
+In this section, you will define the item data model for our **demo** API and attach it to the Cloudant datasource. LoopBack is a data model driven framework. The properties of the data model will become the JSON elements of the API request and response payloads.
 
-1. Click the Models tab.
+1. Click the **Models** tab.
 
 1. Click the ```+ Add``` button.
 
