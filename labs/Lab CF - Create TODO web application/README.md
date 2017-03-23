@@ -12,7 +12,7 @@ In this lab, you’ll gain a high level understanding of the architecture, featu
 In the following lab, you will learn:
 
 + How to deploy a new Cloud Foundry app based on Node.js runtime
-+ How to create a new service Cloudant DB to store NoSQL data 
++ How to create a new service Cloudant DB to store NoSQL data
 + How to set up a source code repository to collaborate
 + How to manage Continuous Integration and Deployment
 + How to use the Cloud Foundry Command Line
@@ -73,7 +73,7 @@ Now let's add a source code repository and an automatic build pipeline to our pr
 1. A new window opens to configure the Toolchain.
 
   ![Toolchain](./images/toolchain.png)
-  
+
 1. The toolchain gets a default name you can change. In **Configurable Integrations** at the bottom, select GitHub. To store your source code in GitHub, you must authorize Bluemix to connect to GitHub.
 
 1. Click **Authorize**. A new window will enable to Sign into GitHub to continue to IBM Bluemix Toolchains.
@@ -117,11 +117,11 @@ Now let's add a source code repository and an automatic build pipeline to our pr
   ```
 
   Once started, the console output will look as follows:
-  
+
   ```
   > NodejsStarterApp@0.0.1 start /Users/john/dev/todo-[your-initials]
   > node app.js
-  
+
   server starting on http://localhost:[port-number]
   ```
 
@@ -175,7 +175,7 @@ It has **1024MB** of disk space available.
   ```
   $ cf api https://api.ng.bluemix.net
   ```
-  
+
 1. Login to Bluemix
 
   ```
@@ -226,7 +226,7 @@ In a previous step we set up a Git repository and a build pipeline was automatic
   git config --global user.email "you@example.com"
   git config --global user.name "Your Name"
   ```
-  
+
 1. Push your changes
 
   ```
@@ -325,7 +325,7 @@ Given a Cloud Foundry app relies on the VCAP_SERVICES environment variable, a st
   ```
   $ npm install
   ```
-  
+
 1. Run the application
 
   ```
@@ -342,7 +342,7 @@ Given a Cloud Foundry app relies on the VCAP_SERVICES environment variable, a st
   ```
   $ git add .
   ```
-  
+
 1. Commit:
 
   ```
@@ -354,7 +354,7 @@ Given a Cloud Foundry app relies on the VCAP_SERVICES environment variable, a st
   ```
   git push
   ```
-  
+
 1. Watch the Delivery Pipeline processing your commit and deploying a new version of your app.
 
 Congratulations! You completed this lab. You can get familiar with the application code content.
@@ -388,3 +388,4 @@ Congratulations! You completed this lab. You can get familiar with the applicati
 For additional resources pay close attention to the following:
 
 - [GitHub Guides](https://guides.github.com/)
+- [Get started guides for your favorite runtimes](https://www.ibm.com/blogs/bluemix/2017/03/runtimes-get-started-guides/?social_post=829410659&fst=Learn&linkId=35308736)
