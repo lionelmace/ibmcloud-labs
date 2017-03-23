@@ -14,12 +14,13 @@ In the following lab, you will learn:
 + How to test an API
 + How to publish an API to Bluemix
 + How to sucribe to an API previously published
++ How to invoke an API from Mobile Application
 
 
 # Pre-Requisites
 
 + Get a [Bluemix IBM id](https://bluemix.net)
-+ Install Node.js 4.4.7 [Node.js](https://nodejs.org/download/release/v4.4.7/)
++ Install Node.js 4.4.x [Node.js](https://nodejs.org/download/release/v4.4.7/)
 + Install (or Update) API Connect CLI [API Connect Developer Toolkit](https://www.npmjs.com/package/apiconnect)
 
    ```
@@ -46,9 +47,12 @@ To check the local version of API Connect: ```apic -v```
 2. [Create a Cloudant service](#step-2---create-a-Cloudant-service)
 2. [Create a LoopBack application](#step-3---create-a-loopback-application)
 3. [Manage your API in API Designer](#step-4---manage-your-api-in-api-designer)
-4. [Manage the data persistence](#step-5---manage-the-data-persistence)
-5. [Test your API](#step-6---test-your-api)
-6. [Publish your API to Bluemix](#step-7---publish-your-api-to-bluemix)
+5. [Test your API](#step-5---Test-your-API)
+6. [Publish your API to Bluemix](#step-6---publish-your-api-to-bluemix)
+7. [Consumer Experience](#step-7---consumer-experience)
+8. [Invoke the API](#step-8---invoke-the-api)
+9. [Analytics](#step-9---Analytics)
+10. [Invoke your API from Mobile](#step-10---invoke-your-api-from-mobile)
 
 
 # Step 1 - Provision  API Connect in Bluemix
@@ -105,7 +109,7 @@ The developer toolkit provides an integrated development environment for develop
 
 To create a new LoopBack project, use the command apic loopback; then use the apic edit command to edit the project in the API Designer.
 
-1. Create an API Connect LoopBack application. Make sure to select the project **notes** which contains a basic working example including a memory DB.
+1. Create an API Connect LoopBack application. 
 
   ```
   $ apic loopback
@@ -121,7 +125,7 @@ To create a new LoopBack project, use the command apic loopback; then use the ap
 
 1. Press the ***Enter*** or ***Return*** key to accept the default value of inventory.
 
-1. Next you will be asked to select the type of application. Use the arrow keys to select the **empty-server** option and press the *Enter* or *Return* key.
+1. Next you will be asked to select the type of application. Use the arrow keys to select the **empty-server** option and press the ***Enter*** or ***Return*** key.
 
 ```❯ empty-server (An empty LoopBack API, without any configured models or datasources) ```
 
@@ -140,7 +144,7 @@ To create a new LoopBack project, use the command apic loopback; then use the ap
   cd demo
   ```
 
-### Create a Data Source Connector to Cloudant
+### Create a Datasource Connector to Cloudant
 
 The datasource is what allows the API to communicate with the backend data repository. In this case we will be using Cloudant to store the data item information.
 
@@ -165,16 +169,16 @@ Answer the questions with the following data:
 > **Note**: 
 > <mark>For **Connection String url** paste the previous value you copied about Cloudant credential in Step 1</mark>
 
-Option name         | Rsponse          | 
+Option name         | Values          | 
 --------------------|------------------|
 ? Enter the data-source name :      | **db**         | 
 ? Select the connector for db :     | **IBM Cloudant DB**         | 
-? Connection String url to override other settings       | **https://username:password@host**         | 
+? Connection String url to override other settings       | **YOUR Connection URL https://username:password@host**         | 
 ? database :      | **test** | 
 ? username :      |          | 
 ? password :      |          | 
 ? modelIndex :    |          | 
-? Install loopback-connector-cloudant@^1.0.4 |        | 
+? Install loopback-connector-cloudant@^1.0.4 |  **Y**      | 
 
 Example :
 
@@ -207,7 +211,7 @@ By typing Y (Yes) to the question Install loopback-connector-cloudant, the Cloud
 >Note: You can create an API or Product from an OpenAPI (Swagger 2.0) template file by using the '--template template-name' option.
 
 
-# Step 3 - Manage your API in API Designer
+# Step 4 - Manage your API in API Designer
 
 1. Launch API Connect Designer
 
@@ -221,13 +225,13 @@ By typing Y (Yes) to the question Install loopback-connector-cloudant, the Cloud
 
 1. The designer opens into the APIs section showing the API definition we created from the command line.
 
-![MacDown Screenshot](./images/apic-firstscreen.png)
+![APIC Screenshot](./images/apic-firstscreen.png)
 
-###Create a Model for the **demo** Items
+###Create a Model for the **demo** items
 
-In this section, you will define the item data model for our *demo* API and attach it to the Cloudant data source. LoopBack is a data model driven framework. The properties of the data model will become the JSON elements of the API request and response payloads.
+In this section, you will define the item data model for our **demo** API and attach it to the Cloudant datasource. LoopBack is a data model driven framework. The properties of the data model will become the JSON elements of the API request and response payloads.
 
-1. Click the Models tab.
+1. Click the **Models** tab.
 
 1. Click the ```+ Add``` button.
 
@@ -261,7 +265,7 @@ The ```Customer``` table in the database has 6 columns that will need to mapped 
 
 1. Let's test the API in the Designer. First, start the server by clicking the play button in bottom left corner. Once the server is started, you should see the endpoint of the Local Micro Gateway.
 
-![MacDown Screenshot](./images/apic-server.gif)
+![APIC Screenshot](./images/apic-server.gif)
 
 1. On the server is started, Click on **Explore** in the top right corner.
 
@@ -499,9 +503,152 @@ If all is OK, you should see a list of ***cutomers*** in JSON format with items 
 6. Feel free to play around with the other visualizations by adding them to the Dashboard. You can also save the dashboard by clicking on the Save Dashboard button:
  ![Anaytic screen](./images/analytics-save-dashboard.png)
 
+# Step 10 - Invoke your API from Mobile
 
+In this lab, you will learn how to consume an API from a Mobile Application. 
 
+In this case, we will use a very simple sample of a Mobile Hybrid Application with the framework Ionic 1.7.
 
+##Prepare your environment and the Mobile Application
+
+ 1. Retrieve the sample from this url
+
+ [Mobile App Sample](https://github.com/fdut/bluemix-labs/raw/master/Lab%20API%20-%20Manage%20your%20APIs%20with%20API%20Connect/mobileapp.zip)
+https://github.com/fdut/bluemix-labs/raw/master/Lab%20API%20-%20Manage%20your%20APIs%20with%20API%20Connect/mobileapp.zip
+
+ 1. Unzip file and enter in the **mobileapp** folder
+ 2. Install cordova and ionic 1.7 framework
+
+   ``` 
+   npm install -g cordova@6.2 ionic@1.7.6 
+   ```
+
+ 1. Test installation
+
+  ```
+  cordova -v
+  6.2
+ 
+  ionic -v
+  1.7.6
+  ```
+ 
+ 1. Update your application with the url and the credential of your API (Remember the subscription step). 
+
+ Update (with your preferred editor) the file **mobileapp/www/js/controllers.js** with your value for **urlBase** and **headersBase**
+
+ ```
+  var urlBase = 'https://api.eu.apiconnect.ibmcloud.com/fredericdutheilfribmcom-fdulondonspace/sb/api/Customers'; //MUST REPLACE WITH API URL
+
+  var headersBase =
+
+  {
+    'X-IBM-Client-Id': '262fc263-3776-422b-bdcb-f2c1649a8d3d', //MUST REPLACE WITH CLIENT ID
+    'X-IBM-Client-Secret': 'vJ0aE1wI4kI6aT5fO8pD8uI2sS7sN4pD0cW6kJ6nQ8mY4qS5rH', //MUST REPLACE WITH CLIENT SECRET
+    'content-type': 'application/json',
+    'accept': 'application/json'
+  }
+```
+ 
+ 1. Save and go back to the root directory of you app : **mobileapp**
+ 
+ 
+ 
+##Simulate the Mobile App in a browser. 
+ 
+ 2. Enter the following command :
+
+  ```
+   ionic serve
+  ```
+  >Note : if asked, use localhost for address to use.
+  
+  This command simulate your app in a browser.
+  
+  If all values are correct, you should see something as the screenshot below. A list with all the entries you are "POSTed" in Cloudant
+  
+   ![Simulate dev tools](./images/simulateapp.png)
+  
+ >Note : You can activate developer tools in the browser to show the result of your API request. 
+  
+   ![Simulate dev tools](./images/simulatewithtools.png)
+  
+  
+##Emulate the Mobile App with in a Android device emulator
+ 
+ Now if you want, you can emulate you app in a emulator. In this sample we are going to use Android Emulator.
+ 
+### Install Android SDK
+ 
+  If Android SDK is not installed, use the following steps to install it (Example for linux)
+ 
+  ```
+   wget http://dl.google.com/android/android-sdk_r24.4.1-linux.tgz
+   tar -xzvf android-sdk_r24.4.1-linux.tgz
+
+   cd android-sdk-linux
+   cd tools
+
+   echo y | ./android update sdk -u -a -t "tools","platform-tools","build-tools-23.0.3","android-23","sys-img-x86_64-android-23","sys-img-x86_64-google_apis-23"
+  
+  ```
+  Add **android-sdk-linux/tools/android** in the **PATH** of your operating system
+  
+ For linux only :
+ 
+  ```
+   sudo apt-get install -y lib32gcc1 libc6-i386 lib32z1 lib32stdc++6
+   sudo apt-get install -y lib32ncurses5 lib32gomp1 lib32z1-dev
+  ```
+ 
+
+ 
+ 
+### Configure Android virtual device
+ 
+ 
+ 1. Configure virtual device with the following command :
+ 
+ ```
+ android avd
+ ```
+ Click **Create** Use the following value :
+ 
+ ```
+ avd name = avd1
+ Device = nexus 5
+ Target = Android 6.0
+ cpu = intel atom x86_64
+ skin = noskin
+ Front camera = none
+ Back Camera = none 
+ RAM 512 vm 64
+ ```
+ 1. And click **OK**
+ 
+###Launch the Mobile App with in the Android Virtual Device Emulator
+ 
+ 1. In the **mobileapp** folder, enter the following command :
+ 
+ ```
+ cordova platform add android
+ ``` 
+ and
+ 
+ ```
+ ionic emulate android
+ ```
+Please wait a few time.
+ 
+ 
+ ![Simulate dev tools](./images/emulate.png)
+ 
+>Note : If the launch is too long. Don't close the emulator, Stop the command with Ctrl+C and launch the command again.
+ 
+ 
+Congratulations. You have completed this Lab! 
+ 
+ 
 # Additional Resources
 
 For additional resources pay close attention to the following:
