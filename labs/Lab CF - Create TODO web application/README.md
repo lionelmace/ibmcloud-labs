@@ -49,7 +49,7 @@ In the following lab, you will learn:
 
 1. Select the Region **United States** to create your application.
 
-  Note: This lab is intended to work ONLY in the US Region where the version 2 of Bluemix DevOps Services have been deployed. If you must use the Region UK, please use to [this version](../../archives/Lab%20CF%20-%20Create%20TODO%20web%20application)
+    Note: This lab is intended to work ONLY in the US Region where the version 2 of Bluemix DevOps Services have been deployed. If you must use the Region UK, please use to [this version](../../archives/Lab%20CF%20-%20Create%20TODO%20web%20application)
 
 1. Go to the Bluemix **Catalog**.
 
@@ -72,7 +72,7 @@ Now let's add a source code repository and an automatic build pipeline to our pr
 
 1. A new window opens to configure the Toolchain.
 
-  ![Toolchain](./images/toolchain.png)
+    ![Toolchain](./images/toolchain.png)
 
 1. The toolchain gets a default name you can change. In **Configurable Integrations** at the bottom, select GitHub. To store your source code in GitHub, you must authorize Bluemix to connect to GitHub.
 
@@ -89,9 +89,9 @@ Now let's add a source code repository and an automatic build pipeline to our pr
 
 1. Open a terminal or a command prompt to clone the repository
 
-  ```
-  $ git clone <URL-OF-YOUR-GITHUB-REPO>
-  ```
+    ```
+    $ git clone <URL-OF-YOUR-GITHUB-REPO>
+    ```
 
 1. This command creates a directory of your project locally on your disk.
 
@@ -100,30 +100,30 @@ Now let's add a source code repository and an automatic build pipeline to our pr
 
 1. Change to the directory of the checkout
 
-  ```
-  $ cd todo-[your-initials]
-  ```
+    ```
+    $ cd todo-[your-initials]
+    ```
 
 1. Get the node.js dependencies for this project
 
-  ```
-  $ npm install
-  ```
+    ```
+    $ npm install
+    ```
 
 1. Start the app
 
-  ```
-  $ npm start
-  ```
+    ```
+    $ npm start
+    ```
 
-  Once started, the console output will look as follows:
+    Once started, the console output will look as follows:
 
-  ```
-  > NodejsStarterApp@0.0.1 start /Users/john/dev/todo-[your-initials]
-  > node app.js
+    ```
+    > NodejsStarterApp@0.0.1 start /Users/john/dev/todo-[your-initials]
+    > node app.js
 
-  server starting on http://localhost:[port-number]
-  ```
+    server starting on http://localhost:[port-number]
+    ```
 
 1. Access the app with your web browser
 
@@ -158,50 +158,50 @@ It has **1024MB** of disk space available.
 
 1. Specifying the buildpack to be used when pushing a Cloud Foundry app is always faster than relying on buildpack detection. Modify the generated Manifest to specify the buildpack by adding one line as follows:
 
-  ```
-  applications:
-  - path: .
-    memory: 256M
-    instances: 1
-    domain: mybluemix.net
-    manifest: sdk-for-nodejs
-    name: todo-[your-initials]
-    host: todo-[your-initials]
-    disk_quota: 1024M
-  ```
+    ```
+    applications:
+    - path: .
+      memory: 256M
+      instances: 1
+      domain: mybluemix.net
+      manifest: sdk-for-nodejs
+      name: todo-[your-initials]
+      host: todo-[your-initials]
+      disk_quota: 1024M
+    ```
 
 1. Connect to Bluemix by passing the Bluemix endpoint of the UR region where you created your app.
 
-  ```
-  $ cf api https://api.ng.bluemix.net
-  ```
+    ```
+    $ cf api https://api.ng.bluemix.net
+    ```
 
 1. Login to Bluemix
 
-  ```
-  $ cf login
-  ```
+    ```
+    $ cf login
+    ```
 
 1. Push the app to Bluemix
 
-  ```
-  $ cf push
-  ```
+    ```
+    $ cf push
+    ```
 
 1. When the command completes, access the application running in the cloud to confirm your change was deployed
 
-  ```
-  requested state: started
-  instances: 1/1
-  usage: 256M x 1 instances
-  urls: todo-[your-initials].mybluemix.net
-  last uploaded: Mon Jan 16 21:20:54 UTC 2017
-  stack: cflinuxfs2
-  buildpack: SDK for Node.js(TM) (ibm-node.js-4.6.2, buildpack-v3.9-20161128-1327)
+    ```
+    requested state: started
+    instances: 1/1
+    usage: 256M x 1 instances
+    urls: todo-[your-initials].mybluemix.net
+    last uploaded: Mon Jan 16 21:20:54 UTC 2017
+    stack: cflinuxfs2
+    buildpack: SDK for Node.js(TM) (ibm-node.js-4.6.2, buildpack-v3.9-20161128-1327)
 
-       state     since                    cpu    memory          disk          details
-  #0   running   2017-01-16 10:22:17 PM   4.6%   22.1M of 256M   65.8M of 1G    
-  ```
+         state     since                    cpu    memory          disk          details
+    #0   running   2017-01-16 10:22:17 PM   4.6%   22.1M of 256M   65.8M of 1G    
+    ```
 
 Changing files locally and pushing them worked but we can do better.
 In a previous step we set up a Git repository and a build pipeline was automatically configured.
@@ -217,21 +217,21 @@ In a previous step we set up a Git repository and a build pipeline was automatic
 
 1. Commit your changes locally
 
-  ```
-  $ git commit -a -m "updated title"
-  ```
+    ```
+    $ git commit -a -m "updated title"
+    ```
 
-  Note: you might be prompted to configure git for the first time:
-  ```
-  git config --global user.email "you@example.com"
-  git config --global user.name "Your Name"
-  ```
+    Note: you might be prompted to configure git for the first time:
+    ```
+    git config --global user.email "you@example.com"
+    git config --global user.name "Your Name"
+    ```
 
 1. Push your changes
 
-  ```
-  $ git push
-  ```
+    ```
+    $ git push
+    ```
 
 1. Back to the Bluemix console, go to your application **Overview**. Click on the **View Toolchain** button in the Continuous Delivery section. Click the **Delivery Pipeline** that was created automatically in a previous step.
 
@@ -276,14 +276,14 @@ In order to store the todo, we will need a persistent storage. To do so, we will
 
 1. Select **Restage** when prompted to do so.
 
-  Your application will restart and the service connection information will be made available to your application.
+    Your application will restart and the service connection information will be made available to your application.
 
-  Note: All the steps above could have been scripted using the three commands below:
-  ```
-  $ cf create-service cloudantNoSQLDB Lite todo-cloudant-[your-initials]
-  $ cf bind-service todo-[your-initials] todo-cloudant-[your-initials]
-  $ cf restage todo-[your-initials]
-  ```
+    Note: All the steps above could have been scripted using the three commands below:
+    ```
+    $ cf create-service cloudantNoSQLDB Lite todo-cloudant-[your-initials]
+    $ cf bind-service todo-[your-initials] todo-cloudant-[your-initials]
+    $ cf restage todo-[your-initials]
+    ```
 
 # Step 10 - Connect the Cloudant DB to the application code
 
@@ -295,42 +295,42 @@ Given a Cloud Foundry app relies on the VCAP_SERVICES environment variable, a st
 
 1. Under **Runtime / Environment Variables**, copy the full content of the **VCAP_SERVICES** into the file vcap-local.json of your project. Make sure to copy the content on line 3 below the services element. It should look as follows:
 
-  ```
-  {
-    "services": {
-      "cloudantNoSQLDB": [
-        {
-          "credentials": {
-              "username": "XXXX",
-              "password": "XXXX",
-              "host": "XXXXXX-bluemix.cloudant.com",
-              "port": 443,
-              "url": "https://....-bluemix.cloudant.com"
-          },
-          "name": "todo-cloudant",
-          "label": "cloudantNoSQLDB",
-          "plan": "Lite",
-          ...
-        }
-      ]
+    ```
+    {
+      "services": {
+        "cloudantNoSQLDB": [
+          {
+            "credentials": {
+                "username": "XXXX",
+                "password": "XXXX",
+                "host": "XXXXXX-bluemix.cloudant.com",
+                "port": 443,
+                "url": "https://....-bluemix.cloudant.com"
+            },
+            "name": "todo-cloudant",
+            "label": "cloudantNoSQLDB",
+            "plan": "Lite",
+            ...
+          }
+        ]
+      }
     }
-  }
-  ```
+    ```
 
 
 # Step 11 - Run the Todo App locally
 
 1. Get the dependencies for the Todo App. In your app directory, run:
 
-  ```
-  $ npm install
-  ```
+    ```
+    $ npm install
+    ```
 
 1. Run the application
 
-  ```
-  $ npm start
-  ```
+    ```
+    $ npm start
+    ```
 
 1. Access the local application
 
@@ -339,21 +339,21 @@ Given a Cloud Foundry app relies on the VCAP_SERVICES environment variable, a st
 
 1. Add all new files to Git:
 
-  ```
-  $ git add .
-  ```
+    ```
+    $ git add .
+    ```
 
 1. Commit:
 
-  ```
-  $ git commit -a -m "full solution"
-  ```
+    ```
+    $ git commit -a -m "full solution"
+    ```
 
 1. Push to remote Git
 
-  ```
-  git push
-  ```
+    ```
+    git push
+    ```
 
 1. Watch the Delivery Pipeline processing your commit and deploying a new version of your app.
 
