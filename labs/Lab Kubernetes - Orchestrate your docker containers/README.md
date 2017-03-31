@@ -1,4 +1,4 @@
-![](./images/kubernetes.svg)
+![](./images/kubernetes.png)
 # Introduction
 
 In this lab, you’ll gain a high level understanding of the Kubernetes architecture, features, and development concepts related to the IBM Container Service. Throughout the lab, you’ll get a chance to use the Command Line Interface (CLI) for creating a Kubernetes cluster, manage your running cluster, and bind a service.
