@@ -225,7 +225,7 @@ By typing Y (Yes) to the question Install loopback-connector-cloudant, the Cloud
 
     ![APIC Screenshot](./images/apic-firstscreen.png)
 
-###Create a Model for the **demo** items
+### Create a Model for the **demo** items
 
 In this section, you will define the item data model for our **demo** API and attach it to the Cloudant datasource. LoopBack is a data model driven framework. The properties of the data model will become the JSON elements of the API request and response payloads.
 
@@ -237,7 +237,7 @@ In this section, you will define the item data model for our **demo** API and at
 
 2. When the Model edit page for the item model displays, select the **db** Data Source:
 
-####Create Properties for the Customer Model
+#### Create Properties for the Customer Model
 
 The ```Customer``` table in the database has 6 columns that will need to mapped as well. To start creating properties for the item model:
 
@@ -507,7 +507,7 @@ In this lab, you will learn how to consume an API from a Mobile Application.
 
 In this case, we will use a very simple sample of a Mobile Hybrid Application with the framework Ionic 1.7.
 
-##Prepare your environment and the Mobile Application
+## Prepare your environment and the Mobile Application
 
  1. Retrieve the sample from this url
 
@@ -552,7 +552,7 @@ https://github.com/fdut/bluemix-labs/raw/master/Lab%20API%20-%20Manage%20your%20
 
 
 
-##Simulate the Mobile App in a browser.
+## Simulate the Mobile App in a browser.
 
  2. Enter the following command :
 
@@ -572,7 +572,7 @@ https://github.com/fdut/bluemix-labs/raw/master/Lab%20API%20-%20Manage%20your%20
    ![Simulate dev tools](./images/simulatewithtools.png)
 
 
-##Emulate the Mobile App with in a Android device emulator
+## Emulate the Mobile App with in a Android device emulator
 
  Now if you want, you can emulate you app in a emulator. In this sample we are going to use Android Emulator.
 
@@ -624,7 +624,7 @@ https://github.com/fdut/bluemix-labs/raw/master/Lab%20API%20-%20Manage%20your%20
  ```
  1. And click **OK**
 
-###Launch the Mobile App with in the Android Virtual Device Emulator
+### Launch the Mobile App with in the Android Virtual Device Emulator
 
  1. In the **mobileapp** folder, enter the following command :
 
