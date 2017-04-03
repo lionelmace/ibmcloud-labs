@@ -16,12 +16,10 @@ In this lab, you’ll gain a high level understanding of the Kubernetes architec
 
 1. [Prepare your IBM Container Service](#step-1---prepare-your-ibm-container-service)
 1. [Connect to Bluemix](#step-2---connect-to-Bluemix)
-1. [Create a free cluster](#step-3---create-a-free-cluster)
-1. [Create a paid cluster](#step-4---create-a-paid-cluster)
-1. [Check your cluster status](#step-5---check-your-cluster-status)
-1. [Deploy Hello World app](#step-6---deploy-hello-world-app)
-1. [Bind a Bluemix service to a Kubernetes namespace](#step-7---bind-a-bluemix-service-to-a-kubernetes-namespace)
-1. [Weave Scope](#step-8---weave-scope)
+1. [Create a cluster](#step-3---create-a-free-cluster)
+1. [Deploy Hello World app](#step-4---deploy-hello-world-app)
+1. [Bind a Bluemix service to a Kubernetes namespace](#step-5---bind-a-bluemix-service-to-a-kubernetes-namespace)
+1. [Weave Scope](#step-6---weave-scope)
 
 
 ## Step 1 - Prepare your IBM Container Service
@@ -65,8 +63,11 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
     bx cs init
     ```
 
-# Step 3 - Create a free cluster
-A free cluster comes with one worker node to deploy container pods upon. A worker node is the compute host, typically a virtual machine, that your apps run on. If you have a a Bluemix Infrastructure (SoftLayer) account, you can skip this step and go to the next step *Create a paid cluster*.
+# Step 3 - Create a cluster
+To create a cluster, you have two options either a free cluster or a paid cluster.
++ A free cluster comes with one worker node to deploy container pods upon. A worker node is the compute host, typically a virtual machine, that your apps run on.
++ A paid cluster can have as many worker nodes as you want. A paid cluster requires requires a Bluemix Infrastructure (SoftLayer) account.
+If you have a Bluemix Infrastructure (SoftLayer) account, you can skip this first step and go to the step 2 *Set SoftLayer credentials*.
 
 1. Create your free Kubernetes cluster.
     ```
@@ -74,8 +75,7 @@ A free cluster comes with one worker node to deploy container pods upon. A worke
     ```
     Note: It can take up to 15 minutes for the worker node machine to be ordered and for the cluster to be set up and provisioned.
 
-# Step 4 - Create a paid cluster
-You can skip this test if you already have a free cluster. In order to create a paid cluster, you will need a Bluemix Infrastructure (SoftLayer) account, so that the worker nodes can be provisioned.
+If you have already created a free cluster in the step above, skip to the step **Step 4 - Deploy Hello World app**.
 
 1. Set SoftLayer credentials
     ```
@@ -127,7 +127,6 @@ You can skip this test if you already have a free cluster. In order to create a 
     bx cs cluster-create --name <YOUR-CLUSTER-NAME> --datacenter dal10 --workers 3 --machine-type u1c.2x4 --isolation public --public-vlan <ID-PRIVATE-VLAN> --private-vlan <ID-PUBLIC-VLAN>
     ```
 
-# Step 5 - Check your cluster status
 1. Verify that the creation of the cluster was requested.
     ```
     bx cs clusters
@@ -162,7 +161,7 @@ You can skip this test if you already have a free cluster. In order to create a 
     http://localhost:8001/ui
     ```
 
-# Step 6 - Deploy Hello World app
+# Step 4 - Deploy Hello World app
 
 1. Log in to the IBM Bluemix Container Registry CLI.
     ```
@@ -266,7 +265,7 @@ You can skip this test if you already have a free cluster. In order to create a 
     http://<IP_address>:<NodePort>
 
 
-## Step 7 - Bind a Bluemix service to a Kubernetes namespace
+## Step 5 - Bind a Bluemix service to a Kubernetes namespace
 
 1. See all the available services in the catalog
     ```
@@ -307,7 +306,7 @@ You can skip this test if you already have a free cluster. In order to create a 
     Note: Use the namepsace **default** or create your own namespace.
 
 
-## Step 8 - Weave Scope
+## Step 6 - Weave Scope
 
 Weaveworks scope provides a visual diagram of your resources within the kube cluster including services, pods, containers, processes, nodes, etc. Scope provides you interactive metrics for CPU and Memory and provides tools to tail and exec into a container. Scope is a powerful tool that you do NOT want to expose on the public internet. The following steps describe how to securely deploy scope and access it from a web browser.
 
