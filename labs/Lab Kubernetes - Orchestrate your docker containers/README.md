@@ -18,9 +18,10 @@ In this lab, you’ll gain a high level understanding of the Kubernetes architec
 1. [Connect to Bluemix](#step-2---connect-to-Bluemix)
 1. [Create a free cluster](#step-3---create-a-free-cluster)
 1. [Create a paid cluster](#step-4---create-a-paid-cluster)
-1. [Deploy Hello World app](#step-5---deploy-hello-world-app)
-1. [Bind a Bluemix service to a Kubernetes namespace](#step-6---bind-a-bluemix-service-to-a-kubernetes-namespace)
-1. [Weave Scope](#step-7---weave-scope)
+1. [Check your cluster status](#step-5---check-your-cluster-status)
+1. [Deploy Hello World app](#step-6---deploy-hello-world-app)
+1. [Bind a Bluemix service to a Kubernetes namespace](#step-7---bind-a-bluemix-service-to-a-kubernetes-namespace)
+1. [Weave Scope](#step-8---weave-scope)
 
 
 ## Step 1 - Prepare your IBM Container Service
@@ -65,16 +66,16 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
     ```
 
 # Step 3 - Create a free cluster
+A free cluster comes with one worker node to deploy container pods upon. A worker node is the compute host, typically a virtual machine, that your apps run on. If you have a a Bluemix Infrastructure (SoftLayer) account, you can skip this step and go to the next step *Create a paid cluster*.
 
 1. Create your free Kubernetes cluster.
     ```
     bx cs cluster-create --name <your-cluster-name>
     ```
-    A free cluster comes with one worker node to deploy container pods upon. A worker node is the compute host, typically a virtual machine, that your apps run on.
     Note: It can take up to 15 minutes for the worker node machine to be ordered and for the cluster to be set up and provisioned.
 
 # Step 4 - Create a paid cluster
-In order to create a paid cluster, you will need a Bluemix Infrastructure (SoftLayer) account, so that the worker nodes can be provisioned.
+You can skip this test if you already have a free cluster. In order to create a paid cluster, you will need a Bluemix Infrastructure (SoftLayer) account, so that the worker nodes can be provisioned.
 
 1. Set SoftLayer credentials
     ```
@@ -126,6 +127,7 @@ In order to create a paid cluster, you will need a Bluemix Infrastructure (SoftL
     bx cs cluster-create --name <YOUR-CLUSTER-NAME> --datacenter dal10 --workers 3 --machine-type u1c.2x4 --isolation public --public-vlan <ID-PRIVATE-VLAN> --private-vlan <ID-PUBLIC-VLAN>
     ```
 
+# Step 5 - Check your cluster status
 1. Verify that the creation of the cluster was requested.
     ```
     bx cs clusters
@@ -160,7 +162,7 @@ In order to create a paid cluster, you will need a Bluemix Infrastructure (SoftL
     http://localhost:8001/ui
     ```
 
-# Step 5 - Deploy Hello World app
+# Step 6 - Deploy Hello World app
 
 1. Log in to the IBM Bluemix Container Registry CLI.
     ```
@@ -264,7 +266,7 @@ In order to create a paid cluster, you will need a Bluemix Infrastructure (SoftL
     http://<IP_address>:<NodePort>
 
 
-## Step 6 - Bind a Bluemix service to a Kubernetes namespace
+## Step 7 - Bind a Bluemix service to a Kubernetes namespace
 
 1. See all the available services in the catalog
     ```
@@ -305,7 +307,7 @@ In order to create a paid cluster, you will need a Bluemix Infrastructure (SoftL
     Note: Use the namepsace **default** or create your own namespace.
 
 
-## Step 7 - Weave Scope
+## Step 8 - Weave Scope
 
 Weaveworks scope provides a visual diagram of your resources within the kube cluster including services, pods, containers, processes, nodes, etc. Scope provides you interactive metrics for CPU and Memory and provides tools to tail and exec into a container. Scope is a powerful tool that you do NOT want to expose on the public internet. The following steps describe how to securely deploy scope and access it from a web browser.
 
