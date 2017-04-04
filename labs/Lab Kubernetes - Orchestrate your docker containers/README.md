@@ -65,9 +65,8 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
 
 # Step 3 - Create a cluster
 To create a cluster, you have two options either a free cluster or a paid cluster.
-+ A free cluster comes with one worker node to deploy container pods upon. A worker node is the compute host, typically a virtual machine, that your apps run on.
-+ A paid cluster can have as many worker nodes as you want. A paid cluster requires requires a Bluemix Infrastructure (SoftLayer) account.
-If you have a Bluemix Infrastructure (SoftLayer) account, you can skip this first step and go to the step 2 *Set SoftLayer credentials*.
++ A **free cluster** comes with one worker node to deploy container pods upon. A worker node is the compute host, typically a virtual machine, that your apps run on.
++ A **paid cluster** can have as many worker nodes as you want. A paid cluster requires requires a Bluemix Infrastructure (SoftLayer) account. If you have a Bluemix Infrastructure account, you can skip this first step and go to the step 2 *Set SoftLayer credentials*.
 
 1. Create your free Kubernetes cluster.
     ```
