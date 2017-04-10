@@ -162,12 +162,12 @@ If you have already created a free cluster in the step above, skip to the step *
 
 # Step 4 - Deploy Hello World app
 
-1. Log in to the IBM Bluemix Container Registry CLI.
+1. Log in to the private Container Registry of Bluemix. Only required if you haven't `bx login` before.
     ```
     bx cr login
     ```
 
-1. If you forgot the namespace for your private image registry, run the following command.
+1. If you forgot the namespace for your image registry, run the following command.
     ```
     bx cr namespace-list
     ```
@@ -260,8 +260,10 @@ If you have already created a free cluster in the step above, skip to the step *
     ```
 
 1. Open a browser and check out the app with the following URL:
-
+    ```
     http://<IP_address>:<NodePort>
+    ```
+    In this example, the url would be ```http://169.47.227.138:30872```
 
 
 ## Step 5 - Bind a Bluemix service to a Kubernetes namespace
