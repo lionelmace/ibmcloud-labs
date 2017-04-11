@@ -38,7 +38,7 @@ In the following lab, you will learn:
 1. [Commit your changes and see them deployed automatically](#step-7---commit-your-changes-and-see-them-deployed-automatically)
 1. [Get the Todo App code](#step-8---get-the-todo-app-code)
 1. [Create and bind a Cloudant service](#step-9---create-and-bind-a-cloudant-service)
-1. [Connect the Cloudant DB to the application code](#step-10---Connect-the-cloudant-db-to-the-application-code)
+1. [Connect the Cloudant DB to the application code](#step-10---connect-the-cloudant-db-to-the-application-code)
 1. [Run the Todo App locally](#step-11---run-the-todo-app-locally)
 1. [Commit the changes](#step-12---commit-the-changes)
 
