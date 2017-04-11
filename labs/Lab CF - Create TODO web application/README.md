@@ -166,7 +166,7 @@ It has **1024MB** of disk space available.
       memory: 256M
       instances: 1
       domain: mybluemix.net
-      buildpack: sdk-for-nodejs
+      **buildpack: sdk-for-nodejs**
       name: todo-[your-initials]
       host: todo-[your-initials]
       disk_quota: 1024M
