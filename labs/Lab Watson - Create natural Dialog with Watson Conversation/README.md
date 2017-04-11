@@ -38,11 +38,13 @@ In the following lab, you will learn:
 
 # Step 1 - Create a Watson Conversation service
 
-1. On the Bluemix dashboard, select Catalog from the menu bar.
+1. On the Bluemix dashboard, select **Catalog** from the menu bar.
 
-1. Scroll down to the Services section and click the icon for the Watson Conversation service. The Add Service page opens.
+1. In the **Services** category, select **Watson**.
 
-1. Click Create. The service instance is created, and the service dashboard page opens automatically.
+1. Click the icon for the Watson Conversation service. The Add Service page opens.
+
+1. Keep the default options, including the free plan and click Create. The service instance is created, and the service dashboard page opens automatically.
 
 1. On the dashboard page, click on the **Launch Tool** to get started. The "Create workspace" page opens.
 
@@ -57,7 +59,7 @@ One workspace corresponds to one bot — it contains all the configuration infor
 
 1. In the **Name** field, type ```Car tutorial```.
 
-1. Choose **English (U.S.)** from one of five languages currently supported.
+1. Choose **English (U.S.)** from one of eleven languages currently supported.
 
 1. Select **Create**. The new workspace is created and appears as a tile on your dashboard.
 
@@ -78,21 +80,26 @@ Creating new intents is easy.
 
 1. Add example utterances that will help Watson recognize the #turn_on intent:
 
-  1. In the **User example** field, type ```I need lights``` and press Enter. The example utterance ```I need lights``` is added to the intent.
+1. In the **User example** field, type ```I need lights``` and press Enter. The example utterance ```I need lights``` is added to the intent.
 
-  1. Repeat the same process to add the following examples:
+1. Repeat the same process to add the following examples:
 
-      + *Listen to some music*
-      + *Play some tunes*
-      + *Air on please*
-      + *Turn on the headlights*
-      
+    + *Listen to some music*
+    + *Play some tunes*
+    + *Air on please*
+    + *Turn on the headlights*
+
 1. Now that you have added at least 5 examples, click **Done**. The intent is created and appears on the Intents page.
 
-1. Repeat the same process to create a #greeting intent. 
+1. Repeat the same process to create a #greeting intent.
+    ```
+    Hello
+    Hi
+    Good morning
+    Good afternoon
+    Good everning
+    ```
 
- ![](./images/intent-greeting.png)
- 
 **Results**
 
 You have now defined two intents (#turn_on and #greeting), along with examples that will train Watson to recognize these intents in user input.
@@ -114,12 +121,12 @@ Create entities to represent what the user wants to turn on:
   1. In the **Value** field, type ```music```. This value represents a specific appliance that users might want to turn on.
 
   1. In the **Synonyms** field, type ```radio```. This indicates that ```radio``` is another way of specifying the same value for the @appliance entity.
-  
+
   1. Click the plus sign (+) to define additional values for @appliance:
 
     + ```headlights```, with the synonym ```lights```
     + ```air conditioning```, with the synonym ```air```
-    
+
   1. Click Done. The @appliance entity is created now appears on the Entities tab.
 
 1. On the Entities tab, click **Create** to create another entity.
@@ -129,7 +136,7 @@ Create entities to represent what the user wants to turn on:
   1. In the **Entity** field, type ```classical```.
 
   1. In the **Synonyms** field, type ```symphonic```.
-  
+
 1. Click the plus sign (+) to define additional values for @genre:
 
   + ```rhythm and blues```, with the synonym ```r&b```
@@ -158,15 +165,15 @@ First we need to create a starting node for the dialog:
   1. In the **Enter a condition** field, type ```conversation_start```. As you type, a drop-down list appears; select **conversation_start (create new condition)**. This indicates that this node is triggered automatically at the beginning of the conversation.
 
   1. In the **Watson says** field, type ```Welcome to the car demo!``` This is the response that Watson will issue when the specified condition (in this case, the conversation start) is true.
-  
+
   1. Click the "Anything else" node that was created automatically when you defined the conversation_start node.
 
   1. In the **Watson says** field of the "Anything else" node, type ```I'm sorry, I don't understand. Please try again.``` This is the response that Watson will issue when the user input does not match any other node.
-  
+
 1. Test the conversation:
 
   1. Click the Try it out ![](./images/dialog-try.png) icon. In the chat pane, you should see the response (```Welcome to the car demo```) displayed automatically.
-  
+
   1. Type any input and press Enter. Because you have not yet defined any other nodes, you should see the response I'm sorry, I don't understand. Please try again.
 
   1. Close the chat pane.
@@ -183,32 +190,32 @@ Now we can create dialog branches that handle the defined intents.
 
   1. In the **Watson says** field, specify ```Hi! What can I do for you?```.
 
-  ![](./images/dialog-greeting.png) 
-  
+  ![](./images/dialog-greeting.png)
+
 1. Test the dialog:
 
   1. Click the ![](./images/dialog-try.png) icon to open the chat pane.
-  
+
   1. Type ```Hello``` and press Enter. The output shows that the #greeting intent is recognized, and the appropriate response appears.
-  
+
   ![](./images/dialog-greeting-test.png)
-  
+
 1. Create another dialog branch to respond to the #turn_on intent. Because there are multiple possibilities for what the user might want to turn on, this branch requires multiple nodes to represent a more complex conversation. Start by creating the root-level node:
 
   1. Click the **+** icon on the bottom of the #greeting node to create a new root-level node.
-  
+
   1. In the **Enter a condition** field, type ```#turn_on```. When the drop-down list appears, press Enter to select **#turn_on**. This specifies that this node will be triggered by any input that matches the #turn_on intent. Leave the **Watson says** field blank; the dialog needs more information before it can choose a response.
-  
+
 The #turn_on intent requires additional processing, because the dialog needs to determine what appliance the user wants to turn on. To handle this, we can extend the dialog branch with subnodes:
 
 1. Add a subnode to verify that the user specified a valid appliance to turn on. If the dialog recognizes the #turn_on intent in the user input, the next step is to check the input to make sure the user specified one of the defined values for the @appliance entity. To do this, add a subnode:
 
   1. Click the **+** icon on the right side of the #turn_on node to create a new subnode.
-  
+
   1. In the **Enter a condition** field, type ```@appliance```. When the drop-down list appears, press Enter to select **@appliance**. This specifies that this node will be triggered if the user input includes any recognized value for the @appliance entity. Leave the **Watson says** field blank; the dialog still needs more information before choosing a response.
-  
+
   1. In the upper right corner of the #turn_on node, click the **Options** icon and then click **Continue from**.
-  
+
   1. Click the @appliance node and then click **Go to condition**. The **Continue from** link indicates that if the #turn_on node evaluates as true, the dialog flow should pass to the @appliance node without waiting for additional user input. This is necessary because we want the @appliance node to continue evaluating the user's original input rather than waiting for new input.
 
   ![](./images/tutorial_dialog3.png)
@@ -216,9 +223,9 @@ The #turn_on intent requires additional processing, because the dialog needs to 
 1. Now add a peer subnode that will be triggered if the user input did not specify a valid appliance:
 
   1. Click the **+** icon on the bottom of the @appliance node to create a new peer subnode.
-  
+
   1. In the **Enter a condition** field, type true. When the drop-down list appears, select **true (create new condition)**. This specifies that if the dialog execution flow reaches this node, it should always evaluate as true. (If the user specified a valid @appliance value, this node will never be reached.)
-  
+
   1. In the **Watson says field**, type ```I'm sorry, I don't know how to do that. I can turn on music, headlights, or air conditioning.```
 
 Now we need to add subnodes to determine the appropriate response when the user has specified a valid appliance:
@@ -228,11 +235,11 @@ Now we need to add subnodes to determine the appropriate response when the user 
   1. Click the **+** icon on the right side of the @appliance node to create a new subnode. This subnode will be evaluated only if @appliance is true, meaning that the user has specified a valid appliance.
 
   1. In the **Enter a condition** field, type ```@appliance```. When the drop-down list appears, select **@appliance:music**. This specifies that this node will be triggered if the value of the @appliance entity is music or one of its synonyms, as defined on the Entities tab.
-  
+
   1. In the *Watson says* field, type ```OK! What kind of music would you like to hear?```
 
   1. In the upper right corner of the @appliance node, click the **Options** icon and then click **Continue from**.
-  
+
   1. Click the @appliance:music node and then click **Go to condition**. The **Continue from** link indicates that if the @appliance node evaluates as true, the dialog flow should pass to the @appliance:music node without waiting for additional user input.
 
   ![](./images/tutorial_dialog4.png)
@@ -240,23 +247,23 @@ Now we need to add subnodes to determine the appropriate response when the user 
   1. Click the **+** icon on the right side of the @appliance:music node to create a new subnode. This subnode will be evaluated only if @appliance is true, and only after the user has responded to the question about genre.
 
   1. In the **Enter a condition** field, type @genre. When the drop-down list appears, press Enter to select **@genre**. This specifies that this node will be triggered if the user input includes any recognized value for the @genre entity.
-  
+
   1. In the **Watson says** field, type ```OK! Playing @genre```. At run time, the @genre variable will be replaced with the name of the genre specified by the user.
-  
+
   1. Click the **+** icon on the bottom of the @genre node to create a new peer subnode.
-  
+
   1. In the **Enter a condition** field, type true. When the drop-down list appears, select **true (create new condition)**. This specifies that if the dialog execution flow reaches this node, it should always evaluate as true. (If the user specified a valid @genre value, this node will never be reached.)
-  
+
   1. In the **Watson says** field, type ```I'm sorry, I don't understand. I can play classical, rhythm and blues, or rock music.```
-  
+
   ![](./images/tutorial_dialog5.png)
 
 1. Test the dialog:
 
   1. Click the ![](./images/dialog-try.png) icon to open the chat pane.
-  
+
   1. Type ```Play music```. The bot recognizes the #turn_on intent and the @appliance:music entity, and it responds by asking you for a musical genre.
-  
+
   1. Type the name or a synonym for a valid @genre value. The bot recognizes the @genre entity and responds appropriately.
 
   1. Type ```Play music``` again, but this time specify an invalid response for the genre. The bot responds by saying it does not understand.
@@ -264,9 +271,9 @@ Now we need to add subnodes to determine the appropriate response when the user 
 1. Create a subnode to handle user requests to turn on other appliances. Because the other appliances do not require additional information, we can handle these requests with a single node.
 
   1. Click the **+** icon on the bottom of the @appliance:music node to create a new peer subnode.
-  
+
   1. In the **Enter a condition** field, type true. When the drop-down list appears, select **true (create new condition)**. This specifies that if the dialog execution flow reaches this node, it should always evaluate as true. In this case, this node will only be reached if the user specified a valid appliance other than music.
-  
+
   1. In the **Watson says** field, type ```OK, turning on the @appliance.```
 
 1. Test the dialog:
@@ -280,7 +287,7 @@ Now we need to add subnodes to determine the appropriate response when the user 
   1. Try variations on all of the supported commands based on the examples and entity synonyms you defined. If the bot fails to recognize the correct intent, you can retrain it directly from the chat window by clicking the incorrect intent and typing the correct intent in the field. (Do not include the # character when you type the intent name.)
 
   ![](./images/tutorial_dialogtest2.png)
-  
+
 
 # Step 6 - Integrate the dialog into a web app
 
@@ -321,5 +328,4 @@ Note: If you still get the message "The app has not been configured with a WORKS
 
 For additional resources pay close attention to the following:
 
-- [Watson Conversation Documentation](http://www.ibm.com/watson/developercloud/doc/conversation/index.shtml)
-
+- [Watson Conversation Documentation](https://www.ibm.com/watson/developercloud/doc/conversation/index.html)
