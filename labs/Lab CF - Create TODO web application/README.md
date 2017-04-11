@@ -30,17 +30,17 @@ In the following lab, you will learn:
 # Steps
 
 1. [Create a new web application](#step-1---create-a-new-web-application)
-2. [Enable Continuous Delivery](#step-2---enable-continuous-delivery)
-3. [Checkout the code locally](#step-3---checkout-the-code-locally)
-4. [Run the app locally](#step-4---run-the-app-locally)
-5. [Change a file locally](#step-5---change-a-file-locally)
-6. [Push your local change to the cloud](#step-6---push-your-local-change-to-the-cloud)
-7. [Commit your changes and see them deployed automatically](#step-7---commit-your-changes-and-see-them-deployed-automatically)
-8. [Get the Todo App code](#step-8---get-the-todo-app-code)
-9. [Create and bind a Cloudant service](#step-9---create-and-bind-a-cloudant-service)
-10. [Connect the Cloudant DB to the application code](#step-10---Connect-the-cloudant-db-to-the-application-code)
-11. [Run the Todo App locally](#step-11---run-the-todo-app-locally)
-12. [Commit the changes](#step-12---commit-the-changes)
+1. [Enable Continuous Delivery](#step-2---enable-continuous-delivery)
+1. [Checkout the code locally](#step-3---checkout-the-code-locally)
+1. [Run the app locally](#step-4---run-the-app-locally)
+1. [Change a file locally](#step-5---change-a-file-locally)
+1. [Push your local change to the cloud](#step-6---push-your-local-change-to-the-cloud)
+1. [Commit your changes and see them deployed automatically](#step-7---commit-your-changes-and-see-them-deployed-automatically)
+1. [Get the Todo App code](#step-8---get-the-todo-app-code)
+1. [Create and bind a Cloudant service](#step-9---create-and-bind-a-cloudant-service)
+1. [Connect the Cloudant DB to the application code](#step-10---Connect-the-cloudant-db-to-the-application-code)
+1. [Run the Todo App locally](#step-11---run-the-todo-app-locally)
+1. [Commit the changes](#step-12---commit-the-changes)
 
 
 # Step 1 - Create a new web application
@@ -158,7 +158,7 @@ being deployed with **256MB**, with **one** instance, under the **mybluemix.net*
 The app is named **todo-[your-initials]** and it is using **todo-[your-initials]** as host name.
 It has **1024MB** of disk space available.
 
-1. Specifying the buildpack to be used when pushing a Cloud Foundry app is always faster than relying on buildpack detection. Modify the generated Manifest to specify the buildpack by adding one line as follows:
+1. Specifying the buildpack to be used when pushing a Cloud Foundry app is always faster than relying on buildpack detection. Modify the generated Manifest to specify the **buildpack** by adding one line as follows:
 
     ```
     applications:
@@ -166,7 +166,7 @@ It has **1024MB** of disk space available.
       memory: 256M
       instances: 1
       domain: mybluemix.net
-      **buildpack: sdk-for-nodejs**
+      buildpack: sdk-for-nodejs
       name: todo-[your-initials]
       host: todo-[your-initials]
       disk_quota: 1024M
@@ -301,7 +301,8 @@ Given a Cloud Foundry app relies on the VCAP_SERVICES environment variable, a st
 
     ```
     {
-      "services": {
+      "services":
+      {
         "cloudantNoSQLDB": [
           {
             "credentials": {
