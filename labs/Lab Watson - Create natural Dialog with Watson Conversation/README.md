@@ -83,15 +83,16 @@ Creating new intents is easy.
 1. In the **User example** field, type ```I need lights``` and press Enter. The example utterance ```I need lights``` is added to the intent.
 
 1. Repeat the same process to add the following examples:
+    ```
+    + Listen to some music
+    + Play some tunes
+    + Air on please
+    + Turn on the headlights
+    ```
 
-    + *Listen to some music*
-    + *Play some tunes*
-    + *Air on please*
-    + *Turn on the headlights*
+1. Now that you have added at least 5 examples, click **Create**. The intent is created and appears on the Intents page.
 
-1. Now that you have added at least 5 examples, click **Done**. The intent is created and appears on the Intents page.
-
-1. Repeat the same process to create a #greeting intent.
+1. Repeat the same process to create a ```#greeting``` intent.
     ```
     Hello
     Hi
