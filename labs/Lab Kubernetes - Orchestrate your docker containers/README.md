@@ -15,8 +15,8 @@ In this lab, you’ll gain a high level understanding of the Kubernetes architec
 # Steps
 
 1. [Prepare your IBM Container Service](#step-1---prepare-your-ibm-container-service)
-1. [Connect to Bluemix](#step-2---connect-to-Bluemix)
-1. [Create a cluster](#step-3---create-a-free-cluster)
+1. [Connect to Bluemix](#step-2---connect-to-bluemix)
+1. [Create a cluster](#step-3---create-a-cluster)
 1. [Deploy Hello World app](#step-4---deploy-hello-world-app)
 1. [Bind a Bluemix service to a Kubernetes namespace](#step-5---bind-a-bluemix-service-to-a-kubernetes-namespace)
 1. [Weave Scope](#step-6---weave-scope)
@@ -356,3 +356,4 @@ For additional resources pay close attention to the following:
 - [Running Kubernetes clusters with IBM Bluemix Container Service (Beta)](https://console.ng.bluemix.net/docs/containers/cs_cluster.html#cs_cluster_cli)
 - [Container Service Swagger API](https://us-south.containers.bluemix.net/swagger)
 - [Bash script to tail Kubernetes logs from multiple pods at the same time](https://github.com/johanhaleby/kubetail)
+- [Bluemix CLI Plug-in Repository](http://clis.ng.bluemix.net/ui/repository.html#bluemix-plugins)
