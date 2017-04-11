@@ -94,16 +94,17 @@ Creating new intents is easy.
 
 1. Repeat the same process to create a ```#greeting``` intent.
     ```
-    Hello
-    Hi
-    Good morning
-    Good afternoon
-    Good everning
+    + Hello
+    + Hi
+    + Good morning
+    + Good afternoon
+    + Good everning
     ```
 
 **Results**
 
-You have now defined two intents (#turn_on and #greeting), along with examples that will train Watson to recognize these intents in user input.
+You defined two intents, ```#turn_on``` and ```#greeting```, with example utterances. These examples help train Watson to recognize these intents in user input.
+
 
 # Step 4 - Work with entities
 
@@ -119,35 +120,30 @@ Create entities to represent what the user wants to turn on:
 
 1. Define a value for the @appliance entity:
 
-  1. In the **Value** field, type ```music```. This value represents a specific appliance that users might want to turn on.
+1. In the **Value** field, type ```music```. This value represents a specific appliance that users might want to turn on.
 
-  1. In the **Synonyms** field, type ```radio```. This indicates that ```radio``` is another way of specifying the same value for the @appliance entity.
+1. In the **Synonyms** field, type ```radio```. This indicates that ```radio``` is another way of specifying the same value for the @appliance entity.
 
-  1. Click the plus sign (+) to define additional values for @appliance:
+1. Click the plus sign (+) to define additional values for @appliance:
 
-    + ```headlights```, with the synonym ```lights```
-    + ```air conditioning```, with the synonym ```air```
+    + Value: ```headlights```. Synonym: ```lights```
+    + Value: ```air conditioning```. Synonym: ```air```
 
-  1. Click Done. The @appliance entity is created now appears on the Entities tab.
+1. Click **Create**. The @appliance entity is created now appears on the Entities tab.
 
 1. On the Entities tab, click **Create** to create another entity.
 
-1. Define a value for the @genre entity:
+1. Repeat the process to create the ```@genre``` entity with 3 values and synonyms:
 
-  1. In the **Entity** field, type ```classical```.
-
-  1. In the **Synonyms** field, type ```symphonic```.
-
-1. Click the plus sign (+) to define additional values for @genre:
-
-  + ```rhythm and blues```, with the synonym ```r&b```
-  + ```rock```, with the synonym ```pop```
-
-1. Click **Done**. The @genre entity is created and now appears on the Entities tab.
+    + Value: ```classical```. Synonym: ```symphonic```
+    + Value: ```rhythm and blues```. Synonym: ```r&b```
+    + Value: ```rock```. Synonym: ```pop```
 
 **Results**
 
-You have defined two entities: @appliance (representing an appliance the can turn on) and @genre (representing a genre of music the user can choose). You can now define a dialog that uses intents and entities to choose the correct response.
+You defined two entities: ```@appliance``` (representing an appliance the can turn on) and ```@genre``` (representing a genre of music the user can choose).
+
+When the user's input is received, the Conversation service identifies both the intents and entities. You can now define a dialog that uses intents and entities to choose the correct response.
 
 # Step 5 - Create a dialog
 
