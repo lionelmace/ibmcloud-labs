@@ -145,17 +145,18 @@ You defined two entities: ```@appliance``` (representing an appliance the can tu
 
 When the user's input is received, the Conversation service identifies both the intents and entities. You can now define a dialog that uses intents and entities to choose the correct response.
 
+
 # Step 5 - Create a dialog
 
 A dialog is a set of conversational nodes that are contained in a workspace. Together the set of nodes makes a dialog tree, on which every branch is a conversation that can be had with a user.
 
 First we need to create a starting node for the dialog:
 
-1. On the **Car tutorial** workspace page, click the Dialog tab.
+1. On the **Car tutorial** workspace page, select the Dialog tab.
 
 1. Click **Create**. The dialog is created with a single root node:
 
-  ![](./images/dialog-node.JPG)
+  ![](./images/tut-dialog-initial.png)
 
 1. Specify the condition and response for the starting node of the conversation:
 
