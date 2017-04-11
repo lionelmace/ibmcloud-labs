@@ -156,7 +156,7 @@ First we need to create a starting node for the dialog:
 
 1. Click **Create**. The dialog is created with a single root node:
 
-  ![](./images/tut-dialog-initial.png)
+    ![](./images/tut-dialog-initial.png)
 
 1. Specify the condition and response for the starting node of the conversation:
 
