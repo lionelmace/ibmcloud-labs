@@ -28,6 +28,23 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
 
 1. Open a command line utility.
 
+1. Before installing the container plugin, we need to add the repository hosting Bluemix CLI plug-ins.
+    ```
+    bx plugin repos
+    ```
+    Output:
+    ```
+    Listing added plug-in repositories...
+
+    Repo Name   URL
+    Bluemix     https://plugins.ng.bluemix.net
+    ```
+
+1. If you don't see a repository Bluemix, run the following command:
+    ```
+    bx plugin repo-add Bluemix https://plugins.ng.bluemix.net
+    ```
+
 1. To install the Container Service plugin, run the following command:
     ```
     bx plugin install container-service -r Bluemix
@@ -120,6 +137,7 @@ If you have already created a free cluster in the step above, skip to the step *
     1556821          1860     private   bcr01a.dal10
     1556815          1626     public    fcr01a.dal10
     ```
+    Note: When you create a Kube cluster with no vlans in create command, those should get created for you.
 
 1. Create cluster
     ```
@@ -166,6 +184,7 @@ If you have already created a free cluster in the step above, skip to the step *
     ```
     bx cr login
     ```
+    `bx cr login` is a wrapper for `docker login` , it is only needed to log your local docker daemon into the registry, which enables you to push/pull images.
 
 1. If you forgot the namespace for your image registry, run the following command.
     ```
@@ -306,6 +325,11 @@ If you have already created a free cluster in the step above, skip to the step *
     ```
     Note: Use the namepsace **default** or create your own namespace.
 
+1. Control that your secret was successfully created
+    ```
+    kubectl get secrets
+    ```
+
 
 ## Step 6 - Weave Scope
 
@@ -331,3 +355,4 @@ For additional resources pay close attention to the following:
 
 - [Running Kubernetes clusters with IBM Bluemix Container Service (Beta)](https://console.ng.bluemix.net/docs/containers/cs_cluster.html#cs_cluster_cli)
 - [Container Service Swagger API](https://us-south.containers.bluemix.net/swagger)
+- [Bash script to tail Kubernetes logs from multiple pods at the same time](https://github.com/johanhaleby/kubetail)
