@@ -158,23 +158,40 @@ First we need to create a starting node for the dialog:
 
     ![](./images/tut-dialog-initial.png)
 
-1. Specify the condition and response for the starting node of the conversation:
+    The edit view of the node is also displayed. This is where you modify the node.
 
-  1. In the **Enter a condition** field, type ```conversation_start```. As you type, a drop-down list appears; select **conversation_start (create new condition)**. This indicates that this node is triggered automatically at the beginning of the conversation.
+    ![](./images/tut-dialog-edit.png)
 
-  1. In the **Watson says** field, type ```Welcome to the car demo!``` This is the response that Watson will issue when the specified condition (in this case, the conversation start) is true.
+1. In the edit view, specify the condition and response for the starting node of the conversation:
 
-  1. Click the "Anything else" node that was created automatically when you defined the conversation_start node.
+1. In the **Trigger** field, start typing welcome.
 
-  1. In the **Watson says** field of the "Anything else" node, type ```I'm sorry, I don't understand. Please try again.``` This is the response that Watson will issue when the user input does not match any other node.
+1. Select **welcome (create new condition)** from the list. This node is triggered at the beginning of the conversation.
 
-1. Test the conversation:
+    When you create the condition in your first dialog node, a node with the condition anything_else is created in the dialog tree. We'll look at this node soon.
 
-  1. Click the Try it out ![](./images/dialog-try.png) icon. In the chat pane, you should see the response (```Welcome to the car demo```) displayed automatically.
+1. Add the first response from your bot in the **Watson responses**  field:
+    ```Welcome to the car demo!```
 
-  1. Type any input and press Enter. Because you have not yet defined any other nodes, you should see the response I'm sorry, I don't understand. Please try again.
+    Your bot will issue this response when the specified condition is true (in this case, when the conversation starts).
+
+1. Select the anything_else node that was created when you defined the conversation_start node.
+
+    The edit view now shows the anything_else node rather than the welcome node.
+
+1. Add a response in the **Watson responses** field of the anything_else node:
+    ```I'm sorry, I don't understand. Please try again.```
+
+    Your bot will issue this response when the user input doesn't match any other node.
+
+1. Test the initial conversation:
+
+  1. Click the Try it out ![](./images/dialog-try.png) icon. In the chat pane, you should see the response ```Welcome to the car demo```.
+
+  1. Type anything and press Enter. Because you have not yet defined any other nodes, you should see the response ```I'm sorry, I don't understand. Please try again.```
 
   1. Close the chat pane.
+
 
 Now we can create dialog branches that handle the defined intents.
 
