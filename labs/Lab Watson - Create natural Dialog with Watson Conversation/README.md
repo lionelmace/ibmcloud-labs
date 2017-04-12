@@ -247,7 +247,7 @@ The #turn_on intent requires additional processing, because the dialog needs to 
     + The user wants to turn on any other valid appliance, in which case we simply echo the name of the requested appliance in a message that indicates that we're turning it on.
     + The user does not specify a recognizable appliance name, in which case we need to ask for clarification.
 
-    We'll check the conditions in this order. Determining the most efficient order in which to check conditions is an important skill in building dialog trees. If you find a branch is becoming very complex, check the conditions to see whether you can simplify your dialog by reordering them. It's often best to process the most specific conditions first.
+We'll check the conditions in this order. Determining the most efficient order in which to check conditions is an important skill in building dialog trees. If you find a branch is becoming very complex, check the conditions to see whether you can simplify your dialog by reordering them. It's often best to process the most specific conditions first.
 
 To check the input, add a child node:
 
@@ -263,9 +263,6 @@ To check the input, add a child node:
 
 
 We want to jump directly from the turn on node to the music node without asking for any more user input. To do this, we use a Jump to action.
-
-
-1. Add a subnode to verify that the user specified a valid appliance to turn on. If the dialog recognizes the #turn_on intent in the user input, the next step is to check the input to make sure the user specified one of the defined values for the @appliance entity. To do this, add a subnode:
 
 1. In the turn_on node, select the Jump to icon ![](./images/jump_to.png).
 
