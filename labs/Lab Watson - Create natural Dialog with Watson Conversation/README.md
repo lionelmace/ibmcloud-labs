@@ -212,11 +212,11 @@ Now we can create dialog branches that handle the defined intents.
 
     ![](./images/tut-dialog-tree3.png)
 
-1. Test the first intent branch:
+**Test the first intent branch:**
 
-  1. Select the ![](./images/dialog-try.png) icon to open the chat pane.
+1. Select the ![](./images/dialog-try.png) icon to open the chat pane.
 
-  1. Type ```Hello``` and press Enter. The output shows that the #greeting intent is recognized, and the appropriate response appears.
+1. Type ```Hello``` and press Enter. The output shows that the #greeting intent is recognized, and the appropriate response appears.
 
     ![](./images/tut-dialog-test1.png)
 
