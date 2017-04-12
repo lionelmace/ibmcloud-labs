@@ -195,7 +195,7 @@ First we need to create a starting node for the dialog:
 
 Now we can create dialog branches that handle the defined intents.
 
-1. Create a dialog branch to respond to the #greeting intent. This intent requires only a simple response, so the branch can consist of only a single node.
+Create a dialog branch to respond to the #greeting intent. This intent requires only a simple response, so the branch can consist of only a single node.
 
 1. Select the **welcome** node.
 
@@ -205,7 +205,7 @@ Now we can create dialog branches that handle the defined intents.
 
 1. Select **#greeting (create new condition)** from the list. This condition is triggered by any input that matches the #greeting intent.
 
-1. Add a response in the Fulfill with a response field:
+1. Add a response in the Watson responses field:
   ```Hi! What can I do for you?```
 
 1. In the ```anything_else node```, select the minimize icon. This unclutters the tree view by minimizing this node. Here is the tree view now:
@@ -255,7 +255,7 @@ To check the input, add a child node:
 
 1. Under **Triggered by**, enter ```@appliance:music```. This condition is true if the value of the @appliance entity is music or one of its synonyms, as defined on the Entities tab.
 
-1. Under ```Fulfill with a response```, enter ```What kind of music would you like to hear?```
+1. Under ```Watson responses```, enter ```What kind of music would you like to hear?```
 
 1. Exit the edit view of this node.
 
@@ -283,7 +283,7 @@ Now we need a node to process the type of music that the user requests.
 
 1. Under **Triggered by**, enter ```@genre```. This condition is true whenever a valid value for the @genre entity is detected.
 
-1. Under **Fulfill with a response**, enter ```OK! Playing @genre```. This response uses the value that the user entered.
+1. Under **Watson responses**, enter ```OK! Playing @genre```. This response uses the value that the user entered.
 
 
 We also need a node to respond when the user does not specify a recognized value for @genre.
@@ -292,7 +292,7 @@ We also need a node to respond when the user does not specify a recognized value
 
 1. Under **Triggered by**, enter ```true```. This condition specifies that if the dialog flow reaches this node, it should always evaluate as true. (If the user specifies a valid @genre value, this node will never be reached.)
 
-1. Under **Fulfill with a response**, enter ```I'm sorry, I don't understand. I can play classical, rhythm and blues, or rock music.```
+1. Under **Watson responses**, enter ```I'm sorry, I don't understand. I can play classical, rhythm and blues, or rock music.```
 
   ![](./images/tut-dialog-music.png)
 
@@ -323,7 +323,7 @@ Next, we'll create a node that is used when the user specifies any other valid v
 1. Under **Triggered by**, enter ````@appliance```.
   This condition is triggered if the user input includes any recognized value for the @appliance entity, except music.
 
-1. Under **Fulfill with a response**, enter ```OK! Turning on the @appliance```. This response uses the value that the user entered.
+1. Under **Watson responses**, enter ```OK! Turning on the @appliance```. This response uses the value that the user entered.
 
 
 Now add a peer node that will be triggered if the user input did not specify a valid appliance:
@@ -332,7 +332,7 @@ Now add a peer node that will be triggered if the user input did not specify a v
 
 1. Under **Triggered by**, enter ```true```. This condition specifies that if the dialog flow reaches this node, it should always evaluate as true. (If the user specifies a valid @appliance value, this node will never be reached.)
 
-1. Under **Fulfill with a response**, enter ```I'm sorry, I don't know how to do that. I can turn on music, headlights, or air conditioning.```
+1. Under **Watson responses**, enter ```I'm sorry, I don't know how to do that. I can turn on music, headlights, or air conditioning.```
 
 
 Test the dialog with other appliances
