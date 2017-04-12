@@ -31,11 +31,11 @@ In the following lab, you will learn:
 # Steps
 
 1. [Create a Watson Conversation service](#step-1---create-a-watson-conversation-service)
-2. [Create your workspace](#step-2---create-your-workspace)
-3. [Work with intents and examples](#step-3---work-with-intents-and-examples)
-4. [Work with entities](#step-4---work-with-entities)
-5. [Create a dialog](#step-5---create-a-dialog)
-6. [Integrate the dialog into a web app](#step-6---integrate-the-dialog-into-a-web-app)
+1. [Create your workspace](#step-2---create-your-workspace)
+1. [Work with intents and examples](#step-3---work-with-intents-and-examples)
+1. [Work with entities](#step-4---work-with-entities)
+1. [Create a dialog](#step-5---create-a-dialog)
+1. [Integrate the dialog into a web app](#step-6---integrate-the-dialog-into-a-web-app)
 
 
 # Step 1 - Create a Watson Conversation service
