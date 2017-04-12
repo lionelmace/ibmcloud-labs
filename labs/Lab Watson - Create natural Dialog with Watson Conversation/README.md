@@ -197,18 +197,18 @@ Now we can create dialog branches that handle the defined intents.
 
 1. Create a dialog branch to respond to the #greeting intent. This intent requires only a simple response, so the branch can consist of only a single node.
 
-  1. Select the **welcome** node.
+1. Select the **welcome** node.
 
-  1. Select the + icon on the bottom of the node to create a root-level node. Because this new node is a peer of the welcome node (rather than a child node), it represents an alternative conversation. The edit view is opened for the new node.
+1. Select the + icon on the bottom of the node to create a root-level node. Because this new node is a peer of the welcome node (rather than a child node), it represents an alternative conversation. The edit view is opened for the new node.
 
-  1. In the **Triggered by** field, start typing ```#greeting```.
+1. In the **Triggered by** field, start typing ```#greeting```.
 
-  1. Select **#greeting (create new condition)** from the list. This condition is triggered by any input that matches the #greeting intent.
+1. Select **#greeting (create new condition)** from the list. This condition is triggered by any input that matches the #greeting intent.
 
-  1. Add a response in the Fulfill with a response field:
-    ```Hi! What can I do for you?```
+1. Add a response in the Fulfill with a response field:
+  ```Hi! What can I do for you?```
 
-  1. In the ```anything_else node```, select the minimize icon. This unclutters the tree view by minimizing this node. Here is the tree view now:
+1. In the ```anything_else node```, select the minimize icon. This unclutters the tree view by minimizing this node. Here is the tree view now:
 
     ![](./images/tut-dialog-tree3.png)
 
