@@ -309,7 +309,7 @@ That takes care of all the cases where the user asked us to turn on the music.
 
 1. Type Play music again, but this time specify an invalid response for the genre.
 
-  The bot responds that it does not understand.
+    The bot responds that it does not understand.
 
 
 **Create nodes for other appliances**
@@ -341,15 +341,15 @@ Test the dialog with other appliances
 
 1. Type ```lights on```.
 
-  The bot recognizes the #turn_on intent and the @appliance:headlights entity, and it responds with ```OK, turning on the headlights.```
+    The bot recognizes the #turn_on intent and the @appliance:headlights entity, and it responds with ```OK, turning on the headlights.```
 
 1. Type ```turn on the air```.
 
-  The bot recognizes the #turn_on intent and the @appliance:(air conditioning) entity, and it responds with ```OK, turning on the air conditioning.```
+    The bot recognizes the #turn_on intent and the @appliance:(air conditioning) entity, and it responds with ```OK, turning on the air conditioning.```
 
 1. Try variations on all of the supported commands based on the example utterances and entity synonyms you defined.
 
-  If the bot fails to recognize the correct intent, you can retrain it directly from the chat window. Select the incorrect intent and type the correct one in the field.
+    If the bot fails to recognize the correct intent, you can retrain it directly from the chat window. Select the incorrect intent and type the correct one in the field.
 
   **Tip:** Don't include the # character when you type the intent name.
 
