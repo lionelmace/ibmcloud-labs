@@ -24,6 +24,8 @@ In the following lab, you will learn:
 # Pre-Requisites
 
 + Get a [Bluemix IBM id](https://bluemix.net)
++ Install the [Bluemix CLI](http://clis.ng.bluemix.net)
++ Install [Node.js](https://nodejs.org) if you plan to integrate the dialog into a webapp.
 
 
 # Steps
@@ -319,7 +321,7 @@ Next, we'll create a node that is used when the user specifies any other valid v
 
 1. Select the **+** icon on the bottom of the music node to create a peer node.
 
-1. Under **Triggered by**, enter ````@appliance```.
+1. Under **Triggered by**, enter ``@appliance```.
   This condition is triggered if the user input includes any recognized value for the @appliance entity, except music.
 
 1. Under **Watson responses**, enter ```OK! Turning on the @appliance```. This response uses the value that the user entered.
@@ -334,7 +336,7 @@ Now add a peer node that will be triggered if the user input did not specify a v
 1. Under **Watson responses**, enter ```I'm sorry, I don't know how to do that. I can turn on music, headlights, or air conditioning.```
 
 
-Test the dialog with other appliances
+**Test the dialog with other appliances**
 
 1. Select the ![](./images/dialog-try.png) icon to open the chat pane.
 
@@ -357,13 +359,63 @@ Test the dialog with other appliances
 
 You may want to embed this dialog into a web app. This step shows you how to do so using an existing application available in the GitHub repo [Watson simple conversation](https://github.com/watson-developer-cloud/conversation-simple)
 
-1. In the readme file of this repo, navigate to the ```Deploy the App``` section, click on the button ![](../../images/deploy2bluemix.png) and follow the instructions to step 4.
+1. Download the .zip file of the repository from [this archive](./solutions/conversation-simple-master.zip).
 
-1. A simple conversation app have been deployed to your space. By clicking the button <img src="../../images/viewapp.png" width="90" height="30"/> you open the webpage with you conversation. However, this app is not yet linked to your own conversation workspace.
+1. Extract the files in a directory. It creates a *conversation-simple-master* folder.
 
-1. The Deploy to Bluemix also created a new instance of Conversation service called ```conversation-service```. We could export the dialog in JSON format from the previous service and import it in this new service. Let's make it simple, and just use the service created in Step #1 which already contains the dialog. To do so, go to the Connections tab, unbind the existing service ```conversation-service``` and click ```Connect Existing```to attach the service provisioned in Step #1.
+1. Open the command line and change to this directory:
+    ```
+    cd conversation-simple-master
+    ```
 
-1. Accept to Restage the application, so the service is correctly bound to the application.
+**Configuring the app environment**
+
+1. Copy the ```.env.example``` file to a new ```.env``` file.
+
+1. Retrieve the name of your Watson Conversation service
+    ```
+    bx service list
+    ```
+    Output:
+    ```
+    Getting services in org lionel.mace@fr.ibm.com / space dev as lionel.mace@fr.ibm.com...
+    OK
+
+    name                      service        plan   bound apps   last operation
+    my-conversation-service   conversation   free                update succeeded
+    ```
+
+1. Create a service key to access the watson service from your application
+    ```
+    bx cf create-service-key <service_instance> <service_key>
+    ```
+    For example:
+    ```
+    bx cf create-service-key my-conversation-service my-watson-key
+    ```
+
+1. Retrieve the credentials from the service key using the command:
+    ```
+    cf service-key <service_instance> <service_key>
+    ```
+    For example:
+    ```
+    bx cf service-key my-conversation-service my-watson-key
+    ```
+    The output from this command is a JSON object, as in this example:
+    ```
+    {
+      "password": "87iT7aqpvU7l",
+      "url": "https://gateway.watsonplatform.net/conversation/api",
+      "username": "ca2905e6-7b5d-4408-9192-e4d54d83e604"
+    }
+    ```
+
+1. Paste the password and username values (without quotation marks) from the JSON into the CONVERSATION_PASSWORD and CONVERSATION_USERNAME variables in the .env file. For example:
+    ```
+    CONVERSATION_USERNAME=ca2905e6-7b5d-4408-9192-e4d54d83e604
+    CONVERSATION_PASSWORD=87iT7aqpvU7l
+    ```
 
 1. Return to the conversation service you provisionned in Step 1, and click the ```Launch Tool``` button. You are now on the workspace creation page.
 
@@ -373,7 +425,71 @@ You may want to embed this dialog into a web app. This step shows you how to do 
 
 1. Copy the value of the WORKSPACE ID. You will need this value to link your workspace to the application.
 
-  <img src="./images/dialog-details-352x198.png" width="352" height="198"/>
+      <img src="./images/dialog-details-352x198.png" width="352" height="198"/>
+
+1. On the local system, paste the workspace ID into the WORKSPACE_ID variable in the ```.env``` file.
+
+1. Save and close the file.
+
+
+**Installing and starting the app**
+
+1. Install the demo app package into the local Node.js runtime environment:
+    ```
+    npm install
+    ```
+
+1. Start the app:
+    ```
+    npm start
+    ```
+
+1. Point your browser to http://localhost:3000 to try out the app.
+
+**Testing the app**
+
+1. After your app is installed and running, experiment with it to see how it responds.
+
+
+**Deploying to Bluemix**
+
+You can use Cloud Foundry to deploy your local version of the app to Bluemix.
+
+1. In the project root directory, open the ```manifest.yml``` file.
+
+1. In the applications section of the ```manifest.yml``` file, change the **name** value to a unique name for your version of the demo app.
+
+1. In the services section, specify the name of the Conversation service instance you created for the demo app. If you do not remember the service name, use the ```bx service list``` command to list all services you have created.
+
+    The following example shows a modified manifest.yml file:
+    ```
+    ---
+    declared-services:
+     conversation-service:
+       label: conversation
+       plan: free
+    applications:
+    - name: conversation-simple-app-test1
+      command: npm start
+      path: .
+      memory: 256M
+      instances: 1
+      services:
+      - my-conversation-service
+      env:
+        NPM_CONFIG_PRODUCTION: false
+    ```
+
+1. Push the app to Bluemix:
+    ```
+    bx cf push
+    ```
+
+**TDB**
+1. The Deploy to Bluemix also created a new instance of Conversation service called ```conversation-service```. We could export the dialog in JSON format from the previous service and import it in this new service. Let's make it simple, and just use the service created in Step #1 which already contains the dialog. To do so, go to the Connections tab, unbind the existing service ```conversation-service``` and click ```Connect Existing```to attach the service provisioned in Step #1.
+
+1. Accept to Restage the application, so the service is correctly bound to the application.
+
 
 1. Return to your Dashboad, select the app you created. Click the tab ```Runtime``` and select ```Environment Variables```.
 
