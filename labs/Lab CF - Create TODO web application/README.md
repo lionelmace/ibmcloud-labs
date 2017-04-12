@@ -295,9 +295,11 @@ When your application runs in Cloud Foundry, all service information bound to th
 
 Given a Cloud Foundry app relies on the VCAP_SERVICES environment variable, a straightforward approach is to set this variable in your environment by creating a local env file (JSON or key=value format), to test for this file in your app and to load the values if found.
 
-1. In the Bluemix console, go to your application **Overview**.
+1. In the Bluemix console, go to your application dashboard.
 
-1. Under **Runtime / Environment Variables**, copy the full content of the **VCAP_SERVICES** into the file vcap-local.json of your project. Make sure to copy the content on line 3 below the services element. It should look as follows:
+1. Select **Runtime**, then **Environment Variables**
+
+1. Copy the full content of the **VCAP_SERVICES** into the file vcap-local.json of your project. Make sure to copy the content on line 3 below the services element. It should look as follows:
 
     ```
     {
