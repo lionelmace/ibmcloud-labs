@@ -197,111 +197,161 @@ Now we can create dialog branches that handle the defined intents.
 
 1. Create a dialog branch to respond to the #greeting intent. This intent requires only a simple response, so the branch can consist of only a single node.
 
-  1. Click the conversation_start node.
+  1. Select the **welcome** node.
 
-  1. Click the **+** icon on the bottom of the node to create a new root-level node. Because this new node is a peer of the conversation_start node (rather than a subnode), it represents an alternative conversation.
+  1. Select the + icon on the bottom of the node to create a root-level node. Because this new node is a peer of the welcome node (rather than a child node), it represents an alternative conversation. The edit view is opened for the new node.
 
-  1. In the **Enter a condition** field, type ```#greeting```. When the drop-down list appears, press Enter to select **#greeting**. This specifies that this node will be triggered by any input that matches the #greeting intent.
+  1. In the **Triggered by** field, start typing ```#greeting```.
 
-  1. In the **Watson says** field, specify ```Hi! What can I do for you?```.
+  1. Select **#greeting (create new condition)** from the list. This condition is triggered by any input that matches the #greeting intent.
 
-  ![](./images/dialog-greeting.png)
+  1. Add a response in the Fulfill with a response field:
+    ```Hi! What can I do for you?```
 
-1. Test the dialog:
+  1. In the ```anything_else node```, select the minimize icon. This unclutters the tree view by minimizing this node. Here is the tree view now:
 
-  1. Click the ![](./images/dialog-try.png) icon to open the chat pane.
+    ![](./images/tut-dialog-tree3.png)
+
+1. Test the first intent branch:
+
+  1. Select the ![](./images/dialog-try.png) icon to open the chat pane.
 
   1. Type ```Hello``` and press Enter. The output shows that the #greeting intent is recognized, and the appropriate response appears.
 
-  ![](./images/dialog-greeting-test.png)
+    ![](./images/tut-dialog-test1.png)
 
-1. Create another dialog branch to respond to the #turn_on intent. Because there are multiple possibilities for what the user might want to turn on, this branch requires multiple nodes to represent a more complex conversation. Start by creating the root-level node:
+    The output shows that the #greeting intent is recognized, and the appropriate response appears.
 
-  1. Click the **+** icon on the bottom of the #greeting node to create a new root-level node.
 
-  1. In the **Enter a condition** field, type ```#turn_on```. When the drop-down list appears, press Enter to select **#turn_on**. This specifies that this node will be triggered by any input that matches the #turn_on intent. Leave the **Watson says** field blank; the dialog needs more information before it can choose a response.
+1. Create another dialog branch to respond to the #turn_on intent.
 
-The #turn_on intent requires additional processing, because the dialog needs to determine what appliance the user wants to turn on. To handle this, we can extend the dialog branch with subnodes:
+    Because there are multiple possibilities for what the user might want to turn on, this branch requires multiple nodes to represent a more complex conversation.
+
+    Start by creating the root-level node:
+
+  1. Click the **+** icon on the bottom of the ```#greeting``` node to create a root-level node.  If the + icon isn't visible, select the #greeting node to put it into focus.
+
+  1. In the **Name this node** field, enter ```turn on```. The title does not affect the processing of the node, but it makes it easier to find.
+
+  1. In the edit view, in the **Triggered by** field, start typing ```#turn_on```.
+
+  1. Select **#turn_on** from the list. This condition is triggered by any input that matches the #turn_on intent.
+
+  1. Do not enter a response in this node.
+
+The #turn_on intent requires additional processing, because the dialog needs to determine what appliance the user wants to turn on. To handle this, we create multiple responses based on additional conditions. There are three possible scenarios, based on the intents and entities that we have defined:
+
+    + The user wants to turn on the music, in which case we need to ask for the genre.
+    + The user wants to turn on any other valid appliance, in which case we simply echo the name of the requested appliance in a message that indicates that we're turning it on.
+    + The user does not specify a recognizable appliance name, in which case we need to ask for clarification.
+
+    We'll check the conditions in this order. Determining the most efficient order in which to check conditions is an important skill in building dialog trees. If you find a branch is becoming very complex, check the conditions to see whether you can simplify your dialog by reordering them. It's often best to process the most specific conditions first.
+
+To check the input, add a child node:
+
+1. Select the + icon on the side of the ```turn on``` node to create a child node.
+
+1. In the **Name this node** field, enter ```music```.
+
+1. Under **Triggered by**, enter ```@appliance:music```. This condition is true if the value of the @appliance entity is music or one of its synonyms, as defined on the Entities tab.
+
+1. Under ```Fulfill with a response```, enter ```What kind of music would you like to hear?```
+
+1. Exit the edit view of this node.
+
+
+We want to jump directly from the turn on node to the music node without asking for any more user input. To do this, we use a Jump to action.
+
 
 1. Add a subnode to verify that the user specified a valid appliance to turn on. If the dialog recognizes the #turn_on intent in the user input, the next step is to check the input to make sure the user specified one of the defined values for the @appliance entity. To do this, add a subnode:
 
-  1. Click the **+** icon on the right side of the #turn_on node to create a new subnode.
+1. In the turn_on node, select the Jump to icon ![](./images/jump_to.png).
 
-  1. In the **Enter a condition** field, type ```@appliance```. When the drop-down list appears, press Enter to select **@appliance**. This specifies that this node will be triggered if the user input includes any recognized value for the @appliance entity. Leave the **Watson says** field blank; the dialog still needs more information before choosing a response.
+1. Select the ```music``` node, and then select **Go to condition**. We want to process the condition of the ```music``` node.
 
-  1. In the upper right corner of the #turn_on node, click the **Options** icon and then click **Continue from**.
+  ![](./images/tut-dialog-jumpto.png)
 
-  1. Click the @appliance node and then click **Go to condition**. The **Continue from** link indicates that if the #turn_on node evaluates as true, the dialog flow should pass to the @appliance node without waiting for additional user input. This is necessary because we want the @appliance node to continue evaluating the user's original input rather than waiting for new input.
+  Note that you had to create the target node (the node to which you want to jump) before you added the Jump to action.
 
-  ![](./images/tutorial_dialog3.png)
+  After you select Go to condition you see a new box in the tree:
 
-1. Now add a peer subnode that will be triggered if the user input did not specify a valid appliance:
+  ![](./images/tut-dialog-jump2.png)
 
-  1. Click the **+** icon on the bottom of the @appliance node to create a new peer subnode.
+Now we need a node to process the type of music that the user requests.
 
-  1. In the **Enter a condition** field, type true. When the drop-down list appears, select **true (create new condition)**. This specifies that if the dialog execution flow reaches this node, it should always evaluate as true. (If the user specified a valid @appliance value, this node will never be reached.)
+1. Select the **+** icon on the right side of the ```music``` node to create a child node. This child node is evaluated only after the user has responded to the question about the type of music. Because we need a user input before this node, there is no need to use a **Jump to** action.
 
-  1. In the **Watson says field**, type ```I'm sorry, I don't know how to do that. I can turn on music, headlights, or air conditioning.```
+1. Under **Triggered by**, enter ```@genre```. This condition is true whenever a valid value for the @genre entity is detected.
 
-Now we need to add subnodes to determine the appropriate response when the user has specified a valid appliance:
+1. Under **Fulfill with a response**, enter ```OK! Playing @genre```. This response uses the value that the user entered.
 
-1. Create a branch of subnodes that handle user requests to play music. Because the user must also specify a genre of music, this branch requires multiple levels of subnodes.
 
-  1. Click the **+** icon on the right side of the @appliance node to create a new subnode. This subnode will be evaluated only if @appliance is true, meaning that the user has specified a valid appliance.
+We also need a node to respond when the user does not specify a recognized value for @genre.
 
-  1. In the **Enter a condition** field, type ```@appliance```. When the drop-down list appears, select **@appliance:music**. This specifies that this node will be triggered if the value of the @appliance entity is music or one of its synonyms, as defined on the Entities tab.
+1. Select the **+** icon on the bottom of the ```genre``` node to create a peer node.
 
-  1. In the *Watson says* field, type ```OK! What kind of music would you like to hear?```
+1. Under **Triggered by**, enter ```true```. This condition specifies that if the dialog flow reaches this node, it should always evaluate as true. (If the user specifies a valid @genre value, this node will never be reached.)
 
-  1. In the upper right corner of the @appliance node, click the **Options** icon and then click **Continue from**.
+1. Under **Fulfill with a response**, enter ```I'm sorry, I don't understand. I can play classical, rhythm and blues, or rock music.```
 
-  1. Click the @appliance:music node and then click **Go to condition**. The **Continue from** link indicates that if the @appliance node evaluates as true, the dialog flow should pass to the @appliance:music node without waiting for additional user input.
+  ![](./images/tut-dialog-music.png)
 
-  ![](./images/tutorial_dialog4.png)
 
-  1. Click the **+** icon on the right side of the @appliance:music node to create a new subnode. This subnode will be evaluated only if @appliance is true, and only after the user has responded to the question about genre.
+That takes care of all the cases where the user asked us to turn on the music.
 
-  1. In the **Enter a condition** field, type @genre. When the drop-down list appears, press Enter to select **@genre**. This specifies that this node will be triggered if the user input includes any recognized value for the @genre entity.
+**Test the dialog for music**
 
-  1. In the **Watson says** field, type ```OK! Playing @genre```. At run time, the @genre variable will be replaced with the name of the genre specified by the user.
+1. Select the ![](./images/dialog-try.png) icon to open the chat pane.
 
-  1. Click the **+** icon on the bottom of the @genre node to create a new peer subnode.
+1. Type ```Play music```. The bot recognizes the #turn_on intent and the @appliance:music entity, and it responds by asking for a musical genre.
 
-  1. In the **Enter a condition** field, type true. When the drop-down list appears, select **true (create new condition)**. This specifies that if the dialog execution flow reaches this node, it should always evaluate as true. (If the user specified a valid @genre value, this node will never be reached.)
+1. Type the name or a synonym for a valid @genre value (for example, ```pop```). The bot recognizes the @genre entity and responds appropriately.
 
-  1. In the **Watson says** field, type ```I'm sorry, I don't understand. I can play classical, rhythm and blues, or rock music.```
+1. Type Play music again, but this time specify an invalid response for the genre.
 
-  ![](./images/tutorial_dialog5.png)
+  The bot responds that it does not understand.
 
-1. Test the dialog:
 
-  1. Click the ![](./images/dialog-try.png) icon to open the chat pane.
+**Create nodes for other appliances**
 
-  1. Type ```Play music```. The bot recognizes the #turn_on intent and the @appliance:music entity, and it responds by asking you for a musical genre.
+Next, we'll create a node that is used when the user specifies any other valid value for @appliance. For these other values of @appliance, we don't need to ask for any more input. We just give a positive response.
 
-  1. Type the name or a synonym for a valid @genre value. The bot recognizes the @genre entity and responds appropriately.
+1. Select the ```music``` node, so that the options to create child and peer nodes are displayed.
 
-  1. Type ```Play music``` again, but this time specify an invalid response for the genre. The bot responds by saying it does not understand.
+1. Select the **+** icon on the bottom of the music node to create a peer node.
 
-1. Create a subnode to handle user requests to turn on other appliances. Because the other appliances do not require additional information, we can handle these requests with a single node.
+1. Under **Triggered by**, enter ````@appliance```.
+  This condition is triggered if the user input includes any recognized value for the @appliance entity, except music.
 
-  1. Click the **+** icon on the bottom of the @appliance:music node to create a new peer subnode.
+1. Under **Fulfill with a response**, enter ```OK! Turning on the @appliance```. This response uses the value that the user entered.
 
-  1. In the **Enter a condition** field, type true. When the drop-down list appears, select **true (create new condition)**. This specifies that if the dialog execution flow reaches this node, it should always evaluate as true. In this case, this node will only be reached if the user specified a valid appliance other than music.
 
-  1. In the **Watson says** field, type ```OK, turning on the @appliance.```
+Now add a peer node that will be triggered if the user input did not specify a valid appliance:
 
-1. Test the dialog:
+1. Select the **+** icon on the bottom of the @appliance node to create a peer node.
 
-  1. Click the ![](./images/dialog-try.png)  icon to open the chat pane.
+1. Under **Triggered by**, enter ```true```. This condition specifies that if the dialog flow reaches this node, it should always evaluate as true. (If the user specifies a valid @appliance value, this node will never be reached.)
 
-  1. Type ```lights on```. The bot recognizes the #turn_on intent and the @appliance:headlights entity, and it responds with ```OK, turning on the headlights.```
+1. Under **Fulfill with a response**, enter ```I'm sorry, I don't know how to do that. I can turn on music, headlights, or air conditioning.```
 
-  1. Type ```turn on the air.``` The bot recognizes the #turn_on intent and the @appliance:(air conditioning) entity, and it responds with ```OK, turning on the air conditioning.```
 
-  1. Try variations on all of the supported commands based on the examples and entity synonyms you defined. If the bot fails to recognize the correct intent, you can retrain it directly from the chat window by clicking the incorrect intent and typing the correct intent in the field. (Do not include the # character when you type the intent name.)
+Test the dialog with other appliances
 
-  ![](./images/tutorial_dialogtest2.png)
+1. Select the ![](./images/dialog-try.png) icon to open the chat pane.
+
+1. Type ```lights on```.
+
+  The bot recognizes the #turn_on intent and the @appliance:headlights entity, and it responds with ```OK, turning on the headlights.```
+
+1. Type ```turn on the air```.
+
+  The bot recognizes the #turn_on intent and the @appliance:(air conditioning) entity, and it responds with ```OK, turning on the air conditioning.```
+
+1. Try variations on all of the supported commands based on the example utterances and entity synonyms you defined.
+
+  If the bot fails to recognize the correct intent, you can retrain it directly from the chat window. Select the incorrect intent and type the correct one in the field.
+
+  **Tip:** Don't include the # character when you type the intent name.
 
 
 # Step 6 - Integrate the dialog into a web app
