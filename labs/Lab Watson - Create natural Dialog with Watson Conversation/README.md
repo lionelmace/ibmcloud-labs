@@ -223,11 +223,13 @@ Create a dialog branch to respond to the #greeting intent. This intent requires 
     The output shows that the #greeting intent is recognized, and the appropriate response appears.
 
 
-1. Create another dialog branch to respond to the #turn_on intent.
+**Add a root-level node for #turn_on**
 
-    Because there are multiple possibilities for what the user might want to turn on, this branch requires multiple nodes to represent a more complex conversation.
+Create another dialog branch to respond to the #turn_on intent.
 
-    Start by creating the root-level node:
+Because there are multiple possibilities for what the user might want to turn on, this branch requires multiple nodes to represent a more complex conversation.
+
+Start by creating the root-level node:
 
   1. Click the **+** icon on the bottom of the ```#greeting``` node to create a root-level node.  If the + icon isn't visible, select the #greeting node to put it into focus.
 
