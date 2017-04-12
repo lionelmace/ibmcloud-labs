@@ -38,10 +38,10 @@ This way, we don't require an actual hardware device to test our application.
 <br />Alternatively, enter this short URL: http://ibm.biz/iotquickstart
 
     ![IOT Quickstart](./images/iot-quickstart.png)
-    
-1. Enter the device id. 
 
-1. Vizualise the live sensor data. 
+1. Enter the device id.
+
+1. Vizualise the live sensor data.
 
 
 # Connect your device to the Watson IOT Platform
@@ -77,15 +77,15 @@ You've seen my data, what next? Now you will use your device in an application c
 1. Look for the **Deploy** button in the upper right hand corner of your Node-RED workspace. The deploy button is now red; click it to deploy your flow.
 
     ![Node-RED Deploy](./images/nodered-deploy.png)
- 
+
 1. Open the debug pane on the right. You will see that the flow is generating Temperature Status messages.
 
-1. Increase the temperature value on the simulator to see the messages change in the debug pane. 
+1. Increase the temperature value on the simulator to see the messages change in the debug pane.
 <br /> *Note that a different message appears if the temperature exceeds 40 degrees.*
 
 # Store the device data into a No SQL database
 
-1. In Node-RED flow editor, add a **Cloudant out** node 
+1. In Node-RED flow editor, add a **Cloudant out** node
 
     ![Cloudant out node](./images/nodered-cloudant.png)
 
@@ -102,15 +102,15 @@ You've seen my data, what next? Now you will use your device in an application c
 
 The warning messages generated in Node-RED uses English by default. You may want to translate those messages into your oww language.
 
-1. In Bluemix console, bind a new service **Language Translation** to your app.
+1. In Bluemix console, bind a new service **Language Translator** to your app.
 
-1. In Node-RED flow editor, add a new **Language Translation** node to the flow.
+1. In Node-RED flow editor, add a new **Language Translator** node to the flow.
 
 1. Modify the flow accordingly to translate those messages.
 
-    ![Watson Language Translation](./images/nodered-translationflow.png)
+    ![Watson Language Translator](./images/nodered-translationflow.png)
 
-1. Deploy the updated flow. 
+1. Deploy the updated flow.
 
 1. Observe the translated output based on the selected language.
 
@@ -120,4 +120,3 @@ The warning messages generated in Node-RED uses English by default. You may want
 For additional resources pay close attention to the following:
 
 - [Real Time Data Analysis Using IoT Platform Analytics](https://developer.ibm.com/recipes/tutorials/real-time-data-analysis-using-ibm-watson-iot-platform-analytics)
-
