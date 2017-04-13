@@ -301,7 +301,7 @@ Given a Cloud Foundry app relies on the VCAP_SERVICES environment variable, a st
 
 1. Copy the full content of the **VCAP_SERVICES** into the file vcap-local.json of your project. Make sure to copy the content on line 3 below the services element. It should look as follows:
 
-    ```yml
+    ```json
     {
       "services":
       {
