@@ -4,7 +4,7 @@ Discover Bluemix, IBM Cloud Platform, through a set of hands-on labs.
 
 # Table of Contents
 
-+ [Lab CloudFoundry - Deploy TODO web application application](./labs/Lab%CloudFoundry%20-%Deploy%20TODO%20web%20application)
++ [Lab CloudFoundry - Deploy TODO web application](./labs/Lab%CloudFoundry%20-%Deploy%20TODO%20web%20application)
 
 + [Lab Kubernetes - Orchestrate your docker containers](./labs/Lab%20Kubernetes%20-%20Orchestrate%20your%20docker%20containers)
 
