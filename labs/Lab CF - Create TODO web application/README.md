@@ -142,7 +142,7 @@ Now let's add a source code repository and an automatic build pipeline to our pr
 Cloud Foundry relies on the *manifest.yml* file to know what to do when you push the app on Bluemix.
 A default manifest.yml file was generated for our app. It looks like:
 
-  ```
+  ```yml
   applications:
   - path: .
     memory: 256M
@@ -160,7 +160,7 @@ It has **1024MB** of disk space available.
 
 1. Specifying the buildpack to be used when pushing a Cloud Foundry app is always faster than relying on buildpack detection. Modify the generated Manifest to specify the **buildpack** by adding one line as follows:
 
-    ```
+    ```yml
     applications:
     - path: .
       memory: 256M
@@ -301,7 +301,7 @@ Given a Cloud Foundry app relies on the VCAP_SERVICES environment variable, a st
 
 1. Copy the full content of the **VCAP_SERVICES** into the file vcap-local.json of your project. Make sure to copy the content on line 3 below the services element. It should look as follows:
 
-    ```
+    ```yml
     {
       "services":
       {
