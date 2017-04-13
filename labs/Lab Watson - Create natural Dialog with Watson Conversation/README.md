@@ -361,7 +361,7 @@ You may want to embed this dialog into a web app. This step shows you how to do 
 
 1. Download the .zip file of the repository from [this archive](./solutions/conversation-simple-master.zip).
 
-1. Extract the files in a directory. It creates a *conversation-simple-master* folder.
+1. Extract the files into a directory. It creates a **conversation-simple-master** folder.
 
 1. Open the command line and change to this directory:
     ```
