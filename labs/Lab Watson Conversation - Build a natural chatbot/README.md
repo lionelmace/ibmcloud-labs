@@ -396,7 +396,7 @@ You may want to embed this dialog into a web app. This step shows you how to do 
 
 1. Retrieve the credentials from the service key using the command:
     ```
-    cf service-key <service_instance> <service_key>
+    bx cf service-key <service_instance> <service_key>
     ```
     For example:
     ```bash
