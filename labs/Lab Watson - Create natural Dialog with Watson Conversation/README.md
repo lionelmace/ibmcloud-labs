@@ -399,11 +399,11 @@ You may want to embed this dialog into a web app. This step shows you how to do 
     cf service-key <service_instance> <service_key>
     ```
     For example:
-    ```
+    ```bash
     bx cf service-key my-conversation-service my-watson-key
     ```
     The output from this command is a JSON object, as in this example:
-    ```
+    ```json
     {
       "password": "87iT7aqpvU7l",
       "url": "https://gateway.watsonplatform.net/conversation/api",
