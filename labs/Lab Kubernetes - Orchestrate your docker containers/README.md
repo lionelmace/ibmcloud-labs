@@ -89,9 +89,9 @@ To create a cluster, you have two options either a free cluster or a paid cluste
     ```
     bx cs cluster-create --name <your-cluster-name>
     ```
-    Note: It can take up to 15 minutes for the worker node machine to be ordered and for the cluster to be set up and provisioned.
+    Once the cluster reaches the **deployed** state you can provision pods, but they will be enqueued until the cluster’s pods are finished provisioning. Note that it takes up to 15 minutes for the worker node machine to be ordered and for the cluster to be set up and provisioned.
 
-If you have already created a free cluster in the step above, skip to the step **Step 4 - Deploy Hello World app**.
+    If you have already created a free cluster in the step above, skip to the step **Step 4 - Deploy Hello World app**.
 
 1. Set SoftLayer credentials
     ```
@@ -100,7 +100,7 @@ If you have already created a free cluster in the step above, skip to the step *
 
 1. Review the data centers that are available.
     ```
-    bx cs datacenters
+    bx cs locations
     ```
     and you should get back something like:
     ```
