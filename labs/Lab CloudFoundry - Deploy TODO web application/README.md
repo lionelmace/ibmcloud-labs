@@ -21,7 +21,6 @@ In the following lab, you will learn:
 # Pre-Requisites
 
 + Get a [Bluemix IBM id](https://bluemix.net), or use an existing account.
-+ Get a [GitHub account](https://github.com/join), or use an existing one. Choose the plan **Unlimited number of public repositories for free**. GitHub is used for Bluemix DevOps services.
 + Install the [Bluemix CLI](http://clis.ng.bluemix.net)
 + Install a [Git client](https://git-scm.com/downloads)
 + Install [Node.js](https://nodejs.org)
@@ -66,25 +65,21 @@ The SDK for Node.js created a simple "Hello World!" web app that will become our
 
 # Step 2 - Enable Continuous Delivery
 
-Now let's add a source code repository and an automatic build pipeline to our project.
+Now let's add a source code repository and an automatic build pipeline to our project. The Git repository and issue tracking is hosted by IBM and built on GitLab Community Edition.
 
 1. In your application **Overview** page, search **Continuous Delivery** and click the **Enable** button.
 
 1. A new window opens to configure the Toolchain.
 
-    ![Toolchain](./images/toolchain.png)
+    ![Toolchain](./images/toolchain-gitlab.png)
 
-1. The toolchain gets a default name you can change. In **Configurable Integrations** at the bottom, select GitHub. To store your source code in GitHub, you must authorize Bluemix to connect to GitHub.
+1. The toolchain gets a default name you can change. In **Configurable Integrations** at the bottom, select **Git Repos and Issue Tracking**.
 
-1. Click **Authorize**. A new window will enable to Sign into GitHub to continue to IBM Bluemix Toolchains.
-
-1. Once authorized, you will be brought back the GitHub Configuration on Bluemix.
-
-1. Keep the Default options to **clone** the starter code for the "Hello World!" application into your GitHub account.
+1. Keep the Default options to **Clone** the starter code for the "Hello World!" application into your GitLab account.
 
 1. The toolchain has been configured successfully. A new Git Repository has been created, as well as a Build Pipeline so that your app gets automatically redeployed after every commit.
 
-1. Open the GitHub repo and make note of the Git URL.
+1. Open the Git repo and make note of the Git URL.
 
 
 # Step 3 - Checkout the code locally
@@ -92,7 +87,7 @@ Now let's add a source code repository and an automatic build pipeline to our pr
 1. Open a terminal or a command prompt to clone the repository
 
     ```
-    git clone <URL-OF-YOUR-GITHUB-REPO>
+    git clone <URL-OF-YOUR-GIT-REPO>
     ```
 
 1. This command creates a directory of your project locally on your disk.
