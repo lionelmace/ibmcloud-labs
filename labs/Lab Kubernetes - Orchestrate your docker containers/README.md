@@ -141,7 +141,7 @@ To create a cluster, you have two options either a free cluster or a paid cluste
 
 1. Create cluster
     ```
-    bx cs cluster-create --name <YOUR-CLUSTER-NAME> --datacenter dal10 --workers 3 --machine-type u1c.2x4 --isolation public --public-vlan <ID-PRIVATE-VLAN> --private-vlan <ID-PUBLIC-VLAN>
+    bx cs cluster-create --name <YOUR-CLUSTER-NAME> --location dal10 --workers 3 --machine-type u1c.2x4 --hardware shared --public-vlan <ID-PRIVATE-VLAN> --private-vlan <ID-PUBLIC-VLAN>
     ```
 
 1. Verify that the creation of the cluster was requested.
