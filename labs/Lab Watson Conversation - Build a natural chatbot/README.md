@@ -408,7 +408,7 @@ You may want to embed this dialog into a web app. This step shows you how to do 
     CONVERSATION_PASSWORD=87iT7aqpvU7l
     ```
 
-1. Return to the conversation service you provisionned in Step 1, and click the ```Launch Tool``` button. You are now on the workspace creation page.
+1. Return to the conversation service you provisionned in Step 1, and click the `Launch Tool` button. You are now on the workspace creation page.
 
 1. Click on the three dots button in the top right corner of your car tutorial workspace and select ```View details```.
 
@@ -418,12 +418,12 @@ You may want to embed this dialog into a web app. This step shows you how to do 
 
       <img src="./images/dialog-details-352x198.png" width="352" height="198"/>
 
-1. On the local system, paste the workspace ID into the WORKSPACE_ID variable in the ```.env``` file.
+1. On the local system, paste the workspace ID into the **WORKSPACE_ID** variable in the `.env` file.
 
 1. Save and close the file.
 
 
-**Installing and starting the app**
+**Install and start the app**
 
 1. Install the demo app package into the local Node.js runtime environment:
     ```
@@ -489,6 +489,18 @@ You can use Cloud Foundry to deploy your local version of the app to Bluemix.
 1. Go back to the App dashboard in the **Console**, Click ```View app```. This should take you to a web page where you can chat with your application.
 
     Note: If you still get the message "The app has not been configured with a WORKSPACE_ID environment variable.", restart your application so the new environment variable is taken into account.
+
+    **Warning**: If you have provisioned the Watson Conversation service in **Germany**, the gateway is `https://gateway-fra.watsonplatform.net/conversation/api` instead of the *US* gateway `https://gateway.watsonplatform.net/conversation/api`. Go to the `app.js` file and update the line 35 starting with url as follows:
+
+    ```json
+    var conversation = new Conversation({
+      // username: '<username>',
+      // password: '<password>',
+      url: 'https://gateway-fra.watsonplatform.net/conversation/api',
+      version_date: '2016-10-21',
+      version: 'v1'
+    });
+    ```
 
 
 # Resources
