@@ -490,17 +490,19 @@ You can use Cloud Foundry to deploy your local version of the app to Bluemix.
 
     Note: If you still get the message "The app has not been configured with a WORKSPACE_ID environment variable.", restart your application so the new environment variable is taken into account.
 
-    **Warning**: If you have provisioned the Watson Conversation service in **Germany**, the gateway is `https://gateway-fra.watsonplatform.net/conversation/api` instead of the *US* gateway `https://gateway.watsonplatform.net/conversation/api`. Go to the `app.js` file and update the line 35 starting with url as follows:
+**Warning**:
+If you have provisioned the Watson Conversation service in **Germany**, the gateway is `https://gateway-fra.watsonplatform.net/conversation/api` instead of the **US** gateway `https://gateway.watsonplatform.net/conversation/api`.
+Go to the `app.js` file and update the line 35 starting with url as follows:
 
-    ```js
-    var conversation = new Conversation({
-      // username: '<username>',
-      // password: '<password>',
-      url: 'https://gateway-fra.watsonplatform.net/conversation/api',
-      version_date: '2016-10-21',
-      version: 'v1'
-    });
-    ```
+```js
+var conversation = new Conversation({
+  // username: '<username>',
+  // password: '<password>',
+  url: 'https://gateway-fra.watsonplatform.net/conversation/api',
+  version_date: '2016-10-21',
+  version: 'v1'
+});
+```
 
 
 # Resources
