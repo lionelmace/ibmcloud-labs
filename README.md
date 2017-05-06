@@ -14,8 +14,6 @@ Discover Bluemix, IBM Cloud Platform, through a set of hands-on labs.
 
 + [Lab Watson Conversation - Build a natural chatbot](./labs/Lab%20Watson%20Conversation%20-%20Build%20a%20natural%20chatbot)
 
-+ [Lab Container - Run native docker Container on the Cloud](./labs/Lab%20Container%20-%20Run%20native%20docker%20Container%20on%20the%20Cloud)
-
 
 # Pre-Requisites
 
