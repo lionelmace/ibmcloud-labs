@@ -402,7 +402,7 @@ You may want to embed this dialog into a web app. This step shows you how to do 
     }
     ```
 
-1. Paste the password and username values (without quotation marks) from the JSON into the CONVERSATION_PASSWORD and CONVERSATION_USERNAME variables in the .env file. For example:
+1. Paste the password and username values (without quotation marks) from the JSON into the CONVERSATION_PASSWORD and CONVERSATION_USERNAME variables in the `.env` file. For example:
     ```
     CONVERSATION_USERNAME=ca2905e6-7b5d-4408-9192-e4d54d83e604
     CONVERSATION_PASSWORD=87iT7aqpvU7l
@@ -496,3 +496,4 @@ You can use Cloud Foundry to deploy your local version of the app to Bluemix.
 For additional resources pay close attention to the following:
 
 - [Watson Conversation Documentation](https://www.ibm.com/watson/developercloud/doc/conversation/index.html)
+- [Node.js library to access IBM Watson services](https://github.com/watson-developer-cloud/node-sdk)
