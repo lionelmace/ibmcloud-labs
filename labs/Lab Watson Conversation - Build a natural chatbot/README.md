@@ -492,7 +492,7 @@ You can use Cloud Foundry to deploy your local version of the app to Bluemix.
 
     **Warning**: If you have provisioned the Watson Conversation service in **Germany**, the gateway is `https://gateway-fra.watsonplatform.net/conversation/api` instead of the *US* gateway `https://gateway.watsonplatform.net/conversation/api`. Go to the `app.js` file and update the line 35 starting with url as follows:
 
-    ```json
+    ```js
     var conversation = new Conversation({
       // username: '<username>',
       // password: '<password>',
