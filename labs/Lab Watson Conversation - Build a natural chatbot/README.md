@@ -453,7 +453,7 @@ You can use Cloud Foundry to deploy your local version of the app to Bluemix.
 1. In the services section, specify the name of the Conversation service instance you created for the demo app. If you do not remember the service name, use the ```bx service list``` command to list all services you have created.
 
     The following example shows a modified manifest.yml file:
-    ```
+    ```yml
     ---
     declared-services:
      conversation-service:
