@@ -450,7 +450,7 @@ You can use Cloud Foundry to deploy your local version of the app to Bluemix.
 
 1. In the applications section of the ```manifest.yml``` file, change the **name** value to a unique name for your version of the demo app.
 
-1. In the services section, specify the name of the Conversation service instance you created for the demo app. If you do not remember the service name, use the ```bx service list``` command to list all services you have created.
+1. In the **services** section, specify the name of the Conversation service instance you created for the demo app. If you do not remember the service name, use the ```bx service list``` command to list all services you have created. Finally, in the **env** section, add the last line starting with **WORKSPACE_ID** and copy the value of the WORKSPACE ID.
 
     The following example shows a modified manifest.yml file:
     ```yml
@@ -469,6 +469,7 @@ You can use Cloud Foundry to deploy your local version of the app to Bluemix.
       - my-conversation-service
       env:
         NPM_CONFIG_PRODUCTION: false
+        WORKSPACE_ID: <YOUR-WATSON-CONVERSATION-WORKSPACE-ID>
     ```
 
 1. Push the app to Bluemix:
@@ -476,23 +477,9 @@ You can use Cloud Foundry to deploy your local version of the app to Bluemix.
     bx cf push
     ```
 
-**TDB**
-1. The Deploy to Bluemix also created a new instance of Conversation service called ```conversation-service```. We could export the dialog in JSON format from the previous service and import it in this new service. Let's make it simple, and just use the service created in Step #1 which already contains the dialog. To do so, go to the Connections tab, unbind the existing service ```conversation-service``` and click ```Connect Existing```to attach the service provisioned in Step #1.
+1. Go back to the App dashboard in the **Console**, Click ```View app```. This should take you to a web page where you can chat with your application.
 
-1. Accept to Restage the application, so the service is correctly bound to the application.
-
-
-1. Return to your Dashboad, select the app you created. Click the tab ```Runtime``` and select ```Environment Variables```.
-
-  <img src="./images/app-envvars-537x163.png" width="537" height="163"/>
-
-1. Scroll down to the section ```User Defined``` and add the following variable WORKSPACE_ID and copy the value of your workspace ID into the value section.
-
-  <img src="./images/env-userdefined-627x208.png" width="627" height="208"/>
-
-1. Click ```View app```. This should take you to a web page where you can chat with your application.
-
-Note: If you still get the message "The app has not been configured with a WORKSPACE_ID environment variable.", restart your application so the new environment variable is taken into account.
+    Note: If you still get the message "The app has not been configured with a WORKSPACE_ID environment variable.", restart your application so the new environment variable is taken into account.
 
 
 # Resources
