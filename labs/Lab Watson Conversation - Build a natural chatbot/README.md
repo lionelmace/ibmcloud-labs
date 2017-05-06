@@ -385,22 +385,13 @@ You may want to embed this dialog into a web app. This step shows you how to do 
     my-conversation-service   conversation   free                update succeeded
     ```
 
-1. Create a service key to access the watson service from your application
-    ```
-    bx cf create-service-key <service_instance> <service_key>
-    ```
-    For example:
-    ```
-    bx cf create-service-key my-conversation-service my-watson-key
-    ```
-
-1. Retrieve the credentials from the service key using the command:
+1. When the Watson Conversation service was created, Bluemix dynamically generated a service key named Credentials-1 by default. Let's retrieve the credentials of this service key using the command:
     ```
     bx cf service-key <service_instance> <service_key>
     ```
     For example:
     ```bash
-    bx cf service-key my-conversation-service my-watson-key
+    bx cf service-key my-conversation-service Credentials-1
     ```
     The output from this command is a JSON object, as in this example:
     ```json
