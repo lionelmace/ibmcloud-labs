@@ -472,6 +472,15 @@ You can use Cloud Foundry to deploy your local version of the app to Bluemix.
         WORKSPACE_ID: <YOUR-WATSON-CONVERSATION-WORKSPACE-ID>
     ```
 
+    Note: These environment variables could also be edited in the App Dashboard in the console. To view those, go to the app you created and click the tab **Runtime** then select ```Environment Variables```.
+
+      <img src="./images/app-envvars-537x163.png" width="537" height="163"/>
+
+    Scroll down to the section ```User Defined```, you should see a screen like this:
+
+      <img src="./images/env-userdefined-627x208.png" width="627" height="208"/>
+
+
 1. Push the app to Bluemix:
     ```
     bx cf push
