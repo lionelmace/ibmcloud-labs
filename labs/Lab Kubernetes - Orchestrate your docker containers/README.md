@@ -76,7 +76,7 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
 
 1. Login to Bluemix
     ```
-    $ bx login -a https://api.ng.bluemix.net
+    bx login -a https://api.ng.bluemix.net
     ```
 
 1. Log in to the IBM Bluemix Container Service Kubernetes plug-in. The prefix for running commands by using the IBM Bluemix Container Service plug-in is **bx cs**.
@@ -165,15 +165,11 @@ To create a cluster, you have two options either a free cluster or a paid cluste
 
 1. Use the result of the previous command to set the path to your Kubernetes configuration file as an environment variable.
     For Mac: ```export KUBECONFIG=/Users/ibm/.bluemix/plugins...```
-    For Win: ```set KUBECONFIG=/Users/ibm/.bluemix/plugins...````
+    For Win: ```set KUBECONFIG=/Users/ibm/.bluemix/plugins...```
 
 1. Access your Kubernetes dashboard with the default port 8001.
     ```
     kubectl proxy
-    ```
-
-    ```
-    $ kubectl proxy
     Starting to serve on 127.0.0.1:8001
     ```
 
@@ -219,17 +215,17 @@ To create a cluster, you have two options either a free cluster or a paid cluste
 
 1. Build a Docker image that includes the app files of the Stage1 directory.
     ```
-    docker build -t registry.ng.bluemix.net/<namespace>/mytodo:1 .
+    docker build -t registry.ng.bluemix.net/<namespace>/mytodos:1 .
     ```
 
     Note: If you already have an image, just need to tag this image before pushing it.
     ```
-    docker tag mytodo:1 registry.ng.bluemix.net/<namespace>/mytodo:1
+    docker tag mytodo:1 registry.ng.bluemix.net/<namespace>/mytodos:1
     ```
 
 1. Push the image to your private images registry.
     ```
-    docker push registry.ng.bluemix.net/<namespace>/mytodo:1
+    docker push registry.ng.bluemix.net/<namespace>/mytodos:1
     ```
 
 1. Verify that the image was successfully added to your registry.
@@ -241,7 +237,7 @@ To create a cluster, you have two options either a free cluster or a paid cluste
     Listing images...
 
     REPOSITORY                                  NAMESPACE   TAG       DIGEST         CREATED        SIZE     VULNERABILITY STATUS
-    registry.ng.bluemix.net/your-namespace/mytodo   namespace   1   0d90cb732881   1 minute ago   264 MB   OK
+    registry.ng.bluemix.net/your-namespace/mytodos   namespace   1   0d90cb732881   1 minute ago   264 MB   OK
     ```
 
 
@@ -295,7 +291,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
 
 # Step 7 - Create Kubernetes Services and Deployments
 
-1. Change the image name given in the respective deployment YAML file if the newly build image is different from **todo**.
+1. Change the image name given in the respective deployment YAML file if the newly build image is different from **mytodos**.
     ```yml
     ---
     # Service to expose frontend
@@ -333,7 +329,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
         spec:
           containers:
           - name: mytodos
-            image: registry.ng.bluemix.net/mace/todo:v1
+            image: registry.ng.bluemix.net/mace/mytodos:v1
             imagePullPolicy: Always
             resources:
               requests:
@@ -383,7 +379,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
 1. Get the public IP of the worker node in the cluster by running one of the command
 
     ```
-    $ kubectl get nodes
+    kubectl get nodes
     NAME             STATUS    AGE
     169.47.227.138   Ready     23h
     ```
@@ -397,7 +393,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
     ```
 
 1. Open a browser and check out the app with the following URL:
-    ```
+    ```html
     http://<IP_address>:<NodePort>
     ```
     In this example, the url would be ```http://169.47.227.138:30872```
@@ -416,7 +412,10 @@ Weaveworks scope provides a visual diagram of your resources within the kube clu
     ```
     kubectl port-forward $(kubectl get pod --selector=weave-scope-component=app -o jsonpath='{.items..metadata.name}') 4040
     ```
-    Open your web browser to ```http://localhost:4040```
+    Open your web browser to
+    ```html
+    http://localhost:4040
+    ```
 
     Note, Weave Scope is a cpu heavy (especially the app). Scope is best utilized in a large cluster.
 
