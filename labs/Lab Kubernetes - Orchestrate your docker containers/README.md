@@ -295,7 +295,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
 
 # Step 7 - Create Kubernetes Services and Deployments
 
-1. Change the image name given in the respective deployment YAML file if the newly build image is different from **mytodo**.
+1. Change the image name given in the respective deployment YAML file if the newly build image is different from **todo**.
     ```yml
     ---
     # Service to expose frontend
