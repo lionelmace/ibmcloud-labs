@@ -174,7 +174,7 @@ To create a cluster, you have two options either a free cluster or a paid cluste
     ```
 
 1. Open the following URL in a web browser in order to see the Kubernetes dashboard.
-    ```
+    ```html
     http://localhost:8001/ui
     ```
 
@@ -413,11 +413,11 @@ Weaveworks scope provides a visual diagram of your resources within the kube clu
     kubectl port-forward $(kubectl get pod --selector=weave-scope-component=app -o jsonpath='{.items..metadata.name}') 4040
     ```
     Open your web browser to
-    ```html
-    http://localhost:4040
+    ```
+    [http://localhost:4040](http://localhost:4040)
     ```
 
-    Note, Weave Scope is a cpu heavy (especially the app). Scope is best utilized in a large cluster.
+    Note: Weave Scope is a cpu heavy (especially the app). Scope is best utilized in a large cluster.
 
 
 # Resources
