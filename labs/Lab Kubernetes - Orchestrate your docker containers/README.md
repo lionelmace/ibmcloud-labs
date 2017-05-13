@@ -174,7 +174,7 @@ To create a cluster, you have two options either a free cluster or a paid cluste
     ```
 
 1. Open the following URL in a web browser in order to see the Kubernetes dashboard.
-      [http://localhost:8001/ui](http://localhost:8001/ui)
+   <a href="http://localhost:8001/ui" target="_blank">http://localhost:8001/ui</a>
 
 # Step 4 - Get and build the application code
 
