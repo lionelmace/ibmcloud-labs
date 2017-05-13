@@ -365,16 +365,16 @@ This web application uses a Cloudant DBaaS to store the todo task.
     ```
     Output:
     ```
-    Name:			        mytodos
-    Namespace:	      default
-    Labels:			      app=mytodos
-    			            tier=frontend
-    Selector:		      app=mytodos,tier=frontend
-    Type:			        NodePort
-    IP:			          10.10.10.205
-    Port:			        <unset>	3000/TCP
-    NodePort:		      <unset>	31513/TCP
-    Endpoints:	      172.30.51.102:3000,172.30.51.103:3000
+    Name:			mytodos
+    Namespace:		default
+    Labels:			app=mytodos
+    			tier=frontend
+    Selector:		app=mytodos,tier=frontend
+    Type:			NodePort
+    IP:			10.10.10.205
+    Port:			<unset>	3000/TCP
+    NodePort:		<unset>	31513/TCP
+    Endpoints:		172.30.51.102:3000,172.30.51.103:3000
     Session Affinity:	None
     No events.
     ```
@@ -418,7 +418,7 @@ Weaveworks scope provides a visual diagram of your resources within the kube clu
     ```
     Open your web browser to ```http://localhost:4040```
 
-    Note, weave scope is a cpu heavy (especially the app). I would not recommend running scope on a free cluster. Scope is best utilized in larger paid clusters.
+    Note, Weave Scope is a cpu heavy (especially the app). Scope is best utilized in a large cluster.
 
 
 # Resources
