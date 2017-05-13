@@ -211,19 +211,19 @@ To create a cluster, you have two options either a free cluster or a paid cluste
     mace
     ```
 
-1. Build a Docker image that includes the app files of the Stage1 directory.
+1. Build a Docker image that includes the app files of the directory.
     ```
-    docker build -t registry.ng.bluemix.net/<namespace>/mytodos:1 .
+    docker build -t registry.ng.bluemix.net/<namespace>/mytodos:v1 .
     ```
 
     Note: If you already have an image, just need to tag this image before pushing it.
     ```
-    docker tag mytodo:1 registry.ng.bluemix.net/<namespace>/mytodos:1
+    docker tag mytodos:v1 registry.ng.bluemix.net/<namespace>/mytodos:v1
     ```
 
 1. Push the image to your private images registry.
     ```
-    docker push registry.ng.bluemix.net/<namespace>/mytodos:1
+    docker push registry.ng.bluemix.net/<namespace>/mytodos:v1
     ```
 
 1. Verify that the image was successfully added to your registry.
@@ -289,7 +289,12 @@ This web application uses a Cloudant DBaaS to store the todo task.
 
 # Step 7 - Create Kubernetes Services and Deployments
 
-1. Change the image name given in the respective deployment YAML file if the newly build image is different from **mytodos**.
+1. Edit the YAML file `deploy-mytodos-inkubernetes.yml` to set the namespace of your private registry. If you don't remember this namespace, run the following command:
+    ```
+    bx cr namespace-list
+    ```
+
+    Your YAML file should look as follows:
     ```yml
     ---
     # Service to expose frontend
@@ -327,7 +332,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
         spec:
           containers:
           - name: mytodos
-            image: registry.ng.bluemix.net/mace/mytodos:v1
+            image: registry.ng.bluemix.net/<your-namespace>/mytodos:v1
             imagePullPolicy: Always
             resources:
               requests:
@@ -346,7 +351,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
 
 1. Deploy the app to a pod in your Kubernetes cluster.
     ```
-    kubectl create -f deploy-mytodo-inkubernetes.yml
+    kubectl create -f deploy-mytodos-inkubernetes.yml
 
     service "mytodos" created
     deployment "mytodos" created    
