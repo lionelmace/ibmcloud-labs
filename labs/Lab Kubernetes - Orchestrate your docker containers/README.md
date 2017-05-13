@@ -290,7 +290,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
 
 # Step 7 - Create Kubernetes Services and Deployments
 
-1. Edit the YAML file `deploy-mytodos-inkubernetes.yml` to set the namespace of your private registry. If you don't remember this namespace, run the following command:
+1. Edit the YAML file `deploy2kubernetes.yml` to set the namespace of your private registry. If you don't remember this namespace, run the following command:
     ```
     bx cr namespace-list
     ```
@@ -352,7 +352,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
 
 1. Deploy the app to a pod in your Kubernetes cluster.
     ```
-    kubectl create -f deploy-mytodos-inkubernetes.yml
+    kubectl create -f deploy2kubernetes.yml
 
     service "mytodos" created
     deployment "mytodos" created    
@@ -426,7 +426,7 @@ Weaveworks scope provides a visual diagram of your resources within the kube clu
 
 1. Let's scale up to 3 replicas
     ```
-    kubectl scale --replicas=3 -f deploy-mytodos-inkubernetes.yml
+    kubectl scale --replicas=3 -f deploy2kubernetes.yml
     ```
 
 1. Then, inspect our Pods again.
@@ -436,7 +436,7 @@ Weaveworks scope provides a visual diagram of your resources within the kube clu
 
 1. Finally, delete your deployment
     ```
-    kubectl delete -f deploy-mytodos-inkubernetes.yml
+    kubectl delete -f deploy2kubernetes.yml
     ```
 
 
