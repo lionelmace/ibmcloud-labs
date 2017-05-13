@@ -24,6 +24,7 @@ In this lab, you’ll gain a high level understanding of the Kubernetes architec
 1. [Bind a Bluemix service to a Kubernetes namespace](#step-6---bind-a-bluemix-service-to-a-kubernetes-namespace)
 1. [Create Kubernetes Services and Deployments](#step-7---Create-kubernetes-services-and-deployments)
 1. [Monitor your container with Weave Scope](#step-8---monitor-your-container-with-weave-scope)
+1. [Scale and Clean your services](#step-9---scale-and-clean-your-services)
 
 
 ## Step 1 - Install Bluemix Container Service and Registry plugins
@@ -419,6 +420,18 @@ Weaveworks scope provides a visual diagram of your resources within the kube clu
     <a href="http://localhost:4040" target="_blank">http://localhost:4040</a>
 
     Note: Weave Scope is a cpu heavy (especially the app). Scope is best utilized in a large cluster.
+
+
+## Step 9 - Scale and Clean your services
+
+1. Let's scale up to 3 replicas
+  ```kubectl scale --replicas=3 -f deploy-mytodos-inkubernetes.yml```
+
+1. Then, inspect our Pods again.
+  ```kubectl get pods```
+
+1. Finally, delete your deployment
+    ```kubectl delete -f deploy-mytodos-inkubernetes.yml```
 
 
 # Resources
