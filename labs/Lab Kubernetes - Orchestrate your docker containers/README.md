@@ -391,7 +391,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
     ```
 
 1. Open a browser and check out the app with the following URL:
-    ```html
+    ```
     http://<IP_address>:<NodePort>
     ```
     In this example, the url would be ```http://169.47.227.138:30872```
@@ -410,7 +410,8 @@ Weaveworks scope provides a visual diagram of your resources within the kube clu
     ```
     kubectl port-forward $(kubectl get pod --selector=weave-scope-component=app -o jsonpath='{.items..metadata.name}') 4040
     ```
-    Open your web browser to [http://localhost:4040](http://localhost:4040)
+    Open your web browser to
+    <a href="http://localhost:4040" target="_blank">http://localhost:4040</a>
 
     Note: Weave Scope is a cpu heavy (especially the app). Scope is best utilized in a large cluster.
 
