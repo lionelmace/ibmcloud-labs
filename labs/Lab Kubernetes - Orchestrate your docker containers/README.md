@@ -425,14 +425,14 @@ Weaveworks scope provides a visual diagram of your resources within the kube clu
 ## Step 9 - Scale and Clean your services
 
 1. Let's scale up to 3 replicas
-  ```
-  kubectl scale --replicas=3 -f deploy-mytodos-inkubernetes.yml
-  ```
+    ```
+    kubectl scale --replicas=3 -f deploy-mytodos-inkubernetes.yml
+    ```
 
 1. Then, inspect our Pods again.
-  ```
-  kubectl get pods
-  ```
+    ```
+    kubectl get pods
+    ```
 
 1. Finally, delete your deployment
     ```
