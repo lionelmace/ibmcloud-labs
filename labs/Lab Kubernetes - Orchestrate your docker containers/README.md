@@ -10,19 +10,23 @@ In this lab, you’ll gain a high level understanding of the Kubernetes architec
 + Install the [Bluemix CLI](http://clis.ng.bluemix.net)
 + Install docker for [Mac](https://docs.docker.com/engine/installation/mac/) or [Windows](https://docs.docker.com/engine/installation/windows/)
 + Install [Kubectl](https://kubernetes.io/docs/user-guide/prereqs/)
++ Install a [Git client](https://git-scm.com/downloads)
++ Install [Node.js](https://nodejs.org)
 
 
 # Steps
 
-1. [Prepare your IBM Container Service](#step-1---prepare-your-ibm-container-service)
+1. [Install Bluemix Container Service and Registry plugins](#step-1---install-bluemix-container-service-and-registry-plugins)
 1. [Connect to Bluemix](#step-2---connect-to-bluemix)
 1. [Create a cluster](#step-3---create-a-cluster)
-1. [Deploy Hello World app](#step-4---deploy-hello-world-app)
-1. [Bind a Bluemix service to a Kubernetes namespace](#step-5---bind-a-bluemix-service-to-a-kubernetes-namespace)
-1. [Weave Scope](#step-6---weave-scope)
+1. [Get and build the application code](#step-4---get-and-build-the-application-code)
+1. [Build and Push the application container](#step-5---build-and-push-the-application-container)
+1. [Bind a Bluemix service to a Kubernetes namespace](#step-6---bind-a-bluemix-service-to-a-kubernetes-namespace)
+1. [Create Kubernetes Services and Deployments](#step-7---Create-kubernetes-services-and-deployments)
+1. [Monitor your container with Weave Scope](#step-8---monitor-your-container-with-weave-scope)
 
 
-## Step 1 - Prepare your IBM Container Service
+## Step 1 - Install Bluemix Container Service and Registry plugins
 
 To create Kubernetes clusters, and manage worker nodes, install the Container Service plug-in.
 
@@ -178,7 +182,25 @@ To create a cluster, you have two options either a free cluster or a paid cluste
     http://localhost:8001/ui
     ```
 
-# Step 4 - Deploy Hello World app
+# Step 4 - Get and build the application code
+
+1. Clone or download the source code for the Todo web app.
+    ```
+    git clone github.com/lionelmace/mytodo
+    ```
+    This command creates a directory of your project locally on your disk.
+
+1. Change to the directory of the checkout
+    ```
+    cd mytodo
+    ```
+
+1. Get the node.js dependencies for this project
+    ```
+    npm install
+    ```
+
+# Step 5 - Build and Push the application container
 
 1. Log in to the private Container Registry of Bluemix. Only required if you haven't `bx login` before.
     ```
@@ -189,31 +211,25 @@ To create a cluster, you have two options either a free cluster or a paid cluste
 1. If you forgot the namespace for your image registry, run the following command.
     ```
     bx cr namespace-list
-    ```
+    Listing namespaces...
 
-1. Clone or download the source code for the Hello world app to your user home directory.
-    ```
-    git clone https://github.com/IBM/container-service-getting-started-wt.git
-    ```
-
-1. Navigate to the first app directory, Stage1.
-    ```
-    cd <username_home_directory>/container-service-getting-started-wt/Stage1
+    Namespace
+    mace
     ```
 
 1. Build a Docker image that includes the app files of the Stage1 directory.
     ```
-    docker build -t registry.ng.bluemix.net/<namespace>/hello-world:1 .
+    docker build -t registry.ng.bluemix.net/<namespace>/mytodo:1 .
     ```
 
     Note: If you already have an image, just need to tag this image before pushing it.
     ```
-    docker tag hello-world:1 registry.ng.bluemix.net/<namespace>/hello-world:1
+    docker tag mytodo:1 registry.ng.bluemix.net/<namespace>/mytodo:1
     ```
 
 1. Push the image to your private images registry.
     ```
-    docker push registry.ng.bluemix.net/<namespace>/hello-world:1
+    docker push registry.ng.bluemix.net/<namespace>/mytodo:1
     ```
 
 1. Verify that the image was successfully added to your registry.
@@ -225,67 +241,13 @@ To create a cluster, you have two options either a free cluster or a paid cluste
     Listing images...
 
     REPOSITORY                                  NAMESPACE   TAG       DIGEST         CREATED        SIZE     VULNERABILITY STATUS
-    registry.ng.bluemix.net/namespace/hello-world   namespace   1   0d90cb732881   1 minute ago   264 MB   OK
+    registry.ng.bluemix.net/your-namespace/mytodo   namespace   1   0d90cb732881   1 minute ago   264 MB   OK
     ```
 
-1. Create a Kubernetes deployment that is named hello-world-deployment to deploy the app to a pod in your cluster.
-    ```
-    kubectl run hello-world-deployment --image=registry.ng.bluemix.net/<namespace>/hello-world:1
-    ```
-    Output:
-    ```
-    deployment "hello-world-deployment" created
-    ```
 
-1. Make the app accessible to the world by exposing the deployment as a NodePort service.
-    ```
-    kubectl expose deployment/hello-world-deployment --type=NodePort --port=8080 --name=hello-world-service
-    ```
-    Output:
-    ```
-    service "hello-world-service" exposed
-    ```
+## Step 6 - Bind a Bluemix service to a Kubernetes namespace
 
-1. To test your app in a browser, get the details to form the URL.
-    ```
-    kubectl describe service hello-world-service
-    ```
-    Output:
-    ```
-    Name:                   hello-world-service
-    Namespace:              default
-    Labels:                 run=hello-world-deployment
-    Selector:               run=hello-world-deployment
-    Type:                   NodePort
-    IP:                     10.10.10.8
-    Port:                   <unset> 8080/TCP
-    NodePort:               <unset> 30872/TCP
-    Endpoints:              172.30.171.87:8080
-    Session Affinity:       None
-    No events.
-    ```
-    The NodePorts are randomly assigned when they are generated with the expose command, but within 30000-32767. In this example, the NodePort is 30872.
-
-1. Get the public IP address for the worker node in the cluster.
-    ```
-    bx cs workers <cluster_name_or_id>
-    ```
-    Output:
-    ```
-    Listing cluster workers...
-    OK
-    ID                                            Public IP        Private IP      Machine Type   State      Status
-    dal10-pa10c8f571c84d4ac3b52acbf50fd11788-w1   169.47.227.138   10.171.53.188   free           deployed   Deploy Automation Successful
-    ```
-
-1. Open a browser and check out the app with the following URL:
-    ```
-    http://<IP_address>:<NodePort>
-    ```
-    In this example, the url would be ```http://169.47.227.138:30872```
-
-
-## Step 5 - Bind a Bluemix service to a Kubernetes namespace
+This web application uses a Cloudant DBaaS to store the todo task.
 
 1. See all the available services in the catalog
     ```
@@ -331,7 +293,117 @@ To create a cluster, you have two options either a free cluster or a paid cluste
     ```
 
 
-## Step 6 - Weave Scope
+# Step 7 - Create Kubernetes Services and Deployments
+
+1. Change the image name given in the respective deployment YAML file if the newly build image is different from **mytodo**.
+    ```yml
+    ---
+    # Service to expose frontend
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: mytodos
+      labels:
+        app: mytodos
+        tier: frontend
+    spec:
+      # if your cluster supports it, uncomment the following to automatically create
+      # an external load-balanced IP for the frontend service.
+      # type: LoadBalancer
+      type: NodePort
+      ports:
+      - port: 3000
+        nodePort: 31513
+      selector:
+        app: mytodos
+        tier: frontend
+    ---
+    # Application to deploy
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    metadata:
+      name: mytodos
+    spec:
+      replicas: 2 # tells deployment to run 2 pods matching the template
+      template: # create pods using pod definition in this template
+        metadata:
+          labels:
+            app: mytodos
+            tier: frontend
+        spec:
+          containers:
+          - name: mytodos
+            image: registry.ng.bluemix.net/mace/todo:v1
+            imagePullPolicy: Always
+            resources:
+              requests:
+                cpu: 100m
+                memory: 100Mi
+            volumeMounts:
+              - mountPath: /opt/service-bind # Mount the "service-bind-volume" volume into the pod.
+                name: service-bind-volume
+          volumes:
+            - name: service-bind-volume
+              secret:
+                defaultMode: 420
+                secretName: binding-todo-cloudant
+
+    ```
+
+1. Deploy the app to a pod in your Kubernetes cluster.
+    ```
+    kubectl create -f deploy-mytodo-inkubernetes.yml
+
+    service "mytodos" created
+    deployment "mytodos" created    
+    ```
+    This command will make the app accessible to the world by exposing the deployment as a NodePort service.
+
+1. To test your app in a browser, get the details to form the URL.
+    ```
+    kubectl describe service mytodos
+    ```
+    Output:
+    ```
+    Name:			        mytodos
+    Namespace:	      default
+    Labels:			      app=mytodos
+    			            tier=frontend
+    Selector:		      app=mytodos,tier=frontend
+    Type:			        NodePort
+    IP:			          10.10.10.205
+    Port:			        <unset>	3000/TCP
+    NodePort:		      <unset>	31513/TCP
+    Endpoints:	      172.30.51.102:3000,172.30.51.103:3000
+    Session Affinity:	None
+    No events.
+    ```
+    The NodePorts are randomly assigned when they are generated with the expose command, but within 30000-32767. In this example, the NodePort is 30872.
+
+1. Get the public IP of the worker node in the cluster by running one of the command
+
+    ```
+    $ kubectl get nodes
+    NAME             STATUS    AGE
+    169.47.227.138   Ready     23h
+    ```
+    OR
+    ```
+    bx cs workers <cluster_name_or_id>
+    Listing cluster workers...
+    OK
+    ID                                            Public IP        Private IP      Machine Type   State      Status
+    dal10-pa10c8f571c84d4ac3b52acbf50fd11788-w1   169.47.227.138   10.171.53.188   free           deployed   Deploy Automation Successful
+    ```
+
+1. Open a browser and check out the app with the following URL:
+    ```
+    http://<IP_address>:<NodePort>
+    ```
+    In this example, the url would be ```http://169.47.227.138:30872```
+
+
+## Step 8 - Monitor your container with Weave Scope
 
 Weaveworks scope provides a visual diagram of your resources within the kube cluster including services, pods, containers, processes, nodes, etc. Scope provides you interactive metrics for CPU and Memory and provides tools to tail and exec into a container. Scope is a powerful tool that you do NOT want to expose on the public internet. The following steps describe how to securely deploy scope and access it from a web browser.
 
