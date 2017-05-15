@@ -312,7 +312,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
       # type: LoadBalancer
       type: NodePort
       ports:
-      - port: 3000
+      - port: 8080
         nodePort: 31513
       selector:
         app: mytodos
