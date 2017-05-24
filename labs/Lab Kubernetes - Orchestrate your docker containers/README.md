@@ -107,9 +107,10 @@ To create a cluster, you have two options either a free cluster or a paid cluste
     ```
     bx cs locations
     ```
-    and you should get back something like:
+    and you should get back something like this if you are connected to Germany
     ```
-    dal10
+    ams03
+    fra02
     ```
 
 1. Review the machine types available in the data center
@@ -123,11 +124,11 @@ To create a cluster, you have two options either a free cluster or a paid cluste
     OK
     Machine Types
     Name         Cores   Memory   Network Speed   OS             Storage   Server Type   
-    b1c.16x64    16      64GB     1000Mbps        UBUNTU_16_64   100       virtual   
-    b1c.32x128   32      128GB    1000Mbps        UBUNTU_16_64   100       virtual   
-    b1c.4x16     4       16GB     1000Mbps        UBUNTU_16_64   100       virtual   
-    b1c.56x242   56      242GB    1000Mbps        UBUNTU_16_64   100       virtual   
-    u1c.2x4      2       4GB      100Mbps         UBUNTU_16_64   100       virtual   
+    u1c.2x4      2       4GB      100Mbps         UBUNTU_16_64   100GB     virtual
+    b1c.4x16     4       16GB     1000Mbps        UBUNTU_16_64   100GB     virtual
+    b1c.16x64    16      64GB     1000Mbps        UBUNTU_16_64   100GB     virtual
+    b1c.32x128   32      128GB    1000Mbps        UBUNTU_16_64   100GB     virtual
+    b1c.56x242   56      242GB    1000Mbps        UBUNTU_16_64   100GB     virtual
     ```
 
 1. Get the available VLANs in your account
@@ -444,7 +445,7 @@ Weaveworks scope provides a visual diagram of your resources within the kube clu
 
 For additional resources pay close attention to the following:
 
-- [Running Kubernetes clusters with IBM Bluemix Container Service (Beta)](https://console.ng.bluemix.net/docs/containers/cs_cluster.html#cs_cluster_cli)
+- [Running Kubernetes clusters with IBM Bluemix Container Service](https://console.ng.bluemix.net/docs/containers/cs_cluster.html#cs_cluster_cli)
 - [Container Service Swagger API](https://us-south.containers.bluemix.net/swagger)
 - [Bash script to tail Kubernetes logs from multiple pods at the same time](https://github.com/johanhaleby/kubetail)
 - [Bluemix CLI Plug-in Repository](http://clis.ng.bluemix.net/ui/repository.html#bluemix-plugins)
