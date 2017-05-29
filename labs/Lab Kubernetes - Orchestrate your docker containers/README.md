@@ -87,17 +87,19 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
 
 # Step 3 - Create a cluster
 To create a cluster, you have two options either a free cluster or a paid cluster.
-+ A **free cluster** comes with one worker node to deploy container pods upon. A worker node is the compute host, typically a virtual machine, that your apps run on.
-+ A **paid cluster** can have as many worker nodes as you want. A paid cluster requires requires a Bluemix Infrastructure (SoftLayer) account. If you have a Bluemix Infrastructure account, you can skip this first step and go to the step 2 *Set SoftLayer credentials*.
++ A **free cluster** comes with one worker node to deploy container pods upon. A worker node is the compute host, typically a virtual machine, that your apps run on. Go to Step 3.1
++ A **paid cluster** can have as many worker nodes as you want. Go to Step 3.2. A paid cluster requires requires a Bluemix Infrastructure (SoftLayer) account. If you have a Bluemix Infrastructure account, you can skip this first step and go to the step 2 *Set SoftLayer credentials*.
 
+#### Step 3.1
 1. Create your free Kubernetes cluster.
     ```
     bx cs cluster-create --name <your-cluster-name>
     ```
     Once the cluster reaches the **deployed** state you can provision pods, but they will be enqueued until the cluster’s pods are finished provisioning. Note that it takes up to 15 minutes for the worker node machine to be ordered and for the cluster to be set up and provisioned.
 
-    If you have already created a free cluster in the step above, skip to the step **Step 4 - Deploy Hello World app**.
+	Continue directly to **Step 4 - Deploy Hello World app** of the tutorial
 
+#### Step 3.2
 1. Set SoftLayer credentials
     ```
     bx cs credentials-set --softlayer-username <YOUR-USER-NAME> --softlayer-api-key <YOUR-API-KEY>
@@ -182,8 +184,11 @@ To create a cluster, you have two options either a free cluster or a paid cluste
 
 1. Clone or download the source code for the Todo web app.
     ```
-    git clone github.com/lionelmace/mytodo
+    git clone [https://github.com/lionelmace/mytodo.git](https://github.com/lionelmace/mytodo.git)
     ```
+    Ouais en fait, si je te pourris tout ton .md... je sais pas si çà vaut le coup...
+    Faut que j'aille en formation Prose ;-))))
+    
     This command creates a directory of your project locally on your disk.
 
 1. Change to the directory of the checkout
