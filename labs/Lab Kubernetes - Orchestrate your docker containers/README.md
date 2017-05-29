@@ -182,7 +182,7 @@ To create a cluster, you have two options either a free cluster or a paid cluste
 
 1. Clone or download the source code for the Todo web app.
     ```
-    git clone github.com/lionelmace/mytodo
+    git clone https://github.com/lionelmace/mytodo
     ```
     This command creates a directory of your project locally on your disk.
 
@@ -406,18 +406,26 @@ This web application uses a Cloudant DBaaS to store the todo task.
 
 ## Step 8 - Monitor your container with Weave Scope
 
-Weaveworks scope provides a visual diagram of your resources within the kube cluster including services, pods, containers, processes, nodes, etc. Scope provides you interactive metrics for CPU and Memory and provides tools to tail and exec into a container. Scope is a powerful tool that you do NOT want to expose on the public internet. The following steps describe how to securely deploy scope and access it from a web browser.
+Weaveworks scope provides a visual diagram of your resources within the kube cluster including services, pods, containers, processes, nodes, etc. Scope provides you interactive metrics for CPU and Memory and provides tools to tail and exec into a container. Scope is a powerful tool that you do NOT want to expose on the public internet.
+
+To use weave scope securely with your Kubernetes cluster you can follow these steps.
+
+1. Update the Role Based Access Control
+    ```
+    kubectl apply -f "https://gist.githubusercontent.com/dcberg/0ae9b50cb2a94a18dc69c80dbb7c4d60/raw/e23a1bbbad877499f0e817f519176bf5e1e4aae9/weave-scope-rbac-alpha.yaml"
+    ```
 
 1. Deploy weave scope service (privately accessible via cluster IP).
     ```
-    kubectl apply -f 'https://cloud.weave.works/launch/k8s/weavescope.yaml'
+    kubectl apply --namespace kube-system -f "https://cloud.weave.works/k8s/scope.yaml?k8s-version=$(kubectl version | base64 | tr -d '\n')"
     ```
 
-1. Open a terminal and run a port forward.
+1. Run a port forward:
     ```
-    kubectl port-forward $(kubectl get pod --selector=weave-scope-component=app -o jsonpath='{.items..metadata.name}') 4040
+    kubectl port-forward -n kube-system "$(kubectl get -n kube-system pod --selector=weave-scope-component=app -o jsonpath='{.items..metadata.name}')" 4040
     ```
-    Open your web browser to
+
+1. Open your web browser to
     <a href="http://localhost:4040" target="_blank">http://localhost:4040</a>
 
     Note: Weave Scope is a cpu heavy (especially the app). Scope is best utilized in a large cluster.
