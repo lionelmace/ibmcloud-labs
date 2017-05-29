@@ -184,7 +184,7 @@ To create a cluster, you have two options either a free cluster or a paid cluste
 
 1. Clone or download the source code for the Todo web app.
     ```
-    git clone [https://github.com/lionelmace/mytodo.git](https://github.com/lionelmace/mytodo.git)
+    git clone https://github.com/lionelmace/mytodo.git
     ```
     Ouais en fait, si je te pourris tout ton .md... je sais pas si çà vaut le coup...
     Faut que j'aille en formation Prose ;-))))
