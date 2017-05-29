@@ -204,13 +204,14 @@ To create a cluster, you have two options either a free cluster or a paid cluste
     ```
     `bx cr login` is a wrapper for `docker login` , it is only needed to log your local docker daemon into the registry, which enables you to push/pull images.
 
-1. If you forgot the namespace for your image registry, run the following command.
+1. To create the namespace of your image registry
+    ```
+    bx cr namespace-add <YOUR-NAMESPACE-NAME>
+    ```
+
+1. If you forgot the namespace for your image registry, run the command.
     ```
     bx cr namespace-list
-    Listing namespaces...
-
-    Namespace
-    mace
     ```
 
 1. Build a Docker image that includes the app files of the directory.
