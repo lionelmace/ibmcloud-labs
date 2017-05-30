@@ -1,5 +1,5 @@
 ![](./images/kubernetes.png)
-# Introduction
+# Introduction (modif5)
 
 In this lab, you’ll gain a high level understanding of the Kubernetes architecture, features, and development concepts related to the IBM Container Service. Throughout the lab, you’ll get a chance to use the Command Line Interface (CLI) for creating a Kubernetes cluster, manage your running cluster, and bind a service.
 
@@ -87,19 +87,30 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
 
 # Step 3 - Create a cluster
 To create a cluster, you have two options either a free cluster or a paid cluster.
+<<<<<<< HEAD
 
 + A **free cluster** comes with one worker node to deploy container pods upon. A worker node is the compute host, typically a virtual machine, that your apps run on. Go to Step 3.1 *Create your free Kubernetes cluster*
 
 + A **paid cluster** can have as many worker nodes as you want. A paid cluster requires requires a Bluemix Infrastructure (SoftLayer) account. Go to Step 3.2 *Set SoftLayer credentials*.
+=======
++ A **free cluster** comes with one worker node to deploy container pods upon. A worker node is the compute host, typically a virtual machine, that your apps run on. Go to Step 3.1
++ A **paid cluster** can have as many worker nodes as you want. Go to Step 3.2. A paid cluster requires requires a Bluemix Infrastructure (SoftLayer) account. If you have a Bluemix Infrastructure account, you can skip this first step and go to the step 2 *Set SoftLayer credentials*.
+>>>>>>> 959de2c2e6f84eda5acbdb895f8b5b60e4e7e503
 
+#### Step 3.1
 1. Create your free Kubernetes cluster.
     ```
     bx cs cluster-create --name <your-cluster-name>
     ```
     Once the cluster reaches the **deployed** state you can provision pods, but they will be enqueued until the cluster’s pods are finished provisioning. Note that it takes up to 15 minutes for the worker node machine to be ordered and for the cluster to be set up and provisioned.
 
+<<<<<<< HEAD
     If you have created a free cluster in the step above, go to the Step 3.7 **Verify that the creation of the cluster was requested.**.
+=======
+	Continue directly to **Step 4 - Deploy Hello World app** of the tutorial
+>>>>>>> 959de2c2e6f84eda5acbdb895f8b5b60e4e7e503
 
+#### Step 3.2
 1. Set SoftLayer credentials
     ```
     bx cs credentials-set --softlayer-username <YOUR-USER-NAME> --softlayer-api-key <YOUR-API-KEY>
@@ -184,8 +195,15 @@ To create a cluster, you have two options either a free cluster or a paid cluste
 
 1. Clone or download the source code for the Todo web app.
     ```
+<<<<<<< HEAD
     git clone https://github.com/lionelmace/mytodo
+=======
+    git clone https://github.com/lionelmace/mytodo.git
+>>>>>>> 959de2c2e6f84eda5acbdb895f8b5b60e4e7e503
     ```
+    Ouais en fait, si je te pourris tout ton .md... je sais pas si çà vaut le coup...
+    Faut que j'aille en formation Prose ;-))))
+    
     This command creates a directory of your project locally on your disk.
 
 1. Change to the directory of the checkout
