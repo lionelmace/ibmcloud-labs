@@ -87,8 +87,10 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
 
 # Step 3 - Create a cluster
 To create a cluster, you have two options either a free cluster or a paid cluster.
-+ A **free cluster** comes with one worker node to deploy container pods upon. A worker node is the compute host, typically a virtual machine, that your apps run on.
-+ A **paid cluster** can have as many worker nodes as you want. A paid cluster requires requires a Bluemix Infrastructure (SoftLayer) account. If you have a Bluemix Infrastructure account, you can skip this first step and go to the step 2 *Set SoftLayer credentials*.
+
++ A **free cluster** comes with one worker node to deploy container pods upon. A worker node is the compute host, typically a virtual machine, that your apps run on. Go to Step 3.1 *Create your free Kubernetes cluster*
+
++ A **paid cluster** can have as many worker nodes as you want. A paid cluster requires requires a Bluemix Infrastructure (SoftLayer) account. Go to Step 3.2 *Set SoftLayer credentials*.
 
 1. Create your free Kubernetes cluster.
     ```
@@ -96,7 +98,7 @@ To create a cluster, you have two options either a free cluster or a paid cluste
     ```
     Once the cluster reaches the **deployed** state you can provision pods, but they will be enqueued until the cluster’s pods are finished provisioning. Note that it takes up to 15 minutes for the worker node machine to be ordered and for the cluster to be set up and provisioned.
 
-    If you have already created a free cluster in the step above, skip to the step **Step 4 - Deploy Hello World app**.
+    If you have created a free cluster in the step above, go to the Step 3.7 **Verify that the creation of the cluster was requested.**.
 
 1. Set SoftLayer credentials
     ```
@@ -182,7 +184,7 @@ To create a cluster, you have two options either a free cluster or a paid cluste
 
 1. Clone or download the source code for the Todo web app.
     ```
-    git clone github.com/lionelmace/mytodo
+    git clone https://github.com/lionelmace/mytodo
     ```
     This command creates a directory of your project locally on your disk.
 
@@ -204,13 +206,14 @@ To create a cluster, you have two options either a free cluster or a paid cluste
     ```
     `bx cr login` is a wrapper for `docker login` , it is only needed to log your local docker daemon into the registry, which enables you to push/pull images.
 
-1. If you forgot the namespace for your image registry, run the following command.
+1. To create the namespace of your image registry
+    ```
+    bx cr namespace-add <YOUR-NAMESPACE-NAME>
+    ```
+
+1. If you forgot the namespace for your image registry, run the command.
     ```
     bx cr namespace-list
-    Listing namespaces...
-
-    Namespace
-    mace
     ```
 
 1. Build a Docker image that includes the app files of the directory.
@@ -406,18 +409,26 @@ This web application uses a Cloudant DBaaS to store the todo task.
 
 ## Step 8 - Monitor your container with Weave Scope
 
-Weaveworks scope provides a visual diagram of your resources within the kube cluster including services, pods, containers, processes, nodes, etc. Scope provides you interactive metrics for CPU and Memory and provides tools to tail and exec into a container. Scope is a powerful tool that you do NOT want to expose on the public internet. The following steps describe how to securely deploy scope and access it from a web browser.
+Weaveworks scope provides a visual diagram of your resources within the kube cluster including services, pods, containers, processes, nodes, etc. Scope provides you interactive metrics for CPU and Memory and provides tools to tail and exec into a container. Scope is a powerful tool that you do NOT want to expose on the public internet.
+
+To use weave scope securely with your Kubernetes cluster you can follow these steps.
+
+1. Update the Role Based Access Control
+    ```
+    kubectl apply -f "https://gist.githubusercontent.com/dcberg/0ae9b50cb2a94a18dc69c80dbb7c4d60/raw/e23a1bbbad877499f0e817f519176bf5e1e4aae9/weave-scope-rbac-alpha.yaml"
+    ```
 
 1. Deploy weave scope service (privately accessible via cluster IP).
     ```
-    kubectl apply -f 'https://cloud.weave.works/launch/k8s/weavescope.yaml'
+    kubectl apply --namespace kube-system -f "https://cloud.weave.works/k8s/scope.yaml?k8s-version=$(kubectl version | base64 | tr -d '\n')"
     ```
 
-1. Open a terminal and run a port forward.
+1. Run a port forward:
     ```
-    kubectl port-forward $(kubectl get pod --selector=weave-scope-component=app -o jsonpath='{.items..metadata.name}') 4040
+    kubectl port-forward -n kube-system "$(kubectl get -n kube-system pod --selector=weave-scope-component=app -o jsonpath='{.items..metadata.name}')" 4040
     ```
-    Open your web browser to
+
+1. Open your web browser to
     <a href="http://localhost:4040" target="_blank">http://localhost:4040</a>
 
     Note: Weave Scope is a cpu heavy (especially the app). Scope is best utilized in a large cluster.
