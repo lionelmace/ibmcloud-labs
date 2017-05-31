@@ -177,8 +177,7 @@ To create a cluster, you have two options either a free cluster or a paid cluste
     Starting to serve on 127.0.0.1:8001
     ```
 
-1. Open the following URL in a web browser in order to see the Kubernetes dashboard.
-   <a href="http://localhost:8001/ui" target="_blank">http://localhost:8001/ui</a>
+1. Open the Kubernetes dashboard: <a href="http://localhost:8001/ui" target="_blank">http://localhost:8001/ui</a>
 
 # Step 4 - Get and build the application code
 
