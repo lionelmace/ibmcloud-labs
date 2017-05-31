@@ -281,7 +281,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
     ```
     Example:
     ```
-    bx cs cluster-service-bind ad35aacc139b4e11a6f3182fb13d24af default mycloudant
+    bx cs cluster-service-bind ad35aacc139b4e11a6f3182fb13d24af default todo-cloudant
     ```
     Note: Use the namepsace **default** or create your own namespace.
 
@@ -350,8 +350,8 @@ This web application uses a Cloudant DBaaS to store the todo task.
               secret:
                 defaultMode: 420
                 secretName: binding-todo-cloudant
-
     ```
+    Note: The secret name is the contatenation of **binding-** and the service name.
 
 1. Deploy the app to a pod in your Kubernetes cluster.
     ```
