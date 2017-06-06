@@ -27,7 +27,7 @@ In this lab, you’ll gain a high level understanding of the Kubernetes architec
 1. [Scale and Clean your services](#step-9---scale-and-clean-your-services)
 
 
-## Step 1 - Install Bluemix Container Service and Registry plugins
+# Step 1 - Install Bluemix Container Service and Registry plugins
 
 To create Kubernetes clusters, and manage worker nodes, install the Container Service plug-in.
 
@@ -73,7 +73,7 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
     container-service    0.1.219
     ```
 
-## Step 2 - Connect to Bluemix
+# Step 2 - Connect to Bluemix
 
 1. Login to Bluemix
     ```
@@ -109,10 +109,10 @@ To create a cluster, you have two options either a free cluster or a paid cluste
     ```
     bx cs locations
     ```
-    and you should get back something like this if you are connected to Germany
+    and you should get back something like this if you are connected to US South
     ```
-    ams03
-    fra02
+    dal10
+    dal12
     ```
 
 1. Review the machine types available in the data center
@@ -243,7 +243,7 @@ To create a cluster, you have two options either a free cluster or a paid cluste
     ```
 
 
-## Step 6 - Bind a Bluemix service to a Kubernetes namespace
+# Step 6 - Bind a Bluemix service to a Kubernetes namespace
 
 This web application uses a Cloudant DBaaS to store the todo task.
 
@@ -381,7 +381,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
     Session Affinity:	None
     No events.
     ```
-    The NodePorts are randomly assigned when they are generated with the expose command, but within 30000-32767. In this example, the NodePort is 30872.
+    The NodePorts are randomly assigned when they are generated with the expose command, but within 30000-32767. In this example, the NodePort is 31513.
 
 1. Get the public IP of the worker node in the cluster by running one of the command
 
@@ -403,12 +403,12 @@ This web application uses a Cloudant DBaaS to store the todo task.
     ```
     http://<IP_address>:<NodePort>
     ```
-    In this example, the url would be ```http://169.47.227.138:30872```
+    In this example, the url would be ```http://169.47.227.138:31513```
 
 
-## Step 8 - Monitor your container with Weave Scope
+# Step 8 - Monitor your container with Weave Scope
 
-Weaveworks scope provides a visual diagram of your resources within the kube cluster including services, pods, containers, processes, nodes, etc. Scope provides you interactive metrics for CPU and Memory and provides tools to tail and exec into a container. Scope is a powerful tool that you do NOT want to expose on the public internet.
+[Weave scope](https://www.weave.works/docs/scope/latest/introducing/) provides a visual diagram of your resources within the kube cluster including services, pods, containers, processes, nodes, etc. Scope provides you interactive metrics for CPU and Memory and provides tools to tail and exec into a container. Scope is a powerful tool that you do not want to expose on the public internet.
 
 To use weave scope securely with your Kubernetes cluster you can follow these steps.
 
@@ -433,7 +433,7 @@ To use weave scope securely with your Kubernetes cluster you can follow these st
     Note: Weave Scope is a cpu heavy (especially the app). Scope is best utilized in a large cluster.
 
 
-## Step 9 - Scale and Clean your services
+# Step 9 - Scale and Clean your services
 
 1. Let's scale up to 3 replicas
     ```
