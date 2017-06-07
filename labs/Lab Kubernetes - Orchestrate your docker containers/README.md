@@ -22,12 +22,13 @@ This lab shows how to demonstrate the deployment of a web application for managi
 1. [Install Bluemix Container Service and Registry plugins](#step-1---install-bluemix-container-service-and-registry-plugins)
 1. [Connect to Bluemix](#step-2---connect-to-bluemix)
 1. [Create a cluster](#step-3---create-a-cluster)
-1. [Get and build the application code](#step-4---get-and-build-the-application-code)
-1. [Build and Push the application container](#step-5---build-and-push-the-application-container)
-1. [Bind a Bluemix service to a Kubernetes namespace](#step-6---bind-a-bluemix-service-to-a-kubernetes-namespace)
-1. [Create Kubernetes Services and Deployments](#step-7---create-kubernetes-services-and-deployments)
-1. [Monitor your container with Weave Scope](#step-8---monitor-your-container-with-weave-scope)
-1. [Scale and Clean your services](#step-9---scale-and-clean-your-services)
+1. [Access the cluster via Kubernetes CLI and Dashboard](#step-4---access-the-cluster-via-kubernetes-cli-and-dashboard)
+1. [Get and build the application code](#step-5---get-and-build-the-application-code)
+1. [Build and Push the application container](#step-6---build-and-push-the-application-container)
+1. [Bind a Bluemix service to a Kubernetes namespace](#step-7---bind-a-bluemix-service-to-a-kubernetes-namespace)
+1. [Create Kubernetes Services and Deployments](#step-8---create-kubernetes-services-and-deployments)
+1. [Monitor your container with Weave Scope](#step-9---monitor-your-container-with-weave-scope)
+1. [Scale and Clean your services](#step-10---scale-and-clean-your-services)
 
 
 # Step 1 - Install Bluemix Container Service and Registry plugins
@@ -89,19 +90,34 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
     ```
 
 # Step 3 - Create a cluster
-To create a cluster, you have two options either a free cluster or a paid cluster.
+To create a cluster, you have two options either a Lite cluster or a Production cluster.
 
-+ A **free cluster** comes with one worker node to deploy container pods upon. A worker node is the compute host, typically a virtual machine, that your apps run on. Go to Step 3.1 *Create your free Kubernetes cluster*
++ A **Lite cluster** is a free cluster comes with a single worker node to deploy container pods upon. A worker node is the compute host, typically a virtual machine, that your apps run on. Go to Step 3.1 *Create a Lite cluster*
 
-+ A **paid cluster** can have as many worker nodes as you want. A paid cluster requires requires a Bluemix Infrastructure (SoftLayer) account. Go to Step 3.2 *Set SoftLayer credentials*.
++ A **Paid cluster** is a production-ready cluster with as many worker nodes as you want. A paid cluster requires requires a Bluemix Infrastructure (SoftLayer) account. Go to Step 3.2 *Create a paid cluster*.
 
-1. Create your free Kubernetes cluster.
+## Step 3.1 - Create a Lite cluster
+
+1. Create your Lite cluster.
     ```
     bx cs cluster-create --name <your-cluster-name>
     ```
     Once the cluster reaches the **deployed** state you can provision pods, but they will be enqueued until the cluster’s pods are finished provisioning. Note that it takes up to 15 minutes for the worker node machine to be ordered and for the cluster to be set up and provisioned.
 
-    If you have created a free cluster in the step above, go to the Step 3.7 **Verify that the creation of the cluster was requested.**.
+    Once your free cluster has been, go to the Step 4 **Get and build the application code**.
+
+1. Verify that the creation of the cluster was requested.
+    ```
+    bx cs clusters
+    ```
+
+1. Check the status of the worker node(s).
+    ```
+    bx cs workers <cluster_name_or_id>
+    ```
+
+
+## Step 3.2 - Create a Paid cluster
 
 1. Set SoftLayer credentials
     ```
@@ -160,12 +176,14 @@ To create a cluster, you have two options either a free cluster or a paid cluste
     bx cs clusters
     ```
 
-1. Check the status of the worker nodes.
+1. Check the status of the worker node(s).
     ```
     bx cs workers <cluster_name_or_id>
     ```
 
-1. You will need the kubeconfig data and certs to connect to your cluster using kubectl. You can download the config to your local machine via the CLI. Issue the following CLI command to download your kubeconfig for a given cluster.
+# Step 4 - Access the cluster via Kubernetes CLI and Dashboard
+
+1. You will need the kubeconfig data and certs to connect to your cluster using kubectl. You can download the config to your local machine via the CLI. Issue the following command to download your kubeconfig for a given cluster.
     ```
     bx cs cluster-config <cluster_name_or_id>
     ```
@@ -184,7 +202,7 @@ To create a cluster, you have two options either a free cluster or a paid cluste
     ![](./images/kubedashboard.png)
 
 
-# Step 4 - Get and build the application code
+# Step 5 - Get and build the application code
 
 1. Clone or download the source code for the Todo web app.
     ```
@@ -202,7 +220,7 @@ To create a cluster, you have two options either a free cluster or a paid cluste
     npm install
     ```
 
-# Step 5 - Build and Push the application container
+# Step 6 - Build and Push the application container
 
 1. Log in to the private Container Registry of Bluemix. Only required if you haven't `bx login` before.
     ```
@@ -248,7 +266,7 @@ To create a cluster, you have two options either a free cluster or a paid cluste
     ```
 
 
-# Step 6 - Bind a Bluemix service to a Kubernetes namespace
+# Step 7 - Bind a Bluemix service to a Kubernetes namespace
 
 This web application uses a Cloudant DBaaS to store the todo task.
 
@@ -296,7 +314,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
     ```
 
 
-# Step 7 - Create Kubernetes Services and Deployments
+# Step 8 - Create Kubernetes Services and Deployments
 
 1. Edit the YAML file `deploy2kubernetes.yml` to set the namespace of your private registry. If you don't remember this namespace, run the following command:
     ```
@@ -411,7 +429,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
     In this example, the url would be ```http://169.47.227.138:31513```
 
 
-# Step 8 - Monitor your container with Weave Scope
+# Step 9 - Monitor your container with Weave Scope
 
 [Weave scope](https://www.weave.works/docs/scope/latest/introducing/) provides a visual diagram of your resources within the kube cluster including services, pods, containers, processes, nodes, etc. Scope provides you interactive metrics for CPU and Memory and provides tools to tail and exec into a container. Scope is a powerful tool that you do not want to expose on the public internet.
 
