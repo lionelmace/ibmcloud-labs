@@ -90,7 +90,7 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
     ```
 
 # Step 3 - Create a cluster
-To create a cluster, you have two options either a Lite cluster or a Production cluster.
+To create a cluster, you have two options either a Lite cluster or a Paid one.
 
 + A **Lite cluster** is a free cluster comes with a single worker node to deploy container pods upon. A worker node is the compute host, typically a virtual machine, that your apps run on. Go to Step 3.1 *Create a Lite cluster*
 
