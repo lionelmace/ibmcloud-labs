@@ -22,7 +22,7 @@ In this lab, you’ll gain a high level understanding of the Kubernetes architec
 1. [Get and build the application code](#step-4---get-and-build-the-application-code)
 1. [Build and Push the application container](#step-5---build-and-push-the-application-container)
 1. [Bind a Bluemix service to a Kubernetes namespace](#step-6---bind-a-bluemix-service-to-a-kubernetes-namespace)
-1. [Create Kubernetes Services and Deployments](#step-7---Create-kubernetes-services-and-deployments)
+1. [Create Kubernetes Services and Deployments](#step-7---create-kubernetes-services-and-deployments)
 1. [Monitor your container with Weave Scope](#step-8---monitor-your-container-with-weave-scope)
 1. [Scale and Clean your services](#step-9---scale-and-clean-your-services)
 
