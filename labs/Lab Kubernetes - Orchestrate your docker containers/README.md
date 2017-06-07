@@ -176,8 +176,10 @@ To create a cluster, you have two options either a free cluster or a paid cluste
     kubectl proxy
     Starting to serve on 127.0.0.1:8001
     ```
-
 1. Open the Kubernetes dashboard: <a href="http://localhost:8001/ui" target="_blank">http://localhost:8001/ui</a>
+
+    ![](./images/kubedashboard.png)
+
 
 # Step 4 - Get and build the application code
 
@@ -410,6 +412,8 @@ This web application uses a Cloudant DBaaS to store the todo task.
 
 [Weave scope](https://www.weave.works/docs/scope/latest/introducing/) provides a visual diagram of your resources within the kube cluster including services, pods, containers, processes, nodes, etc. Scope provides you interactive metrics for CPU and Memory and provides tools to tail and exec into a container. Scope is a powerful tool that you do not want to expose on the public internet.
 
+![](./images/weavescope.png.png)
+
 To use weave scope securely with your Kubernetes cluster you can follow these steps.
 
 1. Update the Role Based Access Control
@@ -437,7 +441,7 @@ To use weave scope securely with your Kubernetes cluster you can follow these st
 
 1. Let's scale up to 3 replicas
     ```
-    kubectl scale --replicas=3 -f deploy2kubernetes.yml
+    kubectl scale --replicas=3 deployment/mytodos
     ```
 
 1. Then, inspect our Pods again.
