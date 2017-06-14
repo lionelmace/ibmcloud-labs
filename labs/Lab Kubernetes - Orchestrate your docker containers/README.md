@@ -76,6 +76,10 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
     container-registry   0.1.104
     container-service    0.1.219
     ```
+1. To update the container registry plugin
+    ```
+    bx plugin update container-registry -r Bluemix
+    ```
 
 # Step 2 - Connect to Bluemix
 
@@ -90,11 +94,11 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
     ```
 
 # Step 3 - Create a cluster
-To create a cluster, you have two options either a Lite cluster or a Paid one.
+To create a cluster, you have two options either a Lite cluster or a Standard one.
 
 + A **Lite cluster** is a free cluster comes with a single worker node to deploy container pods upon. A worker node is the compute host, typically a virtual machine, that your apps run on. Go to Step 3.1 *Create a Lite cluster*
 
-+ A **Paid cluster** is a production-ready cluster with as many worker nodes as you want. A paid cluster requires requires a Bluemix Infrastructure (SoftLayer) account. Go to Step 3.2 *Create a paid cluster*.
++ A **Standard cluster** is a production-ready cluster with as many worker nodes as you want. A Standard cluster requires requires a Bluemix Infrastructure (SoftLayer) account. Go to Step 3.2 *Create a Standard cluster*.
 
 ## Step 3.1 - Create a Lite cluster
 
@@ -117,7 +121,7 @@ To create a cluster, you have two options either a Lite cluster or a Paid one.
     ```
 
 
-## Step 3.2 - Create a Paid cluster
+## Step 3.2 - Create a Standard cluster
 
 1. Set SoftLayer credentials
     ```
