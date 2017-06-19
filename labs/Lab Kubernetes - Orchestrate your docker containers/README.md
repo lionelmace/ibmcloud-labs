@@ -172,7 +172,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 1. Create cluster
     ```
-    bx cs cluster-create --name <YOUR-CLUSTER-NAME> --location dal10 --workers 3 --machine-type u1c.2x4 --hardware shared --public-vlan <ID-PRIVATE-VLAN> --private-vlan <ID-PUBLIC-VLAN>
+    bx cs cluster-create --name <YOUR-CLUSTER-NAME> --location dal10 --workers 2 --machine-type b1c.4x16 --hardware shared --public-vlan <ID-PUBLIC-VLAN> --private-vlan <ID-PRIVATE-VLAN>
     ```
 
 1. Verify that the creation of the cluster was requested.
