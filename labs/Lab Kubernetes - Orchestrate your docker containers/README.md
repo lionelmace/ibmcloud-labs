@@ -408,7 +408,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
     Session Affinity:	None
     No events.
     ```
-    The NodePorts are randomly assigned when they are generated with the expose command, but within 30000-32767. In this example, the NodePort is 31513.
+    > The NodePorts are randomly assigned when they are generated with the expose command, but within 30000-32767. In this example, the NodePort is 31513.
 
 1. Get the public IP of the worker node in the cluster by running one of the command
 
