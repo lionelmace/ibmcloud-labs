@@ -132,7 +132,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
     ```
     bx cs locations
     ```
-    and you should get back something like this if you are connected to US South
+    Output for US South:
     ```
     dal10
     dal12
@@ -142,7 +142,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
     ```
     bx cs machine-types <datacenter>
     ```
-    and you should get back something like:
+    Output:
     ```
     bx cs machine-types dal10
     Getting machine types list...
@@ -160,7 +160,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
     ```
     bx cs vlans <datacenter>
     ```
-    and you should get back something like:
+    Output:
     ```
     Getting VLAN list...
     OK
