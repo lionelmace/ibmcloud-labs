@@ -108,8 +108,6 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
     ```
     Once the cluster reaches the **deployed** state you can provision pods, but they will be enqueued until the cluster’s pods are finished provisioning. Note that it takes up to 15 minutes for the worker node machine to be ordered and for the cluster to be set up and provisioned.
 
-    Once your free cluster has been, go to the Step 4 **Get and build the application code**.
-
 1. Verify that the creation of the cluster was requested.
     ```
     bx cs clusters
