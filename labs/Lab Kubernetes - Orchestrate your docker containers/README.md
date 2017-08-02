@@ -121,9 +121,9 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 ## Step 3.2 - Create a Standard cluster
 
-1. Set SoftLayer credentials
+1. Set Infrastructure credentials
     ```
-    bx cs credentials-set --softlayer-username <YOUR-USER-NAME> --softlayer-api-key <YOUR-API-KEY>
+    bx cs credentials-set --infrastructure-username <YOUR-USER-NAME> --infrastructure-api-key <YOUR-API-KEY>
     ```
 
 1. Review the data centers that are available.
