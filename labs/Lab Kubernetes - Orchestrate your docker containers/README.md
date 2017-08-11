@@ -299,7 +299,10 @@ This web application uses a Cloudant DBaaS to store the todo task.
     ```
     bx service create <service_name> <service_plan> <service_instance_name>
     ```
-    Example: ```bx service create cloudantNoSQLDB Lite todo-cloudant```
+    Example:
+    ```
+    bx service create cloudantNoSQLDB Lite todo-cloudant
+    ```
 
 1. Verify you created your service
     ```
