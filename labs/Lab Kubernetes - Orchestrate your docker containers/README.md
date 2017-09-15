@@ -7,6 +7,8 @@ In this lab, you’ll gain a high level understanding of the Kubernetes architec
 
 This lab shows how to demonstrate the deployment of a web application for managing todos. The front end is written in Angular and the reminders are being stored in a Cloudant NoSQL dababase. All run on Node.js, in Docker container managed by Kubernetes.
 
+![](./images/todoapp.png)
+
 # Pre-Requisites
 
 + Get a [Bluemix IBM id](https://bluemix.net)
