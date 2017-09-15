@@ -29,7 +29,7 @@ This lab shows how to demonstrate the deployment of a web application for managi
 1. [Create Kubernetes Services and Deployments](#step-8---create-kubernetes-services-and-deployments)
 1. [Monitor your container with Weave Scope](#step-9---monitor-your-container-with-weave-scope)
 1. [Scale and Clean your services](#step-10---scale-and-clean-your-services)
-
+1. [Issues when pushing to the container registry registry](#step-11---issues-when-pushing-to-the-container-registry)
 
 # Step 1 - Install Bluemix Container Service and Registry plugins
 
@@ -284,6 +284,10 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
     REPOSITORY                                  NAMESPACE   TAG       DIGEST         CREATED        SIZE     VULNERABILITY STATUS
     registry.ng.bluemix.net/your-namespace/mytodos   namespace   1   0d90cb732881   1 minute ago   264 MB   OK
     ```
+1. The image is also visible in the Bluemix Console. To view it, go to the catalog, select the service *Container Registry*. Click on Private Repositories
+
+![](./images/private-repositories.png)
+
 
 
 # Step 7 - Bind a Bluemix service to a Kubernetes namespace
@@ -481,7 +485,7 @@ To use weave scope securely with your Kubernetes cluster you can follow these st
     Note: Weave Scope is a cpu heavy (especially the app). Scope is best utilized in a large cluster.
 
 
-# Step 9 - Scale and Clean your services
+# Step 10 - Scale and Clean your services
 
 1. Let's scale up to 3 replicas
     ```
@@ -496,6 +500,50 @@ To use weave scope securely with your Kubernetes cluster you can follow these st
 1. Finally, delete your deployment
     ```
     kubectl delete -f deploy2kubernetes.yml
+    ```
+
+# Step 11 - Issues when pushing to the container registry
+
+Below is a list of issues you may face when pushing your images into the container registry.
+
+1. Error: Request access to the resource is denied
+
+    ```
+    denied: requested access to the resource is denied
+    ```
+    Note that adding a namespace only affects one region - if you want the same namespace in multiple regions you need to target each region and add it in each one. Make sure the namespace you trying to push the image to, exist.
+
+1. Error: You have exceeded your storage quota
+
+    ```
+    unauthorized: You have exceeded your storage quota. Delete one or more images, or review your storage quota and pricing plan
+    ```
+    Check the current quota:
+    ```
+    bx cr quota
+    Getting quotas and usage for the current month, for account 'IBM'...
+
+    QUOTA          LIMIT    USED     ADDITIONAL INFORMATION
+    Pull traffic   5.0 GB   0 B
+    Storage        512 MB   546 MB   Your account has exceeded its storage quota. Delete one or more images, or review your storage quota and pricing plan.
+    ```
+    Check the current plan:
+    ```
+    bx cr plan
+    Getting pricing plan for account 'Lionel Mace's Account'...
+
+    You are on the 'Free' pricing plan.
+    ```
+    You increase your quota you will need to upgrade plan:
+    ```
+    bx cr plan-upgrade standard
+    ```
+    Agree to the new pricing plan.
+
+    ```
+    Finally, you will increase the quota or just set to Unlimited
+    ```
+    bx cr quota-set --storage unlimited
     ```
 
 
