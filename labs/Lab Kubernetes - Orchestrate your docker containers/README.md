@@ -284,10 +284,9 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
     REPOSITORY                                  NAMESPACE   TAG       DIGEST         CREATED        SIZE     VULNERABILITY STATUS
     registry.ng.bluemix.net/your-namespace/mytodos   namespace   1   0d90cb732881   1 minute ago   264 MB   OK
     ```
-1. The image is also visible in the Bluemix Console. To view it, go to the catalog, select the service *Container Registry*. Click on Private Repositories
+1. The image is also visible in the Bluemix Console. Go to the **Catalog**, select the service **Container Registry**. Then, click on Private Repositories
 
-![](./images/private-repositories.png)
-
+    ![](./images/private-repositories.png)
 
 
 # Step 7 - Bind a Bluemix service to a Kubernetes namespace
@@ -511,10 +510,11 @@ Below is a list of issues you may face when pushing your images into the contain
     ```
     denied: requested access to the resource is denied
     ```
-    Note that adding a namespace only affects one region - if you want the same namespace in multiple regions you need to target each region and add it in each one. Make sure the namespace you trying to push the image to, exist.
+    Note that adding a namespace only affects one region - if you want the same namespace in multiple regions you need to target each region and add it in each one. Make sure the namespace you are trying to push the image to exists.
 
 1. Error: You have exceeded your storage quota
 
+    In this tutorial, the image is less than 100MB. Once you start pushing images you will rapidly reach the default limit of 500MB and get the following error:
     ```
     unauthorized: You have exceeded your storage quota. Delete one or more images, or review your storage quota and pricing plan
     ```
@@ -537,9 +537,6 @@ Below is a list of issues you may face when pushing your images into the contain
     You increase your quota you will need to upgrade plan:
     ```
     bx cr plan-upgrade standard
-    ```
-    Agree to the new pricing plan.
-
     ```
     Finally, you will increase the quota or just set to Unlimited
     ```
