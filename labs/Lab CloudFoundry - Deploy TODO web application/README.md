@@ -359,6 +359,13 @@ Given a Cloud Foundry app relies on the VCAP_SERVICES environment variable, a st
 
 1. Watch the Delivery Pipeline processing your commit and deploying a new version of your app.
 
+1. The TODO app contains API endpoints for PUT/GET/DELETE (create/retrieve/delete). To list the existing todos, you can simply open in a browser the page [https://mytodos.mybluemix.net/api/todos](https://mytodos.mybluemix.net/api/todos)
+
+1. To create a new todo using a tool such as curl, run the following command:
+    ```
+    curl -X PUT https://mytodos.mybluemix.net/api/todos -d text=newtodo
+    ```
+
 Congratulations! You completed this lab. You can get familiar with the application code content.
 
 ## Source code
