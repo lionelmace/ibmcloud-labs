@@ -285,10 +285,15 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
     REPOSITORY                                  NAMESPACE   TAG       DIGEST         CREATED        SIZE     VULNERABILITY STATUS
     registry.ng.bluemix.net/your-namespace/mytodos   namespace   1   0d90cb732881   1 minute ago   264 MB   OK
     ```
+    
 1. The image is also visible in the Bluemix Console. Go to the **Catalog**, select the service **Container Registry**. Then, click on Private Repositories
 
     ![](./images/private-repositories.png)
 
+1. You can access the security risk of your Container with Vulnerability Advisor
+    ```
+    bx cr va registry.ng.bluemix.net/your-namespace/mytodos:v1
+    ```
 
 # Step 7 - Bind a Bluemix service to a Kubernetes namespace
 
