@@ -433,14 +433,8 @@ This web application uses a Cloudant DBaaS to store the todo task.
     ```
     > The NodePorts are randomly assigned when they are generated with the expose command, but within 30000-32767. In this example, the NodePort is 31513.
 
-1. Get the public IP of the worker node in the cluster by running one of the command
+1. Get the public IP of the worker node in the cluster
 
-    ```
-    kubectl get nodes
-    NAME             STATUS    AGE
-    169.47.227.138   Ready     23h
-    ```
-    OR
     ```
     bx cs workers <cluster_name_or_id>
     Listing cluster workers...
