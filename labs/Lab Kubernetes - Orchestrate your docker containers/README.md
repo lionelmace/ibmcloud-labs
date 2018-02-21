@@ -31,6 +31,8 @@ This lab shows how to demonstrate the deployment of a web application for managi
 1. [Monitor your container with Weave Scope](#step-9---monitor-your-container-with-weave-scope)
 1. [Scale and Clean your services](#step-10---scale-and-clean-your-services)
 1. [Appendix - Issues when pushing to the container registry registry](#appendix---issues-when-pushing-to-the-container-registry)
+1. [Appendix - Using Kubernetes namespaces](#appendix---using-kubernetes-namespaces)
+
 
 # Step 1 - Install Bluemix Container Service and Registry plugins
 
@@ -541,6 +543,68 @@ Below is a list of solutions to resolve issues you may face when pushing your im
     Finally, you will increase the quota or just set to Unlimited
     ```
     bx cr quota-set --storage unlimited
+    ```
+
+# Appendix - Using Kubernetes namespaces
+
+In order to isolate the applications you deploy in the cluster, you may want to leverage Kubernetes namespace. Using namespace has an impact on the following commands:
+
+1. Create a new namespace in your cluster. Let's call it *mytodos*
+    ```
+    kubectl create namespace mytodos
+    ```
+1. Verify your new namespace was created
+    ```
+    kubectl get namespaces
+    ```
+1. The service cloudant should be bound in this namespace
+    ```
+    bx cs cluster-service-bind <cluster_id> mytodos <service_instance_name>
+    ```
+    Example:
+    ```
+    bx cs cluster-service-bind ad35aacc139b4e11a6f3182fb13d24af mytodos todo-cloudant
+    ```
+1. The new namespace does not contain the secret to access the private container registry. The default namespace has by default this secret to access the registry. If you try to deploy without this step, you will get this error:
+    > Failed to pull image "registry.eu-de.bluemix.net/mace/mytodos:v1": rpc error: code = Unknown desc = Error response from daemon: Get https://registry.eu-de.bluemix.net/v2/mace/mytodos/manifests/v1: unauthorized: authentication required
+    
+    In order to add this registry secret, run the following command:
+    ```
+    kubectl --namespace <CLUSTER_NAMESPACE> create secret docker-registry <IMAGE_REGISTRY_SECRET_NAME> --docker-server=<REGISTRY_URL> --docker-password=<IBMCLOUD_API_KEY> --docker-username=iamapikey --docker-email=a@b.com
+    ```
+    For example:
+    ```
+    kubectl --namespace mytodos create secret docker-registry private-registry-secret --docker-server=registry.eu-de.bluemix.net --docker-password=<IBMCLOUD_API_KEY> --docker-username=iamapikey --docker-email=a@b.com
+    ```
+    Note: You can generate the api key using the following command:
+    ```bx iam api-key-create IBMCLOUD_API_KEY```
+1. Modify the yml file to set the image registry secret.
+    ```yml
+    ---
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    metadata:
+    name: mytodos
+    spec:
+    replicas: 2 # tells deployment to run 2 pods matching the template
+    template: # create pods using pod definition in this template
+        metadata:
+        labels:
+            app: mytodos
+            tier: frontend
+        spec:
+        imagePullSecrets:
+        - name: private-registry-secret
+        containers:
+        - name: mytodos
+            image: registry.eu-de.bluemix.net/mace/mytodos:v1
+            imagePullPolicy: Always
+        ...
+    ```
+
+1. Deploy the container in the new namespace
+    ```
+    kubectl create -f deploy2kubernetes.yml --namespace mytodos
     ```
 
 
