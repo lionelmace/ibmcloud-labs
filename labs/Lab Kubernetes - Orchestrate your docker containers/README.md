@@ -30,7 +30,7 @@ This lab shows how to demonstrate the deployment of a web application for managi
 1. [Create Kubernetes Services and Deployments](#step-8---create-kubernetes-services-and-deployments)
 1. [Monitor your container with Weave Scope](#step-9---monitor-your-container-with-weave-scope)
 1. [Scale and Clean your services](#step-10---scale-and-clean-your-services)
-1. [Appendix - Grant full admin privileges to Kubernetes Dashboard]
+1. [Appendix - Grant full admin privileges to Kubernetes Dashboard](#appendix---grant-full-admin-privileges-to-kubernetes-dashboard)
 1. [Appendix - Issues when pushing to the container registry registry](#appendix---issues-when-pushing-to-the-container-registry)
 1. [Appendix - Using Kubernetes namespaces](#appendix---using-kubernetes-namespaces)
 
