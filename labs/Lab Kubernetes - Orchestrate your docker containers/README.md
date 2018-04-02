@@ -10,8 +10,8 @@ This lab shows how to demonstrate the deployment of a web application for managi
 
 # Pre-Requisites
 
-+ Get a [Bluemix IBM id](https://bluemix.net)
-+ Install the [Bluemix CLI](http://clis.ng.bluemix.net)
++ Get a [IBM Cloud account](https://bluemix.net)
++ Install the [IBM Cloud CLI](http://clis.ng.bluemix.net)
 + Install docker for [Mac](https://docs.docker.com/engine/installation/mac/) or [Windows](https://docs.docker.com/engine/installation/windows/)
 + Install [Kubectl](https://kubernetes.io/docs/user-guide/prereqs/)
 + Install a [Git client](https://git-scm.com/downloads)
@@ -20,13 +20,13 @@ This lab shows how to demonstrate the deployment of a web application for managi
 
 # Steps
 
-1. [Install Bluemix Container Service and Registry plugins](#step-1---install-bluemix-container-service-and-registry-plugins)
-1. [Connect to Bluemix](#step-2---connect-to-bluemix)
+1. [Install IBM Cloud Container Service and Registry plugins](#step-1---install-bluemix-container-service-and-registry-plugins)
+1. [Connect to IBM Cloud](#step-2---connect-to-bluemix)
 1. [Create a cluster](#step-3---create-a-cluster)
 1. [Access the cluster via Kubernetes CLI and Dashboard](#step-4---access-the-cluster-via-kubernetes-cli-and-dashboard)
 1. [Get and build the application code](#step-5---get-and-build-the-application-code)
 1. [Build and Push the application container](#step-6---build-and-push-the-application-container)
-1. [Bind a Bluemix service to a Kubernetes namespace](#step-7---bind-a-bluemix-service-to-a-kubernetes-namespace)
+1. [Bind a IBM Cloud service to a Kubernetes namespace](#step-7---bind-a-bluemix-service-to-a-kubernetes-namespace)
 1. [Create Kubernetes Services and Deployments](#step-8---create-kubernetes-services-and-deployments)
 1. [Monitor your container with Weave Scope](#step-9---monitor-your-container-with-weave-scope)
 1. [Scale and Clean your services](#step-10---scale-and-clean-your-services)
@@ -35,7 +35,7 @@ This lab shows how to demonstrate the deployment of a web application for managi
 1. [Appendix - Using Kubernetes namespaces](#appendix---using-kubernetes-namespaces)
 
 
-# Step 1 - Install Bluemix Container Service and Registry plugins
+# Step 1 - Install IBM Cloud Container Service and Registry plugins
 
 To create Kubernetes clusters, and manage worker nodes, install the Container Service plug-in.
 
@@ -53,7 +53,7 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
     Bluemix     https://plugins.ng.bluemix.net
     ```
 
-1. If you don't see a repository Bluemix, run the following command:
+1. If you don't see a repository, run the following command:
     ```
     bx plugin repo-add Bluemix https://plugins.ng.bluemix.net
     ```
@@ -85,14 +85,14 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
     bx plugin update container-registry -r Bluemix
     ```
 
-# Step 2 - Connect to Bluemix
+# Step 2 - Connect to IBM Cloud
 
-1. Login to Bluemix
+1. Login to IBM Cloud
     ```
     bx login -a https://api.ng.bluemix.net
     ```
 
-1. Log in to the IBM Bluemix Container Service Kubernetes plug-in. The prefix for running commands by using the IBM Bluemix Container Service plug-in is **bx cs**.
+1. Log in to the IBM Cloud Container Service Kubernetes plug-in. The prefix for running commands by using the IBM Cloud Container Service plug-in is **bx cs**.
     ```
     bx cs init
     ```
@@ -290,7 +290,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
     registry.ng.bluemix.net/your-namespace/mytodos   namespace   1   0d90cb732881   1 minute ago   264 MB   OK
     ```
 
-1. The image is also visible in the Bluemix Console. Go to the **Catalog**, select the service **Container Registry**. Then, click on Private Repositories
+1. The image is also visible in the IBM Cloud Console. Go to the **Catalog**, select the service **Container Registry**. Then, click on Private Repositories
 
     ![](./images/private-repositories.png)
 
@@ -299,7 +299,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
     bx cr va registry.ng.bluemix.net/your-namespace/mytodos:v1
     ```
 
-# Step 7 - Bind a Bluemix service to a Kubernetes namespace
+# Step 7 - Bind a IBM Cloud service to a Kubernetes namespace
 
 This web application uses a Cloudant DBaaS to store the todo task.
 
@@ -627,9 +627,9 @@ In order to isolate the applications you deploy in the cluster, you may want to 
 
 For additional resources pay close attention to the following:
 
-- [Running Kubernetes clusters with IBM Bluemix Container Service](https://console.ng.bluemix.net/docs/containers/cs_cluster.html#cs_cluster_cli)
+- [Running Kubernetes clusters with IBM Cloud Container Service](https://console.ng.bluemix.net/docs/containers/cs_cluster.html#cs_cluster_cli)
 - [Container Service Swagger API](https://us-south.containers.bluemix.net/swagger)
 - [Bash script to tail Kubernetes logs from multiple pods at the same time](https://github.com/johanhaleby/kubetail)
-- [Bluemix CLI Plug-in Repository](http://clis.ng.bluemix.net/ui/repository.html#bluemix-plugins)
+- [IBM Cloud CLI Plug-in Repository](http://clis.ng.bluemix.net/ui/repository.html#bluemix-plugins)
 - [How to deploy, manage, and secure your container-based workloads](https://www.ibm.com/blogs/bluemix/2017/05/kubernetes-and-bluemix-container-based-workloads-part1/)
 - [Deploy MicroProfile based Java microservices on Kubernetes Cluster](https://github.com/IBM/Java-MicroProfile-on-Kubernetes)
