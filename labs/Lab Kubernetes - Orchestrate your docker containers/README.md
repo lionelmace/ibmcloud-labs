@@ -194,7 +194,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
       --public-vlan 1556815 \
       --private-vlan 1556821
     ```
-    > The cluster creation can be scripted. A yml sample is provided in [create-cluster.yml](./kubernetes/create-cluster.yml)
+    > The cluster creation can be scripted. A yml sample is provided in **kubernetes/create-cluster.yml**.
 
 1. Verify that the creation of the cluster was requested.
     ```
@@ -251,7 +251,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
     ```
     bx cr login
     ```
-    `bx cr login` is a wrapper for `docker login` , it is only needed to log your local docker daemon into the registry, which enables you to push/pull images.
+    > `bx cr login` is a wrapper for `docker login` , it is only needed to log your local docker daemon into the registry, which enables you to push/pull images.
 
 1. To create the namespace of your image registry
     ```
@@ -268,7 +268,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
     docker build -t registry.ng.bluemix.net/<namespace>/mytodos:v1 .
     ```
 
-    Note: If you already have an image, just need to tag this image before pushing it.
+    > If you already have an image, just need to tag this image before pushing it.
     ```
     docker tag mytodos:v1 registry.ng.bluemix.net/<namespace>/mytodos:v1
     ```
@@ -342,7 +342,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
     ```
     bx cs cluster-service-bind ad35aacc139b4e11a6f3182fb13d24af default todo-cloudant
     ```
-    Note: Use the namepsace **default** or create your own namespace.
+    > Use the namepsace **default** or create your own namespace.
 
 1. Control that your secret was successfully created
     ```
@@ -412,7 +412,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
                 defaultMode: 420
                 secretName: binding-todo-cloudant
     ```
-    Note: The secret name is the contatenation of **binding-** and the service name.
+    > The secret name is the contatenation of **binding-** and the service name.
 
 1. Deploy the app to a pod in your Kubernetes cluster.
     ```
