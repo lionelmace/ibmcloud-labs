@@ -170,7 +170,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
     1556821          1860     private   bcr01a.dal10
     1556815          1626     public    fcr01a.dal10
     ```
-    Note: When you create a Kube cluster with no vlans in create command, those should get created for you.
+    >  When you create a Kube cluster with no vlans in create command, those should get created for you.
 
 1. Create cluster
     ```
@@ -194,7 +194,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
       --public-vlan 1556815 \
       --private-vlan 1556821
     ```
-    Note: the cluster creation can be scripted. A yml sample is provided in (create-cluster.yml)[./kubernetes/create-cluster.yml]
+    > The cluster creation can be scripted. A yml sample is provided in [create-cluster.yml](./kubernetes/create-cluster.yml)
 
 1. Verify that the creation of the cluster was requested.
     ```
@@ -460,7 +460,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
     ```
     In this example, the url would be ```http://169.47.227.138:31513```
 
->>> Different ways exist to make your app accessible from the internet. To choose the best networking option for your application, you can follow the decision tree available in this [page](https://console.bluemix.net/docs/containers/cs_network_planning.html#planning). A yml sample is provided for each way in the **kubernetes** folder.
+    > Different ways exist to make your app accessible from the internet. To choose the best networking option for your application, you can follow the decision tree available in this [page](https://console.bluemix.net/docs/containers/cs_network_planning.html#planning). A yml sample is provided for each way in the **kubernetes** folder.
 
 # Step 9 - Monitor your container with Weave Scope
 
@@ -493,7 +493,7 @@ To use weave scope securely with your Kubernetes cluster you can follow these st
 1. Open your web browser to
     <a href="http://localhost:4040" target="_blank">http://localhost:4040</a>
 
-    Note: Weave Scope is a cpu heavy (especially the app). Scope is best utilized in a large cluster.
+    > Weave Scope is a cpu heavy (especially the app). Scope is best utilized in a large cluster.
 
 
 # Step 10 - Scale and Clean your services
@@ -568,10 +568,12 @@ In order to isolate the applications you deploy in the cluster, you may want to 
     ```
     kubectl create namespace mytodos
     ```
+
 1. Verify your new namespace was created
     ```
     kubectl get namespaces
     ```
+
 1. The service cloudant should be bound in this namespace
     ```
     bx cs cluster-service-bind <cluster_id> mytodos <service_instance_name>
@@ -580,6 +582,7 @@ In order to isolate the applications you deploy in the cluster, you may want to 
     ```
     bx cs cluster-service-bind ad35aacc139b4e11a6f3182fb13d24af mytodos todo-cloudant
     ```
+
 1. The new namespace does not contain the secret to access the private container registry. The default namespace has by default this secret to access the registry. If you try to deploy without this step, you will get this error:
     > Failed to pull image "registry.eu-de.bluemix.net/mace/mytodos:v1": rpc error: code = Unknown desc = Error response from daemon: Get https://registry.eu-de.bluemix.net/v2/mace/mytodos/manifests/v1: unauthorized: authentication required
     
@@ -591,8 +594,9 @@ In order to isolate the applications you deploy in the cluster, you may want to 
     ```
     kubectl --namespace mytodos create secret docker-registry private-registry-secret --docker-server=registry.eu-de.bluemix.net --docker-password=<IBMCLOUD_API_KEY> --docker-username=iamapikey --docker-email=a@b.com
     ```
-    Note: You can generate the api key using the following command:
+    > You can generate the api key using the following command:
     ```bx iam api-key-create IBMCLOUD_API_KEY```
+
 1. Modify the yml file to set the image registry secret.
     ```yml
     ---
