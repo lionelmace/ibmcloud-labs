@@ -194,6 +194,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
       --public-vlan 1556815 \
       --private-vlan 1556821
     ```
+    Note: the cluster creation can be scripted. A yml sample is provided in (create-cluster.yml)[./kubernetes/create-cluster.yml]
 
 1. Verify that the creation of the cluster was requested.
     ```
@@ -351,7 +352,9 @@ This web application uses a Cloudant DBaaS to store the todo task.
 
 # Step 8 - Create Kubernetes Services and Deployments
 
-1. Edit the YAML file `deploy2kubernetes.yml` to set the namespace of your private registry. If you don't remember this namespace, run the following command:
+1. Go to the folder **kubernetes**.
+
+1. Edit the YAML file `deploy-with-nodeport.yml` to set the namespace of your private registry. If you don't remember this namespace, run the following command:
     ```
     bx cr namespace-list
     ```
@@ -413,7 +416,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
 
 1. Deploy the app to a pod in your Kubernetes cluster.
     ```
-    kubectl create -f deploy2kubernetes.yml
+    kubectl create -f deploy-with-nodeport.yml
 
     service "mytodos" created
     deployment "mytodos" created    
@@ -457,6 +460,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
     ```
     In this example, the url would be ```http://169.47.227.138:31513```
 
+>>> Different ways exist to make your app accessible from the internet. To choose the best networking option for your application, you can follow the decision tree available in this [page](https://console.bluemix.net/docs/containers/cs_network_planning.html#planning). A yml sample is provided for each way in the **kubernetes** folder.
 
 # Step 9 - Monitor your container with Weave Scope
 
