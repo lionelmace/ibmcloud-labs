@@ -207,6 +207,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
     ```
     
     The cluster creation process is as follow:
+
 | State             | Status                                       |
 | ----------------- | -------------------------------------------- |
 | provision_pending | Waiting for master to be deployed            |
