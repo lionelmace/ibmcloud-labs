@@ -207,9 +207,9 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
     ```
     
     > The cluster creation process is as follow:
-    > State                         Status
-    > provision_pending   Waiting for master to be deployed
-    > provisioning             Provisioning in progress
+    > State                     Status
+    > provision_pending         Waiting for master to be deployed
+    > provisioning              Provisioning in progress
     > deploying                 Starting worker deployment
     > deploying                 Installing Docker Runtime
     > deploying                 Configuring Kubectl CLI
