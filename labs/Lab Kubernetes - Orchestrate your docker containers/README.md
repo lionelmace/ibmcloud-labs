@@ -218,7 +218,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
     > deploying                 Configuring Calico-Workers
     > deployed                  Deploying
     > deployed                  Deploy Automation Successful
-    > normal                      Ready
+    > normal                    Ready
 
 # Step 4 - Access the cluster via Kubernetes CLI and Dashboard
 
