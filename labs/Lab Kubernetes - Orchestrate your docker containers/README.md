@@ -207,19 +207,19 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
     ```
     
     The cluster creation process is as follow:
-    |  State               | Status                                       |
-    |  ------------------- | -------------------------------------------- |
-    |  provision_pending   | Waiting for master to be deployed            |
-    |  provisioning        | Provisioning in progress                     |
-    |  deploying           | Starting worker deployment                   |
-    |  deploying           | Installing Docker Runtime                    |
-    |  deploying           | Configuring Kubectl CLI                      |
-    |  deploying           | Preparing Worker for Calico Networking Setup |
-    |  deploying           | Starting Kube Worker Services                |
-    |  deploying           | Configuring Calico-Workers                   |
-    |  deployed            | Deploying                                    |
-    |  deployed            | Deploy Automation Successful                 |
-    |  normal              | Ready                                        |
+    | State               | Status                                       |
+    | ------------------- | -------------------------------------------- |
+    | provision_pending   | Waiting for master to be deployed            |
+    | provisioning        | Provisioning in progress                     |
+    | deploying           | Starting worker deployment                   |
+    | deploying           | Installing Docker Runtime                    |
+    | deploying           | Configuring Kubectl CLI                      |
+    | deploying           | Preparing Worker for Calico Networking Setup |
+    | deploying           | Starting Kube Worker Services                |
+    | deploying           | Configuring Calico-Workers                   |
+    | deployed            | Deploying                                    |
+    | deployed            | Deploy Automation Successful                 |
+    | normal              | Ready                                        |
 
 # Step 4 - Access the cluster via Kubernetes CLI and Dashboard
 
