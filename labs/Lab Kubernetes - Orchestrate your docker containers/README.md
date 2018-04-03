@@ -221,6 +221,12 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 | deployed          | Deploy Automation Successful                 |
 | normal            | Ready                                        |
 
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
 # Step 4 - Access the cluster via Kubernetes CLI and Dashboard
 
 1. You will need the kubeconfig data and certs to connect to your cluster using kubectl. You can download the config to your local machine via the CLI. Issue the following command to download your kubeconfig for a given cluster.
