@@ -1,4 +1,4 @@
-<img src="./images/ibm-cloud-logo.png" width="20%"/>
+<img src="./images/ibm-cloud-logo.png" width="10%"/>
 
 Discover IBM Cloud through a set of hands-on labs.
 
