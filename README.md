@@ -1,4 +1,4 @@
-<img src="./images/bluemix-logo.png" width="40%"/>
+<img src="./images/ibm-cloud-logo.png" width="40%"/>
 
 Discover IBM Cloud through a set of hands-on labs.
 
