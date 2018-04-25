@@ -333,6 +333,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
     ```
     bx service create cloudantNoSQLDB Lite todo-cloudant
     ```
+    > Warning: Secrets do not accept underscore in the service instance name.
 
 1. Verify you created your service
     ```
