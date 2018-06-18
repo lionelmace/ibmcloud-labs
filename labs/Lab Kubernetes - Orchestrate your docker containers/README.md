@@ -26,7 +26,7 @@ This lab shows how to demonstrate the deployment of a web application for managi
 1. [Access the cluster via Kubernetes CLI and Dashboard](#step-4---access-the-cluster-via-kubernetes-cli-and-dashboard)
 1. [Get and build the application code](#step-5---get-and-build-the-application-code)
 1. [Build and Push the application container](#step-6---build-and-push-the-application-container)
-1. [Bind a IBM Cloud service to a Kubernetes namespace](#step-7---bind-a-bluemix-service-to-a-kubernetes-namespace)
+1. [Bind a IBM Cloud service to a Kubernetes namespace](#step-7---bind-a-ibm-cloud-service-to-a-kubernetes-namespace)
 1. [Create Kubernetes Services and Deployments](#step-8---create-kubernetes-services-and-deployments)
 1. [Monitor your container with Weave Scope](#step-9---monitor-your-container-with-weave-scope)
 1. [Scale and Clean your services](#step-10---scale-and-clean-your-services)
