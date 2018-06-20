@@ -72,7 +72,7 @@ Now let's add a source code repository and an automatic build pipeline to our pr
 
     ![Toolchain](./images/toolchain-gitlab.png)
 
-1. The toolchain gets a default name you can change. In **Configurable Integrations** at the bottom, select **Git Repos and Issue Tracking**.
+1. The toolchain gets a default name you can change. In **Tool Integrations** at the bottom, select **Git Repos and Issue Tracking**.
 
 1. Keep the Default options to **Clone** the starter code for the "Hello World!" application into your GitLab account.
 
@@ -139,17 +139,17 @@ A default manifest.yml file was generated for our app. It looks like:
   ```yml
   applications:
   - path: .
+    name: todo-[your-initials]
+    environment_json: {}
     memory: 256M
     instances: 1
-    domain: mybluemix.net
-    name: todo-[your-initials]
-    host: todo-[your-initials]
     disk_quota: 1024M
+    services: []
   ```
 
 It basically defines one application taking its content from the current directory,
-being deployed with **256MB**, with **one** instance, under the **mybluemix.net** domain.
-The app is named **todo-[your-initials]** and it is using **todo-[your-initials]** as host name.
+being deployed with **256MB**, with **one** instance.
+The app is named **todo-[your-initials]**.
 It has **1024MB** of disk space available.
 
 1. Specifying the buildpack to be used when pushing a Cloud Foundry app is always faster than relying on buildpack detection. Modify the generated Manifest to specify the **buildpack** by adding one line as follows:
@@ -157,22 +157,22 @@ It has **1024MB** of disk space available.
     ```yml
     applications:
     - path: .
+      name: todo-[your-initials]
+      environment_json: {}
       memory: 256M
       instances: 1
-      domain: mybluemix.net
       buildpack: sdk-for-nodejs
-      name: todo-[your-initials]
-      host: todo-[your-initials]
       disk_quota: 1024M
+      services: []
     ```
 
-1. Connect to IBM Cloud by passing the IBM Cloud endpoint of the URL region where you created your app.
+1. Login to IBM Cloud.
 
     ```
-    ibmcloud api https://api.ng.bluemix.net
+    ibmcloud login
     ```
 
-1. Login to IBM Cloud
+1. Select the region where you deployed your application.
 
     ```
     ibmcloud login
