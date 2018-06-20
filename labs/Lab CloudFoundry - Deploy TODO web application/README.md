@@ -2,7 +2,7 @@
 
 # Introduction
 
-In this lab, you’ll gain a high level understanding of the architecture, features, and development concepts related to the Cloud Foundry runtimes and Bluemix service. Throughout the lab, you’ll create a sample application built with a CLEAN stack (CLoudant NoSQL database, Express, Angular and Node.js).
+In this lab, you’ll gain a high level understanding of the architecture, features, and development concepts related to the Cloud Foundry runtimes and IBM Cloud service. Throughout the lab, you’ll create a sample application built with a CLEAN stack (CLoudant NoSQL database, Express, Angular and Node.js).
 
 ![Todo](./images/screenshot.png)
 
@@ -20,8 +20,8 @@ In the following lab, you will learn:
 
 # Pre-Requisites
 
-+ Get a [Bluemix IBM id](https://bluemix.net), or use an existing account.
-+ Install the [Bluemix CLI](http://clis.ng.bluemix.net)
++ Get a [IBM Cloud IBM id](https://bluemix.net), or use an existing account.
++ Install the [IBM Cloud CLI](http://clis.ng.bluemix.net)
 + Install a [Git client](https://git-scm.com/downloads)
 + Install [Node.js](https://nodejs.org)
 
@@ -45,13 +45,13 @@ In the following lab, you will learn:
 
 # Step 1 - Create a new web application
 
-1. Log in to [Bluemix Console](https://console.bluemix.net).
+1. Log in to [IBM Cloud Console](https://console.bluemix.net).
 
 1. Select the Region **United States** to create your application.
 
-    Note: This lab is intended to work ONLY in the US Region where the version 2 of Bluemix DevOps Services have been deployed. If you must use the UK region, please use to [this version](../../archives/Lab%20CF%20-%20Create%20TODO%20web%20application)
+    Note: This lab is intended to work ONLY in the US Region where the version 2 of IBM Cloud DevOps Services have been deployed. If you must use the UK region, please use to [this version](../../archives/Lab%20CF%20-%20Create%20TODO%20web%20application)
 
-1. Go to the Bluemix **Catalog**.
+1. Go to the IBM Cloud **Catalog**.
 
 1. In the **Apps** category, select **Cloud Foundry Apps**
 
@@ -135,7 +135,7 @@ Now let's add a source code repository and an automatic build pipeline to our pr
 
 # Step 6 - Push your local change to the cloud
 
-Cloud Foundry relies on the *manifest.yml* file to know what to do when you push the app on Bluemix.
+Cloud Foundry relies on the *manifest.yml* file to know what to do when you push the app on IBM Cloud.
 A default manifest.yml file was generated for our app. It looks like:
 
   ```yml
@@ -168,22 +168,22 @@ It has **1024MB** of disk space available.
       disk_quota: 1024M
     ```
 
-1. Connect to Bluemix by passing the Bluemix endpoint of the URL region where you created your app.
+1. Connect to IBM Cloud by passing the IBM Cloud endpoint of the URL region where you created your app.
 
     ```
-    bx api https://api.ng.bluemix.net
+    ibmcloud api https://api.ng.bluemix.net
     ```
 
-1. Login to Bluemix
+1. Login to IBM Cloud
 
     ```
-    bx login
+    ibmcloud login
     ```
 
-1. Push the app to Bluemix
+1. Push the app to IBM Cloud
 
     ```
-    bx cf push
+    ibmcloud cf push
     ```
 
 1. When the command completes, access the application running in the cloud to confirm your change was deployed
@@ -229,7 +229,7 @@ In a previous step we set up a Git repository and a build pipeline was automatic
     git push
     ```
 
-1. Back to the Bluemix console, go to your application **Overview**.
+1. Back to the IBM Cloud console, go to your application **Overview**.
 
 1. Click on the **View Toolchain** button in the Continuous Delivery section.
 
@@ -262,7 +262,7 @@ Note: Make sure the hidden files (.gitignore, .cfignore and .bowerrc) were also 
 
 In order to store the todo, we will need a persistent storage. To do so, we will use a Cloudant NoSQL database, a JSON document oriented store, compatible with CouchDB.
 
-1. Back to the Bluemix console, go to your application **Overview**.
+1. Back to the IBM Cloud console, go to your application **Overview**.
 
 1. Click **Connect New** to add a service to your application
 
@@ -272,7 +272,7 @@ In order to store the todo, we will need a persistent storage. To do so, we will
 
 1. Give the service a name such as **todo-cloudant-[your-initials]**
 
-1. Click **Create**. Bluemix will provision a Cloudant service and connect it to your application.
+1. Click **Create**. IBM Cloud will provision a Cloudant service and connect it to your application.
 
 1. Select **Restage** when prompted to do so.
 
@@ -291,7 +291,7 @@ When your application runs in Cloud Foundry, all service information bound to th
 
 Given a Cloud Foundry app relies on the VCAP_SERVICES environment variable, a straightforward approach is to set this variable in your environment by creating a local env file (JSON or key=value format), to test for this file in your app and to load the values if found.
 
-1. In the Bluemix console, go to your application dashboard.
+1. In the IBM Cloud console, go to your application dashboard.
 
 1. Select **Runtime**, then **Environment Variables**
 
