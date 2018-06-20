@@ -172,10 +172,15 @@ It has **1024MB** of disk space available.
     ibmcloud login
     ```
 
-1. Select the region where you deployed your application.
+1. Select the region (API Endpoint) where you deployed your application.
 
     ```
-    ibmcloud login
+    1. eu-de - https://api.eu-de.bluemix.net
+    2. au-syd - https://api.au-syd.bluemix.net
+    3. us-east - https://api.us-east.bluemix.net
+    4. us-south - https://api.ng.bluemix.net
+    5. eu-gb - https://api.eu-gb.bluemix.net
+    6. Enter a different API endpoint
     ```
 
 1. Push the app to IBM Cloud
