@@ -20,8 +20,8 @@ In the following lab, you will learn:
 
 # Pre-Requisites
 
-+ Get a [IBM Cloud IBM id](https://bluemix.net), or use an existing account.
-+ Install the [IBM Cloud CLI](http://clis.ng.bluemix.net)
++ Create a [free account](https://bluemix.net), or use an existing account.
++ Install the [IBM Cloud CLI](https://console.bluemix.net/docs/cli/reference/bluemix_cli/download_cli.html)
 + Install a [Git client](https://git-scm.com/downloads)
 + Install [Node.js](https://nodejs.org)
 
@@ -47,13 +47,11 @@ In the following lab, you will learn:
 
 1. Log in to [IBM Cloud Console](https://console.bluemix.net).
 
-1. Select the Region **United States** to create your application.
-
-    Note: This lab is intended to work ONLY in the US Region where the version 2 of IBM Cloud DevOps Services have been deployed. If you must use the UK region, please use to [this version](../../archives/Lab%20CF%20-%20Create%20TODO%20web%20application)
+1. Select the **Region** where you want to deploy your application.
 
 1. Go to the IBM Cloud **Catalog**.
 
-1. In the **Apps** category, select **Cloud Foundry Apps**
+1. In the **Compute** category, scroll down to **Cloud Foundry**
 
 1. Create a new app with the ***SDK for Node.js***.
 
