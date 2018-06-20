@@ -30,7 +30,6 @@ This lab shows how to demonstrate the deployment of a web application for managi
 1. [Create Kubernetes Services and Deployments](#step-8---create-kubernetes-services-and-deployments)
 1. [Monitor your container with Weave Scope](#step-9---monitor-your-container-with-weave-scope)
 1. [Scale and Clean your services](#step-10---scale-and-clean-your-services)
-1. [Appendix - Grant full admin privileges to Kubernetes Dashboard](#appendix---grant-full-admin-privileges-to-kubernetes-dashboard)
 1. [Appendix - Issues when pushing to the container registry registry](#appendix---issues-when-pushing-to-the-container-registry)
 1. [Appendix - Using Kubernetes namespaces](#appendix---using-kubernetes-namespaces)
 
@@ -531,10 +530,6 @@ To use weave scope securely with your Kubernetes cluster you can follow these st
     kubectl delete -f deploy2kubernetes.yml
     ```
 
-# Appendix - Grant full admin privileges to Kubernetes Dashboard
-
-Every time you connect to the Kubernetes Dashboard, the token is being requested. This is annoying. To prevent from being asked this token, you can grant full admin privileges to Dashboard's Service Account by creating below ClusterRoleBinding. 
-[https://github.com/kubernetes/dashboard/wiki/Access-control#admin-privileges](https://github.com/kubernetes/dashboard/wiki/Access-control#admin-privileges)
 
 # Appendix - Issues when pushing to the container registry
 
