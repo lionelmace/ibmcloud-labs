@@ -4,7 +4,7 @@
 
 In this lab, you’ll gain a high level understanding of the architecture, features, and development concepts related to the Cloud Foundry runtimes and IBM Cloud service. Throughout the lab, you’ll create a sample application built with a CLEAN stack (CLoudant NoSQL database, Express, Angular and Node.js).
 
-![Todo](./images/screenshot.png)
+![Todo](./images/screenshot-app.png)
 
 
 # Objective
