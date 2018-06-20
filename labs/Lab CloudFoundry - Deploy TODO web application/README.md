@@ -265,11 +265,7 @@ Note: Make sure the hidden files (.gitignore, .cfignore and .bowerrc) were also 
 
 In order to store the todo, we will need a persistent storage. To do so, we will use a Cloudant NoSQL database, a JSON document oriented store, compatible with CouchDB.
 
-1. Back to the IBM Cloud console, go to your application **Overview**.
-
-1. Click **Connect New** to add a service to your application
-
-1. Search for **Cloudant** in the catalog
+1. Back to the IBM Cloud console, search for the service **Cloudant** in the Catalog
 
 1. Select the free **Lite** plan
 
@@ -277,15 +273,21 @@ In order to store the todo, we will need a persistent storage. To do so, we will
 
 1. Click **Create**. IBM Cloud will provision a Cloudant service and connect it to your application.
 
+1. Go back to your application, select **Connections** in the left menu.
+
+1. Click **Create Connection** to add an existing service to your application.
+
+1. Select the Cloudant service you created before, and click **Connect**.
+
 1. Select **Restage** when prompted to do so.
 
     Your application will restart and the service connection information will be made available to your application.
 
     Note: All the steps above could have been scripted using the three commands below:
     ```
-    cf create-service cloudantNoSQLDB Lite todo-cloudant-[your-initials]
-    cf bind-service todo-[your-initials] todo-cloudant-[your-initials]
-    cf restage todo-[your-initials]
+    ibmcloud cf create-service cloudantNoSQLDB Lite todo-cloudant-[your-initials]
+    ibmcloud cf bind-service todo-[your-initials] todo-cloudant-[your-initials]
+    ibmcloud cf restage todo-[your-initials]
     ```
 
 # Step 10 - Connect the Cloudant DB to the application code
