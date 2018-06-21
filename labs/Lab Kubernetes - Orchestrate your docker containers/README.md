@@ -1,7 +1,7 @@
 ![](./images/kubernetes.png)
 # Introduction
 
-In this lab, you’ll gain a high level understanding of the Kubernetes architecture, features, and development concepts related to the IBM Container Service. Throughout the lab, you’ll get a chance to use the Command Line Interface (CLI) for creating a Kubernetes cluster, manage your running cluster, and bind a service.
+In this lab, you’ll gain a high level understanding of the Kubernetes architecture, features, and development concepts related to the IBM Cloud Kubernetes Service (IKS). Throughout the lab, you’ll get a chance to use the Command Line Interface (CLI) for provisioning a Kubernetes cluster, manage your running cluster, and bind a service.
 
 ![](./images/kubelabarchi.png)
 
@@ -20,8 +20,8 @@ This lab shows how to demonstrate the deployment of a web application for managi
 
 # Steps
 
-1. [Install IBM Cloud Container Service and Registry plugins](#step-1---install-bluemix-container-service-and-registry-plugins)
-1. [Connect to IBM Cloud](#step-2---connect-to-bluemix)
+1. [Install IBM Cloud Kubernetes Service and Registry plugins](#step-1---install-ibm-cloud-Kubernetes-service-and-registry-plugins)
+1. [Connect to IBM Cloud](#step-2---connect-to-ibm-cloud)
 1. [Create a cluster](#step-3---create-a-cluster)
 1. [Access the cluster via Kubernetes CLI and Dashboard](#step-4---access-the-cluster-via-kubernetes-cli-and-dashboard)
 1. [Get and build the application code](#step-5---get-and-build-the-application-code)
@@ -34,15 +34,15 @@ This lab shows how to demonstrate the deployment of a web application for managi
 1. [Appendix - Using Kubernetes namespaces](#appendix---using-kubernetes-namespaces)
 
 
-# Step 1 - Install IBM Cloud Container Service and Registry plugins
+# Step 1 - Install IBM Cloud Kubernetes Service and Registry plugins
 
 To create Kubernetes clusters, and manage worker nodes, install the Container Service plug-in.
 
 1. Open a command line utility.
 
-1. Before installing the container plugin, we need to add the repository hosting Bluemix CLI plug-ins.
+1. Before installing the container plugin, we need to add the repository hosting IBM Cloud CLI plug-ins.
     ```
-    bx plugin repos
+    ibmcloud plugin repos
     ```
     Output:
     ```
@@ -54,22 +54,22 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
 
 1. If you don't see a repository, run the following command:
     ```
-    bx plugin repo-add Bluemix https://plugins.ng.bluemix.net
+    ibmcloud plugin repo-add Bluemix https://plugins.ng.bluemix.net
     ```
 
 1. To install the Container Service plugin, run the following command:
     ```
-    bx plugin install container-service -r Bluemix
+    ibmcloud plugin install container-service -r Bluemix
     ```
 
-1. To manage a private image registry, install the Registry plug-in. This plug-in connects to a private image registry Bluemix, where you can store images that can be used to build containers. The prefix for running registry commands is **bx cr**.
+1. To manage a private image registry, install the Registry plug-in. This plug-in connects to a private image registry Bluemix, where you can store images that can be used to build containers. The prefix for running registry commands is **ibmcloud cr**.
     ```
-    bx plugin install container-registry -r Bluemix
+    ibmcloud plugin install container-registry -r Bluemix
     ```
 
 1. To verify that the plug-in is installed properly, run the following command:
     ```
-    bx plugin list
+    ibmcloud plugin list
     ```
     and both plug-ins are displayed in the results:
     ```
@@ -81,14 +81,25 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
     ```
 1. To update the container registry plugin
     ```
-    bx plugin update container-registry -r Bluemix
+    ibmcloud plugin update container-registry -r Bluemix
     ```
 
 # Step 2 - Connect to IBM Cloud
 
 1. Login to IBM Cloud
     ```
-    bx login -a https://api.ng.bluemix.net
+    ibmcloud login
+    ```
+
+1. Select the region (API Endpoint) where you deployed your application.
+
+    ```
+    1. eu-de - https://api.eu-de.bluemix.net
+    2. au-syd - https://api.au-syd.bluemix.net
+    3. us-east - https://api.us-east.bluemix.net
+    4. us-south - https://api.ng.bluemix.net
+    5. eu-gb - https://api.eu-gb.bluemix.net
+    6. Enter a different API endpoint
     ```
 
 1. Log in to the IBM Cloud Container Service Kubernetes plug-in. The prefix for running commands by using the IBM Cloud Container Service plug-in is **ibmcloud cs**.
@@ -263,20 +274,20 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 # Step 6 - Build and Push the application container
 
-1. Log in to the private Container Registry of Bluemix. Only required if you haven't `bx login` before.
+1. Log in to the private Container Registry of Bluemix. Only required if you haven't `ibmcloud login` before.
     ```
-    bx cr login
+    ibmcloud cr login
     ```
-    > `bx cr login` is a wrapper for `docker login` , it is only needed to log your local docker daemon into the registry, which enables you to push/pull images.
+    > `ibmcloud cr login` is a wrapper for `docker login` , it is only needed to log your local docker daemon into the registry, which enables you to push/pull images.
 
 1. To create the namespace of your image registry
     ```
-    bx cr namespace-add <YOUR-NAMESPACE-NAME>
+    ibmcloud cr namespace-add <YOUR-NAMESPACE-NAME>
     ```
 
 1. If you forgot the namespace for your image registry, run the command.
     ```
-    bx cr namespace-list
+    ibmcloud cr namespace-list
     ```
 
 1. Build a Docker image that includes the app files of the directory.
@@ -296,7 +307,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 1. Verify that the image was successfully added to your registry.
     ```
-    bx cr images
+    ibmcloud cr images
     ```
     Output:
     ```
@@ -312,7 +323,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 1. You can access the security risk of your Container with **Vulnerability Advisor**
     ```
-    bx cr va registry.ng.bluemix.net/your-namespace/mytodos:v1
+    ibmcloud cr va registry.ng.bluemix.net/your-namespace/mytodos:v1
     ```
 
 # Step 7 - Bind a IBM Cloud service to a Kubernetes namespace
@@ -321,22 +332,22 @@ This web application uses a Cloudant DBaaS to store the todo task.
 
 1. See all the available services in the catalog
     ```
-    bx service offerings
+    ibmcloud service offerings
     ```
 
 1. Create an instance of a service
     ```
-    bx service create <service_name> <service_plan> <service_instance_name>
+    ibmcloud service create <service_name> <service_plan> <service_instance_name>
     ```
     Example:
     ```
-    bx service create cloudantNoSQLDB Lite todo-cloudant
+    ibmcloud service create cloudantNoSQLDB Lite todo-cloudant
     ```
     > Warning: Secrets do not accept underscore in the service instance name.
 
 1. Verify you created your service
     ```
-    bx service list
+    ibmcloud service list
     ```
 
 1. Find your Kubernetes namespace you will need in the next step.
@@ -373,7 +384,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
 
 1. Edit the YAML file `deploy-with-nodeport.yml` to set the namespace of your private registry. If you don't remember this namespace, run the following command:
     ```
-    bx cr namespace-list
+    ibmcloud cr namespace-list
     ```
 
     Your YAML file should look as follows:
@@ -550,7 +561,7 @@ Below is a list of solutions to resolve issues you may face when pushing your im
     ```
     Check the current quota:
     ```
-    bx cr quota
+    ibmcloud cr quota
     Getting quotas and usage for the current month, for account 'IBM'...
 
     QUOTA          LIMIT    USED     ADDITIONAL INFORMATION
@@ -559,18 +570,18 @@ Below is a list of solutions to resolve issues you may face when pushing your im
     ```
     Check the current plan:
     ```
-    bx cr plan
+    ibmcloud cr plan
     Getting pricing plan for account 'Lionel Mace's Account'...
 
     You are on the 'Free' pricing plan.
     ```
     You increase your quota you will need to upgrade plan:
     ```
-    bx cr plan-upgrade standard
+    ibmcloud cr plan-upgrade standard
     ```
     Finally, you will increase the quota or just set to Unlimited
     ```
-    bx cr quota-set --storage unlimited
+    ibmcloud cr quota-set --storage unlimited
     ```
 
 # Appendix - Using Kubernetes namespaces
@@ -608,7 +619,7 @@ In order to isolate the applications you deploy in the cluster, you may want to 
     kubectl --namespace mytodos create secret docker-registry private-registry-secret --docker-server=registry.eu-de.bluemix.net --docker-password=<IBMCLOUD_API_KEY> --docker-username=iamapikey --docker-email=a@b.com
     ```
     > You can generate the api key using the following command:
-    ```bx iam api-key-create IBMCLOUD_API_KEY```
+    ```ibmcloud iam api-key-create IBMCLOUD_API_KEY```
 
 1. Modify the yml file to set the image registry secret.
     ```yml
