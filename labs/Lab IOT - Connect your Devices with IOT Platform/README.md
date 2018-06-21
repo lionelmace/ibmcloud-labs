@@ -48,7 +48,7 @@ This way, we don't require an actual hardware device to test our application.
 
 You've seen my data, what next? Now you will use your device in an application created with IBM Cloud.
 
-1. Create an app using **Internet of Things Foundation Starter** from the Boilerplates category in the Catalog.
+1. Create an app using **Internet of Things Platform Starter** from the category **Starter Kits** in the Catalog.
 
     ![](./images/boilerplate-iotstarter.png)
 
