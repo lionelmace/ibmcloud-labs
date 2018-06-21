@@ -94,7 +94,7 @@ You've seen my data, what next? Now you will use your device in an application c
 
   ![Cloudant configuration](./images/nodered-cloudantconfig.png)
 
-1. Deploy the flow. Return to the Bluemix console, go to the Cloudant console and navigate into the records.
+1. Deploy the flow. Return to the IBM Cloud Console, go to the Cloudant console and navigate into the records.
 
   ![Cloudant console](./images/cloudant-console.png)
 
@@ -102,9 +102,11 @@ You've seen my data, what next? Now you will use your device in an application c
 
 The warning messages generated in Node-RED uses English by default. You may want to translate those messages into your oww language.
 
-1. In IBM Cloud Console, bind a new service **Language Translator** to your app.
+1. In IBM Cloud Console, create a new service **Language Translator** to your app.
 
-1. In Node-RED flow editor, add a new **Language Translator** node to the flow.
+1. From the Dashboard, open your app using **Internet of Things Platform Starter** and connect this new service Language Translator to your app.
+
+1. In Node-RED flow editor, insert a new **Language Translator** node into the existing flow.
 
 1. Modify the flow accordingly to translate those messages.
 

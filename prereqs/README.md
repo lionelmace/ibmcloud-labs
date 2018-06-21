@@ -4,7 +4,7 @@
 
 + You must create an account on IBM Cloud.
 
-+ If you do not have an account yet, follow this link to register, using your IBM id: [https://bluemix.net/registration](https://bluemix.net/registration)
++ If you do not have an account yet, follow this link to register, using your IBM id: [https://console.bluemix.net/registration/](https://console.bluemix.net/registration/)
 
 + You’ll be registered for a 30 days trial account.
 
@@ -16,13 +16,6 @@
 + You can download it from [here](https://console.bluemix.net/docs/cli/reference/bluemix_cli/download_cli.html)
 
 + Select the version corresponding to your operating system.
-
-
-## Container docker
-
-+ Install docker for [Mac](https://docs.docker.com/engine/installation/mac/) or [Windows](https://docs.docker.com/engine/installation/windows/)
-
-+ Install the [Cloud Foundry Containers plug-in](https://console.ng.bluemix.net/docs/containers/container_cli_cfic.html)
 
 
 ## Node and Web Development
