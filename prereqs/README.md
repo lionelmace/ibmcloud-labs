@@ -2,19 +2,18 @@
 
 ## User Accounts
 
-+ You must create an account on IBM Bluemix.
++ You must create an account on IBM Cloud.
 
 + If you do not have an account yet, follow this link to register, using your IBM id: [https://bluemix.net/registration](https://bluemix.net/registration)
 
 + You’ll be registered for a 30 days trial account.
 
 
-## Bluemix Command Line Interface (Bluemix CLI)
+## IBM Cloud Command Line Interface (IBM Cloud CLI)
 
-+ This will help you connect to your Bluemix account through the command line.
++ This will help you connect to your IBM Cloud account through the command line.
 
-+ You can download it from here:
-  [http://clis.ng.bluemix.net](http://clis.ng.bluemix.net)
++ You can download it from [here](https://console.bluemix.net/docs/cli/reference/bluemix_cli/download_cli.html)
 
 + Select the version corresponding to your operating system.
 
@@ -23,7 +22,7 @@
 
 + Install docker for [Mac](https://docs.docker.com/engine/installation/mac/) or [Windows](https://docs.docker.com/engine/installation/windows/)
 
-+ Install the [Cloud Foundry Containers plug-in](https://new-console.ng.bluemix.net/docs/containers/container_cli_cfic.html)
++ Install the [Cloud Foundry Containers plug-in](https://console.ng.bluemix.net/docs/containers/container_cli_cfic.html)
 
 
 ## Node and Web Development
@@ -63,7 +62,7 @@ There are several modern, open source text editor that understands web design. S
 + Eclipse Neon
   [http://www.eclipse.org/downloads/packages/release/Neon/1A](http://www.eclipse.org/downloads/packages/release/Neon/1A)
 
-+ Eclipse Tools for Bluemix
++ Eclipse Tools for IBM Cloud
   [https://marketplace.eclipse.org/content/ibm-eclipse-tools-bluemix](https://marketplace.eclipse.org/content/ibm-eclipse-tools-bluemix)
 
 
