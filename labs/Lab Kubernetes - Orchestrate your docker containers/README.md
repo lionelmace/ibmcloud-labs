@@ -91,9 +91,9 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
     bx login -a https://api.ng.bluemix.net
     ```
 
-1. Log in to the IBM Cloud Container Service Kubernetes plug-in. The prefix for running commands by using the IBM Cloud Container Service plug-in is **bx cs**.
+1. Log in to the IBM Cloud Container Service Kubernetes plug-in. The prefix for running commands by using the IBM Cloud Container Service plug-in is **ibmcloud cs**.
     ```
-    bx cs init
+    ibmcloud cs init
     ```
 
 # Step 3 - Create a cluster
@@ -107,18 +107,18 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 1. Create your Lite cluster.
     ```
-    bx cs cluster-create --name <your-cluster-name>
+    ibmcloud cs cluster-create --name <your-cluster-name>
     ```
     Once the cluster reaches the **deployed** state you can provision pods, but they will be enqueued until the cluster’s pods are finished provisioning. Note that it takes up to 15 minutes for the worker node machine to be ordered and for the cluster to be set up and provisioned.
 
 1. Verify that the creation of the cluster was requested.
     ```
-    bx cs clusters
+    ibmcloud cs clusters
     ```
 
 1. Check the status of the worker node(s).
     ```
-    bx cs workers <cluster_name_or_id>
+    ibmcloud cs workers <cluster_name_or_id>
     ```
 
 
@@ -126,12 +126,12 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 1. Set Infrastructure credentials
     ```
-    bx cs credentials-set --infrastructure-username <YOUR-USER-NAME> --infrastructure-api-key <YOUR-API-KEY>
+    ibmcloud cs credentials-set --infrastructure-username <YOUR-USER-NAME> --infrastructure-api-key <YOUR-API-KEY>
     ```
 
 1. Review the data centers that are available.
     ```
-    bx cs locations
+    ibmcloud cs locations
     ```
     Output for US South:
     ```
@@ -141,11 +141,11 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 1. Review the machine types available in the data center
     ```
-    bx cs machine-types <datacenter>
+    ibmcloud cs machine-types <datacenter>
     ```
     Output:
     ```
-    bx cs machine-types dal10
+    ibmcloud cs machine-types dal10
     Getting machine types list...
     OK
     Machine Types
@@ -159,7 +159,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 1. Get the available VLANs in your account
     ```
-    bx cs vlans <datacenter>
+    ibmcloud cs vlans <datacenter>
     ```
     Output:
     ```
@@ -173,7 +173,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 1. Create cluster
     ```
-    bx cs cluster-create \
+    ibmcloud cs cluster-create \
       --name <cluster-name> \
       --location dal10 \
       --workers <number-of-workers> \
@@ -184,7 +184,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
     ```
     For example:
     ```
-    bx cs cluster-create \
+    ibmcloud cs cluster-create \
       --name my-cluster \
       --location dal10 \
       --workers 3 \
@@ -197,12 +197,12 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 1. Verify that the creation of the cluster was requested.
     ```
-    bx cs clusters
+    ibmcloud cs clusters
     ```
 
 1. Check the status of the worker node(s).
     ```
-    bx cs workers <cluster_name_or_id>
+    ibmcloud cs workers <cluster_name_or_id>
     ```
     
     > The cluster creation process is as follow:
@@ -226,7 +226,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 1. You will need the kubeconfig data and certs to connect to your cluster using kubectl. You can download the config to your local machine via the CLI. Issue the following command to download your kubeconfig for a given cluster.
     ```
-    bx cs cluster-config <cluster_name_or_id>
+    ibmcloud cs cluster-config <cluster_name_or_id>
     ```
 
 1. Use the result of the previous command to set the path to your Kubernetes configuration file as an environment variable.
@@ -353,11 +353,11 @@ This web application uses a Cloudant DBaaS to store the todo task.
 
 1. Bind your service to your Kubernetes namespace
     ```
-    bx cs cluster-service-bind <cluster_id> <kube_namespace> <service_instance_name>
+    ibmcloud cs cluster-service-bind <cluster_id> <kube_namespace> <service_instance_name>
     ```
     Example:
     ```
-    bx cs cluster-service-bind ad35aacc139b4e11a6f3182fb13d24af default todo-cloudant
+    ibmcloud cs cluster-service-bind ad35aacc139b4e11a6f3182fb13d24af default todo-cloudant
     ```
     > Use the namepsace **default** or create your own namespace.
 
@@ -464,7 +464,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
 1. Get the public IP of the worker node in the cluster
 
     ```
-    bx cs workers <cluster_name_or_id>
+    ibmcloud cs workers <cluster_name_or_id>
     Listing cluster workers...
     OK
     ID                                            Public IP        Private IP      Machine Type   State      Status
@@ -589,11 +589,11 @@ In order to isolate the applications you deploy in the cluster, you may want to 
 
 1. The service cloudant should be bound in this namespace
     ```
-    bx cs cluster-service-bind <cluster_id> mytodos <service_instance_name>
+    ibmcloud cs cluster-service-bind <cluster_id> mytodos <service_instance_name>
     ```
     Example:
     ```
-    bx cs cluster-service-bind ad35aacc139b4e11a6f3182fb13d24af mytodos todo-cloudant
+    ibmcloud cs cluster-service-bind ad35aacc139b4e11a6f3182fb13d24af mytodos todo-cloudant
     ```
 
 1. The new namespace does not contain the secret to access the private container registry. The default namespace has by default this secret to access the registry. If you try to deploy without this step, you will get this error:
@@ -652,4 +652,3 @@ For additional resources pay close attention to the following:
 - [Deploy MicroProfile based Java microservices on Kubernetes Cluster](https://github.com/IBM/Java-MicroProfile-on-Kubernetes)
 - [Kubernetes volume plugin that enables Kubernetes pods to access IBM Cloud Object Storage buckets]((https://github.com/IBM/ibmcloud-object-storage-plugin)
 - [Modernize JPetStore demo with IBM Cloud Kubernetes Service](https://github.ibm.com/Bluemix/cloud-portfolio-solutions/tree/master/demos/jpetstore-kubernetes)
-
