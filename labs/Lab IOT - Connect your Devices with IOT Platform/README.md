@@ -21,7 +21,7 @@ This tutorial demonstrates how to connect a simulated device to the Watson IoT p
 
 # Steps
 
-1. [Start the simulated device](#step-1---start-the-simulated-device)
+1. [Start the Simulated device](#step-1---start-the-simulated-device)
 1. [View the live sensor data](#step-2---view-the-live-sensor-data)
 1. [Connect your device to the Watson IOT Platform](#step-3---connect-your-device-to-the-watson-iot-platform)
 1. [Use Node-RED to read the sensor data](#step-4---use-node-red-to-read-the-sensor-data)
@@ -29,7 +29,7 @@ This tutorial demonstrates how to connect a simulated device to the Watson IoT p
 1. [Translate messages with Watson](#step-6---translate-messages-with-watson)
 
 
-# Step 1 - Start the Simulate device
+# Step 1 - Start the Simulated device
 
 We will use a simulator of a temperature sensor. This sensor also simulates Humidity and Object Temperature.<br />
 This way, we don't require an actual hardware device to test our application.
