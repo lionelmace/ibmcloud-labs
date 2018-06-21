@@ -16,7 +16,7 @@ This tutorial demonstrates how to connect a simulated device to the Watson IoT p
 
 
 # Pre-Requisites
-* A [Bluemix](http://www.bluemix.net) account
+* An [IBM Cloud](http://www.bluemix.net) account
 
 
 # Start the simulated device
@@ -46,7 +46,7 @@ This way, we don't require an actual hardware device to test our application.
 
 # Connect your device to the Watson IOT Platform
 
-You've seen my data, what next? Now you will use your device in an application created with IBM Bluemix.
+You've seen my data, what next? Now you will use your device in an application created with IBM Cloud.
 
 1. Create an app using **Internet of Things Foundation Starter** from the Boilerplates category in the Catalog.
 
@@ -102,7 +102,7 @@ You've seen my data, what next? Now you will use your device in an application c
 
 The warning messages generated in Node-RED uses English by default. You may want to translate those messages into your oww language.
 
-1. In Bluemix console, bind a new service **Language Translator** to your app.
+1. In IBM Cloud Console, bind a new service **Language Translator** to your app.
 
 1. In Node-RED flow editor, add a new **Language Translator** node to the flow.
 
