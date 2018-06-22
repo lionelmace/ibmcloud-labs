@@ -662,3 +662,4 @@ For additional resources pay close attention to the following:
 - [Deploy MicroProfile based Java microservices on Kubernetes Cluster](https://github.com/IBM/Java-MicroProfile-on-Kubernetes)
 - [Kubernetes volume plugin that enables Kubernetes pods to access IBM Cloud Object Storage buckets]((https://github.com/IBM/ibmcloud-object-storage-plugin)
 - [Modernize JPetStore demo with IBM Cloud Kubernetes Service](https://github.ibm.com/Bluemix/cloud-portfolio-solutions/tree/master/demos/jpetstore-kubernetes)
+- [Pod security policies in IBM Cloud Kubernetes Service](https://www.ibm.com/blogs/bluemix/2018/06/pod-security-policies-ibm-cloud-kubernetes-service/)
