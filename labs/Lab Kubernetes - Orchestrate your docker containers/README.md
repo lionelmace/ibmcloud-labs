@@ -32,6 +32,7 @@ This lab shows how to demonstrate the deployment of a web application for managi
 1. [Scale and Clean your services](#step-10---scale-and-clean-your-services)
 1. [Appendix - Issues when pushing to the container registry registry](#appendix---issues-when-pushing-to-the-container-registry)
 1. [Appendix - Using Kubernetes namespaces](#appendix---using-kubernetes-namespaces)
+1. [Appendix - Assigning Access to Namespaces](#appendix---assigning-access-to-namespaces)
 
 
 # Step 1 - Install IBM Cloud Kubernetes Service and Registry plugins
@@ -538,6 +539,18 @@ To use weave scope securely with your Kubernetes cluster you can follow these st
 1. Finally, delete your deployment
     ```
     kubectl delete -f deploy2kubernetes.yml
+    ```
+
+
+# Appendix - Assigning Access to Namespaces
+    ```
+    bx iam user-policy-create xxx.xxx@fr.ibm.com \
+    --service-name containers-kubernetes \
+    --service-instance 03cf54bd4548416581e63783dbe645c2 \
+    --region us-south \
+    --resource-type namespace \
+    --resource kube-system \
+    --roles Viewer
     ```
 
 
