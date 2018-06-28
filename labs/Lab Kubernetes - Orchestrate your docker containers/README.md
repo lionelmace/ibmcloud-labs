@@ -544,7 +544,7 @@ To use weave scope securely with your Kubernetes cluster you can follow these st
 
 # Appendix - Assigning Access to Namespaces
     ```
-    bx iam user-policy-create xxx.xxx@fr.ibm.com \
+    ibmcloud iam user-policy-create xxx.xxx@fr.ibm.com \
     --service-name containers-kubernetes \
     --service-instance 03cf54bd4548416581e63783dbe645c2 \
     --region us-south \
