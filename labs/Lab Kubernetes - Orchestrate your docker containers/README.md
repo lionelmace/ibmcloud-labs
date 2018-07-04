@@ -102,6 +102,8 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
     |US South|us-south|https://api.us-south.bluemix.net|
     |United Kingdom|eu-gb|https://api.eu-gb.bluemix.net|
 
+    >  To switch afterwards to a different region, use the command `ibmcloud target -r eu-de`
+
 1. Log in to the IBM Cloud Container Service Kubernetes plug-in. The prefix for running commands by using the IBM Cloud Container Service plug-in is **ibmcloud cs**.
     ```
     ibmcloud cs init
