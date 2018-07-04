@@ -77,8 +77,8 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
     Listing installed plug-ins...
 
     Plugin Name          Version
-    container-registry   0.1.104
-    container-service    0.1.219
+    container-registry     0.1.316   
+    container-service      0.1.515 
     ```
 1. To update the container registry plugin
     ```
@@ -158,16 +158,25 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
     ```
     Output:
     ```
-    ibmcloud cs machine-types dal10
-    Getting machine types list...
+    ibmcloud cs machine-types fra02
     OK
-    Machine Types
-    Name         Cores   Memory   Network Speed   OS             Storage   Server Type   
-    u1c.2x4      2       4GB      100Mbps         UBUNTU_16_64   100GB     virtual
-    b1c.4x16     4       16GB     1000Mbps        UBUNTU_16_64   100GB     virtual
-    b1c.16x64    16      64GB     1000Mbps        UBUNTU_16_64   100GB     virtual
-    b1c.32x128   32      128GB    1000Mbps        UBUNTU_16_64   100GB     virtual
-    b1c.56x242   56      242GB    1000Mbps        UBUNTU_16_64   100GB     virtual
+    Name                Cores   Memory   Network Speed   OS             Server Type   Storage   Secondary Storage   Trustable   
+    u2c.2x4             2       4GB      1000Mbps        UBUNTU_16_64   virtual       25GB      100GB               false   
+    mr1c.28x512         28      512GB    10000Mbps       UBUNTU_16_64   physical      2000GB    960GB               true   
+    mg1c.16x128         16      128GB    10000Mbps       UBUNTU_16_64   physical      2000GB    960GB               false   
+    mg1c.28x256         28      256GB    10000Mbps       UBUNTU_16_64   physical      2000GB    960GB               false   
+    md1c.16x64.4x4tb    16      64GB     10000Mbps       UBUNTU_16_64   physical      2000GB    8000GB              true   
+    md1c.28x512.4x4tb   28      512GB    10000Mbps       UBUNTU_16_64   physical      2000GB    8000GB              true   
+    mb1c.4x32           4       32GB     10000Mbps       UBUNTU_16_64   physical      2000GB    2000GB              false   
+    mb1c.16x64          16      64GB     10000Mbps       UBUNTU_16_64   physical      2000GB    960GB               true   
+    c2c.16x16           16      16GB     1000Mbps        UBUNTU_16_64   virtual       25GB      100GB               false   
+    c2c.16x32           16      32GB     1000Mbps        UBUNTU_16_64   virtual       25GB      100GB               false   
+    c2c.32x32           32      32GB     1000Mbps        UBUNTU_16_64   virtual       25GB      100GB               false   
+    c2c.32x64           32      64GB     1000Mbps        UBUNTU_16_64   virtual       25GB      100GB               false   
+    b2c.4x16            4       16GB     1000Mbps        UBUNTU_16_64   virtual       25GB      100GB               false   
+    b2c.16x64           16      64GB     1000Mbps        UBUNTU_16_64   virtual       25GB      100GB               false   
+    b2c.32x128          32      128GB    1000Mbps        UBUNTU_16_64   virtual       25GB      100GB               false   
+    b2c.56x242          56      242GB    1000Mbps        UBUNTU_16_64   virtual       25GB      100GB               false
     ```
 
 1. Get the available VLANs in your account
@@ -188,7 +197,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
     ```
     ibmcloud cs cluster-create \
       --name <cluster-name> \
-      --location dal10 \
+      --location <zone> \
       --workers <number-of-workers> \
       --machine-type <machine-type> \
       --hardware shared \
@@ -199,9 +208,9 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
     ```
     ibmcloud cs cluster-create \
       --name my-cluster \
-      --location dal10 \
+      --location fra02 \
       --workers 3 \
-      --machine-type b1c.4x16 \
+      --machine-type b2c.4x16 \
       --hardware shared \
       --public-vlan 1556815 \
       --private-vlan 1556821
@@ -427,7 +436,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
         spec:
           containers:
           - name: mytodos
-            image: registry.ng.bluemix.net/<your-namespace>/mytodos:v1
+            image: registry.eu-de.bluemix.net/<your-namespace>/mytodos:v1
             imagePullPolicy: Always
             resources:
               requests:
@@ -446,7 +455,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
 
 1. Deploy the app to a pod in your Kubernetes cluster.
     ```
-    kubectl create -f deploy-with-nodeport.yml
+    kubectl create -f deploy-nodeport.yml
 
     service "mytodos" created
     deployment "mytodos" created    
