@@ -33,6 +33,7 @@ This lab shows how to demonstrate the deployment of a web application for managi
 1. [Appendix - Issues when pushing to the container registry registry](#appendix---issues-when-pushing-to-the-container-registry)
 1. [Appendix - Using Kubernetes namespaces](#appendix---using-kubernetes-namespaces)
 1. [Appendix - Assigning Access to Namespaces](#appendix---assigning-access-to-namespaces)
+1. [Appendix - Adding user-managed subnets and IP address to your Automatic Load Balancer](#appendix---adding-user---managed-subnets-and-ip-address-to-your-automatic-load-balancer)
 
 
 # Step 1 - Install IBM Cloud Kubernetes Service and Registry plugins
@@ -671,6 +672,75 @@ In order to isolate the applications you deploy in the cluster, you may want to 
 1. Deploy the container in the new namespace
     ```
     kubectl create -f deploy2kubernetes.yml --namespace mytodos
+    ```
+
+
+# Appendix - Adding user-managed subnets and IP address to your Automatic Load Balancer
+
+In order to isolate the applications you deploy in the cluster, you may want to leverage Kubernetes namespace. Using namespace has an impact on the following commands:
+
+1. View the ID of your cluster's Private VLAN. Locate the VLANs section. In the field User-managed, identify the VLAN ID with false.
+    ```
+    ibmcloud cs cluster-get --showResources <cluster-name>
+    ```
+    ```
+    Subnet VLANs
+    VLAN ID   Subnet CIDR         Public   User-managed   
+    2268624   10.85.126.8/29      false    false   
+    2268622   158.177.115.64/29   true     false   
+    ```
+
+1. Add the external subnet to your private VLAN. The portable private IP addresses are added to the cluster's configmap.
+    ```
+    ibmcloud cs cluster-user-subnet-add <cluster_name> <subnet_CIDR> <VLAN_ID>
+    ```
+    Exemple:
+    ```
+    ibmcloud cs cluster-user-subnet-add dev-cluster 10.101.53.0/24 2268624
+    ```
+
+1. Verify that the user-provided subnet is added. The field User-managed is true.
+    ```
+    ibmcloud cs cluster-get --showResources <cluster-name>
+    ```
+    ```
+    Subnet VLANs
+    VLAN ID   Subnet CIDR         Public   User-managed   
+    2268624   10.101.53.0/24      false    true 
+    2268624   10.85.126.8/29      false    false   
+    2268622   158.177.115.64/29   true     false   
+    ```
+
+1. Enable the Automatic Load Balancer (ALB) with your custom subnet
+    ```
+    ibmcloud cs alb-configure --albID private-cr8001501222964a11b5dd950c9ac2662c-alb1 --enable --user-ip 10.101.53.2
+    ```
+
+1. Optional: [Enable routing between subnets on the same VLAN](https://console.bluemix.net/docs/containers/cs_subnets.html#vlan-spanning)
+
+1. Add a private load balancer service or a private Ingress application load balancer to access your app. First retrieve the ALB.
+    ```
+    ibmcloud cs albs --cluster dev-cluster
+    ```
+    ```
+    ALB ID                                            Enabled   Status    Type      ALB IP   
+    private-cr8001501222964a11b5dd950c9ac2662c-alb1   true      disabled  private   10.101.53.2   
+    public-cr8001501222964a11b5dd950c9ac2662c-alb1    true      enabled   public    158.177.115.70 
+    ```
+
+1. Add a private load balancer service or a private Ingress application load balancer to access your app over the private network. To use a private IP address from the subnet that you added, you must specify an IP address. 
+    ```
+    ibmcloud cs alb-configure --albID private-cr8001501222964a11b5dd950c9ac2662c-alb1 --enable --user-ip 10.101.53.2
+    ```
+
+1. Verify that ALB was enabled
+    ```
+    ibmcloud cs albs --cluster dev-cluster
+    ```
+    ```
+    ALB ID                                            Enabled   Status    Type      ALB IP   
+    private-cr8001501222964a11b5dd950c9ac2662c-alb1   true      enabled   private   10.101.53.2   
+    public-cr8001501222964a11b5dd950c9ac2662c-alb1    true      enabled   public    158.177.115.70 
     ```
 
 
