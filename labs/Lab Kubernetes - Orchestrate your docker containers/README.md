@@ -33,7 +33,7 @@ This lab shows how to demonstrate the deployment of a web application for managi
 1. [Appendix - Issues when pushing to the container registry registry](#appendix---issues-when-pushing-to-the-container-registry)
 1. [Appendix - Using Kubernetes namespaces](#appendix---using-kubernetes-namespaces)
 1. [Appendix - Assigning Access to Namespaces](#appendix---assigning-access-to-namespaces)
-1. [Appendix - Adding user-managed subnets and IP address to your Automatic Load Balancer](#appendix---adding-user---managed-subnets-and-ip-address-to-your-automatic-load-balancer)
+1. [Appendix - Adding user-managed subnets and IP address to your Automatic Load Balancer](#appendix---adding-user-managed-subnets-and-ip-address-to-your-automatic-load-balancer)
 
 
 # Step 1 - Install IBM Cloud Kubernetes Service and Registry plugins
