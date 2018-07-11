@@ -304,29 +304,29 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 1. Build a Docker image that includes the app files of the directory.
     ```
-    docker build -t registry.ng.bluemix.net/<namespace>/mytodos:v1 .
+    docker build -t registry.eu-de.bluemix.net/<namespace>/mytodos:v1 .
     ```
 
     > If you already have an image, just need to tag this image before pushing it.
     ```
-    docker tag mytodos:v1 registry.ng.bluemix.net/<namespace>/mytodos:v1
+    docker tag mytodos:v1 registry.eu-de.bluemix.net/<namespace>/mytodos:v1
     ```
 
 1. Push the image to your private images registry.
     ```
-    docker push registry.ng.bluemix.net/<namespace>/mytodos:v1
+    docker push registry.eu-de.bluemix.net/<namespace>/mytodos:v1
     ```
 
-1. Verify that the image was successfully added to your registry.
+1. Verify that the image was successfully added to your registry in your namespace
     ```
-    ibmcloud cr images
+    ibmcloud cr images --restrict <namespace>
     ```
     Output:
     ```
     Listing images...
 
     REPOSITORY                                  NAMESPACE   TAG       DIGEST         CREATED        SIZE     VULNERABILITY STATUS
-    registry.ng.bluemix.net/your-namespace/mytodos   namespace   1   0d90cb732881   1 minute ago   264 MB   OK
+    registry.eu-de.bluemix.net/your-namespace/mytodos   namespace   1   0d90cb732881   1 minute ago   264 MB   OK
     ```
 
 1. The image is also visible in the IBM Cloud Console. Go to the **Catalog**, select the service **Container Registry**. Then, click on Private Repositories
@@ -335,7 +335,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 1. You can access the security risk of your Container with **Vulnerability Advisor**
     ```
-    ibmcloud cr va registry.ng.bluemix.net/your-namespace/mytodos:v1
+    ibmcloud cr va registry.eu-de.bluemix.net/your-namespace/mytodos:v1
     ```
 
 # Step 7 - Bind a IBM Cloud service to a Kubernetes namespace
