@@ -4,7 +4,7 @@ Discover IBM Cloud through a set of hands-on labs.
 
 # Table of Contents
 
-+ [Lab Cloud Foundry - Deploy TODO web application](./labs/Lab%20CloudFoundry%20-%20Deploy%20TODO%20web%20application)
++ [Lab Cloud Foundry - Deploy TODO web application](./labs/Lab%20Cloud%20Foundry%20-%20Deploy%20TODO%20web%20application)
 
 + [Lab Kubernetes - Orchestrate your docker containers](./labs/Lab%20Kubernetes%20-%20Orchestrate%20your%20docker%20containers)
 
