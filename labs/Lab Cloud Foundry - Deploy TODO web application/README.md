@@ -21,7 +21,7 @@ In the following lab, you will learn:
 # Pre-Requisites
 
 + Create a [free account](https://bluemix.net), or use an existing account.
-+ Install the [IBM Cloud CLI](https://console.bluemix.net/docs/cli/reference/bluemix_cli/download_cli.html)
++ Install the [IBM Cloud CLI](https://console.bluemix.net/docs/cli/reference/ibmcloud/download_cli.html#install_use)
 + Install a [Git client](https://git-scm.com/downloads)
 + Install [Node.js](https://nodejs.org)
 

@@ -13,7 +13,7 @@
 
 + This will help you connect to your IBM Cloud account through the command line.
 
-+ You can download it from [here](https://console.bluemix.net/docs/cli/reference/bluemix_cli/download_cli.html)
++ You can download it from [here](https://console.bluemix.net/docs/cli/reference/ibmcloud/download_cli.html#install_use)
 
 + Select the version corresponding to your operating system.
 

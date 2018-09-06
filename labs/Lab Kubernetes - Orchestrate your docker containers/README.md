@@ -11,7 +11,7 @@ This lab shows how to demonstrate the deployment of a web application for managi
 # Pre-Requisites
 
 + Get a [IBM Cloud account](https://bluemix.net)
-+ Install the [IBM Cloud CLI](http://clis.ng.bluemix.net)
++ Install the [IBM Cloud CLI](https://console.bluemix.net/docs/cli/reference/ibmcloud/download_cli.html#install_use)
 + Install docker for [Mac](https://docs.docker.com/engine/installation/mac/) or [Windows](https://docs.docker.com/engine/installation/windows/)
 + Install [Kubectl](https://kubernetes.io/docs/user-guide/prereqs/)
 + Install a [Git client](https://git-scm.com/downloads)
