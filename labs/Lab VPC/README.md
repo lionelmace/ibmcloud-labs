@@ -20,7 +20,7 @@
 1. [Step 9 - Create VMs](#step-9---create-vms)
 
 
-# Step 1 - Install IBM Cloud Infrasctructure plugin
+# Step 1 - Install IBM Cloud Infrastructure plugin
 
 To create VPC, and VSI, install the Infrastructure plug-in.
 
