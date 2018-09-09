@@ -78,8 +78,8 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
     Listing installed plug-ins...
 
     Plugin Name          Version
-    container-registry     0.1.316   
-    container-service      0.1.515 
+    container-registry                     0.1.329   
+    container-service/kubernetes-service   0.1.558 
     ```
 1. To update the container registry plugin
     ```
@@ -93,7 +93,7 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
     ibmcloud login
     ```
 
-1. Select the region (API Endpoint) where you deployed your application.
+1. Select the region (API Endpoint).
 
     | Location | Acronym | API Endpoint |
     | ----- | ----------- | ----------- |
@@ -105,7 +105,7 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
 
     >  To switch afterwards to a different region, use the command `ibmcloud target -r eu-de`
 
-1. Log in to the IBM Cloud Container Service Kubernetes plug-in. The prefix for running commands by using the IBM Cloud Container Service plug-in is **ibmcloud cs**.
+1. Log in to the IBM Cloud Kubernetes Service. The prefix for running commands by using the IBM Cloud Container Service plug-in is **ibmcloud cs**.
     ```
     ibmcloud cs init
     ```
@@ -115,7 +115,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 + A **Lite cluster** is a free cluster comes with a single worker node to deploy container pods upon. A worker node is the compute host, typically a virtual machine, that your apps run on. Go to Step 3.1 *Create a Lite cluster*
 
-+ A **Standard cluster** is a production-ready cluster with as many worker nodes as you want. A Standard cluster requires requires a Bluemix Infrastructure (SoftLayer) account. Go to Step 3.2 *Create a Standard cluster*.
++ A **Standard cluster** is a production-ready cluster with as many worker nodes as you want. A Standard cluster requires requires a IBM Cloud Infrastructure (former SoftLayer) account. Go to Step 3.2 *Create a Standard cluster*.
 
 ## Step 3.1 - Create a Lite cluster
 
@@ -216,7 +216,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
       --public-vlan 1556815 \
       --private-vlan 1556821
     ```
-    > The cluster creation can be scripted. A yml sample is provided in **kubernetes/create-cluster.yml**.
+    > The cluster creation can be scripted. A yml sample is provided in **kubernetes/create-cluster.yml** once you have donwloaded the application code in Step 5.
 
 1. Verify that the creation of the cluster was requested.
     ```
@@ -304,17 +304,17 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 1. Build a Docker image that includes the app files of the directory.
     ```
-    docker build -t registry.eu-de.bluemix.net/<namespace>/mytodos:v1 .
+    docker build -t registry.eu-de.bluemix.net/<namespace>/mytodos:1 .
     ```
 
     > If you already have an image, just need to tag this image before pushing it.
     ```
-    docker tag mytodos:v1 registry.eu-de.bluemix.net/<namespace>/mytodos:v1
+    docker tag mytodos:1 registry.eu-de.bluemix.net/<namespace>/mytodos:1
     ```
 
 1. Push the image to your private images registry.
     ```
-    docker push registry.eu-de.bluemix.net/<namespace>/mytodos:v1
+    docker push registry.eu-de.bluemix.net/<namespace>/mytodos:1
     ```
 
 1. Verify that the image was successfully added to your registry in your namespace
@@ -335,7 +335,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 1. You can access the security risk of your Container with **Vulnerability Advisor**
     ```
-    ibmcloud cr va registry.eu-de.bluemix.net/your-namespace/mytodos:v1
+    ibmcloud cr va registry.eu-de.bluemix.net/your-namespace/mytodos:1
     ```
 
 # Step 7 - Bind a IBM Cloud service to a Kubernetes namespace
@@ -437,7 +437,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
         spec:
           containers:
           - name: mytodos
-            image: registry.eu-de.bluemix.net/<your-namespace>/mytodos:v1
+            image: registry.eu-de.bluemix.net/<your-namespace>/mytodos:1
             imagePullPolicy: Always
             resources:
               requests:
@@ -632,7 +632,7 @@ In order to isolate the applications you deploy in the cluster, you may want to 
     ```
 
 1. The new namespace does not contain the secret to access the private container registry. The default namespace has by default this secret to access the registry. If you try to deploy without this step, you will get this error:
-    > Failed to pull image "registry.eu-de.bluemix.net/mace/mytodos:v1": rpc error: code = Unknown desc = Error response from daemon: Get https://registry.eu-de.bluemix.net/v2/mace/mytodos/manifests/v1: unauthorized: authentication required
+    > Failed to pull image "registry.eu-de.bluemix.net/mace/mytodos:1": rpc error: code = Unknown desc = Error response from daemon: Get https://registry.eu-de.bluemix.net/v2/mace/mytodos/manifests/v1: unauthorized: authentication required
     
     In order to add this registry secret, run the following command:
     ```
@@ -664,7 +664,7 @@ In order to isolate the applications you deploy in the cluster, you may want to 
         - name: private-registry-secret
         containers:
         - name: mytodos
-            image: registry.eu-de.bluemix.net/mace/mytodos:v1
+            image: registry.eu-de.bluemix.net/mace/mytodos:1
             imagePullPolicy: Always
         ...
     ```
