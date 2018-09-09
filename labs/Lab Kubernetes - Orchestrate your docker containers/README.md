@@ -384,6 +384,9 @@ This web application uses a Cloudant DBaaS to store the todo task.
     ```
     > Use the namepsace **default** or create your own namespace.
 
+1. List services bound to a cluster
+    ```ic cs cluster-services --cluster <cluster-name>```
+
 1. Control that your secret was successfully created
     ```
     kubectl get secrets
