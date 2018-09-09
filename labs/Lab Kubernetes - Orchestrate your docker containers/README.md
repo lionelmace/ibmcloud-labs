@@ -393,10 +393,10 @@ This web application uses a Cloudant DBaaS to store the todo task.
     ```
     kubectl get secrets
     ```
-    > To unbind your secrets you can just delete the secret 
-    ```
-    kubectl delete secret binding-todo-cloudant
-    ```
+    > To unbind the service, you can just delete the secret 
+    > ```
+    > kubectl delete secret binding-todo-cloudant
+    > ```
 
 
 # Step 8 - Create Kubernetes Services and Deployments
