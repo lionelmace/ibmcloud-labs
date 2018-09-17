@@ -16,6 +16,7 @@ This lab shows how to demonstrate the deployment of a web application for managi
 + Install [Kubectl](https://kubernetes.io/docs/user-guide/prereqs/)
 + Install a [Git client](https://git-scm.com/downloads)
 + Install [Node.js](https://nodejs.org)
++ Install [Helm](https://github.com/helm/helm/releases/tag/v2.10.0)
 
 
 # Steps
@@ -105,9 +106,9 @@ To create Kubernetes clusters, and manage worker nodes, install the Container Se
 
     >  To switch afterwards to a different region, use the command `ibmcloud target -r eu-de`
 
-1. Log in to the IBM Cloud Kubernetes Service. The prefix for running commands by using the IBM Cloud Container Service plug-in is **ibmcloud cs**.
+1. Log in to the IBM Cloud Kubernetes Service. The prefix for running commands by using the IBM Cloud Container Service plug-in is **ibmcloud ks**.
     ```
-    ibmcloud cs init
+    ibmcloud ks init
     ```
 
 # Step 3 - Create a cluster
@@ -121,18 +122,18 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 1. Create your Lite cluster.
     ```
-    ibmcloud cs cluster-create --name <your-cluster-name>
+    ibmcloud ks cluster-create --name <your-cluster-name>
     ```
     Once the cluster reaches the **deployed** state you can provision pods, but they will be enqueued until the cluster’s pods are finished provisioning. Note that it takes up to 15 minutes for the worker node machine to be ordered and for the cluster to be set up and provisioned.
 
 1. Verify that the creation of the cluster was requested.
     ```
-    ibmcloud cs clusters
+    ibmcloud ks clusters
     ```
 
 1. Check the status of the worker node(s).
     ```
-    ibmcloud cs workers <cluster_name_or_id>
+    ibmcloud ks workers <cluster_name_or_id>
     ```
 
 
@@ -140,12 +141,12 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 1. Set Infrastructure credentials
     ```
-    ibmcloud cs credentials-set --infrastructure-username <YOUR-USER-NAME> --infrastructure-api-key <YOUR-API-KEY>
+    ibmcloud ks credentials-set --infrastructure-username <YOUR-USER-NAME> --infrastructure-api-key <YOUR-API-KEY>
     ```
 
 1. Review the data centers that are available.
     ```
-    ibmcloud cs locations
+    ibmcloud ks locations
     ```
     Output for US South:
     ```
@@ -155,11 +156,11 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 1. Review the machine types available in the data center
     ```
-    ibmcloud cs machine-types <datacenter>
+    ibmcloud ks machine-types <datacenter>
     ```
     Output:
     ```
-    ibmcloud cs machine-types fra02
+    ibmcloud ks machine-types fra02
     OK
     Name                Cores   Memory   Network Speed   OS             Server Type   Storage   Secondary Storage   Trustable   
     u2c.2x4             2       4GB      1000Mbps        UBUNTU_16_64   virtual       25GB      100GB               false   
@@ -182,7 +183,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 1. Get the available VLANs in your account
     ```
-    ibmcloud cs vlans <datacenter>
+    ibmcloud ks vlans <datacenter>
     ```
     Output:
     ```
@@ -196,7 +197,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 1. Create cluster
     ```
-    ibmcloud cs cluster-create \
+    ibmcloud ks cluster-create \
       --name <cluster-name> \
       --location <zone> \
       --workers <number-of-workers> \
@@ -207,7 +208,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
     ```
     For example:
     ```
-    ibmcloud cs cluster-create \
+    ibmcloud ks cluster-create \
       --name my-cluster \
       --location fra02 \
       --workers 3 \
@@ -220,12 +221,12 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 1. Verify that the creation of the cluster was requested.
     ```
-    ibmcloud cs clusters
+    ibmcloud ks clusters
     ```
 
 1. Check the status of the worker node(s).
     ```
-    ibmcloud cs workers <cluster_name_or_id>
+    ibmcloud ks workers <cluster_name_or_id>
     ```
     
     > The cluster creation process is as follow:
@@ -249,7 +250,7 @@ To create a cluster, you have two options either a Lite cluster or a Standard on
 
 1. You will need the kubeconfig data and certs to connect to your cluster using kubectl. You can download the config to your local machine via the CLI. Issue the following command to download your kubeconfig for a given cluster.
     ```
-    ibmcloud cs cluster-config <cluster_name_or_id>
+    ibmcloud ks cluster-config <cluster_name_or_id>
     ```
 
 1. Use the result of the previous command to set the path to your Kubernetes configuration file as an environment variable.
@@ -347,7 +348,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
     ibmcloud service offerings
     ```
 
-1. Create an instance of a service
+1. Create an instance of a service based on Cloud Foundry
     ```
     ibmcloud service create <service_name> <service_plan> <service_instance_name>
     ```
@@ -356,6 +357,16 @@ This web application uses a Cloudant DBaaS to store the todo task.
     ibmcloud service create cloudantNoSQLDB Lite todo-cloudant
     ```
     > Warning: Secrets do not accept underscore in the service instance name.
+
+1. Create an instance of a service supporting Resource Group
+    ```
+    ibmcloud resource service-instance-create <service_instance_name> <service_name> <service_plan_name> <location>
+    ```
+    Example:
+    ```
+    ibmcloud resource service-instance-create todo-cloudant cloudant lite eu-de
+    ```
+    > Warning: Kubernetes Secrets do not accept underscore in the service instance name.
 
 1. Verify you created your service
     ```
@@ -376,13 +387,13 @@ This web application uses a Cloudant DBaaS to store the todo task.
 
 1. Bind your service to your Kubernetes namespace
     ```
-    ibmcloud cs cluster-service-bind <cluster_id> <kube_namespace> <service_instance_name>
+    ibmcloud ks cluster-service-bind --cluster <cluster name> --namespace <kube_namespace> --service <service_instance_name>
     ```
     Example:
     ```
-    ibmcloud cs cluster-service-bind ad35aacc139b4e11a6f3182fb13d24af default todo-cloudant
+    ibmcloud ks cluster-service-bind --cluster hacluster --namespace default --service todo-cloudant
     ```
-    > Use the namepsace **default** or create your own namespace.
+    > Use the namespace **default** or create your own namespace.
 
 1. List services bound to a cluster
     ```
@@ -496,7 +507,7 @@ This web application uses a Cloudant DBaaS to store the todo task.
 1. Get the public IP of the worker node in the cluster
 
     ```
-    ibmcloud cs workers <cluster_name_or_id>
+    ibmcloud ks workers <cluster_name_or_id>
     Listing cluster workers...
     OK
     ID                                            Public IP        Private IP      Machine Type   State      Status
@@ -560,6 +571,26 @@ To use weave scope securely with your Kubernetes cluster you can follow these st
 1. Finally, delete your deployment
     ```
     kubectl delete -f deploy2kubernetes.yml
+    ```
+
+# Step 11 - Deploy with Helm (under development...)
+
+Helm helps you manage Kubernetes applications through Helm Charts, which helps define, install, and upgrade even the most complex Kubernetes application. 
+
+1. Initialize Helm by navigating to kubernetes/helm/chart and running the below command in your cluster
+    ```
+    cd kubernetes/helm/chart
+    helm init
+    ```
+
+1. To install a Helm chart, run the below command
+    ```
+    helm install . --name mytodos
+    ```
+
+1. To delete your deployment
+    ```
+    helm delete --purge mytodos
     ```
 
 
@@ -633,11 +664,11 @@ In order to isolate the applications you deploy in the cluster, you may want to 
 
 1. The service cloudant should be bound in this namespace
     ```
-    ibmcloud cs cluster-service-bind <cluster_id> mytodos <service_instance_name>
+    ibmcloud ks cluster-service-bind <cluster_id> mytodos <service_instance_name>
     ```
     Example:
     ```
-    ibmcloud cs cluster-service-bind ad35aacc139b4e11a6f3182fb13d24af mytodos todo-cloudant
+    ibmcloud ks cluster-service-bind ad35aacc139b4e11a6f3182fb13d24af mytodos todo-cloudant
     ```
 
 1. The new namespace does not contain the secret to access the private container registry. The default namespace has by default this secret to access the registry. If you try to deploy without this step, you will get this error:
@@ -690,7 +721,7 @@ In order to isolate the applications you deploy in the cluster, you may want to 
 
 1. View the ID of your cluster's Private VLAN. Locate the VLANs section. In the field User-managed, identify the VLAN ID with false.
     ```
-    ibmcloud cs cluster-get --showResources <cluster-name>
+    ibmcloud ks cluster-get --showResources <cluster-name>
     ```
     ```
     Subnet VLANs
@@ -701,16 +732,16 @@ In order to isolate the applications you deploy in the cluster, you may want to 
 
 1. Add the external subnet to your private VLAN. The portable private IP addresses are added to the cluster's configmap.
     ```
-    ibmcloud cs cluster-user-subnet-add <cluster_name> <subnet_CIDR> <VLAN_ID>
+    ibmcloud ks cluster-user-subnet-add <cluster_name> <subnet_CIDR> <VLAN_ID>
     ```
     Exemple:
     ```
-    ibmcloud cs cluster-user-subnet-add dev-cluster 10.101.53.0/24 2268624
+    ibmcloud ks cluster-user-subnet-add dev-cluster 10.101.53.0/24 2268624
     ```
 
 1. Verify that the user-provided subnet is added. The field User-managed is true.
     ```
-    ibmcloud cs cluster-get --showResources <cluster-name>
+    ibmcloud ks cluster-get --showResources <cluster-name>
     ```
     ```
     Subnet VLANs
@@ -722,14 +753,14 @@ In order to isolate the applications you deploy in the cluster, you may want to 
 
 1. Enable the Automatic Load Balancer (ALB) with your custom subnet
     ```
-    ibmcloud cs alb-configure --albID private-cr8001501222964a11b5dd950c9ac2662c-alb1 --enable --user-ip 10.101.53.2
+    ibmcloud ks alb-configure --albID private-cr8001501222964a11b5dd950c9ac2662c-alb1 --enable --user-ip 10.101.53.2
     ```
 
 1. Optional: [Enable routing between subnets on the same VLAN](https://console.bluemix.net/docs/containers/cs_subnets.html#vlan-spanning)
 
 1. Add a private load balancer service or a private Ingress application load balancer to access your app. First retrieve the ALB.
     ```
-    ibmcloud cs albs --cluster dev-cluster
+    ibmcloud ks albs --cluster dev-cluster
     ```
     ```
     ALB ID                                            Enabled   Status    Type      ALB IP   
@@ -739,12 +770,12 @@ In order to isolate the applications you deploy in the cluster, you may want to 
 
 1. Add a private load balancer service or a private Ingress application load balancer to access your app over the private network. To use a private IP address from the subnet that you added, you must specify an IP address. 
     ```
-    ibmcloud cs alb-configure --albID private-cr8001501222964a11b5dd950c9ac2662c-alb1 --enable --user-ip 10.101.53.2
+    ibmcloud ks alb-configure --albID private-cr8001501222964a11b5dd950c9ac2662c-alb1 --enable --user-ip 10.101.53.2
     ```
 
 1. Verify that ALB was enabled
     ```
-    ibmcloud cs albs --cluster dev-cluster
+    ibmcloud ks albs --cluster dev-cluster
     ```
     ```
     ALB ID                                            Enabled   Status    Type      ALB IP   
