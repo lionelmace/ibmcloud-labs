@@ -9,18 +9,18 @@
 
 # Steps
 
-1. [Step 1 - Install IBM Cloud Infrasctructure plugin](#step-1---install-ibm-cloud-infrastructure-plugin)
-1. [Step 2 - Connect to IBM Cloud](#step-2---connect-to-ibm-cloud)
-1. [Step 3 - Show Infrastructure and Region commands](#step-3---show-infrastructure-and-region-commands)
-1. [Step 4 - Create VPC](#step-4---create-vpc)
-1. [Step 5 - Create Subnets](#step-5---create-subnets)
-1. [Step 6 - Create a Public Gateway](#step-6---create-a-public-gateway)
-1. [Step 7 - Add key](#step-7---add-key)
-1. [Step 8 - Show images & profiles](#step-8---show-images-profiles)
-1. [Step 9 - Create VMs](#step-9---create-vms)
+1. [1 - Install IBM Cloud Infrasctructure plugin](#1---install-ibm-cloud-infrastructure-plugin)
+1. [2 - Connect to IBM Cloud](#2---connect-to-ibm-cloud)
+1. [3 - Show Infrastructure and Region commands](#3---show-infrastructure-and-region-commands)
+1. [4 - Create VPC](#4---create-vpc)
+1. [5 - Create Subnets](#5---create-subnets)
+1. [6 - Create a Public Gateway](#6---create-a-public-gateway)
+1. [7 - Add key](#7---add-key)
+1. [8 - Show images & profiles](#8---show-images-profiles)
+1. [9 - Create VMs](#9---create-vms)
 
 
-# Step 1 - Install IBM Cloud Infrastructure plugin
+# 1 - Install IBM Cloud Infrastructure plugin
 
 To create VPC, and VSI, install the Infrastructure plug-in.
 
@@ -66,7 +66,7 @@ To create VPC, and VSI, install the Infrastructure plug-in.
     ```
 
 
-# Step 2 - Connect to IBM Cloud
+# 2 - Connect to IBM Cloud
 
 1. Login to IBM Cloud
     ```
@@ -87,7 +87,7 @@ To create VPC, and VSI, install the Infrastructure plug-in.
 
 
  
-# Step 3 - Show Infrastructure and Region commands
+# 3 - Show Infrastructure and Region commands
 
 1. Get the list of all Infrastructure commands
     ```
@@ -110,7 +110,7 @@ To create VPC, and VSI, install the Infrastructure plug-in.
     ```
 
 
-# Step 4 - Create VPC
+# 4 - Create VPC
 
 1. List all VPCs in the account
     ```
@@ -139,7 +139,7 @@ To create VPC, and VSI, install the Infrastructure plug-in.
     ```
  
 
-# Step 5 - Create Subnets
+# 5 - Create Subnets
 
 1. Create a Subnet
     ```
@@ -162,7 +162,7 @@ To create VPC, and VSI, install the Infrastructure plug-in.
     ```
 
  
-# Step 6 - Create public gateway
+# 6 - Create public gateway
 
 1. Create a Public Gateway
     ```
@@ -188,7 +188,7 @@ To create VPC, and VSI, install the Infrastructure plug-in.
     ibmcloud is subnets
     ```
  
-# Step 7 - Add key
+# 7 - Add key
 
 1. Create a SSH Key
     ```
@@ -205,7 +205,7 @@ To create VPC, and VSI, install the Infrastructure plug-in.
     export key=8cda4a00-946c-47ad-8044-bbc3bb09fbd1
     ```
  
-# Step 8 - Show images & profiles
+# 8 - Show images & profiles
 
 1. List OS available
     ```
@@ -228,7 +228,7 @@ To create VPC, and VSI, install the Infrastructure plug-in.
     ```
  
 
-# Step 9 - Create VMs
+# 9 - Create VMs
 
 1. Create a VSI
     ```
