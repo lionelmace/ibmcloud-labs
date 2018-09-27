@@ -9,15 +9,15 @@
 
 # Steps
 
-1. [1 - Install IBM Cloud Infrasctructure plugin](#1---install-ibm-cloud-infrastructure-plugin)
-1. [2 - Connect to IBM Cloud](#2---connect-to-ibm-cloud)
-1. [3 - Show Infrastructure and Region commands](#3---show-infrastructure-and-region-commands)
-1. [4 - Create VPC](#4---create-vpc)
-1. [5 - Create Subnets](#5---create-subnets)
-1. [6 - Create a Public Gateway](#6---create-a-public-gateway)
-1. [7 - Add key](#7---add-key)
-1. [8 - Show images & profiles](#8---show-images-profiles)
-1. [9 - Create VMs](#9---create-vms)
+1. [Install IBM Cloud Infrasctructure plugin](#1---install-ibm-cloud-infrastructure-plugin)
+1. [Connect to IBM Cloud](#2---connect-to-ibm-cloud)
+1. [Show Infrastructure and Region commands](#3---show-infrastructure-and-region-commands)
+1. [Create VPC](#4---create-vpc)
+1. [Create Subnets](#5---create-subnets)
+1. [Create a Public Gateway](#6---create-a-public-gateway)
+1. [Add key](#7---add-key)
+1. [Show images & profiles](#8---show-images-profiles)
+1. [Create VMs](#9---create-vms)
 
 
 # 1 - Install IBM Cloud Infrastructure plugin

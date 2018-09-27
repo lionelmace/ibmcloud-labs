@@ -797,3 +797,4 @@ For additional resources pay close attention to the following:
 - [Kubernetes volume plugin that enables Kubernetes pods to access IBM Cloud Object Storage buckets]((https://github.com/IBM/ibmcloud-object-storage-plugin)
 - [Modernize JPetStore demo with IBM Cloud Kubernetes Service](https://github.ibm.com/Bluemix/cloud-portfolio-solutions/tree/master/demos/jpetstore-kubernetes)
 - [Pod security policies in IBM Cloud Kubernetes Service](https://www.ibm.com/blogs/bluemix/2018/06/pod-security-policies-ibm-cloud-kubernetes-service/)
+- [How Can I Isolate, do Maintenance and Debug an ALB/Ingress Controller](https://medium.com/@ArpadKun/how-can-i-isolate-do-maintenance-and-debug-an-alb-ingress-controller-ibm-iks-cheat-sheet-2-29dab86b9c7d)
